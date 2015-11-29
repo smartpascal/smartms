@@ -6,28 +6,12 @@
 <title>warleyalex - mobile web app template</title>
 <meta name="description" content="web app mobile template">
 <link rel="stylesheet" href="preview/preview.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
 <div class="iphone_bg">
 	<div class="mobile_wrap">
 	<iframe id="frame"  src="index.html" frameborder="no" border="0" scrolling="no" width="320px" height="568px;"></iframe> 
 	</div>
 </div>
-
-<script src="preview/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-var $ = jQuery.noConflict(); 
-$(document).ready(function () {
-$("#frame").attr("src", "index.html");
-
-$("#main").click(function () { 
-	  $("#frame").attr("src", "index.html");
-}); 
-
-});
-</script>  
-
 </body>
 </html>
