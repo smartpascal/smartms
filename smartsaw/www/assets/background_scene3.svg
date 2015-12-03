@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="600px" height="300px" viewBox="0 0 600 300" enable-background="new 0 0 600 300" xml:space="preserve">
+<g>
+	<line stroke="#FFFFFF" stroke-width="1.4726" stroke-miterlimit="10" x1="327.666" y1="136.002" x2="389.747" y2="139.634"/>
+	<line stroke="#FFFFFF" stroke-width="1.4726" stroke-miterlimit="10" x1="359.074" y1="102.101" x2="362.015" y2="165.502"/>
+	
+		<line fill="#F9D523" stroke="#000000" stroke-width="1.6893" stroke-miterlimit="10" x1="326.93" y1="136.738" x2="389.011" y2="140.37"/>
+	
+		<line fill="#F9D523" stroke="#000000" stroke-width="1.6893" stroke-miterlimit="10" x1="358.338" y1="102.837" x2="361.278" y2="166.238"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="298.0396" y1="303.5918" x2="298.0396" y2="-18.7402">
+		<stop  offset="0" style="stop-color:#FBB03B"/>
+		<stop  offset="0.3996" style="stop-color:#F9AF3B"/>
+		<stop  offset="0.5544" style="stop-color:#F2AA3B"/>
+		<stop  offset="0.6668" style="stop-color:#E6A13A"/>
+		<stop  offset="0.7586" style="stop-color:#D5953A"/>
+		<stop  offset="0.8379" style="stop-color:#BE8539"/>
+		<stop  offset="0.9085" style="stop-color:#A37238"/>
+		<stop  offset="0.9711" style="stop-color:#835B38"/>
+		<stop  offset="1" style="stop-color:#714F37"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M-24.293-18.741v322.333h644.666V-18.741
+		H-24.293z M380.413,157.218l-45,6.936l-3.333-57.603l53.097,4.679L380.413,157.218z"/>
+</g>
+<rect x="-8.92" y="240.028" fill="#736357" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="622" height="66.522"/>
+<g>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="155.607,45.87 
+		129.843,16.284 41.568,244.225 81.925,245.172 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		436.633,51.336 463.711,16.284 550.283,244.607 509.08,244.607 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		436.633,51.336 155.607,45.87 129.843,16.284 463.711,16.284 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		160.414,52.566 155.607,45.87 81.925,245.172 90.51,240.269 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		432.413,57.733 436.633,51.336 509.08,244.607 499.793,239.719 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		432.413,57.733 160.414,52.566 155.607,45.87 436.633,51.336 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="155.607,45.87 
+		48.428,-56.617 97.886,-63.449 155.607,16.284 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		117.077,46.349 25.414,-32.02 48.428,-56.617 155.607,45.87 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		436.633,50.858 543.811,-51.629 494.354,-58.461 436.633,17.857 	"/>
+	<polygon fill="#603813" stroke="#000000" stroke-width="3" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+		478.498,51.336 568.414,-24.846 543.811,-51.629 436.633,50.858 	"/>
+</g>
+<rect x="-18.253" y="259.218" width="119.141" height="27.666"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="36.802" y1="240.646" x2="35.584" y2="264.218"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="54.414" y1="233.17" x2="57.018" y2="267.289"/>
+<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="78.624" y1="228.4" x2="77.08" y2="264.218"/>
+<path fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M-1.409,267.289
+	c0,0,5.055-10.095,26.591-19.326c11.042-4.733,17.407-14.244,29.232-14.794s18.474-3.333,24.21-4.771
+	c6.146-1.541,11.279-2.314,14.79-1.975c22,2.127,11,29.856-2.333,19.73s5.667-14.604,5.667-7.271"/>
+</svg>
