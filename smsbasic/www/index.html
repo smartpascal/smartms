@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   <!-- Your app title -->
+   <title>SMart Basic Gambiarra App</title>
+   <link rel="stylesheet" href="lib/css/swipebox.css">
+   <link rel="stylesheet" type="text/css" href="res/app.css"/>
+   <script language="javascript" src="lib/library.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  /* This prevents the window being moved by touches,
+     to give the impression of a native app */
+  document.ontouchmove = function(e)
+  { e.preventDefault(); }
+  </script>
+  <script type="text/javascript">
+  /* Note: If you build with the CSS as an external file,
+     the app may execute before the CSS has been properly loaded.
+     You may want to use a different bootstrap mechanism. jQuery
+     provides a good preloading mechanism for instance. */
+function bootstrap() { 
+function VarClear$_Variant_(v){var u;v.v=u}
+function Trunc(v){return(v>=0)?Math.floor(v):Math.ceil(v)}
+function Trim$_String_(s){return s.replace(/^\s\s*/,"").replace(/\s\s*$/,"")}
+var TObject={$ClassName:"TObject",$Parent:null,ClassName:function(s){return s.$ClassName},ClassType:function(s){return s},ClassParent:function(s){return s.$Parent},$Init:function(){},Create:function(s){return s},Destroy:function(s){for(var prop in s)if(s.hasOwnProperty(prop))delete s.prop},Destroy$:function(s){return s.ClassType.Destroy(s)},Free:function(s){if(s!==null)s.ClassType.Destroy(s)}}
+function StrToIntDef(v,d){var r=parseInt(v,10);return isNaN(r)?d:r}
+function StrReplace(s,o,n){return o?s.replace(new RegExp(StrRegExp(o),"g"),n):s}
+function StrRegExp(s){return s.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,"\\$&")}
+function SetLength(s,n){if(s.v.length>n)s.v=s.v.substring(0,n);else while(s.v.length<n)s.v+=" "}
+function Now(){var d=new Date();return d.getTime()/864e5+25569}
+function IntToHex(v,d){var r=v.toString(16);return"00000000".substr(0,d-r.length)+r}
+function Frac(v){return v-((v>0)?Math.floor(v):Math.ceil(v))}
+function FormatDateTime(fmt,v,u){function pad2(v){return(v<10)?"0"+v:v};function pad3(v){return(v<100)?"0"+pad2(v):v};var res="",i=0,c,tok,wasHour,prevWasHour=0,p,dt;v=Math.round((v-25569)*864e5);dt=new Date(v);if((u||$TZ)===1){dt=new Date(v-dt.getTimezoneOffset()*60000)}
+if(!(dt instanceof Date&&isFinite(dt)))return"Invalid Date";while(i<fmt.length){c=fmt.charAt(i);tok="";do{tok+=c;i++}while(fmt.charAt(i)===c);wasHour=0;switch(tok.toLowerCase()){case"d":res+=(dt.getUTCDate());break;case"dd":res+=pad2(dt.getUTCDate());break;case"ddd":res+=$fmt.ShortDayNames[dt.getUTCDay()];break;case"dddd":res+=$fmt.LongDayNames[dt.getUTCDay()];break;case"m":if(prevWasHour){res+=dt.getUTCHours()}else{res+=dt.getUTCMonth()+1};break;case"mm":if(prevWasHour){res+=pad2(dt.getUTCHours())}else{res+=pad2(dt.getUTCMonth()+1)};break;case"mmm":res+=$fmt.ShortMonthNames[dt.getUTCMonth()];break;case"mmmm":res+=fmtLongMonthNames[dt.getUTCMonth()];break;case"yy":res+=pad2(dt.getUTCFullYear()%100);break;case"yyyy":res+=dt.getUTCFullYear();break;case"h":res+=dt.getUTCHours();wasHour=1;break;case"hh":res+=pad2(dt.getUTCHours());wasHour=1;break;case"n":res+=dt.getUTCMinutes();break;case"nn":res+=pad2(dt.getUTCMinutes());break;case"s":res+=dt.getUTCSeconds();break;case"ss":res+=pad2(dt.getUTCSeconds());break;case"z":res+=dt.getUTCMilliseconds();break;case"zzz":res+=pad3(dt.getUTCMilliseconds());break;default:res+=tok}
+prevWasHour=wasHour}
+return res}
+var sprintf=(function(){function get_type(variable){return Object.prototype.toString.call(variable).slice(8,-1).toLowerCase()}
+function str_repeat(input,multiplier){for(var output=[];multiplier>0;output[--multiplier]=input){}
+return output.join('')}
+var str_format=function(){if(!str_format.cache.hasOwnProperty(arguments[0])){str_format.cache[arguments[0]]=str_format.parse(arguments[0])}
+return str_format.format.call(null,str_format.cache[arguments[0]],arguments)};str_format.format=function(parse_tree,argv){var cursor=1,tree_length=parse_tree.length,node_type='',arg,output=[],i,k,match,pad,pad_character,pad_length;for(i=0;i<tree_length;i++){node_type=get_type(parse_tree[i]);if(node_type==='string'){output.push(parse_tree[i])}
+else if(node_type==='array'){match=parse_tree[i];if(match[2]){arg=argv[cursor];for(k=0;k<match[2].length;k++){if(!arg.hasOwnProperty(match[2][k])){throw(sprintf('[sprintf] property "%s" does not exist',match[2][k]))}
+arg=arg[match[2][k]]}}
+else if(match[1]){arg=argv[match[1]]}
+else{arg=argv[cursor++]}
+if(/[^s]/.test(match[8])&&(get_type(arg)!='number')){throw(sprintf('[sprintf] expecting number but found %s',get_type(arg)))}
+switch(match[8]){case'b':arg=arg.toString(2);break;case'c':arg=String.fromCharCode(arg);break;case'd':arg=String(parseInt(arg,10));if(match[7]){arg=str_repeat('0',match[7]-arg.length)+arg}break;case'e':arg=match[7]?arg.toExponential(match[7]):arg.toExponential();break;case'f':arg=match[7]?parseFloat(arg).toFixed(match[7]):parseFloat(arg);break;case'o':arg=arg.toString(8);break;case's':arg=((arg=String(arg))&&match[7]?arg.substring(0,match[7]):arg);break;case'u':arg=Math.abs(arg);break;case'x':arg=arg.toString(16);break;case'X':arg=arg.toString(16).toUpperCase();break}
+arg=(/[def]/.test(match[8])&&match[3]&&arg>=0?'+'+arg:arg);pad_character=match[4]?match[4]=='0'?'0':match[4].charAt(1):' ';pad_length=match[6]-String(arg).length;pad=match[6]?str_repeat(pad_character,pad_length):'';output.push(match[5]?arg+pad:pad+arg)}}
+return output.join('')};str_format.cache={};str_format.parse=function(fmt){var _fmt=fmt,match=[],parse_tree=[],arg_names=0;while(_fmt){if((match=/^[^\x25]+/.exec(_fmt))!==null){parse_tree.push(match[0])}
+else if((match=/^\x25{2}/.exec(_fmt))!==null){parse_tree.push('%')}
+else if((match=/^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fosuxX])/.exec(_fmt))!==null){if(match[2]){arg_names|=1;var field_list=[],replacement_field=match[2],field_match=[];if((field_match=/^([a-z_][a-z_\d]*)/i.exec(replacement_field))!==null){field_list.push(field_match[1]);while((replacement_field=replacement_field.substring(field_match[0].length))!==''){if((field_match=/^\.([a-z_][a-z_\d]*)/i.exec(replacement_field))!==null){field_list.push(field_match[1])}
+else if((field_match=/^\[(\d+)\]/.exec(replacement_field))!==null){field_list.push(field_match[1])}
+else{throw('[sprintf] huh?')}}}
+else{throw('[sprintf] huh?')}
+match[2]=field_list}
+else{arg_names|=2}
+if(arg_names===3){throw('[sprintf] mixing positional and named placeholders is not (yet) supported')}
+parse_tree.push(match)}
+else{throw('[sprintf] huh?')}
+_fmt=_fmt.substring(match[0].length)}
+return parse_tree};return str_format})();function Format(f,a){a.unshift(f);return sprintf.apply(null,a)}
+var Exception={$ClassName:"Exception",$Parent:TObject,$Init:function(){FMessage=""},Create:function(s,Msg){s.FMessage=Msg;return s}}
+function EncodeTime(h,m,s,z){return(h+(m+(s+z*0.001)/60)/60)/24}
+function EncodeDate(y,m,d,u){return((u||$TZ)===2?Date.UTC(y,m-1,d):new Date(y,m-1,d).getTime())/864e5+25569}
+function Delete(s,i,n){var v=s.v;if((i<=0)||(i>v.length)||(n<=0))return;s.v=v.substr(0,i-1)+v.substr(i+n-1)}
+function $W(e){return e.ClassType?e:Exception.Create($New(Exception),e.constructor.name+", "+e.message)}
+var $TZ=1;var $fmt={ShortDayNames:["sun","mon","tue","wed","thu","fri","sat"],LongDayNames:["sunday","monday","tuesday","wednesday","thursday","friday","saturday"],ShortMonthNames:["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],LongMonthNames:["january","february","march","april","may","june","july","august","september","october","november","december"],ShortDateFormat:"yyyy-mm-dd",ShortTimeFormat:"hh:nn",LongTimeFormat:"hh:nn:ss"}
+function $StrSet(s,i,v,z){if(i<1)throw Exception.Create($New(Exception),"Lower bound exceeded! Index "+i.toString()+z);if(i>s.length)throw Exception.Create($New(Exception),"Upper bound exceeded! Index "+i.toString()+z);return s.substring(0,i-1)+v+s.substring(i)}
+function $SetInc(s,v,m,n){v-=m;if(v>=0&&v<n)s[v>>5]|=1<<(v&31)}
+function $SetIn(s,v,m,n){v-=m;return(v<0&&v>=n)?false:(s[v>>5]&(1<<(v&31)))!=0}
+function $NewDyn(c,z){if(c==null)throw Exception.Create($New(Exception),"ClassType is nil"+z);var i={ClassType:c};c.$Init(i);return i}
+function $New(c){var i={ClassType:c};c.$Init(i);return i}
+function $Is(o,c){if(o===null)return false;return $Inh(o.ClassType,c)};function $Inh(s,c){if(s===null)return false;while((s)&&(s!==c))s=s.$Parent;return(s)?true:false};function $Div(a,b){var r=a/b;return(r>=0)?Math.floor(r):Math.ceil(r)}
+function $AsClass(s,c){if((s===null)||$Inh(s,c))return s;throw Exception.Create($New(Exception),"Cannot cast class \""+s.$ClassName+"\" to class \""+c.$ClassName+"\"")}
+function $As(o,c){if((o===null)||$Is(o,c))return o;throw Exception.Create($New(Exception),"Cannot cast instance of type \""+o.ClassType.$ClassName+"\" to class \""+c.$ClassName+"\"")}
+var gU={$ClassName:"TApplicationLite",$Parent:TObject,$Init:function($){TObject.$Init($)},Jf:function(S){TObject.Create(S);if(!d5)d5=S;return S},Destroy:function(S){d5=null;TObject.Destroy(S)},Destroy$:function($){return $.ClassType.Destroy($)}};var pS={$ClassName:"TApplication",$Parent:gU,$Init:function($){gU.$Init($);$.xF=undefined;$.Wg=null},q4:function(S){var rZ=null;var Qz=null;rZ=new Object();rZ.modalTitle="My App";rZ.animateNavBackIcon=true;rZ.precompileTemplates=true;rZ.template7Pages=true;rZ.template7Data=JSON.parse("{\"page:about2\":{\"tel\":\"+1 (222) 333-44-55\",\"email\":\"john@doe.com\",\"country\":\"USA\",\"city\":\"San Francisco\",\"zip\":\"12345\",\"street\":\"Awesome st\"},\"page:about\":{\"name\":\"John Doe\",\"age\":32,\"position\":\"CEO\",\"company\":\"Google\",\"interests\":[\"swimming\",\"music\",\"JavaScript\",\"iMac\",\"iOS apps\",\"sport\"]}}");Qz=new Object();Qz.dynamicNavbar=true;S.Wg=new Framework7(rZ);S.xF=S.Wg.addView(".view-main",Qz);S.Wg.onPageBeforeInit("index",function(T5){var E9=0;Q("Index page beforeInit");for(E9=1;E9<=3;E9++){Sq(".toolbar .link").eq(E9).hide()}
+setTimeout(function(){Sq("#cover").addClass("go");setTimeout(function(){Sq("#cover").removeClass("go")},3300)},600);Sq("#cover").mouseout(function(){Sq(this).toggleClass("go")});ok.sI(ok)}).trigger();Sq(document).on("pageBeforeInit",function(en){var R=undefined;var Ow,Li=0;var eW=0;Ow=en.detail.page;{var $t1=Ow.name;if($t1=="index"){Q("index page initialized");for(Li=1;Li<=3;Li++){Sq(".toolbar .link").eq(Li).removeAttr("style")}}
+else if($t1=="protected"){}
+else if($t1=="features"){Q("features page initialized")}
+else if($t1=="gallery"){Q("gallery page initialized");$(".swipebox").swipebox();$(".videocontainer").fitVids()}
+else if($t1=="blog"){Q("blog page initialized");eW=0;Sq("#loadmore").click(function(){var su="";++eW;if(eW<5){su="";su+="<div class=\"card post-card\"><div class=\"card-header\"><div class=\"post-avatar\"><img src=\"res\/images\/photos\/avatar.jpg\" width=\"34\" height=\"34\"><\/div><div class=\"post-name\">John Doe<\/div><div class=\"post-date\">Monday at 2:15 PM<\/div><\/div><div class=\"card-content\"><div class=\"card-content-inner\"><h4 class=\"title-post\"><a href=\"single.html\">The eye should learn to listen before it looks.<\/a><\/h4><img src=\"res\/images\/photos\/5.jpg\" width=\"100%\" class=\"img\"><p>What a nice photo i took yesterday! Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et augue nec ex facilisis pulvinar.<\/p><p class=\"color-gray infos\">Likes: 112  -  Comments: 43<\/p><\/div><\/div><div class=\"card-footer no-border\"><a href=\"#\" class=\"link\">Like<\/a><a href=\"#\" class=\"link\">Comment<\/a><a href=\"#\" class=\"link\">Share<\/a><\/div><\/div>";Sq("#blog-page").append(su)}else{Sq("#loadmore").hide()}})}
+else if($t1=="about"){Q("about page initialized")}
+else if($t1=="tabs"){Q("tabs page initialized")}
+else if($t1=="toggle"){Q("toggle page initialized")}
+else if($t1=="contact"){Q("contact page initialized")}
+else if($t1=="videos"){Q("videos page initialized")}
+else if($t1=="socials"){Q("socials page initialized")}}
+return R})},to:function(S){pS.q4(S)},Destroy:gU.Destroy};function Q(U5){if(window.console){window.console.log(U5)}};var td={$ClassName:"TVariant",$Parent:TObject,$Init:function($){TObject.$Init($)},dY:function(){var R=undefined;return[];return R},Destroy:TObject.Destroy};function DV(){return d5};function Sq(c4){var R=undefined;return window.Dom7(c4);return R};var ok={$ClassName:"TLogin",$Parent:TObject,$Init:function($){TObject.$Init($)},sI:function(S){var R=null;Sq(".sign-login-screen").on("click",function(){dr();YN()});Q("login was fired");return R},Destroy:TObject.Destroy};function YN(){Sq(".logout-button").on("click",function(kM){var R=undefined;Sq(".toolbar .link").eq(0).removeAttr("style");$As(DV(),pS).Wg.confirm("Are you sure Logout?",function(){$As(DV(),pS).Wg.closeModal();setTimeout(function(){$As(DV(),pS).xF.router.loadPage("index.html")},500)},function(){setTimeout(function(){$As(DV(),pS).xF.router.back},1000)});Q("Logout");return R})};function dr(){var dz=false;var uu="",uu=(dz)?"Wrong username or password":"Login with username and password";var dU=0;$As(DV(),pS).Wg.showIndicator();Sq(".toolbar .link").eq(0).hide();for(dU=1;dU<=3;dU++){Sq(".toolbar .link").eq(dU).removeAttr("style")}
+$As(DV(),pS).Wg.closeModal();$As(DV(),pS).Wg.hideIndicator();$As(DV(),pS).xF.router.loadPage("pages\/protected.html")};function z7(Hc){return String(Hc)};function VJ(P7,Bg){var R=0;if(RT.Eq(P7)){R=parseInt(P7,10)}else{R=Bg.indexOf(String(P7));if(R>=0)return R;R=0}
+return R};function fy(qz){var R=undefined;var M8,D5="";if(RT.Ht(qz)){D5=String(qz);if(D5==""){R=null}else{M8=window.atob(D5)}
+R=M8}else R=null;return R};function x1(FS){return encodeURIComponent(FS)};function BK(eX){var R="";var jn=0;var zw=0;var Hk="";var lb="";var ET;R="";ET=eX;jn=parseInt(ET.length,10);if(jn>1){var $t2;for(zw=0,$t2=(jn-1)>>>1;zw<=$t2;zw++){Hk=String(ET[zw*2]);lb=String(ET[(zw*2)+1]);R=R+"&"+Hk+"="+x1(lb)}}
+if(R!=""){R=$StrSet(R,1,"?")}
+return R};function GF(vM){var R={v:0};try{var XH=0;var mj={};mj.v=0;XH=($Div(vM,67108864))&4095;if((XH==0)||(!Ex(XH,1+((vM>>>22)&15),1+((vM>>>17)&31),R)))R.v=0;if(((vM&131071)!=0)&&oD((vM>>>12)&31,(vM>>>6)&63,vM&63,0,mj))R.v+=mj.v}finally{return R.v}};var DA=["sllNone","sllInfo","sllDebug","sllTrace","sllWarning","sllError","sllEnter","sllLeave","sllLastError","sllException","sllExceptionOS","sllMemory","sllStackTrace","sllFail","sllSQL","sllCache","sllResult","sllDB","sllHTTP","sllClient","sllServer","sllServiceCall","sllServiceReturn","sllUserAuth","sllCustom1","sllCustom2","sllCustom3","sllCustom4","sllNewRun","sllDDDError","sllDDDInfo"];var oV={$ClassName:"TSQLTableJSON",$Parent:TObject,$Init:function($){TObject.$Init($);$.UF=$.My=$.py=0;$.qc=[];$.eT=0;$.hD=[]},it:function(S,Rl){var GT,Cm,nR=0,g7=0;GT=JSON.parse(Rl);switch(Xn(GT)){case 1:S.My=parseInt(GT.fieldCount,10);Cm=GT.values;if(Xn(Cm)!=2)return S;S.hD=Cm;nR=S.hD.length;if(nR<S.My||((nR%S.My)!=0))return S;var $t3;for(g7=0,$t3=S.My;g7<$t3;g7++){S.qc.push(String(S.hD[g7]))}
+S.py=($Div(nR,S.My))-1;break;case 2:S.hD=GT;S.py=S.hD.length;break}
+if(S.py>0)S.UF=1;return S},MI:function(S,NQ,ez){var R=false;var X6=null;R=false;if(NQ===null||(S.py==0))return R;if(ez){S.UF=1}else if(S.UF>S.py)return R;if(S.qc.length>0){R=kW.TA(NQ,S.qc,S.hD,S.UF*S.My)}else{X6=ZM.mm($New(ZM),S.hD[S.UF-1]);R=kW.TA(NQ,X6.nT,X6.eJ,0)}
+++S.UF;if(R)NQ.dI=S.eT;return R},Destroy:TObject.Destroy};var vY={$ClassName:"TSQLRestServerAuthentication",$Parent:TObject,$Init:function($){TObject.$Init($);$.wy=0;$.bs="";$.Ny=null},b5:function(S,cU,oT,xJ){S.Ny=kW.q3($New(wU));S.Ny.Dy=cU;if(xJ){S.Ny.JE=oT}else wU.d4(S.Ny,oT);return S},Destroy:function(S){TObject.Free(S.Ny);TObject.Destroy(S)},eH:function(S,OR){S.wy=OR;S.bs=(IntToHex(OR,8)).toLowerCase()},Destroy$:function($){return $.ClassType.Destroy($)},tX$:function($){return $.ClassType.tX.apply($.ClassType,arguments)},H7$:function($){return $.ClassType.H7.apply($.ClassType,arguments)}};var k5={$ClassName:"TSQLRestServerAuthenticationDefault",$Parent:vY,$Init:function($){vY.$Init($);$.vN=0},tX:function(S,mV){var R="";var q9="";var H8="";var ah="";if(S.Ny.Dy=="")return R;q9=lk.EZ(mV,"Auth",["UserName",S.Ny.Dy],null,0);if(q9=="")return R;H8=Zz(([ZO().substr(0,16)].slice()));ah=Zz(([mV.l6.Nm,q9,H8,S.Ny.Dy,S.Ny.JE].slice()));R=lk.EZ(mV,"Auth",["UserName",S.Ny.Dy,"Password",ah,"ClientNonce",H8],null,0);S.vN=yo(yo(0,R),S.Ny.JE);return R},H7:function(S,ex,fF){var R="";var w3="";w3=(IntToHex(Trunc(Now()*86400),8)).toLowerCase();R=S.bs+w3+(IntToHex(yo(yo(S.vN,w3),fF),8)).toLowerCase();return R},Destroy:vY.Destroy,tX$:function($){return $.ClassType.tX.apply($.ClassType,arguments)},H7$:function($){return $.ClassType.H7.apply($.ClassType,arguments)}};var BZ={$ClassName:"TSQLRestRoutingAbstract",$Parent:TObject,$Init:function($){TObject.$Init($)},Destroy:TObject.Destroy,nF$:function($){return $.nF.apply($.ClassType,arguments)}};var xz={$ClassName:"TSQLRestRoutingREST",$Parent:BZ,$Init:function($){BZ.$Init($)},nF:function(S,ds,r8,iq,K2,il){if(K2!=""){ds.v=ds.v+"."+r8+"\/"+K2}else ds.v=ds.v+"."+r8;il.v=iq},Destroy:TObject.Destroy,nF$:function($){return $.nF.apply($.ClassType,arguments)}};var Bt={$ClassName:"TSQLRest",$Parent:TObject,$Init:function($){TObject.$Init($);$.HF=0;$.eE=0;$.Jz=$.l6=$.Ym=null;$.XT=[0];$.UE=false;$.gy=0;$.f7=null},IP:function(S,OT,BT){TObject.Create(S);S.l6=OT;S.UE=BT;S.f7=xz;return S},Destroy:function(S){Bt.DG(S,1,"Destroy",S);TObject.Destroy(S);if(S.UE)TObject.Free(S.l6);Bt.iE(S)},N4:function(S){var R=0;if(S.gy==0){R=0}else R=Mv(Now()+S.gy);return R},WJ:function(S,F4){var hs="";if((S!==null)&&(S.Ym!==null)&&$SetIn(S.XT,9,0,31)){hs=new Error().stack;Bt.c7(S,9,"%s raised with message \"%s\" %s",[TObject.ClassName(F4.ClassType),F4.FMessage,hs],null)}},c7:function(S,uA,RS,NC,pF9){if((S!==null)&&(S.Ym!==null)&&$SetIn(S.XT,uA,0,31))Bt.DG(S,uA,Format(RS,NC.slice(0)),pF9)},DG:function(S,ZU,aX,Z8){function iG(){var Yp="";Yp=FormatDateTime("yyyymmdd hhnnsszzz",Now(),0).substr(0,17)+MW[ZU];if(Z8)Yp=Yp+TObject.ClassName(Z8.ClassType)+" ";Yp+=aX;Yp=StrReplace(StrReplace(Yp,"\n"," "),"\r"," ");S.Ym(Yp)};if((S!==null)&&(S.Ym!==null)&&$SetIn(S.XT,ZU,0,31))iG()},iE:function(S){S.XT=[0];S.Ym=null;if(S.Jz!==null){lk.T3(S.Jz);TObject.Free(S.Jz);S.Jz=null}},qA:function(S,bF,jW,Xe){var R=null;var NA="";NA=Vq.EF(CF.dg(S.l6,bF),jW);if(Xe!="")NA=NA+" where "+Xe;R=Bt.sS$(S,NA);return R},Wq:function(S,AP,I6,xY,SJ,C4){var R=null;var Pg="";Pg=uF(xY,SJ);if(C4)Pg+=" limit 1";R=Bt.qA(S,AP,I6,Pg);return R},pp:function(S,Ew,Q6,r2,un){var R=false;var PG1=null;PG1=Bt.Wq(S,kW.eB(un),Ew,Q6,r2,true);if(PG1===null){R=false}else{try{R=oV.MI(PG1,un,false)}finally{TObject.Free(PG1)}}
+return R},h9:function(S,hY){var R=false;var CL={};CL.v=0;if(Za(hY,CL)){S.gy=GF(CL.v)-Now();if(S.gy==0)S.gy=1E-6;R=true}else R=false;return R},Destroy$:function($){return $.ClassType.Destroy($)},rx$:function($){return $.ClassType.rx.apply($.ClassType,arguments)},YS$:function($){return $.ClassType.YS.apply($.ClassType,arguments)},TW$:function($){return $.ClassType.TW.apply($.ClassType,arguments)},sS$:function($){return $.ClassType.sS.apply($.ClassType,arguments)},Pf$:function($){return $.ClassType.Pf.apply($.ClassType,arguments)},Ip$:function($){return $.ClassType.Ip.apply($.ClassType,arguments)}};var lk={$ClassName:"TSQLRestClientURI",$Parent:Bt,$Init:function($){Bt.$Init($);$.Yl=0;$.OI=[];$.lV=null;$.kj=false;$.br=[]},T3:function(S){var DK={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};if(!S.OI.length)return;oL$ek(DK,lk.mS(S,"RemoteLog",null,0),"PUT",(S.OI).join("\r\n"));S.OI.length=0;lk.X4(S,DK,function(Fy){},null,null);lk.Rw(S,DK)},H1:function(S,Ubx,ZW,JG,es,IW){Bt.c7(S,21,"Method-based service %s",[Ubx],null);JG.B9=lk.mS(S,Ubx,es,IW)+BK(ZW);JG.aM="GET";lk.Rw(S,JG);lk.tx(S,Ubx,JG)},EZ:function(S,kC,Lj,QO,pC){var R="";var CB={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var qN={};qN.v=0;lk.H1(S,kC,Lj,CB,QO,pC);R=String(Fz(CB,qN));return R},Gk:function(S,WG,A3,tQ,QM,sw,Lb,sY){var l3={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};lk.X4(S,l3,function(HA){var lN=[],P3={};P3.v=0;var Ag,qk=null;if(!sw)return;if(sY){if(l3.qU==200){lN.push(l3.Td);sw(lN)}else if(Lb)Lb(S);return}
+Ag=Fz(l3,P3);if(bWe(Ag)){if(WG.jN==2&&(P3.v!=0))$As(WG,fj).nq=P3.v.toString();if(!tQ){sw([])}else{qk=ZM.mm($New(ZM),Ag);if(qk.sO==2&&ZM.LQ(qk)==tQ){sw(qk.eJ)}else if(Lb)Lb(S)}}else if(Lb)Lb(S)},Lb,function(){return l3.qU==200&&l3.Td!=""});lk.Sv(S,l3,WG,A3,JSON.stringify(QM))},Sv:function(S,gX,IJ,F5,No){var I7={};I7.v="";var Nu="";var ax={};ax.v="";var A6="";A6=IJ.vS+"."+F5;Bt.DG(S,21,("Interface-based service "+A6),null);I7.v=S.l6.Nm+"\/"+IJ.vS;if(IJ.jN==2)Nu=$As(IJ,fj).nq;BZ.nF$(S.f7,I7,F5,No,Nu,ax);oL$ek(gX,I7.v,"POST",ax.v);lk.Rw(S,gX);lk.tx(S,A6,gX)},Ra:function(S,Jc,j4,zB,Eh,Ho){var R=[];var ZD={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var sE,MG={};MG.v=0;var Vo=null;function Pd(){throw zd.IO($New(rs),"Error calling %s.%s - returned status %d",[Jc.gi,j4,ZD.qU])};lk.Sv(S,ZD,Jc,j4,JSON.stringify(Eh));if(Ho){if(ZD.qU!=200)Pd();R.push(ZD.Td);return R}
+sE=Fz(ZD,MG);if(!bWe(sE))Pd();if(Jc.jN==2&&(MG.v!=0))$As(Jc,fj).nq=MG.v.toString();if(!zB)return R;Vo=ZM.mm($New(ZM),sE);if(Vo.sO==2&&ZM.LQ(Vo)==zB){R=Vo.eJ}else{throw zd.IO($New(rs),"Error calling %s.%s - received %d parameters (expected %d)",[Jc.gi,j4,ZM.LQ(Vo),zB])}
+return R},ov:function(S,Ik,B2){var Ae={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};lk.X4(S,Ae,Ik,B2,function(){return Ae.qU==200&&Bt.h9(S,Ae.Td)});lk.H1(S,"TimeStamp",[],Ae,null,0)},rx:function(S,sl,U1){var R=false;var lG={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var iw=0;R=false;if(U1<=0)return R;iw=CF.vO(S.l6,sl);oL$ek(lG,lk.tE(S,iw,U1),"DELETE","");lk.Rw(S,lG);if(lG.qU==200)R=true;Bt.c7(S,VC[R?1:0],"Delete %s.ID=%d",[S.l6.gA[iw].sL,U1],null);return R},Destroy:function(S){lk.hv(S);Bt.Destroy(S)},YS:function(S,ry,Qo){var R=0;var SG={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var Nq="";var Cp=0;R=0;oL$ek(SG,lk.tE(S,ry,0),"POST",Qo);lk.Rw(S,SG);if(SG.qU!=201){Bt.c7(S,5,"Error creating %s with %s",[S.l6.gA[ry].sL,Qo],null);return R}
+Nq=bC(SG,"location");for(Cp=Nq.length;Cp>=1;Cp--){if(!((Nq.charCodeAt(Cp-1)>=48)&&(Nq.charCodeAt(Cp-1)<=57))){R=zr(Nq.substr((Cp+1)-1),0);break}}
+Bt.c7(S,17,"%s.ID=%d created from %s",[S.l6.gA[ry].sL,R,Qo],null);return R},TW:function(S,yg,Qh,i4){var R=0;var J2,Yi={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var MC=0;var L4=0;MC=Now();Bt.c7(S,21,"BATCH with %d rows",[S.HF],null);oL$ek(Yi,lk.mS(S,"Batch",yg,0),"POST",Qh);lk.Rw(S,Yi);R=Yi.qU;if(R!=200){Bt.DG(S,5,"BATCH error",null);return R}
+Bt.c7(S,22,"BATCH success in %s",[FormatDateTime("nn:ss:zzz",Now()-MC,0)],null);i4.v.length=0;if(Yi.Td=="[\"OK\"]"){var $t4;for(L4=0,$t4=S.HF;L4<$t4;L4++){i4.v.push(200)}}else{J2=JSON.parse(Yi.Td);if(Xn(J2)==2&&J2.length==S.HF){var $t5;for(L4=0,$t5=S.HF;L4<$t5;L4++){i4.v.push(parseInt(J2[L4],10))}}}
+return R},sS:function(S,IK){var R=null;var jA={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var wp="";R=null;if(S===null)return R;Bt.DG(S,14,IK,null);oL$ek(jA,(S.l6.Nm+BK(["sql",IK])),"GET","");lk.Rw(S,jA);if(jA.qU==200){wp=oL$v7(jA);R=oV.it($New(oV),wp);R.eT=S.eE}else Bt.DG(S,5,"ExecuteList failed",null);return R},Pf:function(S,gC,Re,jj){var R=false;var kG={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};oL$ek(kG,lk.tE(S,gC,Re),"PUT",jj);lk.Rw(S,kG);R=kG.qU==200;Bt.c7(S,VC[R?1:0],"Update %s.ID=%d with %s",[S.l6.gA[gC].sL,Re,jj],null);return R},X1:function(S,dy){var R="";R=S.l6.Nm;if((dy!==null)&&dy!=kW)R=R+"\/"+CF.dg(S.l6,dy).sL;return R},mS:function(S,tr,mi,of){var R="";R=lk.X1(S,mi);if(of>0)R=R+"\/"+of.toString();R=R+"\/"+tr;return R},tE:function(S,Rs,o3){var R="";R=S.l6.Nm+"\/"+S.l6.gA[Rs].sL;if(o3>0)R=R+"\/"+o3.toString();return R},tx:function(S,WX,R1){if(R1.cV)return;if(R1.qU!=200){Bt.c7(S,5,"Service %s returned %s",[WX,oL$v7(R1)],null)}else Bt.c7(S,22,"%s success",[WX],null)},YW:function(S,Pc){var vt=0;if(Pc.S3=="")return;vt=StrToIntDef(bC(Pc,"Server-InternalState"),0);if(vt>S.eE)S.eE=vt;if($SetIn(S.XT,3,0,31))Bt.c7(S,3,"%s %s status=%d state=%d in=%d out=%d",[Pc.aM,Pc.I8,Pc.qU,S.eE,Pc.hc.length,Pc.Td.length],null)},Ip:function(S,o1,JV,qf){var R=false;var uG=0;var dH={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var Fe="";uG=CF.vO(S.l6,kW.eB(JV));dH.B9=lk.tE(S,uG,o1);if(qf){dH.aM="LOCK"}else dH.aM="GET";lk.Rw(S,dH);R=dH.qU==200;if(R){Fe=oL$v7(dH);kW.gl(JV,Fe);JV.dI=S.eE}
+Bt.c7(S,VC[R?1:0],"%s.Retrieve(ID=%d) %s",[S.l6.gA[uG].sL,o1,Fe],null);return R},hv:function(S){var Rq={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};if(S!==null&&S.lV!==null){try{lk.H1(S,"Auth",["UserName",S.lV.Ny.Dy,"Session",S.lV.wy],Rq,null,0)}finally{TObject.Free(S.lV);S.lV=null}}},X4:function(S,zL,Mg,xH,yh){if(!Mg){throw Exception.Create($New(Ll),"SetAsynch expects onSuccess")}
+++S.Yl;zL.cV=function(){if(zL.h5.readyState==4){lk.YW(S,zL);if(yh){if(yh()){Mg(S)}else if(xH)xH(S)}else Mg(S);if(S.Yl>0)--S.Yl;if(!S.Yl)lk.T3(S)}};zL.FH=function(){if(xH)xH(S);if(S.Yl>0)--S.Yl;if(!S.Yl)lk.T3(S)}},yD:function(S,vg,YX,DM,njN){var R=false;var yw="";var dJ={};dJ.v="";var up={};up.v=0;R=false;if(S.lV!==null)lk.hv(S);if(!vg)return R;S.lV=vY.b5($NewDyn(vg,""),YX,DM,njN);try{yw=vY.tX$(S.lV,S);up.v=1;q8(yw,up,dJ,"+",false);if(vX(dJ.v,up)&&up.v>0){vY.eH(S.lV,up.v);Bt.c7(S,23,"Session %d created for \"%s\" with %s",[up.v,YX,TObject.ClassName(S.lV.ClassType)],null);R=true}else{TObject.Free(S.lV);S.lV=null}}catch($e){TObject.Free(S.lV);S.lV=null}
+if(S.lV===null)Bt.c7(S,5,"Session not created for \"%s\"",[YX],null);return R},Rw:function(S,Xz){var sz="";Xz.qU=503;if(S===null)return;Xz.I8=Xz.B9;if(S.lV!==null&&(S.lV.wy!=0)){if(!(Xz.B9.indexOf("?")+1)){sz="?session_signature="}else sz="&session_signature=";Xz.B9=Xz.B9+sz+vY.H7$(S.lV,S,Xz.B9)}
+lk.Us$(S,Xz);lk.YW(S,Xz)},Destroy$:function($){return $.ClassType.Destroy($)},rx$:function($){return $.ClassType.rx.apply($.ClassType,arguments)},YS$:function($){return $.ClassType.YS.apply($.ClassType,arguments)},TW$:function($){return $.ClassType.TW.apply($.ClassType,arguments)},sS$:function($){return $.ClassType.sS.apply($.ClassType,arguments)},Pf$:function($){return $.ClassType.Pf.apply($.ClassType,arguments)},Ip$:function($){return $.ClassType.Ip.apply($.ClassType,arguments)},Us$:function($){return $.ClassType.Us.apply($.ClassType,arguments)}};var hJ={$ClassName:"TSQLRestClientHTTP",$Parent:lk,$Init:function($){lk.$Init($);$.PR=null;$.Zn="";$.Ap=false;$.nj=0;$.Co={od:"",Oy:0,Pl:false}},ug:function(S,YJ,TJ,ww,pi,Wh){Bt.IP(S,ww,pi);S.Co.od=YJ;S.Co.Oy=TJ;S.Co.Pl=Wh;S.nj=20000;return S},Destroy:function(S){lk.Destroy(S);TObject.Free(S.lV);TObject.Free(S.PR)},Us:function(S,LS){var yu="";var Di=0;yu=dv(LS.P1,"content-type: ");if(yu==""){if(S.kj){yu="application\/json; charset=UTF-8"}else yu="text\/plain";LS.P1=Trim$_String_(LS.P1+"\r\ncontent-type: "+yu)}
+if(S.Zn!="")LS.P1=Trim$_String_(LS.P1+S.Zn);for(Di=0;Di<=1;Di++){if(S.PR===null){try{S.PR=dG.bz($NewDyn(TN(),""),S.Co)}catch($e){var oZZ=$W($e);Bt.WJ(S,oZZ);TObject.Free(S.PR);S.PR=null}}
+if(S.PR===null){LS.qU=501;break}
+try{dG.uk$(S.PR,LS,yu,S.nj);break}catch($e){var AX=$W($e);Bt.WJ(S,AX);TObject.Free(S.PR);S.PR=null;LS.qU=501;if(S.Ap)break}}},Destroy$:function($){return $.ClassType.Destroy($)},rx:lk.rx,YS:lk.YS,TW:lk.TW,sS:lk.sS,Pf:lk.Pf,Ip:lk.Ip,Us$:function($){return $.ClassType.Us.apply($.ClassType,arguments)}};var n2=["boInsertOrIgnore"];var kW={$ClassName:"TSQLRecord",$Parent:TObject,$Init:function($){TObject.$Init($);$.Ob=null;$.Bm=0;$.dI=0},lz:function(S){return zE.kQ($New(zE),([]),([]))},A4:function(S,PB,Yy,bQ,OG){kW.q3(S);if(PB!==null)Bt.pp(PB,Yy,bQ,OG,S);return S},TB:function(S,Uri,SZ,YB){kW.q3(S);if(Uri!==null)Bt.Ip$(Uri,SZ,S,YB);return S},q3:function(S){return S},hf:function(S,r6,cs,kO,Lo){kW.q3(S);S.Ob=Bt.Wq(r6,kW.eB(S),cs,kO,Lo,false);return S},wV:function(S,SlI){kW.q3(S);kW.YU(S,SlI);return S},Destroy:function(S){TObject.Free(S.Ob);TObject.Destroy(S)},gl:function(S,Ax){var R=false;var Yr=null;var xR=null;if(S===null||Ax==""){R=false}else if(AA(Ax,"{\"fieldCount\":")){xR=oV.it($New(oV),Ax);try{R=oV.MI(xR,S,false)}finally{TObject.Free(xR)}}else{Yr=ZM.XL($New(ZM),Ax);R=kW.TA(S,Yr.nT,Yr.eJ,0)}
+return R},TA:function(S,QU,l7,b7){var R=false;var aB=0;var Cs={};Cs.v=null;var zu=null;R=false;if(b7+QU.length>l7.length)return R;zu=kW.V6(S.ClassType);var $t6;for(aB=0,$t6=QU.length;aB<$t6;aB++){if(ZF(zu.J1,QU[aB],Cs)){kW.Js$(S,Cs.v.XG,l7[aB+b7])}else return R}
+R=true;return R},YU:function(S,cR){return kW.gl(S,JSON.stringify(cR))},ux:function(S,CU){var R=undefined;switch(CU){case 0:R=S.Bm;break}
+return R},V6:function(S){var R=null;var Jj;Jj=Rx[TObject.ClassName(S)];if(bWe(Jj)){R=Jj}else{R=kW.lz$(S);Rx[TObject.ClassName(S)]=R}
+return R},eB:function(S){var R=null;if(S===null){R=null}else R=$AsClass(TObject.ClassType(S.ClassType),kW);return R},Js:function(S,bh,bo){switch(bh){case 0:S.Bm=parseInt(bo,10);break}},Destroy$:function($){return $.ClassType.Destroy($)},lz$:function($){return $.lz($)},ux$:function($){return $.ClassType.ux.apply($.ClassType,arguments)},Js$:function($){return $.ClassType.Js.apply($.ClassType,arguments)}};var fZ={$ClassName:"TSQLModelInfoPropInfo",$Parent:TObject,$Init:function($){TObject.$Init($);$.UO="";$.zy=0;$.XG=0},Destroy:TObject.Destroy};var Vq={$ClassName:"TSQLModelInfo",$Parent:TObject,$Init:function($){TObject.$Init($);$.qu=[0,0,0,0,0,0,0,0,0];$.Jb=[0,0,0,0,0,0,0,0,0];$.wz=[0,0,0,0,0,0,0,0,0];$.YO=[0];$.b6=false;$.eR=[0,0,0,0,0,0,0,0,0];$.tn=[0,0,0,0,0,0,0,0,0];$.sL="";$.WN=[];$.RV=undefined;$.jo=[0,0,0,0,0,0,0,0,0];$.gQ=[0,0,0,0,0,0,0,0,0];$.i8=null;$.Xr=[0,0,0,0,0,0,0,0,0]},sK:function(S,on){var Fi=0;var BE=0;var kX=null;S.i8=on;S.sL=PI(S.i8);kX=kW.V6(on);S.WN=kX.FP;S.RV=kX.J1;var $t7;for(Fi=0,$t7=(S.WN.length-1);Fi<=$t7;Fi++){$SetInc(S.qu,Fi,0,256);BE=S.WN[Fi].zy;$SetInc(S.YO,BE,0,8);if(BE==3){$SetInc(S.Jb,Fi,0,256)}else{$SetInc(S.gQ,Fi,0,256)}
+switch(BE){case 4:$SetInc(S.tn,Fi,0,256);$SetInc(S.eR,Fi,0,256);S.b6=true;break;case 5:$SetInc(S.wz,Fi,0,256);$SetInc(S.eR,Fi,0,256);S.b6=true;break;case 6:$SetInc(S.jo,Fi,0,256);break;case 7:$SetInc(S.Xr,Fi,0,256);break}}
+return S},jZ:function(S,Ro){var R={v:""};try{var Ka=0;R.v="";var $t8;for(Ka=0,$t8=S.WN.length;Ka<$t8;Ka++){if($SetIn(Ro,Ka,0,256))R.v=R.v+S.WN[Ka].UO+","}
+if(R.v!="")SetLength(R,R.v.length-1)}finally{return R.v}},ZY:function(S,MS,lB){var R=[0,0,0,0,0,0,0,0,0];var tU={};tU.v=0;var AE=0;var WC={};WC.v="";var Id={};Id.v=null;if(MS==""){R=S.gQ.slice(0)}else if(MS=="*"){R=S.qu.slice(0)}else{R=Ly.slice(0);tU.v=1;while(q8(MS,tU,WC,",",true)){if(ZF(S.RV,WC.v,Id)){$SetInc(R,Id.v.XG,0,256)}}
+if(lB&&$SetIn(S.YO,4,0,8)){var $t9;for(AE=1,$t9=S.WN.length;AE<$t9;AE++){if($SetIn(S.tn,AE,0,256)){$SetInc(R,AE,0,256)}}}}
+return R},EF:function(S,VM){return"select "+Vq.jZ(S,Vq.ZY(S,VM,false))+" from "+S.sL},Destroy:TObject.Destroy};var CF={$ClassName:"TSQLModel",$Parent:TObject,$Init:function($){TObject.$Init($);$.gA=[];$.Nm=""},Fc:function(S,pe,li){var W6=0;var $tA;for(W6=0,$tA=pe.length;W6<$tA;W6++){S.gA.push(Vq.sK($New(Vq),pe[W6]))}
+if(li!=""){if(li.charAt(li.length-1)=="\/"){S.Nm=li.substr(0,(li.length-1))}else S.Nm=li}
+return S},Uc:function(S,Zt){var R=0;if(S!==null){var $tB;for(R=0,$tB=S.gA.length;R<$tB;R++){if(S.gA[R].i8==Zt)return R}}
+R=-1;return R},vO:function(S,HG){var R=0;if(S===null){R=-1}else R=CF.Uc(S,HG);if(R<0){throw zd.IO($New(Ll),"%s should be part of the Model",[TObject.ClassName(HG)])}
+return R},dg:function(S,Rn){return S.gA[CF.vO(S,Rn)]},Destroy:TObject.Destroy};var UC=["sftUnspecified","sftDateTime","sftTimeLog","sftBlob","sftModTime","sftCreateTime","sftRecord","sftVariant"];var ls={0:"Low",255:"High"};var wU={$ClassName:"TSQLAuthUser",$Parent:kW,$Init:function($){kW.$Init($);$.Qd=undefined;$.QB=$.Dy=$.JE="";$.M9=0},lz:function(S){return zE.kQ($New(zE),(["Data","Group","LogonName","DisplayName","PasswordHashHexa"].slice()),([3].slice()))},ux:function(S,yE){var R=undefined;switch(yE){case 0:R=S.Bm;break;case 1:R=S.Qd;break;case 2:R=S.M9;break;case 3:R=S.Dy;break;case 4:R=S.QB;break;case 5:R=S.JE;break}
+return R},d4:function(S,HB){S.JE=Zz((["salt",HB].slice()))},Js:function(S,DL,Eu){switch(DL){case 0:S.Bm=parseInt(Eu,10);break;case 1:S.Qd=Eu;break;case 2:S.M9=parseInt(Eu,10);break;case 3:S.Dy=String(Eu);break;case 4:S.QB=String(Eu);break;case 5:S.JE=String(Eu);break}},Destroy:kW.Destroy,lz$:function($){return $.lz($)},ux$:function($){return $.ClassType.ux.apply($.ClassType,arguments)},Js$:function($){return $.ClassType.Js.apply($.ClassType,arguments)}};var jl={$ClassName:"TSQLAuthGroup",$Parent:kW,$Init:function($){kW.$Init($);$.iA=$.RY="";$.RN=0},lz:function(S){return zE.kQ($New(zE),(["Ident","SessionTimeOut","AccessRights"].slice()),([]))},ux:function(S,BG){var R=undefined;switch(BG){case 0:R=S.Bm;break;case 1:R=S.RY;break;case 2:R=S.RN;break;case 3:R=S.iA;break}
+return R},Js:function(S,jHP,nr){switch(jHP){case 0:S.Bm=parseInt(nr,10);break;case 1:S.RY=String(nr);break;case 2:S.RN=parseInt(nr,10);break;case 3:S.iA=String(nr);break}},Destroy:kW.Destroy,lz$:function($){return $.lz($)},ux$:function($){return $.ClassType.ux.apply($.ClassType,arguments)},Js$:function($){return $.ClassType.Js.apply($.ClassType,arguments)}};var ul=["sicSingle","sicShared","sicClientDriven","sicPerSession","sicPerUser","sicPerGroup","sicPerThread"];var KN={$ClassName:"TServiceClientAbstract",$Parent:TObject,$Init:function($){TObject.$Init($);$.pE=null;$.RD=$.gi=$.vS="";$.jN=0},rX:function(S,nD){var RF={hc:"",P1:"",FH:null,cV:null,Td:"",S3:"",qU:0,B9:"",I8:"",aM:"",h5:undefined};var az={};az.v=0;var WF,bK="";if(S.gi==""||S.vS==""){throw zd.IO($New(rs),"Overriden %s.Create should have set properties",[TObject.ClassName(S.ClassType)])}
+if(nD===null){throw zd.IO($New(rs),"%s.Create(nil)",[TObject.ClassName(S.ClassType)])}
+S.pE=nD;lk.Sv(S.pE,RF,S,"_contract_","[]");WF=Fz(RF,az);if(Xn(WF)==2){bK=String(WF[0])}else bK=String(WF.contract);if(bK!=S.RD){throw zd.IO($New(rs),"Invalid contract \"%s\" for %s: expected \"%s\"",[bK,TObject.ClassName(S.ClassType),S.RD])}
+return S},zh:function(S){return S.gi},Destroy:TObject.Destroy,rX$:function($){return $.ClassType.rX.apply($.ClassType,arguments)}};var fj={$ClassName:"TServiceClientAbstractClientDriven",$Parent:KN,$Init:function($){KN.$Init($);$.nq=""},rX:function(S,bP){if(S.jN!=2){throw zd.IO($New(rs),"Overriden %s.Create should have set sicClientDriven",[TObject.ClassName(S.ClassType)])}
+if(bP.br.indexOf(S.gi)>=0){throw zd.IO($New(rs),"Only ONE instance of %s is allowed at once",[TObject.ClassName(S.ClassType)])}
+KN.rX(S,bP);bP.br.push(S.gi);return S},Destroy:function(S){var Lc=0;if(S.pE!==null){try{if(S.nq!="")lk.Gk(S.pE,S,"_free_",0,([]),null,null,false)}finally{Lc=S.pE.br.indexOf(KN.zh(S));if(Lc>=0){S.pE.br.splice(Lc,1)}}}
+TObject.Destroy(S)},Destroy$:function($){return $.ClassType.Destroy($)},rX$:function($){return $.ClassType.rX.apply($.ClassType,arguments)}};var zE={$ClassName:"TRTTIPropInfos",$Parent:TObject,$Init:function($){TObject.$Init($);$.FP=[];$.J1=undefined},kQ:function(S,zx,jM){var aC="";var cy=0;var m9=null;var xy=0;m9=TObject.Create($New(fZ));m9.UO="RowID";S.FP.push(m9);var $tC;for(xy=0,$tC=zx.length;xy<$tC;xy++){aC=zx[xy];m9=TObject.Create($New(fZ));m9.UO=aC;S.FP.push(m9)}
+S.J1={};var $tD;for(cy=0,$tD=S.FP.length;cy<$tD;cy++){m9=S.FP[cy];m9.XG=cy;if(cy>0&&cy<=jM.length){m9.zy=jM[cy-1]}else m9.zy=0;S.J1[(m9.UO).toUpperCase()]=m9}
+return S},Destroy:TObject.Destroy};function Zz(xV){var R="";var Zw="";var NW=0;var qB=null;qB=ag.Bu($New(ag));try{var $tE;for(NW=0,$tE=xV.length;NW<$tE;NW++){Zw=se(xV[NW]);ag.NE(qB,Zw)}
+R=ag.C5(qB)}finally{TObject.Free(qB)}
+return R};function bC(qh,rL){return dv(qh.S3,(rL+": "))};function uF(ba,oG){var R="";var jK={};jK.v=false;var Zl={};Zl.v="";var Z6=0;var Bh=0;var sP=0;var uW=0;var oR=0;var Ev;Ev=oG;uW=parseInt((Ev.length-1),10);R="";sP=0;Bh=1;Z6=1;oR=ba.length;while(Z6<=oR){if(ba.charAt(Z6-1)=="?"){R=R+ba.substr(Bh-1,(Z6-Bh))+":(";if(sP>uW){Zl.v="null"}else{Zl.v=eL(Ev[sP],jK);if(jK.v)B1(Zl);++sP}
+R=R+Zl.v+"):";++Z6;Bh=Z6}else++Z6}
+R+=ba.substr(Bh-1,(Z6-Bh));return R};var zd={$ClassName:"EW3Exception",$Parent:Exception,$Init:function($){Exception.$Init($)},IO:function(S,BB,pj){Exception.Create(S,Format(BB,pj.slice(0)));return S},Destroy:Exception.Destroy};var Ll={$ClassName:"ERestException",$Parent:zd,$Init:function($){zd.$Init($)},Destroy:Exception.Destroy};var rs={$ClassName:"EServiceException",$Parent:Ll,$Init:function($){Ll.$Init($)},Destroy:Exception.Destroy};function Mv(sV){var R=0;var G1={};G1.v=0;var Zq={};Zq.v=0;var HO={};HO.v=0;var kf={};kf.v=0;var fl={};fl.v=0;var xD={};xD.v=0;var i2={};i2.v=0;Sh(sV,G1,Zq,HO,kf);ns(sV,fl,xD,i2);R=HO.v+(Zq.v*64)+((G1.v+(i2.v*32)+(xD.v*1024)+(fl.v*16384)-1056)*4096);return R};function Mk(Tp){var R=undefined;var l2;if(RT.Ht(Tp)){l2=window.btoa(Tp);R=l2}else R=null;return R};function bWe(ke){var R=false;R=!((ke==null)||(ke==undefined));return R};var hy=["imFree","imContract","imSignature"];function PI(Jt){var R={v:""};try{if(Jt){R.v=TObject.ClassName(Jt);if(be(R.v.substr(0,4),"TSQL")){if(be(R.v.substr(4,6),"Record")){Delete(R,1,10)}else Delete(R,1,4)}else if(R.v.charAt(0)=="T")Delete(R,1,1)}else R.v=""}finally{return R.v}};function dv(B8,cB){var R="";var KB="";var aO="";var FW=0;var qQ=0;var bA=[];if(B8=="")return"";KB=(cB).toUpperCase();FW=KB.length;bA=(B8).split("\r\n");var $tF;for(qQ=0,$tF=bA.length;qQ<$tF;qQ++){aO=bA[qQ];if((aO.substr(0,FW)).toUpperCase()==KB)return aO.substr((FW+1)-1)}
+return R};function ZF(JC,yL,ev){var R=false;var M2=null;yL=(yL).toUpperCase();if(yL=="ID")yL="ROWID";M2=JC[yL];R=bWe(M2);ev.v=M2;return R};function Fz(iW,DJ){var R={v:undefined};try{var RH;VarClear$_Variant_(R);DJ.v=0;if(iW.qU!=200)return R.v;RH=JSON.parse(iW.Td);if(bWe(RH.result))R.v=RH.result;if(bWe(RH.id))DJ.v=parseInt(RH.id,10)}finally{return R.v}};var Oz=["_free_","_contract_","_signature_"],VC=[5,17];function XV(v8){var R=undefined;if(!sb)IG();R=sb(v8);return R};var r9={$ClassName:"TW3CustomBrowserAPI",$Parent:TObject,$Init:function($){TObject.$Init($)},Destroy:TObject.Destroy};var ff=["bvUnknown","bviOS","bvAndroid","bvChrome","bvSafari","bvFirefox","bvOpera","bvIE"];function y1P$LD(kh){var R=false;var U7=undefined;if(y1P$Pb(kh)){U7=y1P$CO(kh);R=y1P$Pb(U7)&&U7.body}
+return R}
+function y1P$D8(r7,jY){function mH(Sb,Dq){setTimeout(Sb,Dq)};if(y1P$Pb(r7)){if(y1P$LD(r7)){jY()}else mH(function(){y1P$D8(r7,jY)},100)}}
+function y1P$CO(qW){var R=undefined;var bE=undefined;if(y1P$Pb(qW)){bE=qW;while(bE.parentNode){bE=bE.parentNode}
+R=bE}else R=null;return R}
+function y1P$Pb(k9){var R=false;R=!((k9==undefined)||(k9==null));return R}
+function IG(){sb=(function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||function(callback){return window.setTimeout(callback,1000/60)}})();o4=(function(){return window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.msCancelAnimationFrame||function(handle){window.clearTimeout(handle)}})()};function KA(Da){var R=false;R=!((Da==null)||(Da==undefined));return R};function Nw$iX(hX){var R=false;R=((hX)!==undefined)&&(typeof hX!==null)&&(typeof hX==="object")&&((hX).length!==undefined);return R}
+function Nw$tz(Cj){var R=false;R=((Cj)!==undefined)&&(typeof Cj!==null)&&(typeof Cj==="boolean");return R}
+function Nw$X1U(lK){var R=false;R=((lK)!==undefined)&&(typeof lK!==null)&&(typeof lK==="number")&&(Math.round(lK)!=lK);return R}
+function Nw$Gr(kb){var R=false;R=((kb)!==undefined)&&(typeof kb!==null)&&(typeof kb==="function");return R}
+function Nw$bw(r3){var R=false;R=((r3)!==undefined)&&(typeof r3!==null)&&(typeof r3==="number")&&(Math.round(r3)===r3);return R}
+function Nw$fd(oi){var R=false;R=((oi)!==undefined)&&(typeof oi!==null)&&(typeof oi==="object")&&((oi).length===undefined);return R}
+function Nw$Qt(ur){var R=false;R=((ur)!==undefined)&&(typeof ur!==null)&&(typeof ur==="string");return R}
+function Nw$tL(pN){var R=false;R=((pN)!==undefined)&&(typeof pN!==null)&&(typeof pN==="symbol");return R}
+var Wc=["vdUnknown","vdBoolean","vdInteger","vdFloat","vdString","vdSymbol","vdFunction","vdObject","vdArray"];var RT={$ClassName:"TVariant",$Parent:TObject,$Init:function($){TObject.$Init($)},gz:function(mt){var R="";if(mt!=undefined&&mt!=null)R=String(mt);return R},JN:function(N9){return N9==null},Eq:function(Up){var R=false;if(Up==null)return false;if(Up==undefined)return false;if(typeof(Up)==="number")return true;return R},Ht:function(s2){var R=false;if(s2==null)return false;if(s2==undefined)return false;if(typeof(s2)==="string")return true;return R},mb:function(dC){var R=[];var wC;for(wC in dC)(R).push(wC);return R},Destroy:TObject.Destroy};function Copy$uE(s,d){d.Wd=s.Wd;d.d7=s.d7;return d}
+function Clone$uE($){return{Wd:$.Wd,d7:$.d7}}
+function Copy$e2(s,d){d.f4=s.f4;d.f9=s.f9;return d}
+function Clone$e2($){return{f4:$.f4,f9:$.f9}}
+function Qm(MN,pW){var R={f4:0,f9:0};R.f4=MN.f4+pW.f4;R.f9=MN.f9+pW.f9;return R};function t9(ON,xt){var R={f4:0,f9:0};R.f4=ON.f4+xt;R.f9=ON.f9+xt;return R};function yY(Nd,wv){var R={Wd:0,d7:0};R.Wd=Nd.Wd+wv.Wd;R.d7=Nd.d7+wv.d7;return R};function z2(Yd,Ml){var R={Wd:0,d7:0};R.Wd=Yd.Wd+Ml;R.d7=Yd.d7+Ml;return R};function wB(dX,cw){var R={Wd:0,d7:0};R.Wd=dX.Wd+cw;R.d7=dX.d7+cw;return R};function R2(co,pL){var R={f4:0,f9:0};R.f4=co.f4-pL.f4;R.f9=co.f9-pL.f9;return R};function CG(tB,mF){var R={f4:0,f9:0};R.f4=tB.f4-mF;R.f9=tB.f9-mF;return R};function HR(jv,Mb){var R={Wd:0,d7:0};R.Wd=jv.Wd-Mb.Wd;R.d7=jv.d7-Mb.d7;return R};function g5(FF,Lp){var R={Wd:0,d7:0};R.Wd=FF.Wd-Lp;R.d7=FF.d7-Lp;return R};function BH(pm,Sz){var R={Wd:0,d7:0};R.Wd=pm.Wd-Sz;R.d7=pm.d7-Sz;return R};function mo(s6,ix){var R={f4:0,f9:0};R.f4=Math.round(s6.f4*ix.f4);R.f9=Math.round(s6.f9*ix.f9);return R};function L9(TH,wT){var R={f4:0,f9:0};R.f4=Math.round(TH.f4*wT);R.f9=Math.round(TH.f9*wT);return R};function M6(j1,T2){var R={f4:0,f9:0};R.f4=Math.round(j1.f4*T2);R.f9=Math.round(j1.f9*T2);return R};function S2(y9,wD){var R={Wd:0,d7:0};R.Wd=y9.Wd*wD.Wd;R.d7=y9.d7*wD.d7;return R};function uO(X3,dB){var R={Wd:0,d7:0};R.Wd=X3.Wd*dB;R.d7=X3.d7*dB;return R};function CP(Rz,Y2v){var R={Wd:0,d7:0};R.Wd=Rz.Wd*Y2v;R.d7=Rz.d7*Y2v;return R};function eL(KE,ja){var R="";ja.v=RT.Ht(KE);if(RT.JN(KE)){R="null"}else R=RT.gz(KE);return R};function Xn(Hg){var R=0;if(Hg===null)return 0;if(typeof(Hg)!=="object")return 0;if(Object.prototype.toString.call(Hg)==="[object Array]")return 2;return 1;return R};function Q9(o7){return(o7).toUpperCase()};function Copy$oL(s,d){d.hc=s.hc;d.P1=s.P1;d.FH=s.FH;d.cV=s.cV;d.Td=s.Td;d.S3=s.S3;d.qU=s.qU;d.B9=s.B9;d.I8=s.I8;d.aM=s.aM;d.h5=s.h5;return d}
+function Clone$oL($){return{hc:$.hc,P1:$.P1,FH:$.FH,cV:$.cV,Td:$.Td,S3:$.S3,qU:$.qU,B9:$.B9,I8:$.I8,aM:$.aM,h5:$.h5}}
+function oL$ek(Zu,VA,rQ,er){Zu.B9=VA;Zu.aM=rQ;if(er=="")return;Zu.hc=er}
+function oL$v7(Ir){return Ir.Td}
+function Copy$pJ(s,d){d.od=s.od;d.Oy=s.Oy;d.Pl=s.Pl;return d}
+function Clone$pJ($){return{od:$.od,Oy:$.Oy,Pl:$.Pl}}
+function Za(cF,kN){return vX(cF,kN)};function vX(dE,rr){var R=false;try{rr.v=parseInt(dE,10);R=true}catch($e){var cM=$W($e);R=false}
+return R};function oD(jb,Im,Wn,An,tj){var R=false;try{tj.v=EncodeTime(jb,Im,Wn,An);R=true}catch($e){R=false}
+return R};function Ex(k8,qP,Zk,d2){var R=false;try{d2.v=EncodeDate(k8,qP,Zk,0);R=true}catch($e){R=false}
+return R};var e3=["jvUndefined","jvObject","jvArray"];var ZM={$ClassName:"TJSONVariantData",$Parent:TObject,$Init:function($){TObject.$Init($);$.sO=0;$.nT=[];$.eJ=[]},LQ:function(S){return S.eJ.length},XL:function(S,vh){ZM.mm(S,JSON.parse(vh));return S},mm:function(S,Q1O){var Qp="";var TT=0;S.sO=Xn(Q1O);switch(S.sO){case 1:var KOt=[];S.nT=RT.mb(Q1O);KOt=S.nT;var $tG;for(TT=0,$tG=KOt.length;TT<$tG;TT++){Qp=KOt[TT];S.eJ.push(Q1O[Qp])}
+break;case 2:S.eJ=Q1O;break}
+return S},Destroy:TObject.Destroy};function se(PL){var R="";R=unescape(encodeURIComponent(PL));return R};var dG={$ClassName:"TAbstractHttpConnection",$Parent:TObject,$Init:function($){TObject.$Init($);$.Xq={od:"",Oy:0,Pl:false};$.Nb=""},bz:function(S,UKC){TObject.Create(S);Copy$pJ(UKC,S.Xq);if(!S.Xq.Oy){if(S.Xq.Pl){S.Xq.Oy=443}else S.Xq.Oy=80}
+if(S.Xq.Pl){S.Nb="https:\/\/"}else S.Nb="http:\/\/";S.Nb=S.Nb+S.Xq.od+":"+(S.Xq.Oy).toString()+"\/";return S},Destroy:TObject.Destroy,uk$:function($){return $.ClassType.uk.apply($.ClassType,arguments)}};function zr(KC,sa){var R={v:0};try{if(!vX(KC,R))R.v=sa}finally{return R.v}};function AA(kc,h3){var R=false;var h2=0;h2=h3.length;if(kc.length<h2){R=false}else R=be(kc.substr(0,h2),h3);return R};function ZO(){return N7(Now())};function u2(Gq){var R={v:0};try{var dM=0;var ho=0;var l4=0;var ml=0;var FQ=0;var zV=0;R.v=0;switch(Gq.length){case 9:if(Gq.charAt(0)=="T"&&Gq.charAt(3)==":"&&Gq.charAt(6)==":"){ml=Gq.charCodeAt(1)*10+Gq.charCodeAt(2)-528;FQ=Gq.charCodeAt(4)*10+Gq.charCodeAt(5)-528;zV=Gq.charCodeAt(7)*10+Gq.charCodeAt(8)-528;oD(ml,FQ,zV,0,R)}
+break;case 10:if(Gq.charAt(4)==Gq.charAt(7)&&([45,47].indexOf(Gq.charCodeAt(7))>=0)){dM=Gq.charCodeAt(0)*1000+Gq.charCodeAt(1)*100+Gq.charCodeAt(2)*10+Gq.charCodeAt(3)-53328;ho=Gq.charCodeAt(5)*10+Gq.charCodeAt(6)-528;l4=Gq.charCodeAt(8)*10+Gq.charCodeAt(9)-528;Ex(dM,ho,l4,R)}
+break;case 19:if(Gq.charAt(4)==Gq.charAt(7)&&([45,47].indexOf(Gq.charCodeAt(7))>=0)&&([32,84].indexOf(Gq.charCodeAt(10))>=0)&&Gq.charAt(13)==":"&&Gq.charAt(16)==":"){dM=Gq.charCodeAt(0)*1000+Gq.charCodeAt(1)*100+Gq.charCodeAt(2)*10+Gq.charCodeAt(3)-53328;ho=Gq.charCodeAt(5)*10+Gq.charCodeAt(6)-528;l4=Gq.charCodeAt(8)*10+Gq.charCodeAt(9)-528;ml=Gq.charCodeAt(11)*10+Gq.charCodeAt(12)-528;FQ=Gq.charCodeAt(14)*10+Gq.charCodeAt(15)-528;zV=Gq.charCodeAt(17)*10+Gq.charCodeAt(18)-528;if(dM<=9999&&ho-1<12&&l4-1<31&&ml<24&&FQ<60&&zV<60)R.v=EncodeDate(dM,ho,l4,0)+EncodeTime(ml,FQ,zV,0)}
+break}}finally{return R.v}};function be(sZ,y7){return(sZ).toUpperCase()==(y7).toUpperCase()};function TN(){return zt};function q8(KO,LI,QT,x4,vA){var R=false;var sQ=0;var Ey=0;var cd=0;cd=KO.length;if(LI.v<=cd){sQ=LI.v;while(sQ<=cd){if(KO.charAt(sQ-1)==x4){break}else++sQ}
+Ey=LI.v;LI.v=sQ+1;if(vA){while(Ey<cd&&KO.charCodeAt(Ey-1)<=32){++Ey}
+while(sQ>Ey&&KO.charCodeAt((sQ-1)-1)<=32){--sQ}}
+QT.v=KO.substr(Ey-1,(sQ-Ey));R=true}else R=false;return R};function B1(yZ){var SI=0;var UM=0;var RO="";SI=(yZ.v.indexOf("\"")+1);if(!SI){yZ.v="\""+yZ.v+"\"";return}
+RO="\""+yZ.v.substr(0,SI)+"\"";var $tH;for(UM=SI+1,$tH=yZ.v.length;UM<=$tH;UM++){if(yZ.v.charAt(UM-1)=="\""){RO+="\"\""}else RO+=yZ.v.charAt(UM-1)}
+yZ.v=RO+"\""};function Sh(ad,HU,bq,rh,rY){var iF=null,iF=new Date();Vr$Ur(iF,ad);HU.v=iF.getUTCHours();bq.v=iF.getUTCMinutes();rh.v=iF.getUTCSeconds()};function ns(Yt,Bf,v5,OZ){var Al=null,Al=new Date();Vr$Ur(Al,Yt);Bf.v=Al.getUTCFullYear();v5.v=Al.getUTCMonth()+1;OZ.v=Al.getUTCDate()};function N7(mN){var R="";if(mN<=0){R=""}else if(Frac(mN)==0){R=FormatDateTime("yyyy-mm-dd",mN,0)}else if(!Trunc(mN)){R=FormatDateTime("Thh:nn:ss",mN,0)}else R=FormatDateTime("yyyy-mm-ddThh:nn:ss",mN,0);return R};var zt={$ClassName:"TSMSHttpConnectionClass",$Parent:dG,$Init:function($){dG.$Init($)},uk:function(S,WM,bl,Fu){var Mq={v:0},Jr={};Jr.v="";var Ov=0,za="",bJ="";WM.h5=new XMLHttpRequest();if(WM.cV){WM.h5.onreadystatechange=function(){if(WM.h5.readyState==4){WM.h5.onreadystatechange=null;WM.qU=parseInt(WM.h5.status,10);WM.S3=String(WM.h5.getAllResponseHeaders());WM.Td=String(WM.h5.responseText);WM.cV()}};WM.h5.onerror=WM.FH;WM.h5.open(WM.aM,S.Nb+WM.B9,true)}else{WM.h5.open(WM.aM,S.Nb+WM.B9,false)}
+if(WM.P1!=""){Mq.v=1;while(q8(WM.P1,Mq,Jr,"\n",false)){Ov=(Jr.v.indexOf(":")+1);if(!Ov)continue;za=Trim$_String_(Jr.v.substr(0,(Ov-1)));bJ=Trim$_String_(Jr.v.substr((Ov+1)-1));if(za!=""&&bJ!=""){WM.h5.setRequestHeader(za,bJ)}}}
+if(WM.hc==""){WM.h5.send(null)}else{WM.h5.send(WM.hc)}
+if(!WM.cV){WM.qU=parseInt(WM.h5.status,10);WM.S3=String(WM.h5.getAllResponseHeaders());WM.Td=String(WM.h5.responseText)}},Destroy:TObject.Destroy,uk$:function($){return $.ClassType.uk.apply($.ClassType,arguments)}};function Vr$qt(p3){return p3.getTime()/86400000+25569}
+function Vr$Tq(X2){return(X2.getTime()-60000*X2.getTimezoneOffset())/86400000+25569}
+function Vr$Ur(CJ,Kf){CJ.setTime(Math.round((Kf-25569)*86400000))}
+function Vr$Ua(EU,Nc){EU.setTime(Math.round((Nc-25569)*86400000)+60000*EU.getTimezoneOffset())}
+function Copy$DH(s,d){d.ZT=s.ZT;d.Dp=s.Dp;d.eY=s.eY;d.BP=s.BP;d.FA=s.FA;d.sU=s.sU;d.hN=s.hN;d.VR=s.VR;return d}
+function Clone$DH($){return{ZT:$.ZT,Dp:$.Dp,eY:$.eY,BP:$.BP,FA:$.FA,sU:$.sU,hN:$.hN,VR:$.VR}}
+var ag={$ClassName:"TSHA256",$Parent:TObject,$Init:function($){TObject.$Init($);$.LW=function(){for(var r=[],i=0;i<64;i++)r.push(0);return r}();$.l5={ZT:0,Dp:0,eY:0,BP:0,FA:0,sU:0,hN:0,VR:0};$.Gu=$.ej=0},qg:function(S){var i57=function(){for(var r=[],i=0;i<64;i++)r.push(0);return r}(),lD={ZT:0,Dp:0,eY:0,BP:0,FA:0,sU:0,hN:0,VR:0};var hW=0;var CwU=0;var Z3=0;Copy$DH(S.l5,lD);for(hW=0;hW<=15;hW++){i57[hW]=WZ((((S.LW[hW*4]<<24)|(S.LW[(hW*4)+1]<<16))|(S.LW[(hW*4)+2]<<8))|S.LW[(hW*4)+3])}
+for(hW=16;hW<=63;hW++){i57[hW]=WZ(((((i57[hW-2]>>>17)|(i57[hW-2]<<15))^((i57[hW-2]>>>19)|(i57[hW-2]<<13)))^(i57[hW-2]>>>10))+i57[hW-7]+((((i57[hW-15]>>>7)|(i57[hW-15]<<25))^((i57[hW-15]>>>18)|(i57[hW-15]<<14)))^(i57[hW-15]>>>3))+i57[hW-16])}
+for(hW=0;hW<=63;hW++){CwU=WZ(lD.VR+((((lD.FA>>>6)|(lD.FA<<26))^((lD.FA>>>11)|(lD.FA<<21)))^((lD.FA>>>25)|(lD.FA<<7)))+((lD.FA&lD.sU)^((~lD.FA)&lD.hN))+pO[hW]+i57[hW]);Z3=WZ(((((lD.ZT>>>2)|(lD.ZT<<30))^((lD.ZT>>>13)|(lD.ZT<<19)))^((lD.ZT>>>22)^(lD.ZT<<10)))+(((lD.ZT&lD.Dp)^(lD.ZT&lD.eY))^(lD.Dp&lD.eY)));lD.VR=lD.hN;lD.hN=lD.sU;lD.sU=lD.FA;lD.FA=WZ(lD.BP+CwU);lD.BP=lD.eY;lD.eY=lD.Dp;lD.Dp=lD.ZT;lD.ZT=WZ(CwU+Z3)}
+S.l5.ZT=WZ(S.l5.ZT+lD.ZT);S.l5.Dp=WZ(S.l5.Dp+lD.Dp);S.l5.eY=WZ(S.l5.eY+lD.eY);S.l5.BP=WZ(S.l5.BP+lD.BP);S.l5.FA=WZ(S.l5.FA+lD.FA);S.l5.sU=WZ(S.l5.sU+lD.sU);S.l5.hN=WZ(S.l5.hN+lD.hN);S.l5.VR=WZ(S.l5.VR+lD.VR)},Bu:function(S){S.l5.ZT=1779033703;S.l5.Dp=3144134277;S.l5.eY=1013904242;S.l5.BP=2773480762;S.l5.FA=1359893119;S.l5.sU=2600822924;S.l5.hN=528734635;S.l5.VR=1541459225;return S},C5:function(S){var R="";var IX=0;S.LW[S.Gu]=128;for(IX=S.Gu+1;IX<=63;IX++){S.LW[IX]=0}
+if(S.Gu>=56){ag.qg(S);for(IX=0;IX<=59;IX++){S.LW[IX]=0}}
+S.LW[60]=(S.ej&4278190080)>>>24;S.LW[61]=(S.ej&16711680)>>>16;S.LW[62]=(S.ej&65280)>>>8;S.LW[63]=S.ej&255;ag.qg(S);R=(IntToHex(S.l5.ZT,8)+IntToHex(S.l5.Dp,8)+IntToHex(S.l5.eY,8)+IntToHex(S.l5.BP,8)+IntToHex(S.l5.FA,8)+IntToHex(S.l5.sU,8)+IntToHex(S.l5.hN,8)+IntToHex(S.l5.VR,8)).toLowerCase();return R},NE:function(S,Bb){var SP=0;var fk=0;var NH=0;var TI=0;SP=Bb.length;TI=1;(S.ej+=(SP<<3));while(SP>0){fk=64-S.Gu;if(fk<=SP){var $tI;for(NH=0,$tI=fk;NH<$tI;NH++){S.LW[S.Gu+NH]=Bb.charCodeAt((TI+NH)-1)}
+(SP-=fk);(TI+=fk);ag.qg(S);S.Gu=0}else{var $tJ;for(NH=0,$tJ=SP;NH<$tJ;NH++){S.LW[S.Gu+NH]=Bb.charCodeAt((TI+NH)-1)}
+(S.Gu+=SP);break}}},Destroy:TObject.Destroy};function yo(QY,aA){var R=0;var S5=0;R=WZ(~QY);var $tK;for(S5=1,$tK=aA.length;S5<=$tK;S5++){R=di[(R^aA.charCodeAt(S5-1))&255]^(R>>>8)}
+R=WZ(~R);return R};function nm(){var R9=0;var xI=0;var cp=0;for(R9=0;R9<=255;R9++){cp=R9;for(xI=1;xI<=8;xI++){if(cp&1){cp=WZ((cp>>>1)^3988292384)}else cp=cp>>>1}
+di.push(cp)}};function WZ(kA){var R=0;R=kA>>>0;return R};var pO=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];var OB={$ClassName:"TSQLSampleRecord",$Parent:kW,$Init:function($){kW.$Init($);$.gI=$.no="";$.jO=0},lz:function(S){return zE.kQ($New(zE),(["Time","Name","Question"].slice()),([4,0,0].slice()))},ux:function(S,tS){var R=undefined;switch(tS){case 0:R=S.Bm;break;case 1:R=S.jO;break;case 2:R=S.gI;break;case 3:R=S.no;break}
+return R},Js:function(S,xo,Ux){switch(xo){case 0:S.Bm=parseInt(Ux,10);break;case 1:S.jO=parseInt(Ux,10);break;case 2:S.gI=String(Ux);break;case 3:S.no=String(Ux);break}},Destroy:kW.Destroy,lz$:function($){return $.lz($)},ux$:function($){return $.ClassType.ux.apply($.ClassType,arguments)},Js$:function($){return $.ClassType.Js.apply($.ClassType,arguments)}};var p7={$ClassName:"TServiceMyService",$Parent:KN,$Init:function($){KN.$Init($)},ye:function(S,dx,c5,gtj,jX){lk.Gk(S.pE,S,"Add",1,([dx,c5].slice()),function(SS){gtj(parseInt(SS[0],10))},jX,false)},rX:function(S,fp){S.gi="MyService";S.vS="MyService";S.jN=1;S.RD="A9246E85B81B7346";KN.rX(S,fp);return S},Destroy:TObject.Destroy,rX$:function($){return $.ClassType.rX.apply($.ClassType,arguments)}};var d5=null;var di=[];var hC=[0];var NG=[0];var MW=function(){for(var r=[],i=0;i<31;i++)r.push("");return r}(),Ly=[0,0,0,0,0,0,0,0,0];var MW=["       "," info  "," debug "," trace "," warn  "," ERROR ","  +    ","  -    "," OSERR "," EXC   "," EXCOS "," mem   "," stack "," fail  "," SQL   "," cache "," res   "," DB    "," http  "," clnt  "," srvr  "," call  "," ret   "," auth  "," cust1 "," cust2 "," cust3 "," cust4 "," rotat "," dddER "," dddIN "];var xp=null;var P=null;var Rx,EJ=0;var Rx={};var zn=0;var qZ=0;var tv=null;var sb=null;var o4=null;nm();$SetInc(NG,8,0,31);;$SetInc(NG,5,0,31);;$SetInc(NG,9,0,31);;$SetInc(NG,10,0,31);;for(EJ=1;EJ<=30;EJ++){$SetInc(hC,EJ,0,31)};var $Application=function(){P=gU.Jf($New(pS));pS.to(P)}
+$Application();
+ }
+    window.onload = function () { bootstrap(); }
+  </script>
+
+</head>
+  <body id="mobile_wrap">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-cover">
+      <div class="content-block">
+        <ul class="panel-content">
+          <li class="panel-link">
+            <a href="pages/about.html" class="close-panel">
+            <img src="res/images/icons/white/user.png" alt="about" />About</a>
+          </li>
+          <li class="panel-link">
+            <a href="pages/features.html" class="close-panel">
+            <img src="res/images/icons/white/features.png" alt="about" />Features</a>
+          </li>
+          <li class="panel-link">
+            <a href="pages/gallery.html" class="close-panel">
+            <img src="res/images/icons/white/gallery.png" alt="about" />Gallery</a>
+          </li>
+          <li class="panel-link">
+            <a href="pages/videos.html" class="close-panel">
+            <img src="res/images/icons/white/video.png" alt="about" />Videos</a>
+          </li>
+          <li class="panel-link">
+            <a href="pages/blog.html" class="close-panel">
+            <img src="res/images/icons/white/blog.png" alt="about" />blog</a>
+          </li>
+          <li class="panel-link">
+            <a href="pages/contact.html" class="close-panel">
+            <img src="res/images/icons/white/contact.png" alt="about" />contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <div class="panel-cover">
+          <div class="cover"></div>
+          <div class="cover-text">Hi, Username
+          <span>Web designer</span></div>
+        </div>
+        <ul class="panel-content">
+          <li class="panel-link">
+            <a href="#" class="close-panel">Profile</a>
+          </li>
+          <li class="panel-link">
+            <a href="#" class="close-panel">Settings</a>
+          </li>
+          <li class="panel-link">
+            <a href="#" class="close-panel">Account</a>
+          </li>
+          <li class="panel-link">
+            <a href="#" class="close-panel">Messages
+            <span class="badge bg-red">5</span></a>
+          </li>
+          <li class="panel-link">
+            <a href="#" class="close-panel">Favourites</a>
+          </li>
+          <li class="panel-link">
+            <a href="#" class="close-panel">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar navbar-hidden">
+          <div class="navbar-inner"></div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page no-navbar" id="home">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div id="cover">
+                 <h6><span class="e"></span><span class="e"></span><span class="e"></span><span class="e"></span><span class="e"></span><span class="e"></span></h6>
+              </div>
+              <div class="content">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Toolbar-->
+        <div class="toolbar tabbar">
+          <div class="toolbar-inner">
+          <a href="#" class="link open-login-screen">
+            <img src="res/images/icons/white/login.png" alt="login" />
+          </a>
+          <a href="pages/features.html" class="link">
+            <img src="res/images/icons/white/features.png" alt="features" />
+          </a>
+          <a href="pages/gallery.html" class="link">
+            <img src="res/images/icons/white/gallery.png" alt="gallery" />
+          </a>
+          <a href="pages/blog.html" class="link">
+            <img src="res/images/icons/white/blog.png" alt="blog" />
+          </a></div>
+        </div>
+      </div>
+    </div>
+    <!-- Login Screen -->
+    <div class="login-screen">
+      <!-- Default view-page layout -->
+      <div class="view">
+        <div class="page">
+          <!-- page-content has additional login-screen content -->
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">
+              <img src="res/images/logo-black.png" alt="MyApplication" />
+            </div>
+            <!-- Login form -->
+            <form>
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" name="username" placeholder="Username" />
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password
+                      <p class="forget-password">
+                        <a href="#" data-popup=".popup-forgot-password" class="open-popup">Forgot Password?</a>
+                      </p></div>
+                      <div class="item-input">
+                        <input type="password" name="password" placeholder="Password" />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <div class="content-block">
+                      <a href="#" class="item-link sign-login-screen button button-fill color-blue">Sign In</a>
+                    </div>
+                  </li>
+                </ul>
+                <div class="list-block-label">Don&#39;t have an account?
+                <p>
+                  <a href="#" data-popup=".popup-register" class="open-popup">Sign up</a>
+                </p>
+                <br />
+                <a href="#" class="close-login-screen button button-fill color-red">Close</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Register Popup -->
+    <div class="popup popup-register">
+      <div class="page-content login-screen-content">
+        <div class="login-screen-title">
+          <img src="res/images/logo-black.png" alt="MyApplication" />
+        </div>
+        <!-- Login form -->
+        <form>
+          <div class="list-block">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">Username</div>
+                  <div class="item-input">
+                    <input type="text" name="username" placeholder="Username" />
+                  </div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">Email</div>
+                  <div class="item-input">
+                    <input type="email" name="email" placeholder="Email" />
+                  </div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">Password</div>
+                  <div class="item-input">
+                    <input type="password" name="password" placeholder="Password" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="list-block">
+            <ul>
+              <li>
+                <div class="content-block">
+                  <a href="#" class="item-link button button-fill color-blue">Register now</a>
+                  <br />
+                  <a href="#" class="button button-fill color-red close-popup">Close</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Forgot password Popup -->
+    <div class="popup popup-forgot-password">
+      <div class="page-content login-screen-content">
+        <div class="login-screen-title">
+          <img src="res/images/logo-black.png" alt="MyApplication" />
+        </div>
+        <!-- Login form -->
+        <form>
+          <div class="list-block">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">Your Email</div>
+                  <div class="item-input">
+                    <input type="email" name="email" placeholder="Email" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="list-block">
+            <ul>
+              <li>
+                <div class="content-block">
+                  <a href="#" class="item-link button button-fill color-blue">Resend password</a>
+                  <br />
+                  <a href="#" class="button button-fill color-red close-popup">Close</a>
+                </div>
+              </li>
+            </ul>
+            <div class="list-block-label">Check your email and follow the instructions to reset your password.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Logout Popup -->
+    <div class="popup popup-logout">
+      <div class="page-content login-screen-content">
+        <div class="login-screen-title">
+          <img src="res/images/logo-black.png" alt="MyApplication" />
+        </div>
+        <form>
+          <div class="list-block">
+            <ul>
+              <li>
+                <div class="content-block">
+                  <a href="#" class="logout-button item-link button button-fill color-blue">Logout</a>
+                  <br />
+                  <a href="#" class="button button-fill color-red close-popup">Close</a>
+                </div>
+              </li>
+            </ul>
+            <div class="list-block-label">Logout your App.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.swipebox.js"></script>
+    <script type="text/javascript" src="lib/jquery.fitvids.js"></script>
+    <!-- Path to your app js-->
+  </body>
+</html>
