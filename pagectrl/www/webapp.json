@@ -1,0 +1,6 @@
+{
+	"name" : "TestPageControl",
+	"short_name" : "TestPageControl",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
