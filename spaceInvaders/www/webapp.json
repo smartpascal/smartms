@@ -1,0 +1,6 @@
+{
+	"name" : "spaceInvaders",
+	"short_name" : "spaceInvaders",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
