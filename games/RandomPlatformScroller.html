@@ -1,0 +1,218 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1 {
+font-family: "Exo",sans-serif;
+padding-bottom: 5px;
+padding-top: 2px;
+border-bottom: 1px #f1f1f1;
+font-size: 2em;
+color: #66ab16;
+}
+h2 {
+font-family: "Helvetica Neue","Helvetica","Arial","Lucida Grande",sans-serif;
+letter-spacing: -1px;
+line-height: 20px;
+border-bottom: 1px solid #f1f1f1;
+font-size: 20px;
+font-weight: bold;
+color: #314e64;
+margin: 30px 0 15px;
+padding-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<div id="warleyalex"><h1>RandomPlatformScroller</h1>
+<b>Description:</b> User jumps and falls to reach door to next level<br>
+<b>Programmer:</b> George Wright <br>
+<b>Compiler:</b> Smart Mobile Studio 2.2<br>
+<h2>Introduction</h2>
+<p>If you obtain an error message from your current browser, please try another such as Chrome. The game, although unfinished, is a great example of what can be achieved by a highly talented lower-school student with free access to professional editions of software both at home and at school. This is our most collaborative contribution. Alex Karet supervised (and wrote some of the levels as indicated in comments) and Steven Binns provided valuable input.
+
+Major new features in Version 2 include buttons that allow you to play the game on a mobile device, climbable platforms and turrets that shoot at you when you are not blocked from the path of their bullets. This version received nothing but encouraging feedback at a recent exhibition.
+
+For those of you who are unable to progress through the levels but would still like to have a look at later features such as turrets, we added a line of code to unlock the doors in the level selector.</p>
+
+<div class="section"><h2 class="title sectiontitle">Gameplay</h2>
+<p class="p">When playing <span class="keyword apiname">RandomPlatformScroller</span>: </p>
+
+  <ul class="ul">
+    <li class="li">aim to reach the other door without falling between platforms to your death;</li>
+
+<li class="li">you regenerate in the original door if you do die;</li>
+
+<li class="li">on a mobile device, use the buttons for control;</li>
+
+<li class="li">with a keyboard, initially use wasd keys for movement, space bar to go through a door (and e to shoot at a "crumble" platform);</li>
+
+<li class="li">you can select Options to change the keys that control the game;</li>
+
+<li class="li">go through a door to select a level;</li>
+
+<li class="li">note that the first levels are for training - a most impressive feature;</li>
+
+<li class="li">double jumping is possible;</li>
+
+<li class="li">some of the platforms are generated randomly so that the game is different each time you play it;</li>
+
+<li class="li">the "45" above the player's head displays health;</li>
+
+<li class="li">a mouse click may attract a bullet from the player;</li>
+
+<li class="li">note the colour coding of the platforms shown in this table.
+
+<table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletable"><tbody><tr class="strow"><td valign="top" class="stentry"><strong class="ph b">Orientation</strong></td>
+<td valign="top" class="stentry"><strong class="ph b">Jump through</strong></td>
+<td valign="top" class="stentry"><strong class="ph b">Fall through</strong></td>
+<td valign="top" class="stentry"><strong class="ph b">Jump through</strong></td>
+<td valign="top" class="stentry"><strong class="ph b">Colour</strong></td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Horizontal</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Dark red</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Horizontal</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Dark green</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Horizontal</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Dark blue</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Horizontal</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Black</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Vertical</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Orange</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Vertical</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">Grey</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Vertical</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Pink</td>
+</tr>
+<tr class="strow"><td valign="top" class="stentry">Vertical</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Yes</td>
+<td valign="top" class="stentry">No</td>
+<td valign="top" class="stentry">Purple</td>
+</tr>
+</tbody></table>
+
+</li>
+
+</ul>
+
+<div class="p">A brief description of the levels follows:
+
+<ol class="ol">
+<li class="li">training for moving left and right;</li>
+
+<li class="li">training for jumping;</li>
+
+<li class="li">training for double jumping;</li>
+
+<li class="li">training for falling through a platform;</li>
+
+<li class="li">training for wall jump;</li>
+
+<li class="li">training with the 7 types of platform;</li>
+
+<li class="li">training with crumbling platforms;</li>
+
+<li class="li">training with moving platforms;</li>
+
+<li class="li">training with scrolling;</li>
+
+<li class="li">training to find a door;</li>
+ 
+<li class="li">a game with lots of jump through platforms;</li>
+
+<li class="li">a game with lots of crumbling platforms;</li>
+ 
+<li class="li">a game with lots of moving platforms;</li>
+
+<li class="li">a game with lots of vertical platforms;</li>
+
+<li class="li">a game with no wall jumps;</li>
+
+<li class="li">training with a turret;</li>
+
+<li class="li">a game with turrets;</li>
+
+<li class="li">another game with turrets.</li>
+
+</ol>
+
+</div>
+
+
+<p class="p">You could experiment with the parameters in a level to suit your preferences. Please let us know if you design a level that you think will be popular.</p>
+
+
+</div>
+
+<div class="section" id="ref-prog-rps-intro__tech"><h2 class="title sectiontitle">Technical Features</h2>
+<p class="p">The program benefits from: </p>
+
+<ul class="ul">
+<li class="li">object-oriented code throughout;</li>
+
+<li class="li">well-planned code separated into many units;</li>
+
+<li class="li">thorough comments;</li>
+
+<li class="li">deeply nested if and case statements;</li>
+
+<li class="li">own functions and versatile procedures with many parameters;</li>
+
+<li class="li">enumerated types;</li>
+
+<li class="li">use of C-style  operators such as <strong class="ph b">+=</strong>;</li>
+
+<li class="li">handling of input events from keyboard and mouse;</li>
+
+<li class="li"><span class="keyword apiname">UCreates</span> unit that makes it easy for others to create new levels;</li>
+
+<li class="li">use of inbuilt routines such as <span class="keyword apiname">High</span>, <span class="keyword apiname">RandomInt</span>, <span class="keyword apiname">Round</span>, <span class="keyword apiname">Tanh</span>, <span class="keyword apiname">FillTextF</span>, <span class="keyword apiname">FillRectF</span>, <span class="keyword apiname">Ellipse</span>,  <span class="keyword apiname">Translate</span>, <span class="keyword apiname">Rotate</span> and <span class="keyword apiname">BeginPath</span>.</li>
+ 
+</ul>
+
+ 
+    </div>
+	
+<div class="section" id="ref-prog-rps-intro__feedback"><h2 class="title sectiontitle">Feedback</h2>
+<ul class="ul">
+<li class="li">AthenaOfDelphi, Webmaster of <a class="xref" href="http://www.pascalgamedevelopment.com/" target="_blank">Pascal Game Development</a> wrote a most encouraging <a class="xref" href="http://www.pascalgamedevelopment.com/content.php?399-pp4s" target="_blank">article</a> about this website and George's achievement.</li>
+
+<li class="li">The above piece also appeared on  <a class="xref" href="http://www.delphifeeds.com/postings/117454-pascal_programming_for_schools_pp4scouk" target="_blank">DelphiFeeds</a> on 6th July 2014.</li>
+
+<li class="li">The Smart Mobile Studio team describe the project as "exciting" and recommend this site to schools that take advantage of their marvellous free educational version with which George developed this game.</li>
+
+<li class="li">Student users report that Level 15 is challenging. Many teachers can expect to experience difficulty with much earlier levels! </li>
+
+</ul>
+
+</div>	
+</div>
+</body></html>

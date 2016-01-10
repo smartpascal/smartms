@@ -1,0 +1,41 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="PlatformScroller" fullname="PlatformScroller.pas" topline="1" col="6" row="1" />
+      <tab filename="RandomPlatformScroller" fullname="RandomPlatformScroller.spr" topline="1" col="34" row="7" />
+      <tab filename="UDrawing" fullname="UDrawing.pas" topline="325" col="1" row="367" />
+      <tab filename="UPlayer" fullname="UPlayer.pas" topline="723" col="1" row="765" />
+      <tab filename="UPlat" fullname="UPlat.pas" topline="501" col="1" row="543" />
+      <tab filename="UBullet" fullname="UBullet.pas" topline="284" col="1" row="326" />
+      <tab filename="ULevelSelector" fullname="ULevelSelector.pas" topline="87" col="1" row="129" />
+      <tab filename="lvl1" fullname="lvl1.pas" topline="1" col="5" row="27" />
+      <tab filename="lvl2" fullname="lvl2.pas" topline="1" col="5" row="26" />
+      <tab filename="lvl3" fullname="lvl3.pas" topline="1" col="5" row="27" />
+      <tab filename="lvl4" fullname="lvl4.pas" topline="1" col="5" row="29" />
+      <tab filename="lvl5" fullname="lvl5.pas" topline="1" col="5" row="34" />
+      <tab filename="lvl6" fullname="lvl6.pas" topline="24" col="5" row="66" />
+      <tab filename="lvl7" fullname="lvl7.pas" topline="1" col="5" row="41" />
+      <tab filename="lvl8" fullname="lvl8.pas" topline="1" col="5" row="30" />
+      <tab filename="lvl9" fullname="lvl9.pas" topline="1" col="5" row="33" />
+      <tab filename="lvl10" fullname="lvl10.pas" topline="1" col="5" row="32" />
+      <tab filename="lvl11" fullname="lvl11.pas" topline="1" col="5" row="30" />
+      <tab filename="lvl12" fullname="lvl12.pas" topline="1" col="5" row="28" />
+      <tab filename="lvl13" fullname="lvl13.pas" topline="1" col="5" row="30" />
+      <tab filename="lvl14" fullname="lvl14.pas" topline="1" col="5" row="29" />
+      <tab filename="lvl15" fullname="lvl15.pas" topline="1" col="5" row="31" />
+      <tab filename="lvl16" fullname="lvl16.pas" topline="1" col="5" row="27" />
+      <tab filename="lvl17" fullname="lvl17.pas" topline="1" col="5" row="35" />
+      <tab filename="UCreates" fullname="UCreates.pas" topline="260" col="17" row="274" />
+      <tab filename="UTurret" fullname="UTurret.pas" topline="5" col="15" row="15" />
+      <tab filename="UE" fullname="UE.pas" topline="6" col="1" row="48" />
+      <tab filename="UGameText" fullname="UGameText.pas" topline="1" col="1" row="32" />
+      <tab filename="UGlobals" fullname="UGlobals.pas" topline="1" col="1" row="37" />
+      <tab filename="UGlobalsNoUserTypes" fullname="UGlobalsNoUserTypes.pas" topline="27" col="19" row="19" />
+      <tab filename="UOptionsButton" fullname="UOptionsButton.pas" topline="13" col="1" row="55" />
+      <tab filename="KeyCodeToKeyName" fullname="KeyCodeToKeyName.pas" topline="87" col="1" row="129" />
+      <tab filename="UAi" fullname="UAi.pas" topline="48" col="1" row="90" />
+      <activetab>UCreates</activetab>
+      <breakpoints />
+    </editor>
+  </state>
+</SMART>

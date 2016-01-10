@@ -1,0 +1,66 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1 {
+font-family: "Exo",sans-serif;
+padding-bottom: 5px;
+padding-top: 2px;
+border-bottom: 1px #f1f1f1;
+font-size: 2em;
+color: #66ab16;
+}
+h2 {
+font-family: "Helvetica Neue","Helvetica","Arial","Lucida Grande",sans-serif;
+letter-spacing: -1px;
+line-height: 20px;
+border-bottom: 1px solid #f1f1f1;
+font-size: 20px;
+font-weight: bold;
+color: #314e64;
+margin: 30px 0 15px;
+padding-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<div id="warleyalex"><h1>Space Invaders</h1>
+<b>Description:</b> User avoids invaders and shoots them<br>
+<b>Programmer:</b> Josh Blake	 <br>
+<b>Compiler:</b> Smart Mobile Studio 2.2<br>
+<h2>Introduction</h2>
+<p>The code is packed with advanced features and has many constants that you can experiment with to suit your game-playing ability.
+Play the game full screen and view the code on subsequent pages. If SpaceInvaders does not run in your current browser, please try another (such as Chrome).</p>
+<div class="section" id="ref-prog-space-invaders-intro__tech"><h2 class="title sectiontitle">Technical Features</h2>
+<p class="p">The code has  suitably named identifiers and should be straightforward for a professional programmer to follow, but we think that the following paragraph might help the majority of you to understand how Josh handles key presses. (His handling of key-up events is similar).  </p>
+
+
+<p class="p">Tracing the code for a key press, the <strong class="ph b">asm</strong> block in procedure <span class="keyword apiname">ApplicationStarting</span>  calls procedure <span class="keyword apiname">KeyDownEvent</span> (which is in the Input unit). If DEBUG (in the Settings unit) is True, procedure <span class="keyword apiname">KeyDownEvent</span> logs the press and also outputs to the console the position of each callback procedure (of type procedure(mCode: Integer)) that have been added to the array of procedures. Whether or not in debug mode, 
+procedure <span class="keyword apiname">KeyDownEvent</span> calls each procedure in the array of key-down procedures. Procedures are added to the array of key-down procedures by <span class="keyword apiname">AddKeyDown</span> procedure in the Input unit. This is called in procedure <span class="keyword apiname">ApplicationStarting</span>, which adds <span class="keyword apiname">KeyDown</span> from the SpaceInvaders unit to handle the space bar. The constructor for the Player adds its own <span class="keyword apiname">KeyDown</span> procedure to the array to handle the arrow keys.</p>
+
+ 
+<p class="p">The code benefits from:</p>
+
+<ul class="ul">
+<li class="li">object-oriented code;</li>
+
+<li class="li">good use of inheritance with virtual procedures and overrides;</li>
+
+<li class="li">procedure type and arrays of that type;</li>
+
+<li class="li">divided into appropriate units (with drawing procedures with Canvas as parameter in separate unit);</li>
+
+<li class="li">debug mode with logging to the console.
+</li>
+
+<li class="li">enumerated types;</li>
+
+<li class="li">good use of own functions and the inbuilt routines <span class="keyword apiname">IntToStr</span>, <span class="keyword apiname">FloatToStr</span>, <span class="keyword apiname">Low</span>, <span class="keyword apiname">High</span>, <span class="keyword apiname">Add</span>, <span class="keyword apiname">Random</span>, <span class="keyword apiname">Now</span>, <span class="keyword apiname">Floor</span>,  <span class="keyword apiname">FillRectF</span> and <span class="keyword apiname">FillText</span>;</li>
+
+<li class="li">use of <span class="keyword apiname">KeyUp</span> and <span class="keyword apiname">KeyDown</span> procedures in such a way that key input still works after code packing and code obfuscation.</li>
+
+</ul>
+  
+</div>
+</div>
+</body></html>

@@ -1,0 +1,259 @@
+<SMART>
+  <Project version="2" subversion="1">
+    <Name>TowerOfArcher</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2015-10-10T11:55:17.296</Modified>
+    <Author>George Wright</Author>
+    <Company>PPS</Company>
+    <Version>
+      <Major>1</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <Apple>
+      <FormatDetection>1</FormatDetection>
+      <StatusBarStyle>default</StatusBarStyle>
+      <WebAppCapable>1</WebAppCapable>
+    </Apple>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>1</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <EmitSourceLocation>0</EmitSourceLocation>
+        <EmitRTTI>0</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>1</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>1</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <ExternalCSS>1</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <HtmlFileName>TowerOfArcher.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>0</Server>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>2</ExecuteType>
+        <ExecuteableName>chrome.exe</ExecuteableName>
+        <ExecuteableParams>%output%</ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="main">
+        <Name>TowerOfArcher</Name>
+        <Created>2015-01-08T13:24:46.978Z</Created>
+        <Modified>2015-10-10T11:55:10.921</Modified>
+        <Filename>TowerOfArcher.spr</Filename>
+      </File>
+      <File type="unit">
+        <Name>UAirUnit</Name>
+        <Created>2015-01-07T13:11:20.044Z</Created>
+        <Modified>2015-01-08T19:29:29.521</Modified>
+        <Filename>UAirUnit.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UArcher</Name>
+        <Created>2015-01-07T13:11:20.077Z</Created>
+        <Modified>2015-01-08T17:52:40.395</Modified>
+        <Filename>UArcher.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UArrow</Name>
+        <Created>2015-01-07T13:11:21.958Z</Created>
+        <Modified>2015-01-08T17:52:40.395</Modified>
+        <Filename>UArrow.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UDrawing</Name>
+        <Created>2015-01-07T13:11:22.397Z</Created>
+        <Modified>2015-01-08T13:22:52.030</Modified>
+        <Filename>UDrawing.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UEnemy</Name>
+        <Created>2015-01-07T13:11:22.574Z</Created>
+        <Modified>2015-01-08T19:29:29.521</Modified>
+        <Filename>UEnemy.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGameItems</Name>
+        <Created>2015-01-07T13:11:22.787Z</Created>
+        <Modified>2015-01-07T13:11:22.791</Modified>
+        <Filename>UGameItems.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGameVariables</Name>
+        <Created>2015-01-07T13:11:22.957Z</Created>
+        <Modified>2015-01-07T13:11:22.961</Modified>
+        <Filename>UGameVariables.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGroundUnit</Name>
+        <Created>2015-01-07T13:11:23.124Z</Created>
+        <Modified>2015-01-08T19:29:29.521</Modified>
+        <Filename>UGroundUnit.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UMouseInputs</Name>
+        <Created>2015-01-07T13:11:23.289Z</Created>
+        <Modified>2015-01-07T13:11:23.292</Modified>
+        <Filename>UMouseInputs.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UPlayer</Name>
+        <Created>2015-01-07T13:11:23.459Z</Created>
+        <Modified>2015-01-07T13:11:23.463</Modified>
+        <Filename>UPlayer.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UPlayerData</Name>
+        <Created>2015-01-07T13:11:23.787Z</Created>
+        <Modified>2015-01-07T13:11:23.790</Modified>
+        <Filename>UPlayerData.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UScalingInfo</Name>
+        <Created>2015-01-07T13:11:23.940Z</Created>
+        <Modified>2015-01-07T13:11:23.944</Modified>
+        <Filename>UScalingInfo.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UShop</Name>
+        <Created>2015-01-07T13:11:24.116Z</Created>
+        <Modified>2015-01-07T13:11:24.120</Modified>
+        <Filename>UShop.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UShopData</Name>
+        <Created>2015-01-07T13:11:24.456Z</Created>
+        <Modified>2015-01-07T13:11:24.460</Modified>
+        <Filename>UShopData.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UShopItem</Name>
+        <Created>2015-01-07T13:11:24.764Z</Created>
+        <Modified>2015-01-08T19:21:22.952</Modified>
+        <Filename>UShopItem.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>USpawner</Name>
+        <Created>2015-01-07T13:11:24.929Z</Created>
+        <Modified>2015-01-08T18:25:18.536</Modified>
+        <Filename>USpawner.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UTextures</Name>
+        <Created>2015-01-07T13:11:25.093Z</Created>
+        <Modified>2015-01-07T13:11:25.097</Modified>
+        <Filename>UTextures.pas</Filename>
+      </File>
+      <File type="resource">
+        <Name>ArcherThumbnail.png</Name>
+        <Created>2015-01-07T13:14:27.736Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>ArcherThumbnail.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>DamageThumbnail.png</Name>
+        <Created>2015-01-07T13:14:27.740Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>DamageThumbnail.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>IceThumbnail.png</Name>
+        <Created>2015-01-07T13:14:27.746Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>IceThumbnail.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>RangeThumbnail.png</Name>
+        <Created>2015-01-07T13:14:27.753Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>RangeThumbnail.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>SpeedThumbnail.png</Name>
+        <Created>2015-01-07T13:14:27.756Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>SpeedThumbnail.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>GroundEnemy.png</Name>
+        <Created>2015-01-07T13:14:34.893Z</Created>
+        <Modified>2015-10-10T11:55:14.125</Modified>
+        <Filename>GroundEnemy.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>GroundEnemyFrozen.png</Name>
+        <Created>2015-01-07T13:14:34.899Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>GroundEnemyFrozen.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>AirEnemy.png</Name>
+        <Created>2015-01-07T13:14:42.061Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>AirEnemy.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>AirEnemyFrozen.png</Name>
+        <Created>2015-01-07T13:14:42.068Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>AirEnemyFrozen.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>Archer.png</Name>
+        <Created>2015-01-07T13:14:50.436Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>Archer.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>Arrow.png</Name>
+        <Created>2015-01-07T13:14:50.441Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>Arrow.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>Bow.png</Name>
+        <Created>2015-01-07T13:14:50.448Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>Bow.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>Tower.png</Name>
+        <Created>2015-01-07T13:14:50.450Z</Created>
+        <Modified>2015-10-10T11:55:14.140</Modified>
+        <Filename>Tower.png</Filename>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+  </Project>
+</SMART>

@@ -1,0 +1,6 @@
+{
+	"name" : "PlatformDemo",
+	"short_name" : "PlatformDemo",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}

@@ -1,0 +1,287 @@
+<SMART>
+  <Project version="2" subversion="2">
+    <Name>RandomPlatformScroller</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2016-01-09T23:22:39.765</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <VendorSpecific>
+      <Apple>
+        <FormatDetection>1</FormatDetection>
+        <StatusBarStyle>default</StatusBarStyle>
+        <WebAppCapable>1</WebAppCapable>
+      </Apple>
+      <ChromeApp>
+        <Kiosk>0</Kiosk>
+        <KioskOnly>1</KioskOnly>
+        <OfflineEnabled>1</OfflineEnabled>
+      </ChromeApp>
+    </VendorSpecific>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>0</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
+        <EmitSourceLocation>0</EmitSourceLocation>
+        <EmitRTTI>0</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>1</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+        <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWebAppManifest>1</GenerateWebAppManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <ExternalCSS>1</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>0</Server>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>2</ExecuteType>
+        <ExecuteableName>chrome.exe</ExecuteableName>
+        <ExecuteableParams>%output%</ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="main">
+        <Name>RandomPlatformScroller</Name>
+        <Created>2016-01-09T23:04:49.765Z</Created>
+        <Modified>2016-01-09T23:19:58.953</Modified>
+        <Filename>RandomPlatformScroller.spr</Filename>
+      </File>
+      <File type="unit">
+        <Name>PlatformScroller</Name>
+        <Created>2016-01-09T23:04:49.765Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>PlatformScroller.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UDrawing</Name>
+        <Created>2016-01-09T23:06:46.109Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>UDrawing.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UPlayer</Name>
+        <Created>2016-01-09T23:07:13.312Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>UPlayer.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UPlat</Name>
+        <Created>2016-01-09T23:07:42.937Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>UPlat.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UBullet</Name>
+        <Created>2016-01-09T23:08:26.640Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>UBullet.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>ULevelSelector</Name>
+        <Created>2016-01-09T23:08:49.875Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>ULevelSelector.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl1</Name>
+        <Created>2016-01-09T23:09:17.234Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl1.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl2</Name>
+        <Created>2016-01-09T23:09:33.000Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl2.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl3</Name>
+        <Created>2016-01-09T23:09:48.546Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl3.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl4</Name>
+        <Created>2016-01-09T23:10:07.140Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl4.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl5</Name>
+        <Created>2016-01-09T23:10:47.343Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl5.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl6</Name>
+        <Created>2016-01-09T23:10:53.828Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl6.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl7</Name>
+        <Created>2016-01-09T23:11:00.812Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl7.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl8</Name>
+        <Created>2016-01-09T23:12:40.750Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl8.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl9</Name>
+        <Created>2016-01-09T23:12:46.312Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl9.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl10</Name>
+        <Created>2016-01-09T23:12:51.984Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl10.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl11</Name>
+        <Created>2016-01-09T23:12:57.250Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl11.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl12</Name>
+        <Created>2016-01-09T23:13:02.703Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl12.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl13</Name>
+        <Created>2016-01-09T23:13:07.781Z</Created>
+        <Modified>2016-01-09T23:16:34.312</Modified>
+        <Filename>lvl13.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl14</Name>
+        <Created>2016-01-09T23:13:14.718Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>lvl14.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl15</Name>
+        <Created>2016-01-09T23:13:19.828Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>lvl15.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl16</Name>
+        <Created>2016-01-09T23:13:25.937Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>lvl16.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>lvl17</Name>
+        <Created>2016-01-09T23:13:32.156Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>lvl17.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UCreates</Name>
+        <Created>2016-01-09T23:16:55.531Z</Created>
+        <Modified>2016-01-09T23:22:39.765</Modified>
+        <Filename>UCreates.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UTurret</Name>
+        <Created>2016-01-09T23:17:18.234Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UTurret.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UE</Name>
+        <Created>2016-01-09T23:17:43.578Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UE.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGameText</Name>
+        <Created>2016-01-09T23:17:59.250Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UGameText.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGlobals</Name>
+        <Created>2016-01-09T23:18:17.140Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UGlobals.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UGlobalsNoUserTypes</Name>
+        <Created>2016-01-09T23:18:31.937Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UGlobalsNoUserTypes.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UOptionsButton</Name>
+        <Created>2016-01-09T23:18:49.109Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UOptionsButton.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>KeyCodeToKeyName</Name>
+        <Created>2016-01-09T23:19:08.078Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>KeyCodeToKeyName.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UAi</Name>
+        <Created>2016-01-09T23:19:24.906Z</Created>
+        <Modified>2016-01-09T23:19:42.515</Modified>
+        <Filename>UAi.pas</Filename>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+    <Statistics>
+      <BackgroundCompilations>163</BackgroundCompilations>
+      <EditTime>00:01:36.343</EditTime>
+      <CompileTime>00:00:14.686</CompileTime>
+      <TotalTime>00:17:50.015</TotalTime>
+      <DesigningTime>00:00:00.000</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </Project>
+</SMART>

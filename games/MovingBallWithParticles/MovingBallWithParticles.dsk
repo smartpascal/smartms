@@ -1,0 +1,14 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="MovingBallParticles" fullname="MovingBallParticles.pas" topline="1" col="16" row="1" />
+      <tab filename="UParticle" fullname="UParticle.pas" topline="47" col="5" row="89" />
+      <tab filename="UEmitter" fullname="UEmitter.pas" topline="66" col="5" row="108" />
+      <tab filename="UBall" fullname="UBall.pas" topline="34" col="1" row="76" />
+      <tab filename="UColourShifter" fullname="UColourShifter.pas" topline="35" col="1" row="77" />
+      <tab filename="MovingBallWithParticles" fullname="MovingBallWithParticles.spr" topline="1" col="1" row="16" />
+      <activetab>MovingBallWithParticles</activetab>
+      <breakpoints />
+    </editor>
+  </state>
+</SMART>
