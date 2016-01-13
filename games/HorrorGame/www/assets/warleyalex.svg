@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+		<path
+            fill="#FFFF00" stroke="#000"
+            d="M16,10 Q20,10,20,30 Q10,30,10,20 Z">
+            <animate
+                attributeType="XML"
+                attributeName="fill"
+                values="#800;#f00;#800;#800"
+                dur="0.8s"
+                repeatCount="indefinite"/>
+            </path>
+
+ </svg>
+
+
+
+
+

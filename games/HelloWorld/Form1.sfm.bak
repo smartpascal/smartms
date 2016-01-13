@@ -1,0 +1,53 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2015-03-23T13:31:19.931</Created>
+    <Modified>2015-03-23T13:31:19.933</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Label">
+        <Caption>Using button, labels and edit box</Caption>
+        <Width>350</Width>
+        <Top>8</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>lblTitle</Name>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>128</Width>
+        <Top>120</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>edtName</Name>
+        <OnChanged>edtNameChanged</OnChanged>
+      </object>
+      <object type="TW3Button">
+        <Caption>Clear</Caption>
+        <Width>128</Width>
+        <Top>48</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>btnClear</Name>
+        <OnClick>btnClearClick</OnClick>
+      </object>
+      <object type="TW3Label">
+        <Caption>First name</Caption>
+        <Width>128</Width>
+        <Top>88</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>lblForename</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption> </Caption>
+        <Width>128</Width>
+        <Top>159</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>lblOutput</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

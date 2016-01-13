@@ -1,0 +1,126 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1 {
+font-family: "Exo",sans-serif;
+padding-bottom: 5px;
+padding-top: 2px;
+border-bottom: 1px #f1f1f1;
+font-size: 2em;
+color: #66ab16;
+}
+h2 {
+font-family: "Helvetica Neue","Helvetica","Arial","Lucida Grande",sans-serif;
+letter-spacing: -1px;
+line-height: 20px;
+border-bottom: 1px solid #f1f1f1;
+font-size: 20px;
+font-weight: bold;
+color: #314e64;
+margin: 30px 0 15px;
+padding-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<div id="warleyalex"><h1>Hello World SmartMS</h1>
+<b>Description:</b> Demonstrates the use of components in SMS<br>
+<b>Programmer:</b> Unknown <br>
+<b>Compiler:</b> Smart Mobile Studio 2.2<br>
+<h2>Introduction</h2>
+  <div class="section">
+  <div class="section prereq p"> The idea is develop a little greeting application using <b>Smart Mobile Studio</b>. This application is based on an old Android app.This exercise you must first have version 2.2 of Smart Mobile Studio installed on your PC.</div>
+    <div class="p"><div class="fig fignone"><img class="image" src="edit_text.jpg" alt="Screenshot of the app" title="Screenshot of the app"><p class="figcap">Screenshot of the app running in the Gingerbread emulator</p>
+    </div>
+    </div>
+ </div>
+ 
+<div class="body taskbody">
+    <div class="section context">
+      <p class="p">The steps to develop a little greeting application are as follows:</p>
+    </div>
+
+    <ol class="ol steps"><li class="li step stepexpand">
+        <span class="ph cmd">Select menu item <span class="ph menucascade"><span class="ph uicontrol">File</span> &gt; <span class="ph uicontrol">New</span> &gt; <span class="ph uicontrol">New project...</span></span> then 
+double click on Visual Components Project.</span>
+      </li>
+<li class="li step stepexpand">       
+        <span class="ph cmd">Add these five components arranged vertically in the order TW3Label, TW3Button, TW3Label, TW3EditBox and TW3Label.</span> 
+<div class="itemgroup info">To add a component, click on its icon then click in the form.</div>       
+      </li>
+<li class="li step stepexpand">
+         <span class="ph cmd">Use the <span class="keyword wintitle">Property inspector</span> to change the names to lblTitle, btnClear, lblForename, edtName and lblOutput.</span>
+       </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Change the caption properties of the labels to (1) <em class="ph i">Using button, labels and edit box</em>, (2) <em class="ph i">First name</em> and (3) a single space</span>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Increase the width of the top label to 350.</span>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Change the Caption property of the button to <em class="ph i">Clear</em> and clear the text from the Text property of the EditBox.</span>
+      </li>
+<li class="li step stepexpand">
+        
+        
+        <span class="ph cmd">Double click on the button and enter this code into the <span class="keyword apiname">btnClearClick</span> procedure:
+ </span>
+        <div class="itemgroup info"><pre class="pre codeblock">lblOutput.Caption := '';
+edtName.Text := '';</pre>
+</div>
+        <div class="itemgroup stepresult">
+                        </div>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">In the <span class="keyword wintitle">Property inspector</span>, double click in the edit box of the OnChanged event of edtName and enter this code into the <span class="keyword apiname">edtNameChanged</span> procedure:
+  </span>
+        <div class="itemgroup info"><pre class="pre codeblock">lblOutput.caption := 'Hello, ' + edtName.text + '!';</pre>
+</div>
+      </li>
+<li class="li step stepexpand">
+         <span class="ph cmd">Add System.Colors to the <strong class="ph b">uses</strong> clause and append this code to the <span class="keyword apiname">InitializeObject</span> procedure:
+  </span>
+        <div class="itemgroup info"><pre class="pre codeblock">lblTitle.Font.Size := 18;
+lblOutput.Font.Color := clRed;	</pre>
+</div>  
+              </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Execute the program and enter the name Jessica. Our Smart Pascal code, the XML code (of the form) and layout instructions follow a screenshot.</span>
+        <div class="itemgroup stepresult"><div class="p">
+          <div class="fig fignone"><img class="image" src="form_demo1.png" alt="Screenshot" title="Screenshot"><p class="figcap">Screenshot</p>
+          </div>
+        </div>
+         </div>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">To improve the layout, start by appending this code to the <span class="keyword apiname">InitializeObject</span> procedure: </span>
+<div class="itemgroup info"><pre class="pre codeblock">FLayout := Layout.Client(Layout{1}.Margins(20).Spacing(5), [
+    Layout{2}.Top(lblTitle),
+    Layout{3}.Top(btnClear),
+    Layout{4}.Top(lblForename),
+    Layout{5}.Top(edtName),
+    Layout{6}.Top(lblOutput)
+  ]);
+</pre>
+</div>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Append this code to the <span class="keyword apiname">Resize</span> procedure:</span>
+        <div class="itemgroup info">FLayout.Resize(Self);</div>
+      </li>
+<li class="li step stepexpand">
+        <span class="ph cmd">Make this declaration of a <strong class="ph b">private</strong> variable (field):</span>
+        <div class="itemgroup info">FLayout: TLayout;</div>
+      </li>
+<li class="li step stepexpand">
+  <span class="ph cmd">Add SmartCL.Layout to the <strong class="ph b">uses</strong> clause.</span>
+</li>
+<li class="li step stepexpand">
+  <span class="ph cmd">Execute the program and enter the name Jessica. Press TAB</span>
+  <div class="itemgroup stepresult">See how the output should looks like.</div>
+</li>
+</ol>
+  </div> 
+</div>
+</body></html>
