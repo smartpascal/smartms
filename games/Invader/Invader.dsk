@@ -1,0 +1,21 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="InvaderJS" fullname="InvaderJS.pas" topline="72" col="50" row="82" />
+      <tab filename="enemies" fullname="enemies.pas" topline="102" col="5" row="144" />
+      <tab filename="checks" fullname="checks.pas" topline="59" col="1" row="101" />
+      <tab filename="globals" fullname="globals.pas" topline="1" col="1" row="1" />
+      <tab filename="Invader" fullname="Invader.spr" topline="1" col="34" row="7" />
+      <activetab>InvaderJS</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>48</BackgroundCompilations>
+      <EditTime>00:00:44.968</EditTime>
+      <CompileTime>00:01:00.125</CompileTime>
+      <TotalTime>00:08:49.610</TotalTime>
+      <DesigningTime>00:00:00.000</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

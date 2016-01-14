@@ -1,0 +1,205 @@
+unit Unit1;
+{
+    Copyright (c) 2010 Peter Hearnshaw
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not
+    use this file except in compliance with the License, as described at
+    http://www.apache.org/licenses/ and http://www.pp4s.co.uk/licenses/
+
+    Converted to Smart Pascal by PPS 2015
+}
+
+interface
+
+uses
+  System.Types, System.Colors, SmartCL.System, SmartCL.Components, SmartCL.Application,
+  SmartCL.Game, SmartCL.GameApp, SmartCL.Graphics, SmartCL.Controls.Button;
+
+type
+  TConsoleColour = (black, blue, green, cyan, red, magenta, brown, lightgray,
+                    darkgray, lightblue, lightgreen, lightcyan, lightred, lightmagenta, yellow, white);
+type
+  TCanvasProject = class(TW3CustomGameApplication)
+  private
+    const SCALE_FACTOR = 1; // Or 2 if you prefer
+    const FONT_SIZE = 9 * SCALE_FACTOR;
+    const CHAR_WIDTH = 5 * SCALE_FACTOR;
+    const CHAR_HEIGHT = 8 * SCALE_FACTOR;
+    const DELAY = 100 div SCALE_FACTOR;
+    SceneWidth, SceneHeight: integer;
+    BackgroundColour: TConsoleColour;
+    charx: integer = 1;
+    chary: integer = 1;
+    xInc: integer = 1;
+    yInc: integer = 0;
+    Xpos, Ypos, foodX, foodY, SnakeLen: integer;
+    myArrayX : array [1..90] of integer;
+    myArrayY : array [1..90] of integer;
+    btnLeft, btnRight, btnUp, btnDown: TW3Button;
+  protected
+    procedure ApplicationStarting; override;
+    procedure ApplicationClosing; override;
+    procedure PaintView(Canvas: TW3Canvas); override;
+    procedure SetupGameButton(Btn: TW3Button; Capt: string;
+                              W, L, T: integer);
+    procedure KeyDownEvent(mCode: integer);
+    procedure GoToXY(X, Y: integer);
+    function Random(LessThan : integer) : integer;
+  end;
+
+implementation
+
+procedure TCanvasProject.SetupGameButton(Btn: TW3Button; Capt: string;
+                                         W, L, T: integer);
+begin
+  Btn.Caption := Capt;
+  Btn.Width := W;
+  Btn.Left := L;
+  Btn.Top := T;
+end;
+
+function TCanvasProject.Random(LessThan : integer) : integer;
+begin
+  Result := RandomInt(LessThan);
+end;
+
+procedure TCanvasProject.KeyDownEvent(mCode: integer);
+begin
+  case mCode of
+    37, 65: begin
+              xInc := -1;
+              yInc := 0;
+            end;
+    39, 68: begin
+              xInc := 1;
+              yInc := 0;
+            end;
+    38, 87: begin
+              xInc := 0;
+              yInc := -1;
+            end;
+    40, 83: begin
+              xInc := 0;
+              yInc := 1;
+            end;
+    27:     GameView.EndSession;
+
+  end;
+end;
+
+procedure TCanvasProject.GoToXY(X, Y: integer);
+begin
+  Xpos := X;
+  YPos:= Y;
+end;
+
+procedure TCanvasProject.ApplicationStarting;
+begin
+  inherited;
+  SceneWidth := 80 * CHAR_WIDTH;
+  SceneHeight := 25 * CHAR_HEIGHT;
+  foodX := random(79) + 1; //foodX becomes a random number from 1 to 80
+  foodY := random(24) + 1; //foodY becomes a random number from 1 to 25
+  SnakeLen := 3; //Start length of the snake
+  asm
+    window.onkeydown = function(e)
+    {
+    TCanvasProject.KeyDownEvent(Self,e.keyCode);
+    }
+    window.focus();
+  end;
+  KeyDownEvent(0);
+
+  btnLeft := TW3Button.Create(Document);
+  btnLeft.OnClick := lambda  xInc := -1; yInc := 0; end;
+  SetupGameButton(btnLeft, '‚Üê', 60, 5, SceneHeight + 5);
+
+  btnRight := TW3Button.Create(Document);
+  btnRight.OnClick := lambda  xInc := 1; yInc := 0; end;
+  SetupGameButton(btnRight, '‚Üí', 60, 85, SceneHeight + 5);
+
+  btnUp := TW3Button.Create(Document);
+  SetupGameButton(btnUp, '‚Üë', 60, 165, SceneHeight + 5);
+  btnUp.OnClick := lambda  xInc := 0; yInc := -1; end;
+
+  btnDown := TW3Button.Create(Document);
+  SetupGameButton(btnDown, '‚Üì', 60, 245, SceneHeight + 5);
+  btnDown.OnClick := lambda  xInc := 0; yInc := 1; end;
+
+  GameView.Delay := DELAY;
+  GameView.StartSession(Fals n
+        rn := TW3Button.C tmo(btnLX, foodY, Snnteger;
+  end;
+
+implementrA+pd;
+
+  GameView.DnX  w.DnX  w.Dmopt.OnClinClick :=  w.Dna  n(FT21; yInc := 0; ena5 end; me‚upGameButme(rS1n :y1SnpeButme(r becomes a random number foa random number foac p20ìy13yInc := 0;
+            end;
+    38, 8a(;, 8aaView.D  s  ennc 
+  Gsenc 
+  Gsenc 
+  Gsenc 
+  Gsen.n/8 sen.n/8 sen.n/8 senen.nsenc 
+  Gsenc 
+  Gsenc 
+  Gsen.n/8 sen.n/8 sen.n/8 sYseenen.nsenc 
+ nc end; cAY=lYyd 
+cument);
+         random number foa raincenYY08 senen.nsenc 
+  Gsenc 
+  Gsenc 
+  GsenCSeView.
+  Gs i
+ r:= 0l
+  GameView.StartSession(sen.nsenc 
+  Gsenc 
+  Gsenc 
+  Gs.D  s  ennc 
+  Gsenc 
+7ise0   
+  Gsenc Gseiise0c  
+ sblion(Fals n
+s i
+d 
+cument);a n
+s i
+d 
+cny;  GsenCSt3'wcument);a nI3T;}ta, bgB
+s i
+d 
+cnray,
+                  erx:a/)a, bgBw7W erx:a/)a, bgBw7bgeid7bgect
+cu
+ aT9ct
+cu aUeSession(Faxh    isenc 
+  Gsenc 
+7i becock := enure TCanvasProject.SetupGas0 i7;gt.SetupGr3Butt       i
+cument);H:a3T i
+n.nsenure AppliE(nProjectoeButtttt(wn :y1SnpeButme(r becodfG-cbXtY;
+ i
+wC
+n.nsOnClick;,EpeButme(r becodfG-cby T*invasProject.SetupGas0 i7;gt.Sete;E5=(.Start1esW1ck  odfG-cbp := T= 0; enaeButme(r b
+wC
+n.nsOnClic.ePcoRcut(wn :y1SnpeB(aeButme   rn := Create(u  rn :=B b
+wC
+n.haa(fG-cbXtY;
+ 
+  XtY;
+ 
+  X
+nPca, bgBw7W erx/k XsOnygWCreate(Docum3lejectioX;upGameButtIY;
+ 
+  X4(nPrateI)-cdf;GW1r
+  XtY;
+  foodca, en.nse;te(u  rn :=B= (r becasOnygWi;G/UcXtrai0sOnygWiwdCreateR  foodeTbGcumLb7cXt E)X; T= nwygWiwdCr(yXc :*t+u E) lich'WOnClic.ePcoRcut(wn :y1SnpeB(aeB.
+  foo
+  -cbp :; enaeButme(r b
+wC
+n.nsOn i7;g  GsenOny1Y;
+ 9 GsenCSt3'wcument)O:= 0; yISpY3'wcument)O:= 0; yISpY3'wcumentmLb7cXt E)X;RC8oRcut(wn : :LE_FACTOR = 1; // Or 2 yf you prefer
+    const FONT_SIZE = 9 * SCALE_)O::= 0;c.E)X;Ro pY3Ony16m5 enk S e‚upGameB nwygWi := TW3ButtoT enaeButme(rC*t+u E) l hC
+    const FONT_SIZE = 9 * SCALE_)O::= 0;c.E)X;Ro pnalGsen YLE_)O::d; me‚u
+    c.T"Huk  odfT"Hu.  i7pY  const FOmCE)X;e rO= D0seegeLeft.OnClick := lambd Fm, entyme(rC*t+u E) l)dvt FONTgSIZE2obd Fm,2obd Fm,2obd hXc := 0; yInc 0; yInc 0; yeumber foa raincenYY08tpcsi,2rc  :* Sp/Lfoadolour: TConso9 * SCALE_)O::= 0;c.3n_)O:c:=
+  .3gyloem,4, TC.e ucva random ndst FOmCE)X;e rO= D0seegeLeft.OnClick := lambd Fm, entyme(cXt E)X;gntIt3'wcumen             yInc := 1;
+            end;
+    27:   , cu adumb

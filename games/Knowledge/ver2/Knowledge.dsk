@@ -1,0 +1,18 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="KnowledgeJS" fullname="KnowledgeJS.pas" topline="358" col="5" row="380" />
+      <tab filename="Knowledge" fullname="Knowledge.spr" topline="1" col="34" row="7" />
+      <activetab>KnowledgeJS</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>81</BackgroundCompilations>
+      <EditTime>00:01:19.297</EditTime>
+      <CompileTime>00:01:37.796</CompileTime>
+      <TotalTime>00:16:11.812</TotalTime>
+      <DesigningTime>00:00:00.000</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>
