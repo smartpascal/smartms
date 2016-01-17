@@ -6,10 +6,12 @@ uses
    SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Label,
   SmartCL.Layout,
-  SmartCL.Controls.EditBox, SmartCL.Controls.Button, System.Colors;
+  SmartCL.Controls.EditBox, SmartCL.Controls.Button, System.Colors,
+  SmartCL.Controls.Elements;
 
 type
   TForm1 = class(TW3Form)
+procedure sClick(Sender: TObject);
     procedure edtNameChanged(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
   private
@@ -34,6 +36,11 @@ end;
 procedure TForm1.edtNameChanged(Sender: TObject);
 begin
   lblOutput.caption := 'Hello, ' + edtName.text + '!';
+end;
+
+procedure TForm1.sClick(Sender: TObject);
+begin
+
 end;
 
 procedure TForm1.InitializeForm;
@@ -62,8 +69,25 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
-  FLayout.Resize(Self);
+  if ClientHeight > ClientWidth then begin
+      FLayout.Resize(Self);
+      s.Handle.style.setProperty('display', 'none');
+  end else
+  begin
+      s.Handle.style.setProperty('width', '100%');
+      s.Handle.style.setProperty('height', '100%');
+      s.Handle.style.setProperty('position', 'fixed');
+      s.Handle.style.setProperty('top', '0px');
+      s.Handle.style.setProperty('left', '0px');
+      s.Handle.style.setProperty('background-color', 'white');
+      s.Handle.style.setProperty('background-image', 'url("res/playportrait.png")');
+      s.Handle.style.setProperty('background-repeat', 'no-repeat');
+      s.Handle.style.setProperty('background-position', 'center center');
+      s.Handle.style.setProperty('display', 'block');
+ end;
+
 end;
+
  
 initialization
   Forms.RegisterForm({$I %FILE%}, TForm1);

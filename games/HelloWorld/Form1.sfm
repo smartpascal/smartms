@@ -1,7 +1,7 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2015-03-23T13:31:19.931</Created>
-    <Modified>2016-01-13T20:30:42.562</Modified>
+    <Modified>2016-01-17T20:49:57.234</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
       <Name>Form1</Name>
@@ -46,6 +46,14 @@
         <Left>16</Left>
         <Height>32</Height>
         <Name>lblOutput</Name>
+      </object>
+      <object type="TW3DIVHtmlElement">
+        <Width>30</Width>
+        <Top>120</Top>
+        <StyleClass>turn</StyleClass>
+        <Left>392</Left>
+        <Height>29</Height>
+        <Name>s</Name>
       </object>
     </object>
   </Form>

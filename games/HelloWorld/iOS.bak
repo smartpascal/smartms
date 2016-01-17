@@ -1,15 +1,3 @@
-#turn{
-	width:100%;
-	height:100%;
-	position:fixed;
-	top:0px;
-	left:0px;
-	background-color:white;
-	background-image:url('playportrait.png');
-	background-repeat:no-repeat;
-	background-position: center center;
-	display:none;
-}
 /* Apply to all elements */
 * {
 	margin: 0;
