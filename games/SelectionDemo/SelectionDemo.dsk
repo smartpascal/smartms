@@ -1,0 +1,18 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="5" col="69" row="8" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="RadioButton" fullname="RadioButton.pas" topline="140" col="10" row="12" />
+      <activetab>RadioButton</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>320</BackgroundCompilations>
+      <EditTime>00:06:55.846</EditTime>
+      <CompileTime>00:04:27.403</CompileTime>
+      <TotalTime>00:44:06.172</TotalTime>
+      <DesigningTime>00:00:10.422</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>
