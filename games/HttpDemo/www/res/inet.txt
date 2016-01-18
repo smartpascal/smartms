@@ -1,0 +1,1 @@
+This HTTP demonstration is based on the Http demo. warleyalex aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbc.The output is designed for a smart phone. The screenshots shows the results of pressing the buttons. The tests use an Apache web server installed on a Raspberry Pi.

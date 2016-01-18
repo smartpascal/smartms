@@ -1,0 +1,41 @@
+unit Unit1;
+
+interface
+
+uses 
+  System.Types, System.Lists, SmartCL.System, SmartCL.Scroll, SmartCL.Console,
+  SmartCL.Components, SmartCL.Application, SmartCL.ConsoleApp;
+
+type
+  TApplication = class(TW3CustomConsoleApplication)
+  private
+    { Private fields and methods }
+  protected
+    procedure ApplicationStarting; override;
+    procedure PopulateConsole; override;
+    procedure ProcessCommand(aCommand: string); override;
+  end;
+
+implementation
+
+{ TApplication}
+
+procedure TApplication.ApplicationStarting;
+begin
+  // Initialize objects above inherited;
+  inherited;
+  // UI elements below inherited
+end;
+ 
+procedure TApplication.PopulateConsole;
+begin
+  Console.WriteLn('Hello world');
+end;
+ 
+procedure TApplication.ProcessCommand(aCommand: string);
+begin
+  // Handle input string here
+  inherited ProcessCommand(aCommand);
+end;
+
+end.

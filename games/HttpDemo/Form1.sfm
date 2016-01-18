@@ -1,0 +1,58 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2015-06-06T19:11:26.573</Created>
+    <Modified>2015-06-07T10:01:49.714</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Width>200</Width>
+      <Height>64</Height>
+      <Name>Form1</Name>
+      <object type="TW3Button">
+        <Caption>Get res/inet.txt</Caption>
+        <Width>100</Width>
+        <Top>24</Top>
+        <Left>248</Left>
+        <Height>31</Height>
+        <Name>btnGetInetTxt</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Log</Caption>
+        <Width>256</Width>
+        <Top>160</Top>
+        <Left>32</Left>
+        <Height>24</Height>
+        <Name>lblLog</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Result</Caption>
+        <Width>256</Width>
+        <Top>160</Top>
+        <Left>320</Left>
+        <Height>24</Height>
+        <Name>lblResult</Name>
+      </object>
+      <object type="TW3Memo">
+        <Width>256</Width>
+        <Top>192</Top>
+        <Left>32</Left>
+        <Height>40</Height>
+        <Name>memoLog</Name>
+      </object>
+      <object type="TW3Memo">
+        <Width>256</Width>
+        <Top>192</Top>
+        <Left>320</Left>
+        <Height>200</Height>
+        <Name>memoResult</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>Get res/not.here</Caption>
+        <Width>100</Width>
+        <Top>96</Top>
+        <Left>256</Left>
+        <Height>31</Height>
+        <Name>btnGetResNotHere</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
