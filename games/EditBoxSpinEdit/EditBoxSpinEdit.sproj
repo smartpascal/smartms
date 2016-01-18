@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>EditBoxSpinEdit</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-17T13:18:16.250</Modified>
+    <Modified>2016-01-18T16:52:56.187</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -11,7 +11,7 @@
     <VendorSpecific>
       <Apple>
         <FormatDetection>1</FormatDetection>
-        <StatusBarStyle>black</StatusBarStyle>
+        <StatusBarStyle>default</StatusBarStyle>
         <WebAppCapable>1</WebAppCapable>
       </Apple>
       <ChromeApp>
@@ -56,7 +56,7 @@
         <GenerateWebAppManifest>1</GenerateWebAppManifest>
         <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <ExternalCSS>1</ExternalCSS>
-        <Theme>iOS.css</Theme>
+        <Theme>WinPhone8.css</Theme>
         <CustomTheme>0</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
@@ -91,7 +91,7 @@
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-01-13T16:52:54.781Z</Created>
-        <Modified>2016-01-17T13:17:41.531</Modified>
+        <Modified>2016-01-18T16:52:56.187</Modified>
         <Filename>Form1.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -102,11 +102,11 @@
     </Files>
     <Target>Browser</Target>
     <Statistics>
-      <BackgroundCompilations>14</BackgroundCompilations>
-      <EditTime>00:00:02.015</EditTime>
-      <CompileTime>00:00:08.672</CompileTime>
-      <TotalTime>00:01:38.515</TotalTime>
-      <DesigningTime>00:01:29.343</DesigningTime>
+      <BackgroundCompilations>350</BackgroundCompilations>
+      <EditTime>00:06:24.720</EditTime>
+      <CompileTime>00:02:17.723</CompileTime>
+      <TotalTime>00:45:51.312</TotalTime>
+      <DesigningTime>00:01:32.702</DesigningTime>
       <RunningTime>00:00:00.000</RunningTime>
     </Statistics>
   </Project>

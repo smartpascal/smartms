@@ -40,10 +40,18 @@ begin
   W3Memo1.Font.Size := 12;
   W3Memo1.ScrollH := soNone;
   W3Memo1.ScrollV := soNone;
+  var oldValue:= W3EditBox1.Value;
+  W3EditBox1.OnChanged := procedure (aValue: TObject)
+  begin
+    oldValue := W3EditBox1.Value;
+  end;
   W3EditBox1.OnKeyUp := procedure (Sender: TObject; aKeyCode: integer)
     begin
       if not (aKeyCode in [8, 48 .. 57, 96 .. 105]) then
-        showMessage('Digits only!')
+      begin
+        showMessage('Digits only!');
+        W3EditBox1.Value := oldValue;
+       end
       else
         begin
           SetFontSize;

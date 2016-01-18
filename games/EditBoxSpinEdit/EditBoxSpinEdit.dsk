@@ -1,16 +1,18 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Form1" fullname="Form1.pas" topline="15" col="28" row="26" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form1" fullname="Form1.pas" topline="33" col="6" row="31" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="1" row="1" />
+      <tab filename="SmartCL.Components" fullname="..\..\..\..\smartms\RTL\SmartCL\SmartCL.Components.pas" topline="3004" col="67" row="3014" />
       <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>14</BackgroundCompilations>
-      <EditTime>00:00:02.015</EditTime>
-      <CompileTime>00:00:12.938</CompileTime>
-      <TotalTime>00:01:38.515</TotalTime>
-      <DesigningTime>00:01:29.343</DesigningTime>
+      <BackgroundCompilations>351</BackgroundCompilations>
+      <EditTime>00:06:24.720</EditTime>
+      <CompileTime>00:02:22.520</CompileTime>
+      <TotalTime>00:45:51.312</TotalTime>
+      <DesigningTime>00:01:32.702</DesigningTime>
       <RunningTime>00:00:00.000</RunningTime>
     </Statistics>
   </state>
