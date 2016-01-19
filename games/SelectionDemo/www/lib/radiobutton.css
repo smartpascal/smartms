@@ -11,11 +11,9 @@
     .TW3RadioButton:hover{
         background: url('../res/radio-hover.png') no-repeat;
     }
- 
     .TW3RadioButton.selected{
         background: url('../res/radio-on.png') no-repeat;
     }
- 
     .TW3RadioButton input[type="radio"]{
         margin: 1px;
         position: absolute;

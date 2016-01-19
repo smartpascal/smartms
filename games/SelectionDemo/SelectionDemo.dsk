@@ -2,16 +2,16 @@
   <state>
     <editor>
       <tab filename="Form1" fullname="Form1.pas" topline="1" col="33" row="80" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="RadioButton" fullname="RadioButton.pas" topline="90" col="59" row="105" />
+      <tab filename="RadioButton" fullname="RadioButton.pas" topline="1" col="9" row="9" />
       <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>1028</BackgroundCompilations>
-      <EditTime>00:20:55.327</EditTime>
-      <CompileTime>00:12:54.436</CompileTime>
-      <TotalTime>03:35:54.109</TotalTime>
-      <DesigningTime>00:08:02.625</DesigningTime>
+      <BackgroundCompilations>1686</BackgroundCompilations>
+      <EditTime>00:35:35.926</EditTime>
+      <CompileTime>00:19:04.514</CompileTime>
+      <TotalTime>05:02:00.937</TotalTime>
+      <DesigningTime>00:08:02.641</DesigningTime>
       <RunningTime>00:00:00.000</RunningTime>
     </Statistics>
   </state>
