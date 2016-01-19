@@ -3,15 +3,11 @@
  * --
  * Colors:
  * --
- * ButtonFace: #9e2b83
- * Highlighted: #b660a2
+ * ButtonFace: #0075d0
+ * Highlighted: #4098dc
  * Window:
  * --
  */
-
-:focus {
-    outline: 0;
-}
 
 /* Apply to all elements */
 * {
@@ -58,6 +54,21 @@
   font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+:focus {
+    outline: 0;
+}
+
+html, body {
+  /* Android basics */
+  -webkit-touch-callout: none;
+
+  /* default to black screen */
+  background-color: #000000;
+
+  /* No overflow, means no scrolling */
+  overflow: hidden;
+}
+
 button { background: none; }
 
 ul {
@@ -79,7 +90,7 @@ ul li {
 
 ul li:active {
   color: #fff;
-  background: #9e2b83;
+  background: #0075d0;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset,
               0 1px 1px 0 rgba(0, 0, 0, 0.10) inset;
 }
@@ -110,7 +121,7 @@ ul li:active:last-child {
 .TW3ScrollContentIndicator {
   margin: 0;
   padding: 0;
-  background-color: #9e2b83;
+  background-color: #0075d0;
   border: solid 1px #9A9A9A;
 }
 
@@ -153,7 +164,7 @@ ul li:active:last-child {
 .TW3AlertDialog {
   color: #000;
   font-size: medium;
-  background: #9e2b83;
+  background: #0075d0;
 
   border-radius: 4px;
 
@@ -196,9 +207,9 @@ ul li:active:last-child {
  * @status done
  */
 .TW3Label, TW3LabelText {
-	cursor: default;
   opacity: 1.0;
   font-size: small;
+	cursor: default;
 }
 
 .TW3Label:disabled,
@@ -216,7 +227,7 @@ ul li:active:last-child {
   color: #fff;
   font-size: normal;
 
-  background: #9e2b83;
+  background: #0075d0;
   border-radius: 4px;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset,
               0 1px 1px 0 rgba(0, 0, 0, 0.10) inset;
@@ -229,12 +240,10 @@ ul li:active:last-child {
 
 .TW3Button:active:enabled,
 .TW3AlertButton:active:enabled {
-  box-shadow: 0 0 5px 1px rgba(158, 43, 131, 0.75);
+  box-shadow: 0 0 5px 1px rgba(0, 177, 208, 0.75);
 }
 
-.TW3Button:disabled {
-  opacity: 0.50;
-}
+.TW3Button:disabled { opacity: 0.50; }
 
 /**
  * TW3EditBox
@@ -252,7 +261,7 @@ ul li:active:last-child {
 	-webkit-user-select: auto;
 }
 
-  .TW3EditBox:focus { border: 1px solid #9e2b83; }
+  .TW3EditBox:focus { border: 1px solid #0075d0; }
 
 /**
  * TW3ToolButton
@@ -262,7 +271,7 @@ ul li:active:last-child {
 .TW3ToolButton {
   font-size: normal;
   color: white;
-  border-right: 1px solid #b660a2;
+  border-right: 1px solid #4098dc;
 
   -webkit-text-size-adjust: auto;
      -moz-text-size-adjust: auto;
@@ -272,12 +281,12 @@ ul li:active:last-child {
 
 .TW3ToolButton:active:enabled {
   color: #fff;
-  background: #b660a2;
+  background: #4098dc;
 }
 
 .TW3ToolButton:disabled {
-  cursor: wait;
 	opacity: 0.5;
+  cursor: wait;
 }
 
 /**
@@ -310,16 +319,16 @@ ul li:active:last-child {
     top,
     #fff 0%,
     #fff 90%,
-    #9e2b83 90%,
-    #9e2b83 100%);
+    #0075d0 90%,
+    #0075d0 100%);
 
   /* W3C */
   background: linear-gradient(
     to bottom,
     #fff 0%,
     #fff 90%,
-    #891e6d 90%,
-    #891e6d 100%);
+    #005fc3 90%,
+    #005fc3 100%);
 }
 
   .TW3ToolbarButton:focus { border: 5px solid white; }
@@ -370,7 +379,7 @@ ul li:active:last-child {
 .TW3ToggleOnLabel { }
 
 .TW3ToggleKnob {
-  background: #9e2b83;
+  background: #0075d0;
   border-radius: 2px;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset,
               0 1px 1px 0 rgba(0, 0, 0, 0.10) inset,
@@ -394,7 +403,7 @@ ul li:active:last-child {
 .TW3ListBoxItemSelected {
   color: #fff;
   font-size: small;
-  background: #b660a2;
+  background: #4098dc;
 }
 
 /**
@@ -404,29 +413,29 @@ ul li:active:last-child {
  */
 .TW3HeaderControl {
   cursor: default;
-  background: #9e2b83;
+  background: #0075d0;
 
   /* Chrome10+, Safari5.1+ */
   background: -webkit-linear-gradient(
     top,
-    #9e2b83 0%,
-    #9e2b83 90%,
-    #891e6d 90%,
-    #891e6d 100%);
+    #0075d0 0%,
+    #0075d0 90%,
+    #005fc3 90%,
+    #005fc3 100%);
 
   /* W3C */
   background: linear-gradient(
     to bottom,
-    #9e2b83 0%,
-    #9e2b83 90%,
-    #891e6d 90%,
-    #891e6d 100%);
+    #0075d0 0%,
+    #0075d0 90%,
+    #005fc3 90%,
+    #005fc3 100%);
 }
 
-.TW3HeaderControl:disabled {
-  cursor: wait;
-  opacity: 0.5;
-}
+  .TW3HeaderControl:disabled {
+    cursor: wait;
+    opacity: 0.5;
+  }
 
 /**
  * TW3ProgressBar
@@ -452,7 +461,7 @@ ul li:active:last-child {
  * @status done
  */
 .TW3ProgressMeter {
-  background: #9e2b83;
+  background: #0075d0;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset,
               0 1px 1px 0 rgba(0, 0, 0, 0.10) inset,
               1px 0 1px 0 rgba(0, 0, 0, 0.15);
@@ -478,7 +487,7 @@ ul li:active:last-child {
 .TW3ScrollbarDownBtn:active,
 .TW3ScrollbarLeftBtn:active,
 .TW3ScrollbarRightBtn:active {
-  background: #b660a2;
+  background: #4098dc;
 }
 
 .TW3ScrollbarDownBtn:hover,
@@ -489,7 +498,7 @@ ul li:active:last-child {
 }
 
 .TW3ScrollbarHandle {
-  background: #9e2b83;
+  background: #0075d0;
   border-radius: 2px;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset,
               0 1px 1px 0 rgba(0, 0, 0, 0.10) inset;
@@ -497,7 +506,7 @@ ul li:active:last-child {
 }
 
 .TW3ScrollbarHandle:active {
-  background: #b660a2;
+  background: #4098dc;
 }
 
 .TW3ScrollbarHandsle:Hover {
@@ -521,8 +530,8 @@ ul li:active:last-child {
 
 .TW3VerticalScrollbar:disabled,
 .TW3HorizontalScrollbar:disabled {
-  cursor: wait;
   opacity: 0.5;
+  cursor: wait;
 }
 
 /* =============================================

@@ -1,21 +1,14 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2014-10-23T20:06:13.174</Created>
-    <Modified>2016-01-17T13:44:12.812</Modified>
+    <Modified>2016-01-19T20:39:48.078</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
       <Name>Form1</Name>
-      <object type="TW3Label">
-        <Caption>W3Label</Caption>
-        <Width>296</Width>
-        <Left>8</Left>
-        <Height>48</Height>
-        <Name>W3Label1</Name>
-      </object>
       <object type="TW3ListBox">
         <Width>296</Width>
-        <Top>48</Top>
-        <Left>8</Left>
+        <Top>40</Top>
+        <Left>16</Left>
         <Height>176</Height>
         <Name>W3ListBox1</Name>
       </object>

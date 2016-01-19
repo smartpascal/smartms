@@ -6,13 +6,13 @@
 { Copyright © 2012-2014 Optimale Systemer AS.                                  }
 {                                                                              }
 { **************************************************************************** }
-
+{$R 'res\radiobutton.css'}
 unit RadioButton;
 
 interface
 
 uses
-  System.Types, SmartCL.System, SmartCL.Components, SmartCL.Controls.Label;
+  System.Types, SmartCL.System, SmartCL.Components, SmartCL.Controls.SimpleLabel;
 
 type
   TW3RadioCheckMark = class(TW3CustomControl)
@@ -29,7 +29,7 @@ type
 
   TW3RadioButton = class(TW3CustomControl)
   private
-    FLabel: TW3Label;
+    FLabel: TW3SimpleLabel;
     FMark: TW3RadioCheckMark;
     procedure HandleLabelClick(Sender: TObject);
   protected
@@ -43,7 +43,7 @@ type
     procedure FinalizeObject; override;
     procedure Resize; override;
   public
-    property Label: TW3Label read FLabel;
+    property Label: TW3SimpleLabel read FLabel;
     property CheckMark: TW3RadioCheckMark read FMark;
   published
     property Caption: String read getCaption write setCaption;
@@ -58,12 +58,12 @@ implementation
 
 procedure TW3RadioCheckMark.setWidth(aValue: Integer);
 begin
-  aValue := 20;
+
 end;
 
 procedure TW3RadioCheckMark.setHeight(aValue: Integer);
 begin
-  aValue := 20;
+
 end;
 
 function TW3RadioCheckMark.getChecked: Boolean;
@@ -96,11 +96,21 @@ end;
 procedure TW3RadioButton.InitializeObject;
 begin
   inherited;
-  FLabel := TW3Label.Create(Self);
+  FLabel := TW3SimpleLabel.Create(Self);
+  FLabel.Font.Size := 14;
   FMark := TW3RadioCheckMark.Create(Self);
   FLabel.Caption := 'Radio Button';
-  FLabel.Container.OnClick := HandleLabelClick;
+  //FLabel.Container.OnClick := HandleLabelClick;
+  FLabel.OnClick := HandleLabelClick;
   FLabel.Handle.style.setProperty('margin-left', '0.8em');
+
+  //FLabel.Container.Handle.style.setProperty('top', '0px');
+
+  //w3_setAttrib(FLabel.Container.Handle,'style','');
+  //w3_setAttrib(FLabel.Handle,'style','width:'+IntToStr(FLabel.Width)+'px');
+  //w3_setAttrib(FLabel.Handle,'style','width:0px');
+
+
 end;
 
 procedure TW3RadioButton.FinalizeObject;
@@ -130,6 +140,9 @@ end;
 procedure TW3RadioButton.setChecked(aValue: Boolean);
 begin
   FMark.Checked := aValue;
+  CSSClasses.RemoveByName('selected');
+  if aValue then
+    CSSClasses.Add('selected');
 end;
 
 procedure TW3RadioButton.setEnabled(aValue: Boolean);
