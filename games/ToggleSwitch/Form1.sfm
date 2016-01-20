@@ -1,0 +1,46 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2014-11-07T17:06:17.187</Created>
+    <Modified>2016-01-20T22:49:01.000</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Panel">
+        <Width>432</Width>
+        <Left>8</Left>
+        <Height>128</Height>
+        <Name>W3Panel1</Name>
+        <object type="TW3Memo">
+          <Text>W3Memo</Text>
+          <Width>216</Width>
+          <Height>72</Height>
+          <Transparent>True</Transparent>
+          <Name>W3Memo1</Name>
+        </object>
+      </object>
+      <object type="TW3DIVHtmlElement">
+        <Width>418</Width>
+        <Top>136</Top>
+        <Left>16</Left>
+        <Height>58</Height>
+        <Name>CONTAINER</Name>
+        <object type="TW3Label">
+          <Caption>Magnifier</Caption>
+          <Width>128</Width>
+          <Top>8</Top>
+          <Left>8</Left>
+          <Height>40</Height>
+          <Name>W3Label1</Name>
+        </object>
+        <object type="TW3ToggleSwitch">
+          <Width>122</Width>
+          <Top>8</Top>
+          <Left>97</Left>
+          <Height>40</Height>
+          <Name>W3ToggleSwitch1</Name>
+          <OnChanged>W3ToggleSwitch1Changed</OnChanged>
+        </object>
+      </object>
+    </object>
+  </Form>
+</SMART>
