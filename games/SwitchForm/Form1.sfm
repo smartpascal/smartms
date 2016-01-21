@@ -1,0 +1,38 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-01-16T15:01:10.017</Created>
+    <Modified>2016-01-21T10:51:53.000</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3HeaderControl">
+        <Width>128</Width>
+        <Height>32</Height>
+        <Name>W3HeaderControl1</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>W3Button</Caption>
+        <Width>128</Width>
+        <Top>488</Top>
+        <Left>8</Left>
+        <Height>32</Height>
+        <Name>W3Button1</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>W3Button</Caption>
+        <Width>128</Width>
+        <Top>488</Top>
+        <Left>184</Left>
+        <Height>32</Height>
+        <Name>W3Button2</Name>
+      </object>
+      <object type="TW3Image">
+        <Width>300</Width>
+        <Top>104</Top>
+        <Left>48</Left>
+        <Height>300</Height>
+        <Name>W3Image1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

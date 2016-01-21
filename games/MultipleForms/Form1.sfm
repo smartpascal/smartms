@@ -1,0 +1,31 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2014-08-14T12:23:29.094</Created>
+    <Modified>2014-08-14T12:23:29.094</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Zoom>0</Zoom>
+      <Width>200</Width>
+      <StyleClass>TW3Form</StyleClass>
+      <Height>64</Height>
+      <BorderRadius>0</BorderRadius>
+      <Color>536870911</Color>
+      <Name>Form1</Name>
+      <object type="TW3HeaderControl">
+        <Width>200</Width>
+        <StyleClass>TW3HeaderControl</StyleClass>
+        <Height>51</Height>
+        <BorderRadius>0</BorderRadius>
+        <Color>536870911</Color>
+        <Name>W3HeaderControl1</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Form 1</Caption>
+        <Width>128</Width>
+        <Top>80</Top>
+        <Height>24</Height>
+        <Name>W3Label1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

@@ -1,0 +1,27 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2014-10-26T15:05:18.471</Created>
+    <Modified>2014-10-26T16:23:21.034</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Memo">
+        <Text>W3Memo</Text>
+        <Width>232</Width>
+        <Top>16</Top>
+        <Left>8</Left>
+        <Height>64</Height>
+        <Name>W3Memo1</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>Save</Caption>
+        <Width>128</Width>
+        <Top>88</Top>
+        <Left>56</Left>
+        <Height>32</Height>
+        <Name>btnSave</Name>
+        <OnClick>btnSaveClick</OnClick>
+      </object>
+    </object>
+  </Form>
+</SMART>

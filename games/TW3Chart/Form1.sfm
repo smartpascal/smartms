@@ -1,0 +1,40 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2014-11-03T09:28:48.647</Created>
+    <Modified>2014-11-05T11:48:47.868</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Chart">
+        <Width>728</Width>
+        <Top>48</Top>
+        <Height>328</Height>
+        <Name>W3Chart1</Name>
+      </object>
+      <object type="TW3Toolbar">
+        <Width>728</Width>
+        <Top>-8</Top>
+        <Height>56</Height>
+        <Name>W3Toolbar1</Name>
+        <object type="TW3ToolButton">
+          <Caption>Countries (bar chart)</Caption>
+          <Width>128</Width>
+          <Top>16</Top>
+          <Left>16</Left>
+          <Height>32</Height>
+          <Name>W3ToolButton1</Name>
+          <OnClick>W3ToolButton1Click</OnClick>
+        </object>
+        <object type="TW3ToolButton">
+          <Caption>Continents (pie chart)</Caption>
+          <Width>128</Width>
+          <Top>16</Top>
+          <Left>160</Left>
+          <Height>32</Height>
+          <Name>W3ToolButton2</Name>
+          <OnClick>W3ToolButton2Click</OnClick>
+        </object>
+      </object>
+    </object>
+  </Form>
+</SMART>

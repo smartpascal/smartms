@@ -1,0 +1,18 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="23" col="10" row="34" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="System.Types" fullname="..\..\..\..\smartms\RTL\System\System.Types.pas" topline="268" col="6" row="9" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>149</BackgroundCompilations>
+      <EditTime>00:02:45.341</EditTime>
+      <CompileTime>00:01:12.985</CompileTime>
+      <TotalTime>00:21:11.000</TotalTime>
+      <DesigningTime>00:06:52.406</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

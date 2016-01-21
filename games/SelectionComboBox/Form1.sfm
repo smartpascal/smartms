@@ -1,0 +1,35 @@
+<SMART>
+  <Form version="2" subversion="1">
+    <Created>2014-10-24T17:33:27.116</Created>
+    <Modified>2014-10-26T10:35:27.752</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3ComboBox">
+        <Width>224</Width>
+        <Top>72</Top>
+        <Left>8</Left>
+        <Height>24</Height>
+        <Name>cboColours</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>W3Label</Caption>
+        <Width>224</Width>
+        <Top>8</Top>
+        <Left>8</Left>
+        <Height>24</Height>
+        <Name>W3Label1</Name>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>224</Width>
+        <Top>48</Top>
+        <Left>8</Left>
+        <Height>24</Height>
+        <Name>edtColour</Name>
+        <OnKeyUp>edtColourKeyUp</OnKeyUp>
+      </object>
+    </object>
+  </Form>
+</SMART>
