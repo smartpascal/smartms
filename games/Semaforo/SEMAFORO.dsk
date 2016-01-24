@@ -1,0 +1,20 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="SEMAFORO" fullname="SEMAFORO.spr" topline="1" col="1" row="1" />
+      <tab filename="Form1" fullname="Form1.pas" topline="64" col="1" row="87" splitview="0" designview="1" splitter="0.444444447755814" />
+      <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="1" row="1" />
+      <tab filename="iOS.css" fullname="iOS.css" topline="25" col="16" row="43" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>3917</BackgroundCompilations>
+      <EditTime>01:16:13.447</EditTime>
+      <CompileTime>00:27:12.275</CompileTime>
+      <TotalTime>06:41:45.849</TotalTime>
+      <DesigningTime>00:44:14.654</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

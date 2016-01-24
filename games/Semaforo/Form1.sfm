@@ -1,0 +1,51 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-01-23T12:23:09.328</Created>
+    <Modified>2016-01-24T14:12:35.283</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3DIVHtmlElement">
+        <Width>128</Width>
+        <Top>8</Top>
+        <StyleClass>caja</StyleClass>
+        <Left>8</Left>
+        <Height>368</Height>
+        <Name>SEMAFORO</Name>
+        <object type="TW3DIVHtmlElement">
+          <Width>100</Width>
+          <Top>16</Top>
+          <StyleClass>circulo</StyleClass>
+          <Left>16</Left>
+          <Height>100</Height>
+          <Name>RED</Name>
+        </object>
+        <object type="TW3DIVHtmlElement">
+          <Width>100</Width>
+          <Top>136</Top>
+          <StyleClass>circulo</StyleClass>
+          <Left>16</Left>
+          <Height>100</Height>
+          <Name>YELLOW</Name>
+        </object>
+        <object type="TW3DIVHtmlElement">
+          <Width>100</Width>
+          <Top>256</Top>
+          <StyleClass>circulo</StyleClass>
+          <Left>16</Left>
+          <Height>100</Height>
+          <Name>GREEN</Name>
+        </object>
+      </object>
+      <object type="TW3Button">
+        <Caption>start</Caption>
+        <Width>112</Width>
+        <Top>392</Top>
+        <Left>16</Left>
+        <Height>40</Height>
+        <Name>start</Name>
+        <OnClick>startClick</OnClick>
+      </object>
+    </object>
+  </Form>
+</SMART>
