@@ -1,0 +1,17 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="15" row="15" />
+      <activetab>Unit1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>2062</BackgroundCompilations>
+      <EditTime>00:00:20.985</EditTime>
+      <CompileTime>00:06:44.908</CompileTime>
+      <TotalTime>00:45:04.516</TotalTime>
+      <DesigningTime>00:37:35.422</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>
