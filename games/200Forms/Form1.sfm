@@ -1,0 +1,20 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-02-05T20:05:45.203</Created>
+    <Modified>2016-02-06T12:38:18.687</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <TagValue>1</TagValue>
+      <object type="TW3Button">
+        <Caption>LastForm</Caption>
+        <Width>113</Width>
+        <Top>40</Top>
+        <Left>32</Left>
+        <Height>33</Height>
+        <Name>W3Button1</Name>
+        <OnClick>W3Button1Click</OnClick>
+      </object>
+    </object>
+  </Form>
+</SMART>
