@@ -37,7 +37,7 @@ begin
 	mForm := TForm1.Create(display.view);
 	mForm.name := 'Form1';
 	RegisterFormInstance(mForm, true);
-	mForm := TForm2.Create(display.view);
+ 	mForm := TForm2.Create(display.view);
 	mForm.name := 'Form2';
 	RegisterFormInstance(mForm, false);
 	mForm:=TForm3.Create(display.view);
