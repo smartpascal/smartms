@@ -1,0 +1,19 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="55" col="30" row="82" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form2" fullname="Form2.pas" topline="1" col="28" row="6" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="SmartCL.System" fullname="..\..\Documents and Settings\All Users\Application Data\Optimale Systemer AS\Smart Mobile Studio\RTL\SmartCL\SmartCL.System.pas" topline="88" col="26" row="98" />
+      <activetab>SmartCL.System</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>1076</BackgroundCompilations>
+      <EditTime>00:25:06.657</EditTime>
+      <CompileTime>00:11:26.453</CompileTime>
+      <TotalTime>03:05:24.285</TotalTime>
+      <DesigningTime>00:20:07.762</DesigningTime>
+      <RunningTime>00:58:18.801</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

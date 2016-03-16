@@ -1,0 +1,351 @@
+Comparing files index.html and _INDEX.HTML
+***** index.html
+   ,ReadySync:function(Self) {
+      if (Self.FHandle&&Self.FHandle.Ready&&(!$SetIn(Self.FComponentState,0,0,6))&&(!$SetIn(Self.FComponentState,1,0,6))) {
+         TW3MovableControl.ObjectReady(Self);
+***** _INDEX.HTML
+   ,ReadySync:function(Self) {
+      if (Self.FHandle&&TControlHandleHelper$Ready$1(Self.FHandle)&&(!$SetIn(Self.FComponentState,0,0,6))&&(!$SetIn(Self.FCompon
+entState,1,0,6))) {
+         TW3MovableControl.ObjectReady(Self);
+*****
+
+***** index.html
+var TExposure = [ "esVisible", "esPartly", "esNone" ];
+/// function TBufferHandleHelper.Valid(const Self: TBufferHandle) : Boolean
+///  [line: 407, column: 30, file: System.Types]
+function TBufferHandleHelper$Valid(Self$15) {
+   var Result = false;
+   Result = !( (Self$15 == undefined) || (Self$15 == null) );
+   return Result
+}
+function OffsetPoint(a$38, b$2) {
+***** _INDEX.HTML
+var TExposure = [ "esVisible", "esPartly", "esNone" ];
+function OffsetPoint(a$38, b$2) {
+*****
+
+***** index.html
+///  [line: 412, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Ready$1(Self$16) {
+   var Result = false;
+***** _INDEX.HTML
+///  [line: 412, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Ready$1(Self$15) {
+   var Result = false;
+*****
+
+***** index.html
+   var mRef$2 = undefined;
+   if (TControlHandleHelper$Valid$1(Self$16)) {
+      mRef$2 = TControlHandleHelper$Root(Self$16);
+      Result = TControlHandleHelper$Valid$1(mRef$2)&&mRef$2.body;
+   }
+***** _INDEX.HTML
+   var mRef$2 = undefined;
+   if (TControlHandleHelper$Valid(Self$15)) {
+      mRef$2 = TControlHandleHelper$Root(Self$15);
+      Result = TControlHandleHelper$Valid(mRef$2)&&mRef$2.body;
+   }
+*****
+
+***** index.html
+///  [line: 473, column: 32, file: SmartCL.System]
+function TControlHandleHelper$ReadyExecute(Self$17, OnReady) {
+   function DelayedDispatch(EntryPoint, Delay) {
+***** _INDEX.HTML
+///  [line: 473, column: 32, file: SmartCL.System]
+function TControlHandleHelper$ReadyExecute(Self$16, OnReady) {
+   function DelayedDispatch(EntryPoint, Delay) {
+*****
+
+***** index.html
+   };
+   if (TControlHandleHelper$Valid$1(Self$17)) {
+      if (TControlHandleHelper$Ready$1(Self$17)) {
+         OnReady();
+***** _INDEX.HTML
+   };
+   if (TControlHandleHelper$Valid(Self$16)) {
+      if (TControlHandleHelper$Ready$1(Self$16)) {
+         OnReady();
+*****
+
+***** index.html
+         DelayedDispatch(function () {
+            TControlHandleHelper$ReadyExecute(Self$17,OnReady);
+         },100);
+***** _INDEX.HTML
+         DelayedDispatch(function () {
+            TControlHandleHelper$ReadyExecute(Self$16,OnReady);
+         },100);
+*****
+
+***** index.html
+///  [line: 430, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Root(Self$18) {
+   var Result = undefined;
+***** _INDEX.HTML
+///  [line: 430, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Root(Self$17) {
+   var Result = undefined;
+*****
+
+***** index.html
+   var mAncestor = undefined;
+   if (TControlHandleHelper$Valid$1(Self$18)) {
+      mAncestor = Self$18;
+      while (mAncestor.parentNode) {
+***** _INDEX.HTML
+   var mAncestor = undefined;
+   if (TControlHandleHelper$Valid(Self$17)) {
+      mAncestor = Self$17;
+      while (mAncestor.parentNode) {
+*****
+
+***** index.html
+///  [line: 405, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Valid$1(Self$19) {
+   var Result = false;
+   Result = !( (Self$19 == undefined) || (Self$19 == null) );
+   return Result
+***** _INDEX.HTML
+///  [line: 405, column: 32, file: SmartCL.System]
+function TControlHandleHelper$Valid(Self$18) {
+   var Result = false;
+   Result = !( (Self$18 == undefined) || (Self$18 == null) );
+   return Result
+*****
+
+***** index.html
+      TObject.Create(Self);
+      if (TBufferHandleHelper$Valid(aHandle)) {
+         Self.FHandle$5 = aHandle;
+***** _INDEX.HTML
+      TObject.Create(Self);
+      if (TControlHandleHelper$Valid(aHandle)) {
+         Self.FHandle$5 = aHandle;
+*****
+
+***** index.html
+      Result.fiSize = -1;
+      if (TBufferHandleHelper$Valid(aHandle$1)) {
+         mName$3 = w3_getStyleAsStr(aHandle$1,"font-family");
+***** _INDEX.HTML
+      Result.fiSize = -1;
+      if (TControlHandleHelper$Valid(aHandle$1)) {
+         mName$3 = w3_getStyleAsStr(aHandle$1,"font-family");
+*****
+
+***** index.html
+///  [line: 256, column: 22, file: SmartCL.Layout]
+function TLayoutRect$IsHorizontalSet(Self$20) {
+   var Result = false;
+   Result = Self$20.Left$9!=null&&Self$20.Width$12!=null;
+   return Result
+***** _INDEX.HTML
+///  [line: 256, column: 22, file: SmartCL.Layout]
+function TLayoutRect$IsHorizontalSet(Self$19) {
+   var Result = false;
+   Result = Self$19.Left$9!=null&&Self$19.Width$12!=null;
+   return Result
+*****
+
+***** index.html
+///  [line: 261, column: 22, file: SmartCL.Layout]
+function TLayoutRect$IsVerticalSet(Self$21) {
+   var Result = false;
+   Result = Self$21.Top$9!=null&&Self$21.Height$10!=null;
+   return Result
+***** _INDEX.HTML
+///  [line: 261, column: 22, file: SmartCL.Layout]
+function TLayoutRect$IsVerticalSet(Self$20) {
+   var Result = false;
+   Result = Self$20.Top$9!=null&&Self$20.Height$10!=null;
+   return Result
+*****
+
+***** index.html
+///  [line: 266, column: 23, file: SmartCL.Layout]
+function TLayoutRect$Resolve(Self$22) {
+   if (Self$22.Left$9==null&&Self$22.Right$7!=null&&Self$22.Width$12!=null) {
+      Self$22.Left$9 = Self$22.Right$7-Self$22.Width$12;
+   } else if (Self$22.Right$7==null&&Self$22.Left$9!=null&&Self$22.Width$12!=null) {
+      Self$22.Right$7 = Self$22.Left$9+Self$22.Width$12;
+   } else if (Self$22.Width$12==null&&Self$22.Left$9!=null&&Self$22.Right$7!=null) {
+      Self$22.Width$12 = Self$22.Right$7-Self$22.Left$9;
+   }
+   if (Self$22.Top$9==null&&Self$22.Bottom$7!=null&&Self$22.Height$10!=null) {
+      Self$22.Top$9 = Self$22.Bottom$7-Self$22.Height$10;
+   } else if (Self$22.Bottom$7==null&&Self$22.Top$9!=null&&Self$22.Height$10!=null) {
+      Self$22.Bottom$7 = Self$22.Top$9+Self$22.Height$10;
+   } else if (Self$22.Height$10==null&&Self$22.Top$9!=null&&Self$22.Bottom$7!=null) {
+      Self$22.Height$10 = Self$22.Bottom$7-Self$22.Top$9;
+   }
+***** _INDEX.HTML
+///  [line: 266, column: 23, file: SmartCL.Layout]
+function TLayoutRect$Resolve(Self$21) {
+   if (Self$21.Left$9==null&&Self$21.Right$7!=null&&Self$21.Width$12!=null) {
+      Self$21.Left$9 = Self$21.Right$7-Self$21.Width$12;
+   } else if (Self$21.Right$7==null&&Self$21.Left$9!=null&&Self$21.Width$12!=null) {
+      Self$21.Right$7 = Self$21.Left$9+Self$21.Width$12;
+   } else if (Self$21.Width$12==null&&Self$21.Left$9!=null&&Self$21.Right$7!=null) {
+      Self$21.Width$12 = Self$21.Right$7-Self$21.Left$9;
+   }
+   if (Self$21.Top$9==null&&Self$21.Bottom$7!=null&&Self$21.Height$10!=null) {
+      Self$21.Top$9 = Self$21.Bottom$7-Self$21.Height$10;
+   } else if (Self$21.Bottom$7==null&&Self$21.Top$9!=null&&Self$21.Height$10!=null) {
+      Self$21.Bottom$7 = Self$21.Top$9+Self$21.Height$10;
+   } else if (Self$21.Height$10==null&&Self$21.Top$9!=null&&Self$21.Bottom$7!=null) {
+      Self$21.Height$10 = Self$21.Bottom$7-Self$21.Top$9;
+   }
+*****
+
+***** index.html
+///  [line: 276, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetBounds$4(Self$23, aLeft$5, aRight$1, aWidth$3, aTop$5, aBottom$1, aHeight$4) {
+   Self$23.Left$9 = aLeft$5;
+   Self$23.Right$7 = aRight$1;
+   Self$23.Width$12 = aWidth$3;
+   Self$23.Top$9 = aTop$5;
+   Self$23.Bottom$7 = aBottom$1;
+   Self$23.Height$10 = aHeight$4;
+   TLayoutRect$Resolve(Self$23);
+}
+***** _INDEX.HTML
+///  [line: 276, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetBounds$4(Self$22, aLeft$5, aRight$1, aWidth$3, aTop$5, aBottom$1, aHeight$4) {
+   Self$22.Left$9 = aLeft$5;
+   Self$22.Right$7 = aRight$1;
+   Self$22.Width$12 = aWidth$3;
+   Self$22.Top$9 = aTop$5;
+   Self$22.Bottom$7 = aBottom$1;
+   Self$22.Height$10 = aHeight$4;
+   TLayoutRect$Resolve(Self$22);
+}
+*****
+
+***** index.html
+///  [line: 287, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetFromControl(Self$24, control$7) {
+   TLayoutRect$SetBounds$4(Self$24,TW3MovableControl.GetLeft(control$7),null,TW3MovableControl.ClientWidth(control$7),TW3Movable
+Control.GetTop(control$7),null,TW3MovableControl.ClientHeight(control$7));
+***** _INDEX.HTML
+///  [line: 287, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetFromControl(Self$23, control$7) {
+   TLayoutRect$SetBounds$4(Self$23,TW3MovableControl.GetLeft(control$7),null,TW3MovableControl.ClientWidth(control$7),TW3Movable
+Control.GetTop(control$7),null,TW3MovableControl.ClientHeight(control$7));
+*****
+
+***** index.html
+///  [line: 292, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetFromRect(Self$25, rect$2) {
+   TLayoutRect$SetBounds$4(Self$25,rect$2.Left$3,null,TRect$Width$3(rect$2),rect$2.Top$3,null,TRect$Height$3(rect$2));
+}
+***** _INDEX.HTML
+///  [line: 292, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetFromRect(Self$24, rect$2) {
+   TLayoutRect$SetBounds$4(Self$24,rect$2.Left$3,null,TRect$Width$3(rect$2),rect$2.Top$3,null,TRect$Height$3(rect$2));
+}
+*****
+
+***** index.html
+///  [line: 297, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetHeight$2(Self$26, value$9) {
+   Self$26.Height$10 = value$9;
+   TLayoutRect$Resolve(Self$26);
+}
+***** _INDEX.HTML
+///  [line: 297, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetHeight$2(Self$25, value$9) {
+   Self$25.Height$10 = value$9;
+   TLayoutRect$Resolve(Self$25);
+}
+*****
+
+***** index.html
+///  [line: 312, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetLeft$1(Self$27, value$10) {
+   Self$27.Left$9 = value$10;
+   TLayoutRect$Resolve(Self$27);
+}
+***** _INDEX.HTML
+///  [line: 312, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetLeft$1(Self$26, value$10) {
+   Self$26.Left$9 = value$10;
+   TLayoutRect$Resolve(Self$26);
+}
+*****
+
+***** index.html
+///  [line: 324, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetTop$1(Self$28, value$11) {
+   Self$28.Top$9 = value$11;
+   TLayoutRect$Resolve(Self$28);
+}
+***** _INDEX.HTML
+///  [line: 324, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetTop$1(Self$27, value$11) {
+   Self$27.Top$9 = value$11;
+   TLayoutRect$Resolve(Self$27);
+}
+*****
+
+***** index.html
+///  [line: 345, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetWidth$3(Self$29, value$12) {
+   Self$29.Width$12 = value$12;
+   TLayoutRect$Resolve(Self$29);
+}
+***** _INDEX.HTML
+///  [line: 345, column: 23, file: SmartCL.Layout]
+function TLayoutRect$SetWidth$3(Self$28, value$12) {
+   Self$28.Width$12 = value$12;
+   TLayoutRect$Resolve(Self$28);
+}
+*****
+
+***** index.html
+///  [line: 351, column: 23, file: SmartCL.Layout]
+function TLayoutRect$Shrink(Self$30, rect$3) {
+   if (Self$30.Left$9!=null) {
+      Self$30.Left$9 = Self$30.Left$9+rect$3.Left$3;
+   }
+   if (Self$30.Right$7!=null) {
+      Self$30.Right$7 = Self$30.Right$7-rect$3.Right$1;
+   }
+   if (Self$30.Width$12!=null) {
+      Self$30.Width$12 = Self$30.Width$12-rect$3.Left$3-rect$3.Right$1;
+   }
+   if (Self$30.Top$9!=null) {
+      Self$30.Top$9 = Self$30.Top$9+rect$3.Top$3;
+   }
+   if (Self$30.Bottom$7!=null) {
+      Self$30.Bottom$7 = Self$30.Bottom$7-rect$3.Bottom$1;
+   }
+   if (Self$30.Height$10!=null) {
+      Self$30.Height$10 = Self$30.Height$10-rect$3.Top$3-rect$3.Bottom$1;
+   }
+***** _INDEX.HTML
+///  [line: 351, column: 23, file: SmartCL.Layout]
+function TLayoutRect$Shrink(Self$29, rect$3) {
+   if (Self$29.Left$9!=null) {
+      Self$29.Left$9 = Self$29.Left$9+rect$3.Left$3;
+   }
+   if (Self$29.Right$7!=null) {
+      Self$29.Right$7 = Self$29.Right$7-rect$3.Right$1;
+   }
+   if (Self$29.Width$12!=null) {
+      Self$29.Width$12 = Self$29.Width$12-rect$3.Left$3-rect$3.Right$1;
+   }
+   if (Self$29.Top$9!=null) {
+      Self$29.Top$9 = Self$29.Top$9+rect$3.Top$3;
+   }
+   if (Self$29.Bottom$7!=null) {
+      Self$29.Bottom$7 = Self$29.Bottom$7-rect$3.Bottom$1;
+   }
+   if (Self$29.Height$10!=null) {
+      Self$29.Height$10 = Self$29.Height$10-rect$3.Top$3-rect$3.Bottom$1;
+   }
+*****
+

@@ -1,0 +1,44 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2015-06-12T21:28:11.770</Created>
+    <Modified>2016-03-14T19:59:45.359</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Button">
+        <Caption>Go to 2nd form</Caption>
+        <Width>130</Width>
+        <Top>32</Top>
+        <Left>32</Left>
+        <Height>32</Height>
+        <Name>W3Button1</Name>
+        <OnClick>W3Button1Click</OnClick>
+      </object>
+      <object type="TW3Label">
+        <Caption>This is Form1</Caption>
+        <Width>128</Width>
+        <Top>128</Top>
+        <Left>32</Left>
+        <Height>32</Height>
+        <Name>W3Label1</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>Go to 3rd form</Caption>
+        <Width>130</Width>
+        <Top>80</Top>
+        <Left>32</Left>
+        <Height>32</Height>
+        <Name>W3Button2</Name>
+        <OnClick>W3Button2Click</OnClick>
+      </object>
+      <object type="TW3Memo">
+        <Text>W3Memo</Text>
+        <Width>392</Width>
+        <Top>160</Top>
+        <Left>24</Left>
+        <Height>136</Height>
+        <Name>W3Memo1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
