@@ -1,0 +1,90 @@
+var spriteSheetName= {"frames": [
+{
+"filename": "background",
+	"frame": {"x":2,"y":2,"w":800,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":400},
+	"sourceSize": {"w":800,"h":400}
+},
+{
+"filename":"filename1",
+	"frame": {"x":967,"y":2,"w":158,"h":316},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":3,"w":158,"h":316},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename2",
+	"frame": {"x":1850,"y":2,"w":168,"h":303},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":8,"w":168,"h":303},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename3",
+	"frame": {"x":1553,"y":2,"w":152,"h":307},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":2,"w":152,"h":307},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename4",
+	"frame": {"x":1707,"y":2,"w":141,"h":306},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":42,"y":1,"w":141,"h":306},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename5",
+	"frame": {"x":1275,"y":2,"w":139,"h":311},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":3,"w":139,"h":311},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename6",
+	"frame": {"x":1416,"y":2,"w":135,"h":311},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":8,"w":135,"h":311},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename7",
+	"frame": {"x":1127,"y":2,"w":146,"h":314},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":2,"w":146,"h":314},
+	"sourceSize": {"w":187,"h":324}
+},
+
+{
+"filename":"filename8",
+	"frame": {"x":804,"y":2,"w":161,"h":319},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":1,"w":161,"h":319},
+	"sourceSize": {"w":187,"h":324}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cityscene.png",
+	"format": "INDEXED",
+	"size": {"w":2020,"h":404},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3f95b1feed2fbfc4385b49348c54e958:fed0f696c0a1349f4c5839d5f65ab643:292542e6853f316339413b9243f95b10$"
+}
+}
