@@ -5,5 +5,3 @@ CACHE MANIFEST
 CACHE:
 index.html
 res/app.css
-lib/FireSprite.js
-lib/sample2.json
