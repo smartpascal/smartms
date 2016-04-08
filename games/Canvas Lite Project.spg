@@ -1,0 +1,310 @@
+<SMART>
+  <Generator version="2" subversion="2">
+    <Name>Canvas Lite Project</Name>
+    <Category>Canvas</Category>
+    <Description>A canvas Lite project is low-level project type that requires experience in graphical programming to master.&#13;&#10;The project generate bare minimum javascript code.</Description>
+    <Vendor>Optimale Systemer AS</Vendor>
+    <Created>2014-04-21T10:25:30.205</Created>
+    <Target>Browser</Target>
+    <Version>
+      <Major>2</Major>
+      <Minor>1</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <Default>
+      <Options>
+        <Compiler>
+          <Assertions>1</Assertions>
+          <Optimize>1</Optimize>
+          <HintsLevel>1</HintsLevel>
+        </Compiler>
+        <Codegen>
+          <Obfuscation>0</Obfuscation>
+          <RangeChecking>1</RangeChecking>
+          <InstanceChecking>1</InstanceChecking>
+          <ConditionChecking>1</ConditionChecking>
+          <LoopChecking>1</LoopChecking>
+          <InlineMagics>0</InlineMagics>
+          <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
+          <EmitSourceLocation>0</EmitSourceLocation>
+          <EmitRTTI>0</EmitRTTI>
+          <Devirtualize>1</Devirtualize>
+          <MainBody>1</MainBody>
+          <CodePacking>0</CodePacking>
+          <SmartLinking>1</SmartLinking>
+          <Verbosity>1</Verbosity>
+        </Codegen>
+        <ConditionalDefines>
+          <HandleExceptions>0</HandleExceptions>
+          <AutoRefresh>0</AutoRefresh>
+          <LegacySupportForIE>0</LegacySupportForIE>
+        </ConditionalDefines>
+        <Linker>
+          <SourceMap>0</SourceMap>
+          <CompressCSS>0</CompressCSS>
+          <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+          <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
+          <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+          <GenerateWebAppManifest>1</GenerateWebAppManifest>
+          <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+          <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
+          <ExternalCSS>0</ExternalCSS>
+          <Theme>iOS.css</Theme>
+          <CustomTheme>0</CustomTheme>
+          <EmbedJavaScript>1</EmbedJavaScript>
+        </Linker>
+        <Output>
+          <HtmlFileName>index.html</HtmlFileName>
+          <OutputFilePath>www\</OutputFilePath>
+        </Output>
+        <Import />
+        <Execute>
+          <ServeManifest>0</ServeManifest>
+          <Server>1</Server>
+          <CustomFile></CustomFile>
+          <LoadCustomFile>0</LoadCustomFile>
+          <PauseAfterExecution>0</PauseAfterExecution>
+          <ExecuteType>0</ExecuteType>
+        </Execute>
+      </Options>
+    </Default>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>0</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
+        <EmitSourceLocation>0</EmitSourceLocation>
+        <EmitRTTI>0</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>1</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+        <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWebAppManifest>1</GenerateWebAppManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
+        <ExternalCSS>1</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>0</Server>
+        <CustomFile></CustomFile>
+        <LoadCustomFile>0</LoadCustomFile>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>2</ExecuteType>
+        <ExecuteableName>chrome.exe</ExecuteableName>
+        <ExecuteableParams>%output%</ExecuteableParams>
+      </Execute>
+    </Options>
+    <Code>
+      <MediaType>text/pascal</MediaType>
+      <Text>
+        <![CDATA[{ **************************************************************************** }
+{                                                                              }
+{ Smart Mobile Studio - Runtime Library                                        }
+{                                                                              }
+{ Copyright © 2012-2014 Optimale Systemer AS.                                  }
+{                                                                              }
+{ **************************************************************************** }
+
+// Create project (incl. .spr file)
+var Project := TSmartProject.Create; 
+
+// Specify source of .spr file
+Project.Source := "uses W3C.HTML5, Unit1;
+
+{ style body }
+var BodyStyle := JHTMLBodyElement(Document.body).style;
+BodyStyle.setProperty('border', '0');
+BodyStyle.setProperty('margin', '0');
+BodyStyle.setProperty('padding', '0');
+BodyStyle.setProperty('overflow', 'hidden');
+
+{ create canvas element }
+var CanvasElement := JHTMLCanvasElement(Document.createElement('canvas'));
+
+{ fullscreen canvas }
+CanvasElement.style.setProperty('display', 'block');
+
+{ append canvas element to document body }
+Document.body.appendChild(CanvasElement);
+
+try
+  var Application := TCanvasProject.Create(CanvasElement);
+  Application.id  := 'MyCanvas';
+except
+  on e: Exception do
+    ; //console.log(e.Message);
+end;
+";
+
+// Add project unit (.pas)
+var ProjectUnit := Project.AddUnitFile;
+
+// Specify unit name and source
+ProjectUnit.Name := 'Unit1';
+ProjectUnit.Source := "unit Unit1;
+
+interface
+
+uses 
+  W3C.HTML5, W3C.DOM, W3C.Canvas2DContext, W3C.CSS, W3C.CSSOM, W3C.Console, ECMA.JSON;
+
+type
+  TAnimationHandler = procedure;
+
+type
+  TCanvasProject = class(TObject)
+  private
+    { Private fields and methods }
+    FCanvas: JHTMLCanvasElement;
+    FContext: JCanvasRenderingContext2D;
+    FWidth, FHeight : integer;
+
+  protected
+    procedure ApplicationStarting;
+    procedure ResizeCanvas;
+    procedure setCanvasId(id: variant);
+    procedure PaintCanvas;
+  public
+    constructor Create(ACanvas: JHTMLCanvasElement; Width: integer = 0; Height: integer = 0); virtual;
+    property Canvas: JHTMLCanvasElement read FCanvas;
+    property Context: JCanvasRenderingContext2D read FContext;
+    property id: variant write setCanvasId;      
+  end;
+  
+implementation
+
+var RequestAnimFrame: function(const Meth: TAnimationHandler): Variant;
+var CancelAnimFrame: procedure(const Handle: Variant);
+
+procedure InitAnimationFrameShim;
+begin
+  asm
+    @RequestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame    ||
+              window.msRequestAnimationFrame     ||
+              function( callback ){
+                return window.setTimeout(callback, 1000 / 60);
+              };
+    })();
+    @CancelAnimFrame = (function(){
+      return  window.cancelAnimationFrame       ||
+              window.webkitCancelAnimationFrame ||
+              window.mozCancelAnimationFrame    ||
+              window.msCancelAnimationFrame     ||
+              function( handle ){
+                window.clearTimeout(handle);
+              };
+    })();
+  end;
+end;
+
+function requestAnimationFrame(const aMethod: TAnimationHandler): Variant;
+begin
+  if not Assigned(RequestAnimFrame) then
+    InitAnimationFrameShim;
+  Result := RequestAnimFrame(aMethod);
+end;
+
+procedure cancelAnimationFrame(const animationId: Variant);
+begin
+  if not Assigned(CancelAnimFrame) then
+    InitAnimationFrameShim;
+  CancelAnimFrame(animationId);
+end;
+{ TCanvasProject }
+
+procedure TCanvasProject.setCanvasId(id: variant);
+begin
+  FCanvas.id := id;
+end;
+
+procedure TCanvasProject.ResizeCanvas;
+begin
+  if (FWidth  = 0) then Canvas.width  := Round(Window.innerWidth)  else Canvas.width  := FWidth;
+  if (FHeight = 0) then Canvas.height := Round(Window.innerHeight) else Canvas.height := FHeight;
+end;
+
+constructor TCanvasProject.Create(ACanvas: JHTMLCanvasElement; Width: integer = 0; Height: integer = 0);
+begin
+  { cache canvas and context }
+  FCanvas := ACanvas;
+  FContext := JCanvasRenderingContext2D(ACanvas.getContext('2d'));
+  FWidth := Width;
+  FHeight :=  Height;
+
+  Window.addEventListener('resize', lambda
+    ResizeCanvas
+  end);
+
+  { update canvas animation }
+  ResizeCanvas;
+
+  { pre initialization session }
+  ApplicationStarting;
+end;
+
+procedure TCanvasProject.ApplicationStarting;
+begin
+  { here is the pre initialization session }
+
+  { start animation }
+  requestAnimationFrame(PaintCanvas);
+end;
+
+procedure TCanvasProject.PaintCanvas;
+begin
+  { Clear background  }
+  FContext.FillStyle := 'rgb(0, 0, 99)';
+  FContext.clearRect(0, 0, Canvas.width, Canvas.height);
+
+	{ fill color in the background }
+	FContext.fillStyle := 'rgb(255, 255, 255)';
+	FContext.fillRect(0, 0, Canvas.width, Canvas.height);
+
+  { continue here the animation... }
+  
+
+  { update the canvas animation }
+  requestAnimationFrame(PaintCanvas);
+
+end;
+
+end.";
+]]>
+      </Text>
+    </Code>
+  </Generator>
+</SMART>
