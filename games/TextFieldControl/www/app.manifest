@@ -1,0 +1,8 @@
+CACHE MANIFEST
+# Offline cache version 0.0.1
+# id:43675
+
+CACHE:
+index.html
+res/app.css
+lib/cssx.min.js
