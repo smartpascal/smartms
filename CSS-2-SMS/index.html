@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Live SmartMS</title>
+<style type="text/css">
+  #source-code, #parsed-tree, #parsed-code, #style-frame, #html-source-code, #log{display: block; width: 96%; min-height: 7em; height: 12em; margin: 0; border: 1px black solid; padding: 0.4em;}#log{min-height: 2em; _height: 2em; max-height: 7em; overflow: auto;}#contente{display: none}; h2{margin: 1em 0 0 0; font-size: 70%;}h2:after{content: ":";}p, pre{margin: 0; text-indent: 0;}li{list-style-type: none;}ol ol{margin-left: 1em; padding-left: 0;}.IE-PAGES, .IE-IMPORTS{border-bottom: 1px gray dashed;}/* iframe{width: 0; height: 0; margin: 0; border-style: none; padding: 0;}*/ pre{white-space: -moz-pre-wrap; white-space: pre-wrap;}.Interface{color: orangered;}.CSS-AT{color: blue;}.Selectors{font-weight: bolder;}.charset{}.URI{}.URI:before{content: "<"}.URI:after{content: ">"}.MQ{}.CSS-Property-Name{color: #800080;}.CSS-Property-Value{}.CSS-Property-Priority{color: #8000ff;}
+</style>
+<script type="text/javascript">
+function $(id){return document.getElementById(id);}
+function htescape(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+var updateTimer=0;var prevSourceText=null;var prevHTMLSourceText=null;var parseMode='noQuirks';var prevParseMode='';function sourceTextUpdated(forceUpdate){if(updateTimer){clearTimeout(updateTimer);}
+if(forceUpdate){prevSourceText=null;}
+updateTimer=setTimeout(updateParsedTreeAndText,100);}
+function updateParsedTreeAndText(){var newValue=$('source-code').value+'';var newHTMLValue=$('html-source-code').value;if(prevSourceText!=newValue||prevHTMLSourceText!=newHTMLValue){prevSourceText=newValue;prevHTMLSourceText=newHTMLValue;window.updateParsed(newValue,newHTMLValue);$('permalink').href=location.pathname+'?c='+
+encodeURIComponent(newValue)+';h='+
+encodeURIComponent(newHTMLValue)+';p='+
+parseMode.substring(0,1)+';x='+$('parse-context').value+';i='+$('fragment-context').value;}}
+window.onload=function(){var currentHTMLDoctype='';if(document.styleSheets[0].rules&&document.styleSheets[0].cssText){var pre=$('parsed-code-parent').appendChild
+(document.createElement('pre'));var code=pre.appendChild
+(document.createElement('code'));code.id='parsed-code';window.updateViews=function(){var iframe=$('style-frame');var idoc=iframe.contentWindow.document;var ol=$('parsed-tree');ol.innerHTML='';var code=$('parsed-code');var pcontext=$('parse-context').value;if(pcontext=='style-attribute'){var idiv=idoc.getElementsByTagName('body')[0].firstChild;window.addIEStyleDeclarationObjectToList(idiv.style,ol);code.innerText=idiv.style.cssText;}else{if(pcontext!='style-element'&&pcontext!=''){record('CSS context "'+pcontext+'" is not supported');}
+var istyle=idoc.getElementsByTagName('style')[0];window.addIEStyleSheetObjectToList(istyle.styleSheet,ol,true);code.innerText=istyle.styleSheet.cssText;}
+var fcontext=$('fragment-context').value;if(fcontext!='html-div'&&fcontext!=''){record('Document context "'+fcontext+'" is not supported');}
+$('cssTreeLink').href='data:text/plain;charset=utf-8,'+
+encodeURIComponent('<ol>'+ol.innerHTML+'</ol>');$('cssTextLink').href='data:text/plain;charset=utf-8,'+
+encodeURIComponent($('parsed-code-parent').innerHTML);var htmlAll=encodeURIComponent(currentHTMLDoctype+'<html>'+
+idoc.documentElement.innerHTML+'</html>');$('test-as-data').href='data:text/html;charset=utf-8,'+htmlAll;$('test-as-about').href='about:'+htmlAll;$('test-as-javascript').href='javascript:%22'+
+htmlAll.replace(/%5C/g,'%5C%5C').replace(/%0D/g,'%5Cu000D').replace(/%0A/g,'%5Cu000A').replace(/%22/g,'%5C%22')+'%22';};var u=updateViews;window.updateParsed=function(sourceCodeValue,htmlSourceCodeValue){var pcontext=$('parse-context').value;$('log').innerHTML='';var iframe=$('style-frame');iframe.onreadystatechange=function(){if(this.readyState=='complete'){var idoc=this.contentWindow.document;this.contentWindow.w=function(s){record('log: '+s);};this.contentWindow.u=u;this.contentWindow.ss=function(){return idoc.getElementsByTagName('style')[0].styleSheet;};this.contentWindow.sd=function(){if($('parse-context').value=='style-attribute'){return idoc.getElementsByTagName('body')[0].firstChild.style;}else{var sheet=idoc.getElementsByTagName('style')[0].styleSheet;var rule=sheet.rules[0];return rule?rule.style:null;}};if(pcontext=='style-attribute'){}else{var istyle=idoc.getElementsByTagName('style')[0];istyle.styleSheet.cssText=sourceCodeValue;}
+var idiv=idoc.getElementsByTagName('body')[0].firstChild;idiv.innerHTML=htmlSourceCodeValue;u();this.onreadystatechange=null;}};var text='<style></style><body><div';if(pcontext=='style-attribute'){text+=' style="'+htescape(sourceCodeValue)+'"';}
+text+='></div></body>';if(parseMode=='noQuirks'){text=(currentHTMLDoctype='<!DOCTYPE HTML>')+text;}else if(parseMode=='limitedQuirks'){text=(currentHTMLDoctype='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">')+
+text;}else{if(parseMode!='quirks'&&parseMode!=''){record('Parse mode "'+parseMode+'" is not supported');}
+currentHTMLDoctype='';}
+iframe.src='javascript:\''+text+'\'';};}else{var ol=$('parsed-code-parent').appendChild
+(document.createElement('ol'));ol.id='parsed-code';$('show-all-props-all').style.display='none';window.updateParsed=function(sourceCodeValue,htmlSourceCodeValue){var iframe=$('style-frame');var idoc=iframe.contentDocument;if(prevParseMode!=parseMode){if(parseMode=='xhtml'||parseMode=='svg'){if(iframe.getAttribute('src')!='empty.'+parseMode){iframe.onload=function(){iframe.onload=null;window.updateParsed(sourceCodeValue,htmlSourceCodeValue);};iframe.src='empty.'+parseMode;return;}else{currentHTMLDoctype='';}
+iframe.contentWindow.ss=function(){var pcontext=$('parse-context').value;if(pcontext=='svg-style-element'){return idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','style')[0].sheet;}else{return idoc.getElementsByTagNameNS
+('http://www.w3.org/1999/xhtml','style')[0].sheet;}};iframe.contentWindow.sd=function(){var pcontext=$('parse-context').value;if(pcontext=='svg-style-attribute'){return idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','g')[0].style;}else if(pcontext=='style-attribute'){return idoc.getElementsByTagNameNS
+('http://www.w3.org/1999/xhtml','body')[0].firstChild.style;}else{var rs=idoc.getElementsByTagNameNS
+(pcontext=='svg-style-element'?'http://www.w3.org/2000/svg':'http://www.w3.org/1999/xhtml','style')[0].sheet.cssRules;var rsL=rs.length;for(var i=0;i<rsL;i++){var rule=rs[i];if(rule.type==1){return rule.style;}}
+return null;}};}else{if(!iframe.getAttribute('src').match(/:blank$/)){iframe.onload=function(){iframe.onload=null;window.updateParsed(sourceCodeValue,htmlSourceCodeValue);};iframe.src='about:blank';return;}
+if(parseMode=='noQuirks'){idoc.write(currentHTMLDoctype='<!DOCTYPE HTML>');}else if(parseMode=='limitedQuirks'){idoc.write(currentHTMLDoctype='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">');}else{currentHTMLDoctype='';}
+idoc.write('<html><head><style></style></head>');idoc.write('<body><div></div></body></html>');idoc.close();iframe.contentWindow.ss=function(){var pcontext=$('parse-context').value;if(pcontext=='svg-style-element'){return idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','style')[0].sheet;}else{return idoc.getElementsByTagName('style')[0].sheet;}};iframe.contentWindow.sd=function(){var pcontext=$('parse-context').value;if(pcontext=='svg-style-attribute'){return idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','g')[0].style;}else if(pcontext=='style-attribute'){return idoc.getElementsByTagName('body')[0].firstChild.style;}else{var rs;if(pcontext=='svg-style-element'){rs=idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','g')[0].sheet.cssRules;}else{rs=idoc.getElementsByTagName('style')[0].sheet.cssRules;}
+var rsL=rs.length;for(var i=0;i<rsL;i++){var rule=rs[i];if(rule.type==1){return rule.style;}}
+return null;}};}
+prevParseMode=parseMode;iframe.contentWindow.w=function(s){record('log: '+s);};iframe.contentWindow.u=updateViews;}
+$('log').innerHTML='';var idiv;var istyle;var isvgstyle=idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','style')[0];var ifo;var isvg;var ig=idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','g')[0];var fcontext=$('fragment-context').value;if(parseMode!='svg'){idiv=idoc.getElementsByTagName('body')[0].firstChild;istyle=idoc.getElementsByTagName('style')[0];}
+var pcontext=$('parse-context').value;if(parseMode=='svg'&&(pcontext=='style-element'||pcontext=='style-attribute'||fcontext=='html-div')){ifo=idoc.createElementNS
+('http://www.w3.org/2000/svg','foreignObject');ifo.setAttributeNS(null,'width',100);ifo.setAttributeNS(null,'height',100);var html=ifo.appendChild
+(idoc.createElementNS
+('http://www.w3.org/1999/xhtml','html'));istyle=html.appendChild
+(idoc.createElementNS
+('http://www.w3.org/1999/xhtml','head')).appendChild
+(idoc.createElementNS
+('http://www.w3.org/1999/xhtml','style'));idiv=html.appendChild
+(idoc.createElementNS
+('http://www.w3.org/1999/xhtml','body')).appendChild
+(idoc.createElementNS
+('http://www.w3.org/1999/xhtml','div'));}
+if(parseMode!='svg'&&(fcontext=='svg-g'||pcontext=='svg-style-element'||pcontext=='svg-style-attribute')){isvg=idiv.appendChild
+(idoc.createElementNS('http://www.w3.org/2000/svg','svg'));isvgstyle=isvg.appendChild
+(idoc.createElementNS('http://www.w3.org/2000/svg','defs')).appendChild
+(idoc.createElementNS
+('http://www.w3.org/2000/svg','style'));isvgstyle.setAttributeNS(null,'type','text/css');ig=isvg.appendChild
+(idoc.createElementNS('http://www.w3.org/2000/svg','g'));}
+if(idiv){idiv.textContent='';idiv.setAttribute('style','');}
+if(ig){ig.textContent='';ig.setAttributeNS(null,'style','');}
+if(istyle)istyle.textContent='';var isvgstyleNewContent='';if(pcontext=='svg-style-attribute'){ig.setAttributeNS(null,'style',sourceCodeValue);}else if(pcontext=='style-attribute'){idiv.setAttribute('style',sourceCodeValue);}else if(pcontext=='svg-style-element'){isvgstyleNewContent=sourceCodeValue;}else{istyle.textContent=sourceCodeValue;}
+if(isvgstyle&&isvgstyleNewContent!=isvgstyle.textContent){var isvgstyleNew=idoc.createElementNS
+('http://www.w3.org/2000/svg','style');isvgstyleNew.type='text/css';isvgstyleNew.textContent=isvgstyleNewContent;isvgstyle.parentNode.replaceChild(isvgstyleNew,isvgstyle);}
+if(fcontext=='svg-g'){var parsed=(new DOMParser()).parseFromString
+('<g xmlns="http://www.w3.org/2000/svg">'+htmlSourceCodeValue+'</g>','application/xml').documentElement;var parsedChilds=parsed.childNodes;var parsedChildsL=parsedChilds.length;for(var i=0;i<parsedChildsL;i++){ig.appendChild(idoc.importNode(parsedChilds[i],true));}}else{try{idiv.innerHTML=htmlSourceCodeValue;}catch(e){record('Document fragment parse error: '+e);}}
+if(idiv&&isvg){idiv.appendChild(isvg);}
+if(ig&&ifo){ig.appendChild(ifo);}
+updateViews();};window.updateViews=function(){var iframe=$('style-frame');var idoc=iframe.contentDocument;var ol=$('parsed-tree');ol.innerHTML='';var ol2=$('parsed-code');ol2.textContent='';var pcontext=$('parse-context').value;if(pcontext=='svg-style-attribute'){var ig=idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','g')[0];window.addCSSOMStyleDeclarationObjectToList(ig.style,ol);ol2.appendChild(document.createElement('li')).appendChild(document.createElement('pre')).appendChild(document.createElement('code')).textContent=ig.style.cssText;}else if(pcontext=='style-attribute'){var idiv=idoc.getElementsByTagName('body')[0].firstChild;window.addCSSOMStyleDeclarationObjectToList(idiv.style,ol);ol2.appendChild(document.createElement('li')).appendChild(document.createElement('pre')).appendChild(document.createElement('code')).textContent=idiv.style.cssText;}else{var istyle;if(pcontext=='svg-style-element'){istyle=idoc.getElementsByTagNameNS
+('http://www.w3.org/2000/svg','style')[0];}else{if(parseMode=='xhtml'||parseMode=='svg'){istyle=idoc.getElementsByTagNameNS
+('http://www.w3.org/1999/xhtml','style')[0];}else{istyle=idoc.getElementsByTagName('style')[0];}}
+addCSSOMStyleSheetObjectToList(istyle.sheet,ol);try{var rules=istyle.sheet.cssRules;for(var i=0;i<rules.length;i++){ol2.appendChild(document.createElement('li')).appendChild(document.createElement('pre')).appendChild(document.createElement('code')).textContent=(i==rules.length-1)?"'"+rules[i].cssText+"'":"'"+rules[i].cssText+"',";}
+document.getElementById("html-source-code").innerText='var returnCSS: array of string = ['+ol2.textContent+'];'+'\n\n'+'for var i:= returnCSS.low to returnCSS.high do'+'\n'+'begin'+'\n'+'  document.styleSheets[0].insertRule( returnCSS[i], i);'+'\n'+'end;';document.getElementById("html-source-code").style.backgroundColor='gold';}catch(e){clearTimeout(window.cssTextTimer);window.cssTextTimer=setTimeout(function(){try{ol2.textContent='';var rules=istyle.sheet.cssRules;for(var i=0;i<rules.length;i++){ol2.appendChild(document.createElement('li')).appendChild(document.createElement('pre')).appendChild(document.createElement('code')).textContent=rules[i].cssText;}}catch(e){record('Error: '+e);}},1000);}}
+$('cssTreeLink').href='data:text/plain;charset=utf-8,'+
+encodeURIComponent('<ol>'+ol.innerHTML+'</ol>');$('cssTextLink').href='data:text/plain;charset=utf-8,'+
+encodeURIComponent('<ol>'+ol2.innerHTML+'</ol>');var htmlAll;if(parseMode=='xhtml'||parseMode=='svg'){htmlAll=encodeURIComponent
+((new XMLSerializer()).serializeToString(idoc));}else{htmlAll=encodeURIComponent(currentHTMLDoctype+'<html>'
++idoc.documentElement.innerHTML+'</html>');}
+$('test-as-data').href='data:'+
+(parseMode=='xhtml'?'application/xhtml+xml':parseMode=='svg'?'application/svg+xml':'text/html')+';charset=utf-8,'+htmlAll;$('test-as-about').href='about:'+htmlAll;$('test-as-javascript').href='javascript:%22'+
+htmlAll.replace(/%5C/g,'%5C%5C').replace(/%0D/g,'%5Cu000D').replace(/%0A/g,'%5Cu000A').replace(/%22/g,'%5C%22')+'%22';};}
+var q=location.search;if(q!=null){q=q.substring(1).split(/;/);for(var i=0;i<q.length;i++){var v=q[i].split(/=/,2);v[0]=decodeURIComponent(v[0]);v[1]=decodeURIComponent(v[1]||'');if(v[0]=='c'){$('source-code').value=v[1];}else if(v[0]=='h'){$('html-source-code').value=v[1];}else if(v[0]=='p'){if(v[1]=='x'){$('compatMode-xhtml').checked=true;parseMode='xhtml';}else if(v[1]=='s'){$('compatMode-svg').checked=true;parseMode='svg';}else if(v[1]=='n'){$('compatMode-no-quirks').checked=true;parseMode='noQuirks';}else if(v[1]=='l'){$('compatMode-limited-quirks').checked=true;parseMode='limitedQuirks';}else{$('compatMode-quirks').checked=true;parseMode='quirks';}}else if(v[0]=='x'){$('parse-context').value=v[1];}else if(v[0]=='i'){$('fragment-context').value=v[1];}}}
+sourceTextUpdated(true);};function addCSSOMStyleSheetObjectToList(obj,rList){var li=document.createElement('li');li.innerHTML='<code class="Interface">StyleSheet</code>';rList.appendChild(li);try{var rules=obj.cssRules;if(rules&&rules.length>0){var ol=document.createElement('ol');li.appendChild(ol);for(var i=0;i<rules.length;i++){window.addCSSOMRuleObjectToList(rules[i],ol);}}}catch(e){clearTimeout(window.cssRulesTimer);window.cssRulesTimer=setTimeout(function(){try{var rules=obj.cssRules;if(rules&&rules.length>0){var ol=document.createElement('ol');li.appendChild(ol);for(var i=0;i<rules.length;i++){window.addCSSOMRuleObjectToList(rules[i],ol);}}}catch(e){record('Error: '+e);}},1000);}}
+function addIEStyleSheetObjectToList(obj,rList,isRoot){var li=document.createElement('li');li.innerHTML='<code class="Interface">StyleSheet</code>';if(!isRoot){li.appendChild(document.createTextNode(' '));var uriCode=li.appendChild(document.createElement('code'));uriCode.innerText=obj.href;uriCode.className='URI';}
+var func=function(){try{var imports=obj.imports;if(imports&&imports.length>0){var ol=document.createElement('ol');ol.className='IE-IMPORTS';li.appendChild(ol);for(var i=0;i<imports.length;i++){window.addIEStyleSheetObjectToList(imports[i],ol,false);}}
+var pages=obj.pages;if(pages&&pages.length>0){var ol=document.createElement('ol');ol.className='IE-PAGES';li.appendChild(ol);for(var i=0;i<pages.length;i++){window.addIEPageObjectToList(pages[i],ol);}}
+var rules=obj.rules;if(rules&&rules.length>0){var ol=document.createElement('ol');li.appendChild(ol);for(var i=0;i<rules.length;i++){window.addIERuleObjectToList(rules[i],ol);}}}catch(e){record(e.message);}};if(isRoot){func();}else{setTimeout(func,1000);}
+rList.appendChild(li);}
+function addIEPageObjectToList(obj,rList){var li=document.createElement('li');li.innerHTML='<code class="CSS-AT">@page</code> <code class="Selectors"></code>';li.lastChild.innerText=obj.selector+':'+obj.pseudoClass;rList.appendChild(li);}
+function addIERuleObjectToList(obj,rList){var li=document.createElement('li');li.innerHTML='<code class="Selectors"></code>';li.lastChild.innerText=obj.selectorText;var ol=document.createElement('ol');window.addIEStyleDeclarationObjectToList(obj.style,ol);li.appendChild(ol);rList.appendChild(li);}
+function addCSSOMRuleObjectToList(obj,rList){var li=document.createElement('li');li.className='type'+obj.type;if(obj.type==1||obj.type==5||obj.type==6){if(obj.type==1){li.innerHTML='<code class="Selectors"></code>';li.lastChild.textContent=obj.selectorText;}else if(obj.type==5){li.innerHTML='<code class="CSS-AT">@font-face</code>';}else{li.innerHTML='<code class="CSS-AT">@page</code> <code class="Selectors"></code>';li.lastChild.textContent=obj.selectorText;}}else if(obj.type==2){li.innerHTML='<code class="CSS-AT">@charset</code> <code class="charset"></code>';li.lastChild.textContent=obj.encoding;}else if(obj.type==3){li.innerHTML='<code class="CSS-AT">@import</code> <code class="URI"></code> <code class="MQ"></code>';li.lastChild.previousSibling.previousSibling.textContent=obj.href;li.lastChild.textContent=obj.media.mediaText;addCSSOMStyleSheetObjectToList
+(obj.styleSheet,li.appendChild(document.createElement('ul')));}else if(obj.type==4){li.innerHTML='<code class="CSS-AT">@media</code> <code class="MQ"></code>';li.lastChild.textContent=obj.media.mediaText;}else{li.appendChild(document.createElement('code')).textContent=obj.type;li.appendChild(document.createTextNode(': '));li.appendChild(document.createElement('code')).textContent=obj.cssText;}
+rList.appendChild(li);var rules=obj.cssRules;if(rules&&rules.length>0){var ol=document.createElement('ol');li.appendChild(ol);for(var i=0;i<rules.length;i++){window.addCSSOMRuleObjectToList(rules[i],ol);}}
+var objstyle=obj.style;if(objstyle){var ol=document.createElement('ol');window.addCSSOMStyleDeclarationObjectToList(objstyle,ol);li.appendChild(ol);}}
+window.addIEStyleDeclarationObjectToList=function(objstyle,ol){var showAll=$('show-all-props').checked;for(n in objstyle){var v=objstyle[n];if((showAll||(v&&(v!="false"||n!="accelerator")))&&n!='cssText'){var cli=document.createElement('li');var propNameCode=cli.appendChild(document.createElement('code'));propNameCode.innerText=n;propNameCode.className='CSS-Property-Name';cli.appendChild(document.createTextNode(': '));var propValueCode=cli.appendChild(document.createElement('code'));propValueCode.innerText=v;propValueCode.className='CSS-Property-Value';ol.appendChild(cli);}}};window.addCSSOMStyleDeclarationObjectToList=function(objstyle,ol){for(var i=0;i<objstyle.length;i++){var propName=objstyle[i];var cli=document.createElement('li');var propNameCode=cli.appendChild(document.createElement('code'));propNameCode.textContent=propName;propNameCode.className='CSS-Property-Name';cli.appendChild(document.createTextNode(': '));var propValueCode=cli.appendChild(document.createElement('code'));propValueCode.textContent=objstyle.getPropertyValue(propName);propValueCode.className='CSS-Property-Value';cli.appendChild(document.createTextNode(' !'));var propPriorityCode=cli.appendChild(document.createElement('code'));propPriorityCode.textContent=objstyle.getPropertyPriority(propName);propPriorityCode.className='CSS-Property-Priority';ol.appendChild(cli);}};window.toggleBoxDisplay=function(anchor,id){var obj=document.getElementById(id);if(obj.style.display=='none'){obj.style.display='block';anchor.innerHTML='Hide';}else{obj.style.display='none';anchor.innerHTML='Show';}};function record(s){$('log').appendChild(document.createTextNode(s+"\r\n"));}
+</script>
+</head>
+<body>
+<h1 style="color: #8000ff;">Live <abbr title="Cascading Style Sheets Object Model">CSS-2-SMS Component Style</abbr></h1><hr/><h2>Paste your CSS (<a href="" rel=permalink id=permalink>permalink</a>,<a href="javascript:" onclick="toggleBoxDisplay (this, 'source-code'); return false">hide</a>, <select id=parse-context onchange="sourceTextUpdated (true)"> <option value=style-element selected>HTML &lt;style> element</option> <option value=style-attribute>HTML style="" attribute</option> <option value=svg-style-element>SVG &lt;style> element</option> <option value=svg-style-attribute>SVG style="" attribute</option> </select>)</h2><p><textarea id="source-code" oninput="sourceTextUpdated ()" onkeypress="sourceTextUpdated ()"></textarea></p><h2>SmartMS Array Generated (<a href="javascript:" onclick="toggleBoxDisplay (this, 'html-source-code'); return false">hide</a>, <select id=fragment-context onchange="sourceTextUpdated (true)"> <option value=html-div>In HTML &lt;div> element</option> <option value=svg-g>In SVG &lt;g> element</option> </select>)</h2><p><textarea id="html-source-code" oninput="sourceTextUpdated ()" onkeypress="sourceTextUpdated ()"></textarea></p><p><input type=radio name=compatMode value="noQuirks" checked id=compatMode-no-quirks onchange="parseMode=value; sourceTextUpdated (true)" onclick=" onchange () "> <label for=compatMode-no-quirks title="HTML (No quirks mode)">No quirks</label><input type=radio name=compatMode value="limitedQuirks" id=compatMode-limited-quirks onchange="parseMode=value; sourceTextUpdated (true)" onclick=" onchange () "> <label for=compatMode-limited-quirks title="HTML (Limited quirks mode)">Limited quirks</label><input type=radio name=compatMode value="quirks" id=compatMode-quirks onchange="parseMode=value; sourceTextUpdated (true)" onclick=" onchange () "> <label for=compatMode-quirks title="HTML (Quirks mode)">Quirks</label><input type=radio name=compatMode value="xhtml" id=compatMode-xhtml onchange="parseMode=value; sourceTextUpdated (true)" onclick=" onchange () "> <label for=compatMode-xhtml><abbr title="Extensible Hypertext Markup Language">XHTML</abbr></label><input type=radio name=compatMode value="svg" id=compatMode-svg onchange="parseMode=value; sourceTextUpdated (true)" onclick=" onchange () "> <label for=compatMode-svg><abbr title="Scalable Vector Graphics">SVG</abbr></label></p><hr><div class="controls"><button id="selectall" onclick="document.getElementById('html-source-code').select(); return false;">Select all</button></div><div id="contente"><h2><a href="data:," id=cssTreeLink><abbr title="Cascading Style Sheets Object Model">CSSOM</abbr> View</a> (<a href="javascript:" onclick="toggleBoxDisplay (this, 'parsed-tree'); return false">hide</a><span id="show-all-props-all">, <input type="checkbox" id="show-all-props" onclick="sourceTextUpdated (true)"><label for="show-all-props">Show all properties</label></span>)</h2><ol id="parsed-tree"></ol><h2><a href="data:," id=cssTextLink><code>cssText</code> view</a> (<a href="javascript:" onclick="toggleBoxDisplay (this, 'parsed-code-parent'); return false">hide</a>)</h2><div id="parsed-code-parent"></div><h2>Rendered document view (<a href="javascript:" onclick="toggleBoxDisplay (this, 'style-frame'); return false">hide</a>,<a href="data:," id=test-as-data>as <code>data:</code></a>,<a href="about:" id=test-as-about>as <code>about:</code></a>,<a href="javascript:" id=test-as-javascript>as <code>javascript:</code></a>)</h2><p><iframe id="style-frame" src="about:blank"></iframe></p><!-- Firefox 1.5 does not allow to access to <style>.sheet.cssRules in Document with javascript:, data:, or about: URI. (But it allows to access to <style>.innerHTML! How secure!) --><h2>Log (<a href="javascript:" onclick="toggleBoxDisplay (this, 'log'); return false">hide</a>)</h2><pre id="log"></pre><p>This script puts functions into the global scope of the test page. <code>w (<var>s</var>)</code> outputs string <var>s</var> to the log.<code>ss ()</code> returns the <code>CSSStyleSheet</code> object (it isuseless in <code>style=""</code> mode). <code>sd ()</code> returns thefirst <code>CSSStyleDeclaration</code> object in document order (if any).<code>u ()</code> updates the<i><abbr title="Cascading Style Sheets Object Model">CSSOM</abbr> view</i> as well as the <i><code>cssText</code> view</i>.</p><p>Also, files <a href=image.png><code>image.png</code></a>(a <abbr>PNG</abbr> image)and <a href=style.css><code>style.css</code></a> (a <abbr>CSS</abbr>style sheet) are accessible in the current directory.</p><footer><p>See also <a href="http://wiki.suikawiki.org/n/Live%20CSSOM%20Viewer" rel=help>SuikaWiki:Live <abbr title="Cascading Style Sheets Object Model">CSSOM</abbr> viewer</a>/ <a href="https://github.com/manakai/livecssomviewer">GitHub</a>.</p></footer></div>
+</body>
+</html>
+<!--
+
+Copyright 2007-2015 Wakaba <wakaba@suikawiki.org>.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+-->
