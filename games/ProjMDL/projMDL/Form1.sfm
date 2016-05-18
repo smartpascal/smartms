@@ -1,0 +1,90 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-05-18T00:40:01.625</Created>
+    <Modified>2016-05-19T00:07:06.312</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TButton">
+        <Title>Press me</Title>
+        <Width>110</Width>
+        <Top>168</Top>
+        <Left>88</Left>
+        <Height>40</Height>
+        <Name>Button1</Name>
+        <OnClick>Button1Click</OnClick>
+      </object>
+      <object type="TTextField">
+        <PlaceHolder>Input text</PlaceHolder>
+        <Width>100</Width>
+        <Top>160</Top>
+        <Left>216</Left>
+        <Height>45</Height>
+        <Name>TextField1</Name>
+      </object>
+      <object type="TCheckBox">
+        <Title>Check y/n</Title>
+        <Checked>True</Checked>
+        <Width>100</Width>
+        <Top>240</Top>
+        <Left>88</Left>
+        <Height>30</Height>
+        <Name>CheckBox1</Name>
+      </object>
+      <object type="TSlider">
+        <MinValue>100</MinValue>
+        <MaxValue>200</MaxValue>
+        <CurValue>140</CurValue>
+        <Width>250</Width>
+        <Top>288</Top>
+        <Left>88</Left>
+        <Height>45</Height>
+        <Name>Slider1</Name>
+      </object>
+      <object type="TRadioPanel">
+        <Width>300</Width>
+        <Top>232</Top>
+        <Left>344</Left>
+        <Height>100</Height>
+        <Name>RadioPanel1</Name>
+      </object>
+      <object type="TSwitch">
+        <Width>104</Width>
+        <Top>240</Top>
+        <Left>208</Left>
+        <Height>32</Height>
+        <Name>Switch1</Name>
+        <OnClick>Switch1Click</OnClick>
+      </object>
+      <object type="TButton">
+        <Title>MenuBtn</Title>
+        <Width>110</Width>
+        <Top>352</Top>
+        <Left>88</Left>
+        <Height>32</Height>
+        <Name>Button2</Name>
+        <OnClick>Button2Click</OnClick>
+      </object>
+      <object type="TMenu">
+        <Width>110</Width>
+        <Top>384</Top>
+        <Left>88</Left>
+        <Height>32</Height>
+        <Name>Menu1</Name>
+      </object>
+      <object type="THeader">
+        <Width>492</Width>
+        <Height>62</Height>
+        <Name>Header1</Name>
+        <OnClick>Header1Click</OnClick>
+      </object>
+      <object type="TMenu">
+        <Width>128</Width>
+        <Top>49</Top>
+        <Left>8</Left>
+        <Height>32</Height>
+        <Name>Menu2</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
