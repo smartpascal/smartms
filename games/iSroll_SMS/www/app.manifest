@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# Offline cache version 0.0.1
+# id:99216
+
+CACHE:
+index.html
+res/app.css
+lib/ratchet.css
+lib/template7.js
+lib/dom7.js
