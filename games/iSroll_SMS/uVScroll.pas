@@ -144,8 +144,6 @@ begin
     FContent.Handle.style[w3_CSSPrefix('transformOrigin')] := '50% 50%';
     FContent.Handle.style[w3_CSSPrefix('Transform')] := 'translateZ(0px)';
     FContent.Handle.style['height'] := null;
-    FContent.Handle.style['padding-top'] := '30px';
-    FContent.Handle.style['padding-bottom'] := '30px';
   end);
 end;
 
@@ -154,10 +152,8 @@ begin
   inherited;
   FContent.OnReSize := HandleContentSizeChanged;
   FIndicator.left:=ClientWidth-FIndicator.width;
-  //FIndicator.bringToFront;
   FIndicator.Visible:=false;
   Resize;
-
 end;
 
 procedure TW3VScrollControl.FinalizeObject;
