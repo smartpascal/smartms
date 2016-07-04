@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>	
+  <meta charset="UTF-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
+    <title>projLoader</title>
+    <style type="text/css">html,body{height:100%;background-color:#2980b9}#appLoadingIndicator{position:absolute;top:50%;left:50%;margin-top:-10px;margin-left:-50px;width:180px;height:20px}#appLoadingIndicator>*{background-color:#FFF;float:left;height:30px;margin-left:11px;width:30px;-webkit-animation-name:appLoadingIndicator;-webkit-border-radius:23px;-webkit-animation-duration:.8s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:linear;opacity:.3 }#appLoadingIndicator>:nth-child(1){-webkit-animation-delay:.18s}#appLoadingIndicator>:nth-child(2){-webkit-animation-delay:.42s}#appLoadingIndicator>:nth-child(3){-webkit-animation-delay:.54s}@-webkit-keyframes appLoadingIndicator{0%{opacity:.3 }50%{opacity:1;background-color:#1985D0 }100%{opacity:.3 }}</style>
+    <link rel="stylesheet" href="lib/app.css">
+</head>
+
+<body>  
+<script type="text/javascript">	document.ontouchmove = function(e) { e.preventDefault(); }
+var img = ["img/cars/1/1.jpg",
+	"img/cars/2/1.jpg",
+	"img/cars/3/1.jpg",
+	"img/cars/4/1.jpg",
+	"img/cars/5/1.jpg",
+	"img/cars/7/1.jpg",
+	"img/cars/8/1.jpg"]; 
+	
+function preload(sources)
+{
+  var images = [];
+  for (i = 0, length = sources.length; i < length; ++i) {
+    images[i] = new Image();
+    images[i].src = sources[i];
+  }
+}
+
+
+
+function Copy$jxM(s, d) {
+	return d
+}
+function Clone$jxM($) {
+	return {}
+
+}
+function Jy() {
+	var WjA = null,
+	QmK = null,
+	mEw = null,
+	NyI = null,
+	Ow = null,
+	WE = null;
+	WjA = document.createDocumentFragment();
+	QmK = document.createElement("DIV");
+	QmK.setAttribute("id", "appLoadingIndicator");
+	WjA.appendChild(QmK);
+	mEw = document.createElement("DIV");
+	QmK.appendChild(mEw);
+	NyI = document.createElement("DIV");
+	QmK.appendChild(NyI);
+	Ow = document.createElement("DIV");
+	QmK.appendChild(Ow);
+	document.body.appendChild(WjA);
+	preload(img)
+	
+	WE = document.createElement("script");
+	WE.type = "text\/javascript";
+	WE.async = true;
+	WE.src = "main.js";
+	document.body.appendChild(WE);
+	window.setTimeout(function () {
+		console.log("Start Loading")
+		
+	}, 0, null);
+	WE.onload = function (qhv) {
+		var R = undefined;
+		console.log("End Loading");
+		return R
+	}
+};
+var nu = null;
+var V5 = null;
+var dJF = null;
+dJF = document.body.style;
+dJF.setProperty("background-color", "#2980b9");
+if (window.addEventListener) {
+	window.addEventListener("load", Jy, false);
+	console.log("Start Preloading")
+} else
+	window.onload = function (m1N) {
+		var R = undefined;
+		console.log("Window onload was loaded");
+		Jy();
+		return R
+	};
+</script>	
+
+</body>
+
+</html>
