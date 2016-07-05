@@ -1,24 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>	
-  <meta charset="UTF-8" />
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="format-detection" content="telephone=yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="default">
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
-	<title>miniLoader</title>
-	<style type="text/css">html,body{height:100%;background-color:#2980b9}#appLoadingIndicator{position:absolute;top:50%;left:50%;margin-top:-10px;margin-left:-50px;width:180px;height:20px}#appLoadingIndicator>*{background-color:#FFF;float:left;height:30px;margin-left:11px;width:30px;-webkit-animation-name:appLoadingIndicator;-webkit-border-radius:23px;-webkit-animation-duration:.8s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:linear;opacity:.3 }#appLoadingIndicator>:nth-child(1){-webkit-animation-delay:.18s}#appLoadingIndicator>:nth-child(2){-webkit-animation-delay:.42s}#appLoadingIndicator>:nth-child(3){-webkit-animation-delay:.54s}@-webkit-keyframes appLoadingIndicator{0%{opacity:.3 }50%{opacity:1;background-color:#1985D0 }100%{opacity:.3 }}</style>
-    <link rel="stylesheet" href="res/app.css">
-    <link rel="stylesheet" href="framework7.min.css">
+<!DOCTYPE HTML>
+
+<html manifest="" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>citybars</title>
+    <style type="text/css">
+        /**
+        * Example of an initial loading indicator.
+        * It is recommended to keep this as minimal as possible to provide instant feedback
+        * while other resources are still being loaded for the first time
+        */
+        html, body {
+            height: 100%;
+            background-color: #1985D0
+        }
+
+        #appLoadingIndicator {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            text-align: center;
+            width: 100%;
+            height: 30px;
+            -webkit-animation-name: appLoadingIndicator;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: linear;
+        }
+
+        #appLoadingIndicator > * {
+            background-color: #FFFFFF;
+            display: inline-block;
+            height: 30px;
+            -webkit-border-radius: 15px;
+            margin: 0 5px;
+            width: 30px;
+            opacity: 0.8;
+        }
+
+        @-webkit-keyframes appLoadingIndicator{
+            0% {
+                opacity: 0.8
+            }
+            50% {
+                opacity: 0
+            }
+            100% {
+                opacity: 0.8
+            }
+        }
+    </style>
+    <script id="microloader" type="text/javascript" src="microloader.js"></script>
 </head>
-<body>  
-<script type="text/javascript">
-function Copy$tP(s,d){return d}
-function Clone$tP($){return{}}
-function VV(yH){var RG=null;var Yvq=0;var u3E=0;var $t1;for(u3E=0,$t1=yH.length;u3E<$t1;u3E++){RG=document.createElement("img");RG.onload=function(E3){var R=undefined;return R};RG.src=yH[u3E]}};function kG(){var Lkh=null,phb=null,HG2=null,y6=null,Nw=null,O8=null;Lkh=document.createDocumentFragment();phb=document.createElement("DIV");phb.setAttribute("id","appLoadingIndicator");Lkh.appendChild(phb);HG2=document.createElement("DIV");phb.appendChild(HG2);y6=document.createElement("DIV");phb.appendChild(y6);Nw=document.createElement("DIV");phb.appendChild(Nw);document.body.appendChild(Lkh);O8=document.createElement("script");O8.type="text\/javascript";O8.async=true;O8.src="main.js";document.body.appendChild(O8);window.setTimeout(function(){console.log("Start Loading")},0,null);O8.onload=function(CeF){var R=undefined;console.log("End Loading");return R}};var i56=null;var FGT=null;var Z7=null,lG=[];Z7=document.body.style;Z7.setProperty("background-color","#2980b9");lG=["img\/cars\/1\/1.jpg","img\/cars\/2\/1.jpg","img\/cars\/3\/1.jpg","img\/cars\/4\/1.jpg","img\/cars\/5\/1.jpg","img\/cars\/7\/1.jpg","img\/cars\/8\/1.jpg"].slice();if(window.addEventListener){window.addEventListener("load",kG,false);console.log("Start Preloading");VV(lG)}else window.onload=function(Dbd){var R=undefined;console.log("Window onload was loaded");kG();return R};
-</script>
-
+<body>
+    <div id="appLoadingIndicator">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </body>
-
 </html>
