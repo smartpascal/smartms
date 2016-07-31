@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+<head>	
+  <meta charset="UTF-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no"/>
+
+	<title>proj-SMS-Lite</title>
+
+<style>
+/* Apply to all elements */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+	/* Define "normal" boxing */
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+	/* no tap highlight color */
+	-webkit-tap-highlight-color: transparent;
+
+  -webkit-appearance: none;
+
+	/* no border style by default */
+	-webkit-border-style: none;
+	border-style: none;
+
+	/* Turn off font resizing */
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+
+	-webkit-font-smoothing: always;
+	font-smoothing: always;
+
+	-webkit-user-select: none;
+	user-select: none;
+
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+:focus {
+    outline: 0;
+}
+
+html, body
+{
+	/* iOS basics */
+	-webkit-touch-callout: none;
+	user-select: none;
+
+	/* default to black screen */
+	background-color: #000;
+
+	/* No overflow, means no scrolling */
+	overflow: hidden;
+}
+
+button { background: none; }
+
+ul {
+	cursor: default;
+	list-style: none;
+}
+
+ul li {
+	background-color: #FFF;
+	border: 1px solid #999;
+	color: #222;
+	cursor: hand;
+	font-size: 17px;
+	font-weight: bold;
+	margin-bottom: -1px;
+	padding: 12px 12px;
+	text-decoration: none;
+}
+
+ul li:first-child {
+	border-top-left-radius:  8px;
+	border-top-right-radius:  8px;
+}
+
+ul li:last-child {
+	border-bottom-left-radius:  8px;
+	border-bottom-right-radius:  8px;
+}
+
+ul li:active {
+	color: #FFF;
+	background-image: url(data:image/png;base64,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);
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+}
+
+
+/* =============================================
+ * TW3CustomControl
+ * ============================================= */
+
+.TW3CustomControl
+{
+	cursor: default;
+	background-color: #CECECE;
+}
+
+/* =============================================
+ * TW3ScrollContentIndicator
+ * ============================================= */
+
+.TW3ScrollContentIndicator {
+	background-color: #222;
+	border: solid 1px #9A9A9A;
+}
+
+/* =============================================
+ * TW3CustomForm
+ * ============================================= */
+
+.TW3CustomForm, .TW3Form
+{
+  /* This forces the browsers that support it to
+     use the GPU rather than CPU for movement */
+	-webkit-transform: translateZ(0);
+	   -moz-transform: translateZ(0);
+	    -ms-transform: translateZ(0);
+	     -o-transform: translateZ(0);
+
+	background-color: #D5DCE1;
+	background-size: 5px 100%;
+	background-image: -webkit-gradient(linear, left top, right top,
+	  from(#c5ccd4),
+	  color-stop(0.75, #c5ccd4),
+	  color-stop(0.75, transparent),
+	  to(transparent));
+	background-image: -moz-linear-gradient(left,
+	  #c5ccd4,
+	  #c5ccd4 75%,
+	  transparent 75%,
+	  transparent);
+}
+
+/* =============================================
+ * TW3BlockBox:
+ *  In order to emulate modal dialogs we use
+ *  a single DIV to cover the active form.
+ *  This div prevents the user from clicking
+ *  on the underlying controls - thus forcing
+ *  the user to deal with the dialog, which is
+ *  hosted as a child of the TW3BlockBox control
+ * ============================================= */
+
+.TW3BlockBox {
+	overflow: hidden;
+	-webkit-touch-callout: none;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* =============================================
+ * TW3AlertDialog
+ * ============================================= */
+.TW3AlertButton {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid rgba(19, 30, 58, 0.9);
+	background-color: #5f6981;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b0b5c0), color-stop(50%, #6a748b), color-stop(51%, #505a75), color-stop(100%, #5f6981)); /* for iOS Webkit */
+
+	-webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+       -o-border-radius: 6px;
+          border-radius: 6px;
+
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.8);
+     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.8);
+      -ms-box-shadow: 0 1px 0 rgba(0,0,0,.8);
+       -o-box-shadow: 0 1px 0 rgba(0,0,0,.8);
+          box-shadow: 0 1px 0 rgba(0,0,0,.8);
+
+  -webkit-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+     -moz-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+      -ms-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+       -o-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+          text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+}
+
+.TW3AlertButton:active {
+	background-image: -webkit-gradient(linear, left top, left bottom,
+	color-stop(0%, #5f6981),
+	color-stop(50%, #505a75),
+	color-stop(51%, #6a748b),
+	color-stop(100%, #b0b5c0));
+}
+
+.TW3AlertDialog {
+	z-index: 1000;
+	padding: 6px 5px;
+	border: 2px solid rgba(178, 183, 194, 0.8);
+	border-top-color: rgba(226, 227, 228, 0.8);
+
+	/* border-radius: 15px; */
+	background: rgba(11, 27, 68, 0.8) url(data:image/png;base64,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)
+	no-repeat 50% 0;
+
+	box-shadow: 0 8px 19px rgba(0,0,0,.9);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+	text-align: center;
+	-webkit-border-radius: 15px;
+	-webkit-box-shadow: 0 8px 19px rgba(0,0,0,.9);
+	-webkit-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+}
+
+
+/* =============================================
+ * TW3ProgressBar:
+ * ============================================= */
+
+@-webkit-keyframes move_bg_progressmeter {
+	0% {
+		background-position: 50px 50px;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@-moz-keyframes move_bg_progressmeter {
+	0% {
+		background-position: 50px 50px;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@-o-keyframes move_bg_progressmeter {
+	0% {
+		background-position: 50px 50px;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+
+.TW3ProgressBar {
+	border: 2px solid rgba(0,0,0,0.3);
+
+	background-color: #FFF;
+	overflow: hidden;
+	-webkit-touch-callout: none;
+
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+}
+
+.TW3ProgressMeter
+{
+	overflow: hidden;
+	background-color: rgba(144,156,179,1);
+
+	-webkit-touch-callout: none;
+
+	-webkit-animation: move_bg_progressmeter 3s linear infinite;
+	animation: move_bg_progressmeter 3s linear infinite;
+
+	-webkit-background-size: 50px 50px;
+	background-size: 50px 50px;
+
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+
+	background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+		color-stop(.25, rgba(255, 255, 255, .2)),
+		color-stop(.25, transparent), color-stop(.5, transparent),
+		color-stop(.5, rgba(255, 255, 255, .2)),
+		color-stop(.75, rgba(255, 255, 255, .2)),
+		color-stop(.75, transparent), to(transparent)
+	);
+
+	background-image: linear-gradient(-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+
+
+/* =============================================
+ * TW3Scrollbar
+ * ============================================= */
+
+.TW3ScrollbarUpBtn {
+ color: #FFF;
+ border-top: 1px solid #bcbcbc;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+
+.TW3ScrollbarDownBtn {
+ color: #FFF;
+ border-bottom: 1px solid #bcbcbc;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+
+.TW3ScrollbarUpBtn:active, .TW3ScrollbarDownBtn:active {
+	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+}
+
+.TW3ScrollbarDownBtn:hover, .TW3ScrollbarUpBtn:hover {
+	cursor: pointer;
+}
+
+.TW3ScrollbarLeftBtn {
+ color: #FFF;
+ border-right: 1px solid #bcbcbc;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+
+.TW3ScrollbarRightBtn {
+ color: #FFF;
+ border-left: 1px solid #bcbcbc;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+
+.TW3ScrollbarLeftBtn:active, .TW3ScrollbarRightBtn:active {
+	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+}
+
+.TW3ScrollbarLeftBtn:hover, .TW3ScrollbarRightBtn:hover {
+	cursor: pointer;
+}
+
+.TW3ScrollbarHandle {
+	color: #888;
+	border-radius: 4px;
+	border: 1px solid #bcbcbc;
+
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+
+	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+}
+
+.TW3ScrollbarHandle:active {
+	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+}
+
+.TW3ScrollbarHandle:Hover {
+	cursor: pointer;
+}
+
+.TW3VerticalScrollbar {
+	border: 1px solid rgba(0,0,0,0.4);
+	overflow: hidden;
+	//background-color: #EFEFEF;
+	-webkit-touch-callout: none;
+}
+
+.TW3VerticalScrollbar:disabled {
+	opacity: 0.5;
+	cursor: wait;
+}
+
+.TW3HorizontalScrollbar {
+	border: 1px solid rgba(0,0,0,0.4);
+	overflow: hidden;
+	-webkit-touch-callout: none;
+}
+
+.TW3HorizontalScrollbar:disabled {
+	opacity: 0.5;
+	cursor: wait;
+}
+
+.TW3ToolButton
+{
+	-webkit-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+	 -moz-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+	  -ms-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+	   -o-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+		  box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
+
+	-webkit-border-radius: 5px;
+	 -moz-border-radius: 5px;
+	  -ms-border-radius: 5px;
+	   -o-border-radius: 5px;
+		  border-radius: 5px;
+
+  cursor: default;
+	color: #fff;
+	font-size: 12px;
+  border: solid 1px #54617d;
+	border-color: #484e59 #54617d #4c5c7a #54617d;
+
+  background: rgb(146,161,191); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(146,161,191,1) 0%, rgba(121,138,173,1) 25%, rgba(98,118,160,1) 50%, rgba(85,106,151,1) 53%, rgba(86,108,152,1) 75%, rgba(84,105,147,1) 95%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(146,161,191,1)), color-stop(25%,rgba(121,138,173,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(53%,rgba(85,106,151,1)), color-stop(75%,rgba(86,108,152,1)), color-stop(95%,rgba(84,105,147,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* IE10+ */
+  background: linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92a1bf', endColorstr='#546993',GradientType=0 ); /* IE6-9 */
+}
+
+.TW3ToolButton:active:enabled
+{
+  background: rgb(84,105,147); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(84,105,147,1) 5%, rgba(86,108,152,1) 25%, rgba(85,106,151,1) 47%, rgba(98,118,160,1) 50%, rgba(121,138,173,1) 75%, rgba(146,161,191,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,rgba(84,105,147,1)), color-stop(25%,rgba(86,108,152,1)), color-stop(47%,rgba(85,106,151,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(75%,rgba(121,138,173,1)), color-stop(100%,rgba(146,161,191,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* IE10+ */
+  background: linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#546993', endColorstr='#92a1bf',GradientType=0 ); /* IE6-9 */
+}
+
+.TW3ToolButton:disabled {
+	opacity: 0.5;
+  cursor: wait;
+}
+
+/* =============================================
+ * TW3Panel
+ * ============================================= */
+
+.TW3Panel {
+	cursor: inherited;
+	border: 2px solid #7c7a77;
+	resize: none;
+	font-size: 12px;
+	border-radius: 6px;
+	background-color: #FFF;
+}
+
+/* =============================================
+ * TW3Toolbar
+ * ============================================= */
+
+.TW3ToolbarButton {
+	border: 0;
+
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-right-color: #FFFFFF;
+
+	color: #FFFFFF;
+	background-color: rgba(255,255,255,0.20);
+
+	font-size: 12px;
+	text-align: center;
+	text-shadow: 0 -1px -1px rgba(0,0,0,.30);
+}
+
+.TW3ToolbarButton:active {
+	background-color: rgba(0,0,0,0.20);
+}
+
+.TW3ToolbarButton:disabled {
+	background-color: transparent;
+}
+
+.ButtonDown {
+  border:2px inset;
+}
+
+.TW3Toolbar
+{
+  cursor: default;
+	background-image:-webkit-gradient(linear, left top, left bottom,
+		from(#b2bbca),
+		color-stop(0.25, #a7b0c3),
+		color-stop(0.5, #909cb3),
+		color-stop(0.5, #8593ac),
+		color-stop(0.75, #7c8ba5),
+		to(#73839f));
+  border-top: 1px solid #dde5ef;
+  border-bottom: 1px solid #2d3642;
+  -webkit-box-shadow: rgba(33, 33, 33, 0.2) 0 1px 1px;
+	/* box-shadow: rgba(33, 33, 33, 0.2) 0 1px 1px; */
+}
+
+/* =============================================
+ * TW3Memo
+ * ============================================= */
+
+.TW3Memo, .TW3EditBox, .TW3ComboBox {
+	border: 1px solid #acacac;
+	border-radius: 5px;
+	resize: none;
+	-webkit-user-select: auto;
+	user-select: auto;
+}
+
+/* =============================================
+ * TW3HeaderControl
+ * ============================================= */
+
+.TW3HeaderControl
+{
+  cursor: default;
+  border-bottom: 1px solid #2d3642;
+  border-top: 1px solid #cdd5df;
+  box-shadow: 0 1px 1px rgba(33, 33, 33, 0.2);
+
+  background: rgb(178,187,202);   /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(178,187,202,1) 1%, rgba(167,176,195,1) 25%, rgba(144,156,179,1) 47%, rgba(133,147,172,1) 50%, rgba(124,139,165,1) 75%, rgba(115,131,159,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(178,187,202,1)), color-stop(25%,rgba(167,176,195,1)), color-stop(47%,rgba(144,156,179,1)), color-stop(50%,rgba(133,147,172,1)), color-stop(75%,rgba(124,139,165,1)), color-stop(100%,rgba(115,131,159,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* IE10+ */
+  background: linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2bbca', endColorstr='#73839f',GradientType=0 ); /* IE6-9 */
+}
+
+.TW3HeaderControl:disabled {
+	cursor: wait;
+	opacity: 0.5;
+}
+
+/* =============================================
+ * TW3Label
+ * ============================================= */
+
+.TW3Label, TW3LabelText {
+	opacity: 1.0;
+	cursor: default;
+}
+
+.TW3Label:disabled, TW3LabelText:disabled {
+	text-shadow: 0 1px 0 #fff;
+	opacity: 0.5;
+}
+
+
+/* =============================================
+ * TW3SimpleButton
+ * ============================================= */
+
+.TW3SimpleButton {
+  border-radius: 12px;
+  background-color: rgb(109,133,163);
+  border: solid 2px rgba(50,103,153,1);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.TW3SimpleButton:active {
+  color: #86B7D9;
+  border: solid 2px rgba(40,130,215,1.0);
+}
+
+/* =============================================
+ * TW3Button
+ * ============================================= */
+
+.TW3SimpleButton {
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  border: solid 2px rgba(51,105,141,1);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.TW3SimpleButton:active {
+  color: #86B7D9;
+  border: solid 2px rgba(40,130,215,1.0);
+}
+
+.TW3Button {
+	  border: solid 2px rgba(32,32,33,0.4);
+	  border-radius: 8px;
+	  -webkit-border-radius: 8px;
+		 -moz-border-radius: 8px;
+		  -ms-border-radius: 8px;
+		   -o-border-radius: 8px;
+
+	  background: rgb(226,226,226); /* Old browsers */
+	  background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 52%, rgba(254,254,254,1) 100%); /* FF3.6+ */
+	  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,1)), color-stop(50%,rgba(219,219,219,1)), color-stop(52%,rgba(209,209,209,1)), color-stop(100%,rgba(254,254,254,1))); /* Chrome,Safari4+ */
+	  background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* Chrome10+,Safari5.1+ */
+	  background: -o-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* Opera 11.10+ */
+	  background: -ms-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* IE10+ */
+	  background: linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* W3C */
+	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+
+	  font-size: 18px;
+	  font-weight: thin;
+	  text-shadow: 1px 1px -1px #cecece;
+	  color:  #000;
+
+  -webkit-text-size-adjust: auto;
+	 -moz-text-size-adjust: auto;
+	  -ms-text-size-adjust: auto;
+	   -o-text-size-adjust: auto;
+}
+
+.TW3Button:active:enabled {
+	  color: #FFFFFF;
+
+	  background: rgb(207,231,250); /* Old browsers */
+	  background: -moz-linear-gradient(top,  rgba(207,231,250,1) 0%, rgba(99,147,193,1) 52%, rgba(78,136,191,1) 66%, rgba(192,224,249,1) 96%); /* FF3.6+ */
+	  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(52%,rgba(99,147,193,1)), color-stop(66%,rgba(78,136,191,1)), color-stop(96%,rgba(192,224,249,1))); /* Chrome,Safari4+ */
+	  background: -webkit-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* Chrome10+,Safari5.1+ */
+	  background: -o-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* Opera 11.10+ */
+	  background: -ms-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* IE10+ */
+	  background: linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* W3C */
+	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#c0e0f9',GradientType=0 ); /* IE6-9 */
+
+	  text-shadow: none;
+}
+
+.TW3Button:disabled {
+	opacity: 0.50;
+}
+
+
+/* =============================================
+ * TW3ToggleSwitch
+ * ============================================= */
+
+.TW3ToggleSwitch {
+	background-color: #FFF;
+	border:1px solid #AAA;
+	border-radius:6px;
+	color:#FFF;
+	font-weight:700;
+	overflow:hidden;
+	box-shadow:0 1px 0 #FFF;
+	user-select: none;
+}
+
+.TW3ToggleOnLabel {
+	border-radius: 6px;
+	text-align:center;
+	background:#007FEA;
+	text-shadow:0 -1px 0 #093B5C;
+	box-shadow:0 4px 5px -2px rgba(0,0,0,0.3) inset;
+}
+
+.TW3ToggleOffLabel {
+	border-radius: 6px;
+	text-align:center;
+	box-shadow:0 4px 5px -2px rgba(0,0,0,0.3) inset;
+}
+
+.TW3ToggleKnob {
+	cursor: pointer;
+	background-color: #FFF;
+	border:1px solid #AAA;
+	border-radius:4px;
+	color:#FFF;
+	font-weight:700;
+	overflow:hidden;
+	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
+}
+
+.TW3ToggleKnob:hover {
+	background:#E5E5E5;
+}
+
+/* =============================================
+ * Page Animation: BACKSCROLL
+ * ============================================= */
+
+@-webkit-keyframes BACKSCROLL {
+	0% {
+		-webkit-transform: translateZ(0);
+		background-position: 0 0;
+	}
+	100% {
+		background-position: -557px 0;
+		-webkit-transform: translateZ(0);
+	}
+}
+
+@keyframes BACKSCROLL {
+	0% {
+		transform: translateZ(0);
+		background-position: 0 0;
+	}
+	100% {
+		background-position: -557px 0;
+		transform: translateZ(0);
+	}
+}
+
+/* =============================================
+ * Page Animation: MOVE-LEFT
+ * ============================================= */
+
+@-webkit-keyframes MOVE-LEFT {
+	0% {
+		-webkit-transform: translateX(100%);
+	}
+	100% {
+		-webkit-transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes MOVE-OUT-LEFT {
+	0% {
+		-webkit-transform: translateX(0);
+	}
+	100% {
+		-webkit-transform: translateX(-100%);
+	}
+}
+
+@keyframes MOVE-LEFT {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes MOVE-OUT-LEFT {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+
+/* =============================================
+ * Page Animation: MOVE-Right
+ * ============================================= */
+
+@-webkit-keyframes MOVE-RIGHT {
+	0% {
+		-webkit-transform: translateX(-100%);
+	}
+	100% {
+		-webkit-transform: translateX(0);
+		visibility: hidden;
+	}
+}
+
+@-webkit-keyframes MOVE-OUT-RIGHT {
+	0% {
+		-webkit-transform: translateX(0);
+	}
+	100% {
+		-webkit-transform: translateX(100%);
+		visibility: hidden;
+	}
+}
+
+@keyframes MOVE-RIGHT {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+		visibility: hidden;
+	}
+}
+
+@keyframes MOVE-OUT-RIGHT {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(100%);
+		visibility: hidden;
+	}
+}
+
+/* =============================================
+ * Page Animation: ROTATE-FOREVER
+ * ============================================= */
+
+@-webkit-keyframes ROTATE-FOREVER {
+	from {
+		-webkit-transform: none;
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes ROTATE-FOREVER {
+	from {
+		transform: none;
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+</style>
+
+  	<script type="text/javascript">	/* This prevents the window being moved by touches,
+	  to give the impression of a native app */
+	document.ontouchmove = function(e) { e.preventDefault(); }
+
+	/* Note: If you build with the CSS as an external file,
+	the app may execute before the CSS has been properly loaded.
+	You may want to use a different bootstrap mechanism. jQuery
+	provides a good preloading mechanism for instance. */
+
+	function bootstrap() {
+var $R="Method %s in class %s threw exception [%s];Procedure %s threw exception [%s];Internal tag-object is null error;Failed to create internal tag-object;Invalid tag handle error;Invalid attribute-name error;Invalid property-name error;Invalid style-name error;Failed to attach element to owner;Owner tag-object is NIL error;invalid owner handle error;Failed to initialize from graphics-context: ;Invalid component registration;Failed to create attribute storage object, invalid handle error;Failed to read attribute field, browser threw exception: %s;Failed to write attribute field, browser threw exception: %s;invalid owner handle error".split(";"),
+TObject={$ClassName:"TObject",$Parent:null,ClassName:function(a){return a.$ClassName},ClassType:function(a){return a},ClassParent:function(a){return a.$Parent},$Init:function(){},Create:function(a){return a},Destroy:function(a){for(var b in a)a.hasOwnProperty(b)&&delete a.prop},Destroy$:function(a){return a.ClassType.Destroy(a)},Free:function(a){null!==a&&a.ClassType.Destroy(a)}};function IntToHex2(a){a=a.toString(16);return 1==a.length?"0"+a:a}
+var sprintf=function(){function a(){a.cache.hasOwnProperty(arguments[0])||(a.cache[arguments[0]]=a.parse(arguments[0]));return a.format.call(null,a.cache[arguments[0]],arguments)}function b(a){return Object.prototype.toString.call(a).slice(8,-1).toLowerCase()}function c(a,b){for(var c=[];0<b;c[--b]=a);return c.join("")}a.format=function(a,e){var g=1,h=a.length,f,l=[],m,n,k,q;for(m=0;m<h;m++)if(f=b(a[m]),"string"===f)l.push(a[m]);else if("array"===f){k=a[m];if(k[2])for(f=e[g],n=0;n<k[2].length;n++){if(!f.hasOwnProperty(k[2][n]))throw sprintf('[sprintf] property "%s" does not exist',
+k[2][n]);f=f[k[2][n]]}else f=k[1]?e[k[1]]:e[g++];if(/[^s]/.test(k[8])&&"number"!=b(f))throw sprintf("[sprintf] expecting number but found %s",b(f));switch(k[8]){case "b":f=f.toString(2);break;case "c":f=String.fromCharCode(f);break;case "d":f=String(parseInt(f,10));k[7]&&(f=c("0",k[7]-f.length)+f);break;case "e":f=k[7]?f.toExponential(k[7]):f.toExponential();break;case "f":f=k[7]?parseFloat(f).toFixed(k[7]):parseFloat(f);break;case "o":f=f.toString(8);break;case "s":f=(f=String(f))&&k[7]?f.substring(0,
+k[7]):f;break;case "u":f=Math.abs(f);break;case "x":f=f.toString(16);break;case "X":f=f.toString(16).toUpperCase()}f=/[def]/.test(k[8])&&k[3]&&0<=f?"+"+f:f;n=k[4]?"0"==k[4]?"0":k[4].charAt(1):" ";q=k[6]-String(f).length;n=k[6]?c(n,q):"";l.push(k[5]?f+n:n+f)}return l.join("")};a.cache={};a.parse=function(a){for(var b,c=[],h=0;a;){if(null!==(b=/^[^\x25]+/.exec(a)))c.push(b[0]);else if(null!==(b=/^\x25{2}/.exec(a)))c.push("%");else if(null!==(b=/^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fosuxX])/.exec(a))){if(b[2]){var h=
+h|1,f=[],l=b[2],m;if(null!==(m=/^([a-z_][a-z_\d]*)/i.exec(l)))for(f.push(m[1]);""!==(l=l.substring(m[0].length));)if(null!==(m=/^\.([a-z_][a-z_\d]*)/i.exec(l)))f.push(m[1]);else if(null!==(m=/^\[(\d+)\]/.exec(l)))f.push(m[1]);else throw"[sprintf] huh?";else throw"[sprintf] huh?";b[2]=f}else h|=2;if(3===h)throw"[sprintf] mixing positional and named placeholders is not (yet) supported";c.push(b)}else throw"[sprintf] huh?";a=a.substring(b[0].length)}return c};return a}();
+function Format(a,b){b.unshift(a);return sprintf.apply(null,b)}var Exception={$ClassName:"Exception",$Parent:TObject,$Init:function(){FMessage=""},Create:function(a,b){a.FMessage=b;return a}};function $W(a){return a.ClassType?a:Exception.Create($New(Exception),a.constructor.name+", "+a.message)}function $SetInc(a,b,c,d){b-=c;0<=b&&b<d&&(a[b>>5]|=1<<(b&31))}function $SetIn(a,b,c,d){b-=c;return 0>b&&b>=d?!1:0!=(a[b>>5]&1<<(b&31))}function $SetExc(a,b,c,d){b-=c;0<=b&&b<d&&(a[b>>5]&=~(1<<(b&31)))}
+function $NewDyn(a,b){if(null==a)throw Exception.Create($New(Exception),"ClassType is nil"+b);var c={ClassType:a};a.$Init(c);return c}function $New(a){var b={ClassType:a};a.$Init(b);return b}function $Is(a,b){return null===a?!1:$Inh(a.ClassType,b)}function $Inh(a,b){if(null===a)return!1;for(;a&&a!==b;)a=a.$Parent;return a?!0:!1}function $Event1(a,b){return function(c){return b.call(a,a,c)}}function $Event0(a,b){return function(){return b.call(a,a)}}
+function $AsClass(a,b){if(null===a||$Inh(a,b))return a;throw Exception.Create($New(Exception),'Cannot cast class "'+a.$ClassName+'" to class "'+b.$ClassName+'"');}function $As(a,b){if(null===a||$Is(a,b))return a;throw Exception.Create($New(Exception),'Cannot cast instance of type "'+a.ClassType.$ClassName+'" to class "'+b.$ClassName+'"');}function w3_RequestAnimationFrame(a){vRequestAnimFrame||InitAnimationFrameShim();return vRequestAnimFrame(a)}
+function w3_getStyleAsInt(a,b){var c=0,d,e;(d=document.defaultView.getComputedStyle(a,null))&&(e=d.getPropertyValue(b));e&&("number"===typeof e?c=e:"string"===typeof e&&(e=parseInt(e),"number"===typeof e&&(c=e)));return c}function BrowserAPI(){var a;return a=BrowserAPIx}
+function InitAnimationFrameShim(){vRequestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||function(a){return window.setTimeout(a,1E3/60)}}()}
+var TW3OwnedObject={$ClassName:"TW3OwnedObject",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.FOwner=null},AcceptParent:function(){return!0},Create$11:function(a,b){TObject.Create(a);if(TW3OwnedObject.AcceptParent$(a,b))a.FOwner=b;else throw EW3Exception.CreateFmt($New(EW3OwnedObject),$R[0],["constructor",TObject.ClassName(a.ClassType),"Unsuitable owner object-type error"]);return a},Destroy:TObject.Destroy,AcceptParent$:function(a){return a.ClassType.AcceptParent.apply(a.ClassType,arguments)},
+Create$11$:function(a){return a.ClassType.Create$11.apply(a.ClassType,arguments)}};function p(a){var b=null;void 0!=a&&null!=a&&(b=a);return b}function r(a){return a.toString()+"px"}
+var EW3Exception={$ClassName:"EW3Exception",$Parent:Exception,$Init:function(a){Exception.$Init(a)},CreateFmt:function(a,b,c){Exception.Create(a,Format(b,c.slice(0)));return a},Destroy:Exception.Destroy},EW3OwnedObject={$ClassName:"EW3OwnedObject",$Parent:EW3Exception,$Init:function(a){EW3Exception.$Init(a)},Destroy:Exception.Destroy},TW3CustomApplication={$ClassName:"TW3CustomApplication",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.FBody=a.FCurrentForm=a.FDisplay=a.FMainForm=a.FOnBeforeUnload=
+a.FOnUnload=a.FTransDst=a.FTransSrc=null;a.FEntryEffect=0;a.FFormChangeActive=a.FTerminated=!1;a.FForms=[]},AdjustScreen:function(a){TW3ScrollInfo.ScrollTo(TW3CustomControl.GetScrollInfo(a.FDisplay),0,0);TW3MovableControl.SetBounds$2(a.FDisplay,0,0,TDocumentBody.GetWidth$5(a.FBody),TDocumentBody.GetHeight$5(a.FBody))},ApplicationClosing:function(){},ApplicationStarted:function(){},ApplicationStarting:function(a){TW3CustomApplication.AdjustScreen(a)},CBOnBeforeUnload:function(a){a.FOnBeforeUnload&&
+a.FOnBeforeUnload(a)},CBOnOrientationChange:function(a){var b=0,c,d=null;c=parseInt(BrowserAPI().Window.orientation,10);switch(c){case 0:b=0;break;case 90:b=1;break;case -90:b=2;break;case 180:b=3}try{a.FDisplay&&(d=a.FDisplay.FOnOrient)&&d(a.FDisplay,b,c)}finally{TW3CustomApplication.AdjustScreen(a)}},CBOnReSize:function(a){TW3CustomApplication.AdjustScreen(a)},CBOnUnLoad:function(a){try{a.FOnUnload&&a.FOnUnload(a)}finally{a.FTerminated||TW3CustomApplication.Terminate(a)}},Create$3:function(a){TObject.Create(a);
+a.FBody=TW3Component.Create$24$($New(TDocumentBody),null);a.FDisplay=TW3Component.Create$24$($New(TW3Display),a.FBody);Instance||(Instance=a);return a},Destroy:function(a){a.FTerminated||TW3CustomApplication.Terminate(a);TObject.Free(a.FDisplay);TObject.Free(a.FBody);Instance=null;TObject.Destroy(a)},GotoFormByRef:function(a,b){var c;if(!a.FTerminated){if(a.FFormChangeActive)throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.GotoFormByRef",TObject.ClassName(a.ClassType),
+"A form transition is already active error"]);if(null===b)throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.GotoFormByRef",TObject.ClassName(a.ClassType),"Form parameter is NIL error"]);c=a.FForms.indexOf(b);if(0>c)throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.GotoFormByRef",TObject.ClassName(a.ClassType),"Form not registered error"]);b!==a.FCurrentForm&&(null===a.FCurrentForm?(a.FCurrentForm=b,TW3Display.PositionFormInView(a.FDisplay,
+b),TW3MovableControl.SetVisible(b,!0),TW3CustomForm.FormActivated(b)):(TW3CustomForm.FormDeactivated(a.FCurrentForm),TW3MovableControl.SetVisible(a.FCurrentForm,!1),TW3MovableControl.SetVisible(b,!0),TW3Display.PositionFormInView(a.FDisplay,b),TW3CustomForm.FormActivated(b),a.FCurrentForm=b))}},HookWindowEvents:function(a){var b=BrowserAPI().Body,c=$Event0(a,TW3CustomApplication.CBOnUnLoad);b.onunload=c;b=BrowserAPI().Body;c=$Event0(a,TW3CustomApplication.CBOnBeforeUnload);b.onbeforeunload=c;b=BrowserAPI().Window;
+c=$Event0(a,TW3CustomApplication.CBOnReSize);b.onresize=c;b=BrowserAPI().Window;a=$Event0(a,TW3CustomApplication.CBOnOrientationChange);b.onorientationchange=a},RegisterFormInstance:function(a,b,c){if(!a.FTerminated)if(b)if(0>a.FForms.indexOf(b)){try{a.FForms.push(b)}catch(d){throw b=$W(d),EW3Exception.CreateFmt($New(EW3Exception),$R[0],["TW3CustomApplication.RegisterFormInstance",TObject.ClassName(a.ClassType),b.FMessage]);}w3_RequestAnimationFrame($Event0(b,TW3MovableControl.AdjustToParentBox));
+c?a.FMainForm=b:TW3MovableControl.SetVisible(b,!1)}else throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.RegisterFormInstance",TObject.ClassName(a.ClassType),"Form already registered"]);else throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.RegisterFormInstance",TObject.ClassName(a.ClassType),"Form parameter is NIL error"]);},RunApp:function(a){var b;TW3CustomApplication.HookWindowEvents(a);TW3CustomApplication.ApplicationStarting(a);TApplicationFormsList.AutoCreateForms(FormsFactory(),
+a.FDisplay.FView);a.FMainForm&&(b=a.FMainForm,a.FMainForm=null,TW3CustomApplication.GotoFormByRef(a,b,0));TW3CustomApplication.ApplicationStarted(a)},Terminate:function(a){var b=0;if(!a.FTerminated){a.FTerminated=!0;TW3CustomApplication.ApplicationClosing(a);try{var c,b=0;for(c=a.FForms.length;b<c;b++)TObject.Free(a.FForms[b]),a.FForms[b]=null;a.FForms.length=0}finally{TObject.Free(a)}}},UnRegisterFormInstance:function(a,b){var c;if(!a.FTerminated)if(b){if(c=a.FForms.indexOf(b),0<=c)if(a.FMainForm!==
+b){a.FCurrentForm===b&&TW3CustomApplication.GotoFormByRef(a,a.FMainForm,0);a.FForms.splice(c,1);try{TObject.Free(b)}catch(d){throw c=$W(d),EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.UnRegisterFormInstance",TObject.ClassName(a.ClassType),c.FMessage]);}}else throw EW3Exception.CreateFmt($New(EW3Application),$R[0],["TW3CustomApplication.UnRegisterFormInstance",TObject.ClassName(a.ClassType),"Main form cannot be removed error"]);}else throw EW3Exception.CreateFmt($New(EW3Application),
+$R[0],["TW3CustomApplication.UnRegisterFormInstance",TObject.ClassName(a.ClassType),"Form parameter is NIL error"]);},Destroy$:function(a){return a.ClassType.Destroy(a)}},TApplication={$ClassName:"TApplication",$Parent:TW3CustomApplication,$Init:function(a){TW3CustomApplication.$Init(a)},Destroy:TW3CustomApplication.Destroy},TW3TagObj={$ClassName:"TW3TagObj",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.FAccess=null;a.FComponentState=[0];a.FHandle=void 0;a.FOwner$1=void 0;a.FTagId="";a.FUpdating=
+0},AddToComponentState:function(a,b){$SetIn(b,0,0,6)&&$SetInc(a.FComponentState,0,0,6);$SetIn(b,1,0,6)&&$SetInc(a.FComponentState,1,0,6);$SetIn(b,2,0,6)&&$SetInc(a.FComponentState,2,0,6);$SetIn(b,3,0,6)&&$SetInc(a.FComponentState,3,0,6);$SetIn(b,4,0,6)&&$SetInc(a.FComponentState,4,0,6);$SetIn(b,5,0,6)&&$SetInc(a.FComponentState,5,0,6)},AfterUpdate:function(){},BeginUpdate:function(a){++a.FUpdating},Create$23:function(a){TObject.Create(a);$SetInc(a.FComponentState,0,0,6);try{a.FTagId=TW3TagObj.MakeElementTagId$(a),
+a.FHandle=TW3TagObj.MakeElementTagObj$(a)}catch(c){var b=$W(c);EW3TagObj.RaiseCntErrMethod("TW3TagObj.Create",a,b.FMessage)}$SetInc(a.FComponentState,1,0,6);p(a.FHandle)!==p(BrowserAPI().Body)&&0<a.FTagId.length&&a.FHandle.setAttribute("id",a.FTagId);TW3TagObj.StyleTagObject$(a);TW3TagObj.BeginUpdate(a);try{TW3TagObj.InitializeObject$(a)}finally{TW3TagObj.EndUpdate(a)}setTimeout(function(){$SetExc(a.FComponentState,1,0,6);$SetExc(a.FComponentState,0,0,6)},100);$SetInc(a.FComponentState,2,0,6);return a},
+Destroy:function(a){$SetInc(a.FComponentState,5,0,6);if(a.FHandle){try{TW3TagObj.UnHookEvents(a),a.FOwner$1&&TW3TagObj.RemoveFrom(a)}finally{TW3TagObj.FinalizeObject$(a),a.FTagId="",a.FHandle=null}TObject.Destroy(a)}a.FAccess&&TObject.Free(a.FAccess);TObject.Destroy(a)},EndUpdate:function(a){0<a.FUpdating&&(--a.FUpdating,0==a.FUpdating&&TW3TagObj.AfterUpdate$(a))},FinalizeObject:function(){},InitializeObject:function(){},InsertInto:function(a,b){b||EW3TagObj.RaiseCntErrMethod("TW3TagObj.InsertInto",
+a,$R[9]);a.FHandle||EW3TagObj.RaiseCntErrMethod("TW3TagObj.InsertInto",a,$R[2]);try{a.FOwner$1&&TW3TagObj.RemoveFrom(a),b&&b.appendChild(a.FHandle),a.FOwner$1=b}catch(d){var c=$W(d);EW3TagObj.RaiseCntErrMethod("TW3TagObj.InsertInto",a,c.FMessage)}},MakeElementTagId:function(){++vUniqueNumber;return"OBJ"+vUniqueNumber.toString()},MakeElementTagObj:function(){return BrowserAPI().Document.createElement("div")},RemoveFrom:function(a){if(void 0!=a.FOwner$1){a.FOwner$1||EW3TagObj.RaiseCntErrMethod("TW3TagObj.RemoveFrom",
+a,$R[9]);a.FHandle||EW3TagObj.RaiseCntErrMethod("TW3TagObj.RemoveFrom",a,$R[2]);try{a.FOwner$1.removeChild(a.FHandle),a.FOwner$1=void 0}catch(c){var b=$W(c);EW3TagObj.RaiseCntErrMethod("TW3TagObj.RemoveFrom",a,b.FMessage)}}},RemoveFromComponentState:function(a,b){$SetIn(b,0,0,6)&&$SetExc(a.FComponentState,0,0,6);$SetIn(b,1,0,6)&&$SetExc(a.FComponentState,1,0,6);$SetIn(b,2,0,6)&&$SetExc(a.FComponentState,2,0,6);$SetIn(b,3,0,6)&&$SetExc(a.FComponentState,3,0,6);$SetIn(b,4,0,6)&&$SetExc(a.FComponentState,
+4,0,6);$SetIn(b,5,0,6)&&$SetExc(a.FComponentState,5,0,6)},Showing:function(a){return void 0!=a.FHandle&&null!=a.FHandle&&$SetIn(a.FComponentState,2,0,6)},StyleTagObject:function(a){a.FHandle.style.visibility="hidden";a.FHandle.style.display="none";a.FHandle.style.position="absolute";a.FHandle.style.overflow="hidden";a.FHandle.style.left="0px";a.FHandle.style.top="0px"},UnHookEvents:function(a){a.FHandle.onresize=null;a.FHandle.onselectstart=null;a.FHandle.onfocus=null;a.FHandle.onblur=null;a.FHandle.onchange=
+null;a.FHandle.onmousedown=null;a.FHandle.onmouseup=null;a.FHandle.onmousemove=null;a.FHandle.onmouseover=null;a.FHandle.onmouseout=null;a.FHandle.onclick=null;a.FHandle.ondblclick=null;a.FHandle.onkeydown=null;a.FHandle.onkeyup=null;a.FHandle.onkeypress=null;a.FHandle.webkitAnimationStart=null;a.FHandle.webkitAnimationEnd=null},Destroy$:function(a){return a.ClassType.Destroy(a)},AfterUpdate$:function(a){return a.ClassType.AfterUpdate(a)},FinalizeObject$:function(a){return a.ClassType.FinalizeObject(a)},
+InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},MakeElementTagId$:function(a){return a.ClassType.MakeElementTagId(a)},MakeElementTagObj$:function(a){return a.ClassType.MakeElementTagObj(a)},Showing$:function(a){return a.ClassType.Showing(a)},StyleTagObject$:function(a){return a.ClassType.StyleTagObject(a)}},TW3Component={$ClassName:"TW3Component",$Parent:TW3TagObj,$Init:function(a){TW3TagObj.$Init(a);a.FChildren=[];a.FName="";a.FParent=null},CBNoBehavior:function(){BrowserAPI().Event&&
+BrowserAPI().Event.preventDefault()},ChildAdded:function(){},ChildRemoved:function(){},Create$24:function(a,b){a.FParent=b;TW3TagObj.Create$23(a);null!==a.FParent&&TW3Component.RegisterChild(a.FParent,a);return a},FinalizeObject:function(a){TW3Component.FreeChildren(a);null!==a.FParent&&TW3Component.UnRegisterChild(a.FParent,a);a.FChildren.length=0;TW3TagObj.FinalizeObject(a)},FreeChildren:function(a){var b=0;try{for(;0<a.FChildren.length;)b=a.FChildren.length,TObject.Free(a.FChildren[0]),b==a.FChildren.length&&
+a.FChildren.shift()}finally{a.FChildren.length=0}},GetChildCount:function(a){return a.FChildren.length},GetChildObject:function(a,b){return a.FChildren[b]},InitializeObject:function(a){TW3TagObj.InitializeObject(a)},RegisterChild:function(a,b){null!==b&&0>a.FChildren.indexOf(b)&&(a.FChildren.push(b),TW3TagObj.InsertInto(b,a.FHandle),TW3Component.ChildAdded(a,b))},SetName:function(a,b){a.FName=b},Showing:function(a){return TW3TagObj.Showing(a)&&null!==a.FParent},UnRegisterChild:function(a,b){var c;
+null!==b&&(c=a.FChildren.indexOf(b),0<=c&&(a.FChildren.splice(c,1),TW3Component.ChildRemoved(a,b)),TW3TagObj.RemoveFrom(b))},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3TagObj.AfterUpdate,FinalizeObject$:function(a){return a.ClassType.FinalizeObject(a)},InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing$:function(a){return a.ClassType.Showing(a)},StyleTagObject:TW3TagObj.StyleTagObject,
+Create$24$:function(a){return a.ClassType.Create$24.apply(a.ClassType,arguments)}},TW3MovableControl={$ClassName:"TW3MovableControl",$Parent:TW3Component,$Init:function(a){TW3Component.$Init(a);a.FAdjusted=a.FTransparent=a.FUseAlpha=!1;a.FAlpha=a.FSyncCount=0;a.FBackground=a.FBorders=a.FConstraints=null;a.FColor=0},AdjustToParentBox:function(a){var b,c,d,e;if(a.FHandle&&!a.FAdjusted){a.FAdjusted=!0;c=TW3Borders.GetHSpace(TW3MovableControl.GetBorder(a));d=TW3Borders.GetVSpace(TW3MovableControl.GetBorder(a));
+var g;b=0;for(g=TW3Component.GetChildCount(a);b<g;b++)e=TW3Component.GetChildObject(a,b),$Is(e,TW3MovableControl)&&(e=$As(e,TW3MovableControl),TW3MovableControl.supportAdjustment(e.ClassType)&&((0<c||0<d)&&TW3MovableControl.SetSize(e,TW3MovableControl.GetWidth(e)-c,TW3MovableControl.GetHeight(e)-d),setTimeout($Event0(e,TW3MovableControl.AdjustToParentBox),1)))}},AfterUpdate:function(a){TW3TagObj.RemoveFromComponentState(a,[24])},DisplayMode:function(){return"inline-block"},FinalizeObject:function(a){a.FBackground&&
+TObject.Free(a.FBackground);a.FBorders&&TObject.Free(a.FBorders);a.FConstraints&&TObject.Free(a.FConstraints);TW3Component.FinalizeObject(a)},GetBorder:function(a){null===a.FBorders&&(a.FBorders=TW3OwnedObject.Create$11$($New(TW3Borders),a));return a.FBorders},GetBoundsRect:function(a){var b={Bottom$1:0,Left$1:0,Right$1:0,Top$1:0};b.Left$1=w3_getStyleAsInt(a.FHandle,"left");b.Top$1=w3_getStyleAsInt(a.FHandle,"top");a.FHandle?(b.Right$1=parseInt(b.Left$1+a.FHandle.offsetWidth,10),b.Bottom$1=parseInt(b.Top$1+
+a.FHandle.offsetHeight,10)):(b.Right$1=b.Left$1,b.Bottom$1=b.Top$1);return b},GetHeight:function(a){var b=0;a.FHandle&&(b=parseInt(a.FHandle.offsetHeight,10));return b},GetLeft:function(a){var b=0,c;(a=document.defaultView.getComputedStyle(a.FHandle,null))&&(c=a.getPropertyValue("left"));c&&("number"===typeof c?b=c:"string"===typeof c&&(c=parseInt(c),"number"===typeof c&&(b=c)));return b},GetTop:function(a){var b=0,c;(a=document.defaultView.getComputedStyle(a.FHandle,null))&&(c=a.getPropertyValue("top"));
+c&&("number"===typeof c?b=c:"string"===typeof c&&(c=parseInt(c),"number"===typeof c&&(b=c)));return b},GetVisible:function(a){var b="",c;(a=document.defaultView.getComputedStyle(a.FHandle,null))&&(c=a.getPropertyValue("visibility"));c&&("number"===typeof c?b=String(c):"string"===typeof c&&(b=c));return"visible"==b.toLocaleLowerCase()},GetWidth:function(a){var b=0;a.FHandle&&(b=parseInt(a.FHandle.offsetWidth,10));return b},InitializeObject:function(a){TW3Component.InitializeObject(a);a.FAlpha=255;
+a.FColor=536870911;a.FTransparent=!1;a.FParent?TW3MovableControl.ReadySync(a):TW3MovableControl.ObjectReady(a)},Moved:function(){},ObjectReady:function(a){TW3TagObj.AddToComponentState(a,[4]);TW3MovableControl.GetVisible(a)&&TW3MovableControl.Resize$(a)},ReadySync:function(a){var b;if(b=a.FHandle){b=a.FHandle;var c=!1;if(void 0!=b&&null!=b){if(void 0!=b&&null!=b)for(;b.parentNode;)b=b.parentNode;else b=null;c=!(void 0==b||null==b)&&b.body}b=c}!b||$SetIn(a.FComponentState,0,0,6)||$SetIn(a.FComponentState,
+1,0,6)?(++a.FSyncCount,600<a.FSyncCount?TW3MovableControl.ObjectReady(a):w3_RequestAnimationFrame($Event0(a,TW3MovableControl.ReadySync))):TW3MovableControl.ObjectReady(a)},Resize:function(){},SetAlpha:function(a,b){a.FAlpha=0>b?0:255<b?255:b;a.FUseAlpha&&(a.FHandle.style.opacity=.01*a.FAlpha)},SetBounds$2:function(a,b,c,d,e){var g,h;d=Math.max(0,d);e=Math.max(0,e);h=b!=TW3MovableControl.GetLeft(a)||c!=TW3MovableControl.GetTop(a);g=d!=a.FHandle.offsetWidth||e!=a.FHandle.offsetHeight;$SetIn(a.FComponentState,
+2,0,6)?(TW3TagObj.BeginUpdate(a),a.FHandle.style.left=b.toString()+"px",a.FHandle.style.top=c.toString()+"px",a.FHandle.style.width=d.toString()+"px",a.FHandle.style.height=e.toString()+"px",h&&TW3TagObj.AddToComponentState(a,[16]),g&&TW3TagObj.AddToComponentState(a,[8]),TW3TagObj.EndUpdate(a)):(a.FHandle.style.left=b.toString()+"px",a.FHandle.style.top=c.toString()+"px",a.FHandle.style.width=d.toString()+"px",a.FHandle.style.height=e.toString()+"px")},SetColor:function(a,b){var c;b!=a.FColor&&(a.FColor=
+b,c=ColorToWebStr(a.FColor,a.FTransparent?0:255),a.FHandle.style.backgroundColor=c)},SetHeight:function(a,b){b=Math.max(b,0);b!=TW3MovableControl.GetHeight(a)&&($SetIn(a.FComponentState,2,0,6)?(TW3TagObj.BeginUpdate(a),a.FHandle.style.height=r(b),TW3TagObj.AddToComponentState(a,[8]),TW3TagObj.EndUpdate(a)):a.FHandle.style.height=r(b))},SetLeft:function(a,b){$SetIn(a.FComponentState,2,0,6)?(TW3TagObj.BeginUpdate(a),a.FHandle.style.left=r(b),TW3TagObj.AddToComponentState(a,[16]),TW3TagObj.EndUpdate(a)):
+a.FHandle.style.left=r(b)},SetSize:function(a,b,c){b=Math.max(b,0);c=Math.max(c,0);if(b!=a.FHandle.offsetWidth||c!=a.FHandle.offsetHeight)$SetIn(a.FComponentState,2,0,6)?(TW3TagObj.BeginUpdate(a),a.FHandle.style.width=b.toString()+"px",a.FHandle.style.height=c.toString()+"px",TW3TagObj.AddToComponentState(a,[8]),TW3TagObj.EndUpdate(a)):(a.FHandle.style.width=b.toString()+"px",a.FHandle.style.height=c.toString()+"px")},SetTop:function(a,b){$SetIn(a.FComponentState,2,0,6)?(TW3TagObj.BeginUpdate(a),
+a.FHandle.style.top=r(b),TW3TagObj.AddToComponentState(a,[16]),TW3TagObj.EndUpdate(a)):a.FHandle.style.top=r(b)},SetTransparent:function(a,b){var c;b!=a.FTransparent&&(TW3TagObj.BeginUpdate(a),a.FTransparent=b,c=ColorToWebStr(a.FColor,b?0:255),a.FHandle.style.backgroundColor=c,TW3TagObj.AddToComponentState(a,[16]),TW3TagObj.EndUpdate(a))},SetUseAlpha:function(a,b){var c;b!=a.FUseAlpha&&(c=(a.FUseAlpha=b)?.01*a.FAlpha:1,a.FHandle.style.opacity=c)},SetVisible:function(a,b){TW3TagObj.BeginUpdate(a);
+b?(a.FHandle.style.display=TW3MovableControl.DisplayMode(a.ClassType),a.FHandle.style.visibility="visible",TW3TagObj.AddToComponentState(a,[8])):(a.FHandle.style.display="none",a.FHandle.style.visibility="hidden");TW3TagObj.EndUpdate(a)},SetWidth:function(a,b){b=Math.max(b,0);b!=TW3MovableControl.GetWidth(a)&&($SetIn(a.FComponentState,2,0,6)?(TW3TagObj.BeginUpdate(a),a.FHandle.style.width=r(b),TW3TagObj.AddToComponentState(a,[8]),TW3TagObj.EndUpdate(a)):a.FHandle.style.width=r(b))},Showing:function(a){return TW3Component.Showing(a)&&
+0<TW3MovableControl.GetWidth(a)&&0<TW3MovableControl.GetHeight(a)&&0<=TW3MovableControl.GetLeft(a)&&TW3MovableControl.GetLeft(a)<TW3MovableControl.GetWidth(a)&&0<=TW3MovableControl.GetTop(a)&&TW3MovableControl.GetTop(a)<TW3MovableControl.GetHeight(a)&&TW3MovableControl.GetVisible(a)},supportAdjustment:function(){return!0},Destroy:TW3TagObj.Destroy,AfterUpdate$:function(a){return a.ClassType.AfterUpdate(a)},FinalizeObject$:function(a){return a.ClassType.FinalizeObject(a)},InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},
+MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing$:function(a){return a.ClassType.Showing(a)},StyleTagObject:TW3TagObj.StyleTagObject,Create$24:TW3Component.Create$24,Resize$:function(a){return a.ClassType.Resize(a)}},TW3CustomControl={$ClassName:"TW3CustomControl",$Parent:TW3MovableControl,$Init:function(a){TW3MovableControl.$Init(a);a.FClassNames=a.FFont=a.FGestureData=a.FNoBehavior=a.FOnClick=a.FOnGotFocus=a.FOnLostFocus=a.FOnResize=a.FScrollInfo=
+a.FTouchData=null},AfterUpdate:function(a){$SetIn(a.FComponentState,2,0,6)&&($SetIn(a.FComponentState,3,0,6)&&(TW3TagObj.RemoveFromComponentState(a,[8]),TW3MovableControl.Resize$(a),a.FOnResize&&a.FOnResize(a)),$SetIn(a.FComponentState,4,0,6)&&(TW3TagObj.RemoveFromComponentState(a,[16]),TW3MovableControl.Moved(a),TW3CustomControl.Invalidate(a)));TW3MovableControl.AfterUpdate(a)},BringToFront:function(a){a.FHandle&&(a.FHandle.style.zIndex=TW3CustomControl.GetMaxZIndex($As(a.FParent,TW3CustomControl))+
+1)},CBClick:function(a){a.FOnClick&&a.FOnClick(a)},CBFocused:function(a){a.FOnGotFocus&&a.FOnGotFocus(a)},CBLostFocus:function(a){a.FOnLostFocus&&a.FOnLostFocus(a)},Create$24:function(a,b){TW3Component.Create$24(a,b);a.FHandle.onclick=$Event1(a,TW3CustomControl.CBClick);return a},FinalizeObject:function(a){TObject.Free(a.FFont);TObject.Free(a.FClassNames);TObject.Free(a.FScrollInfo);TObject.Free(a.FTouchData);TObject.Free(a.FGestureData);TW3MovableControl.FinalizeObject(a)},GetChildrenSortedByYPos:function(a){var b=
+[],c,d,e,g,h;b.length=0;c=TW3Component.GetChildCount(a);if(0<c){for(d=0;d<c;d++)e=TW3Component.GetChildObject(a,d),$Is(e,TW3CustomControl)&&b.push(e);if(1<b.length){do for(e=!1,d=1,a=c;d<a;d++)if(g=$As(b[d-1],TW3CustomControl),h=$As(b[d],TW3CustomControl),TW3MovableControl.GetTop(h)<TW3MovableControl.GetTop(g)){e=b;g=d-1;h=d;var f=e[g];e[g]=e[h];e[h]=f;e=!0}while(0!=e)}}return b},GetMaxZIndex:function(a){var b,c,d,e;b=0;var g;c=0;for(g=TW3Component.GetChildCount(a);c<g;c++)d=TW3Component.GetChildObject(a,
+c),null!==d&&$Is(d,TW3CustomControl)&&d.FHandle&&(e=TW3CustomControl.GetZIndexAsInt($As(d,TW3CustomControl),0),e>b&&(b=e),e=TW3CustomControl.GetMaxZIndex($As(d,TW3CustomControl)),e>b&&(b=e));return b},GetScrollInfo:function(a){null===a.FScrollInfo&&(a.FScrollInfo=TW3OwnedObject.Create$11$($New(TW3ScrollInfo),a));return a.FScrollInfo},GetStyleClass:function(a){return(a=a.FHandle.getAttribute("class",0))?String(a):""},GetZIndexAsInt:function(a,b){var c,d;c=b;d=a.FHandle.style.zIndex;if(a.FHandle)if(null==
+d||void 0==d?0:"number"===typeof d)c=parseInt(d,10);else if(null==d||void 0==d?0:"string"===typeof d)c=parseInt(d,10),isNaN(c)&&(c=b);return c},InitializeObject:function(a){TW3MovableControl.InitializeObject(a);a.FNoBehavior=$Event0(a,TW3Component.CBNoBehavior);var b=$Event0(a,TW3Component.CBNoBehavior);a.FHandle.onselectstart=b;b=$Event0(a,TW3CustomControl.CBFocused);a.FHandle.onfocus=b;b=$Event0(a,TW3CustomControl.CBLostFocus);a.FHandle.onblur=b},Invalidate:function(){},LayoutChildren:function(a){var b,
+c;TW3TagObj.BeginUpdate(a);var d;b=0;for(d=TW3Component.GetChildCount(a);b<d;b++)c=TW3Component.GetChildObject(a,b),$Is(c,TW3CustomControl)&&TW3CustomControl.LayoutChildren($As(c,TW3CustomControl));TW3TagObj.AddToComponentState(a,[24]);TW3TagObj.EndUpdate(a)},SetStyleClass:function(a,b){a.FHandle.setAttribute("class",b)},StyleTagObject:function(a){TW3TagObj.StyleTagObject(a);TW3CustomControl.SetStyleClass(a,TObject.ClassName(a.ClassType));TW3MovableControl.SetVisible(a,!0)},Destroy:TW3TagObj.Destroy,
+AfterUpdate$:function(a){return a.ClassType.AfterUpdate(a)},FinalizeObject$:function(a){return a.ClassType.FinalizeObject(a)},InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject$:function(a){return a.ClassType.StyleTagObject(a)},Create$24$:function(a){return a.ClassType.Create$24.apply(a.ClassType,arguments)},Resize:TW3MovableControl.Resize},
+TW3DisplayView={$ClassName:"TW3DisplayView",$Parent:TW3CustomControl,$Init:function(a){TW3CustomControl.$Init(a);a.FArrange=!1;a.FArrangeKind=0},ArrangeChildren:function(a,b){var c,d,e,g,h,f,l;g=TW3Component.GetChildCount(a);if(0<g)switch(h=TW3MovableControl.GetBoundsRect(a),b){case 0:f=h.Right$1-h.Left$1;l=h.Bottom$1-h.Top$1;for(c=0;c<g;c++)e=TW3Component.GetChildObject(a,c),$Is(e,TW3CustomControl)&&!$Is(e,TW3BlockBox)&&TW3MovableControl.SetSize($As(e,TW3CustomControl),f,l);break;case 1:d=h.Top$1;
+f=h.Right$1-h.Left$1;for(c=0;c<g;c++)e=TW3Component.GetChildObject(a,c),$Is(e,TW3CustomControl)&&!$Is(e,TW3BlockBox)&&(l=TW3MovableControl.GetHeight($As(e,TW3CustomControl)),TW3MovableControl.SetBounds$2($As(e,TW3CustomControl),h.Left$1,d,f,l),d+=l);break;case 2:for(d=h.Left$1,l=h.Bottom$1-h.Top$1,c=0;c<g;c++)e=TW3Component.GetChildObject(a,c),$Is(e,TW3CustomControl)&&!$Is(e,TW3BlockBox)&&(f=TW3MovableControl.GetWidth($As(e,TW3CustomControl)),TW3MovableControl.SetBounds$2($As(e,TW3CustomControl),
+d,h.Top$1,f,l),d+=f)}},InitializeObject:function(a){TW3CustomControl.InitializeObject(a);a.FArrange=!0;a.FArrangeKind=0},Resize:function(a){TW3MovableControl.Resize(a);a.FArrange&&TW3DisplayView.ArrangeChildren(a,a.FArrangeKind)},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject:TW3CustomControl.FinalizeObject,InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,
+Showing:TW3MovableControl.Showing,StyleTagObject:TW3CustomControl.StyleTagObject,Create$24:TW3CustomControl.Create$24,Resize$:function(a){return a.ClassType.Resize(a)}},TW3Display={$ClassName:"TW3Display",$Parent:TW3CustomControl,$Init:function(a){TW3CustomControl.$Init(a);a.FFooter=a.FHeader=a.FOnOrient=a.FView=null},FinalizeObject:function(a){TObject.Free(a.FView);a.FHeader&&TObject.Free(a.FHeader);a.FFooter&&TObject.Free(a.FFooter);TW3CustomControl.FinalizeObject(a)},GetHeightOfChildren:function(a){var b=
+0,c,d,e;c=0;for(e=TW3Component.GetChildCount(a);c<e;c++)d=TW3Component.GetChildObject(a,c),d!==a.FView&&$Is(d,TW3CustomControl)&&!$Is(d,TW3BlockBox)&&(b+=TW3MovableControl.GetHeight($As(d,TW3CustomControl)));return b},InitializeObject:function(a){TW3CustomControl.InitializeObject(a);a.FView=TW3Component.Create$24$($New(TW3DisplayView),a);TW3MovableControl.SetTop(a.FView,5)},PositionFormInView:function(a,b){var c,d;if(b)c=Application(),null===c||c.FTerminated||(c=TW3ScrollInfo.GetScrollLeft(TW3CustomControl.GetScrollInfo(a.FView)),
+d=TW3ScrollInfo.GetScrollTop(TW3CustomControl.GetScrollInfo(a.FView)),TW3MovableControl.SetBounds$2(b,c,d,TW3MovableControl.GetWidth(a.FView),TW3MovableControl.GetHeight(a.FView)));else throw EW3Exception.CreateFmt($New(EW3Screen),$R[0],["PositionFormInView",TObject.ClassName(a.ClassType),"Form parameter was NIL error"]);},Resize:function(a){var b,c,d,e;TW3MovableControl.Resize(a);b=TW3Display.GetHeightOfChildren(a);TW3MovableControl.SetHeight(a.FView,TW3MovableControl.GetHeight(a)-b);b=TW3CustomControl.GetChildrenSortedByYPos(a);
+d=0;var g;c=0;for(g=b.length;c<g;c++)e=$As(b[c],TW3CustomControl),$Is(e,TW3BlockBox)?TW3MovableControl.SetBounds$2(e,0,0,TW3MovableControl.GetWidth(a),TW3MovableControl.GetHeight(a)):(TW3MovableControl.SetBounds$2(e,0,d,TW3MovableControl.GetWidth(a),TW3MovableControl.GetHeight(e)),d+=TW3MovableControl.GetHeight(e))},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject$:function(a){return a.ClassType.FinalizeObject(a)},InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},
+MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject:TW3CustomControl.StyleTagObject,Create$24:TW3CustomControl.Create$24,Resize$:function(a){return a.ClassType.Resize(a)}},TW3BlockBox={$ClassName:"TW3BlockBox",$Parent:TW3CustomControl,$Init:function(a){TW3CustomControl.$Init(a)},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject:TW3CustomControl.FinalizeObject,InitializeObject:TW3CustomControl.InitializeObject,
+MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject:TW3CustomControl.StyleTagObject,Create$24:TW3CustomControl.Create$24,Resize:TW3MovableControl.Resize},TApplicationFormsList={$ClassName:"TApplicationFormsList",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.FFormOwner=null;a.FList=[];a.FNextAutoCreate=0},AutoCreateForm:function(a,b){b.Instance||(b.Instance=TW3Component.Create$24$($NewDyn(b.FormClass,""),
+a.FFormOwner),TW3CustomApplication.RegisterFormInstance(Application(),b.Instance,b.IsMainForm));b.InitialAutoCreateDone=!0},AutoCreateForms:function(a,b){var c,d,e;a.FFormOwner=b;a.FNextAutoCreate=0;e=a.FList;var g;c=0;for(g=e.length;c<g&&(d=e[c],TApplicationFormsList.AutoCreateForm(a,d),++a.FNextAutoCreate,!d.IsMainForm);c++);setTimeout($Event0(a,TApplicationFormsList.AutoCreateNextForm),50)},AutoCreateNextForm:function(a){var b,c,d;b=a.FNextAutoCreate;for(d=a.FList.length;b<d;b++)if(c=a.FList[b],
+c.IsAutoCreated&&null===c.Instance&&!c.InitialAutoCreateDone){TApplicationFormsList.AutoCreateForm(a,c);++a.FNextAutoCreate;a.FNextAutoCreate<a.FList.length-1&&setTimeout($Event0(a,TApplicationFormsList.AutoCreateNextForm),50);break}},IndexOfFormClass:function(a,b){var c,d;c=0;for(d=a.FList.length;c<d;c++)if(a.FList[c].FormClass==b)return c;return-1},IndexOfUnitName:function(a,b){var c,d;c=0;for(d=a.FList.length;c<d;c++)if(a.FList[c].UnitName.toUpperCase()==b.toUpperCase())return c;return-1},RegisterAutoCreate:function(a,
+b,c,d){var e;e=TApplicationFormsList.IndexOfUnitName(a,b);0<=e?e=a.FList[e]:(e=TObject.Create($New(TApplicationFormInfo)),e.UnitName=b,a.FList.push(e));e.IsMainForm=d;e.IsAutoCreated=c},RegisterForm:function(a,b,c){var d;d=TApplicationFormsList.IndexOfUnitName(a,b);0<=d?d=a.FList[d]:(d=TObject.Create($New(TApplicationFormInfo)),d.UnitName=b,a.FList.push(d));d.FormClass=c},RegisterFormInstance$1:function(a,b,c){var d;d=TApplicationFormsList.IndexOfFormClass(a,b);0<=d?d=a.FList[d]:(d=TObject.Create($New(TApplicationFormInfo)),
+d.FormClass=b,a.FList.push(d));d.Instance=c;d.InitialAutoCreateDone=!0},UnregisterFormInstance:function(a,b){var c,d;c=0;for(d=a.FList.length;c<d;c++)a.FList[c].Instance===b&&(a.FList[c].Instance=null)},Destroy:TObject.Destroy},TApplicationFormInfo={$ClassName:"TApplicationFormInfo",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.InitialAutoCreateDone=a.IsMainForm=a.IsAutoCreated=!1;a.UnitName="";a.Instance=null;a.FormClass=null},Destroy:TObject.Destroy},EW3Screen={$ClassName:"EW3Screen",$Parent:EW3Exception,
+$Init:function(a){EW3Exception.$Init(a)},Destroy:Exception.Destroy},EW3Application={$ClassName:"EW3Application",$Parent:EW3Exception,$Init:function(a){EW3Exception.$Init(a)},Destroy:Exception.Destroy};function Application(){var a;return a=Instance}function FormsFactory(){var a;GForms||(GForms=TObject.Create($New(TApplicationFormsList)));return a=GForms}
+var TW3CustomForm={$ClassName:"TW3CustomForm",$Parent:TW3CustomControl,$Init:function(a){TW3CustomControl.$Init(a);a.FCaption="";a.FInitialized=!1;a.FOnActivate=null;a.FOnDeactivate=null},Create$24:function(a,b){TW3CustomControl.Create$24(a,b);TApplicationFormsList.RegisterFormInstance$1(FormsFactory(),$AsClass(TObject.ClassType(a.ClassType),TW3CustomForm),a);return a},Destroy:function(a){TW3CustomApplication.UnRegisterFormInstance(Application(),a);TApplicationFormsList.UnregisterFormInstance(FormsFactory(),
+a);TW3TagObj.Destroy(a)},FormActivated:function(a){a.FInitialized?a.FOnActivate&&a.FOnActivate(a):(a.FInitialized=!0,TW3CustomForm.InitializeForm$(a),a.FOnActivate&&a.FOnActivate(a),TW3CustomControl.LayoutChildren(a))},FormDeactivated:function(a){a.FOnDeactivate&&a.FOnDeactivate(a)},InitializeForm:function(){},setCaption:function(a,b){a.FCaption=b},StyleTagObject:function(a){TW3CustomControl.StyleTagObject(a);a.FHandle.style[BrowserAPIx.CSSToken+"Transform"]="none";TW3CustomControl.SetStyleClass(a,
+"TW3CustomForm")},Destroy$:function(a){return a.ClassType.Destroy(a)},AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject:TW3CustomControl.FinalizeObject,InitializeObject:TW3CustomControl.InitializeObject,MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject$:function(a){return a.ClassType.StyleTagObject(a)},Create$24$:function(a){return a.ClassType.Create$24.apply(a.ClassType,arguments)},Resize:TW3MovableControl.Resize,
+InitializeForm$:function(a){return a.ClassType.InitializeForm(a)}},TW3Form={$ClassName:"TW3Form",$Parent:TW3CustomForm,$Init:function(a){TW3CustomForm.$Init(a)},Destroy:TW3CustomForm.Destroy,AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject:TW3CustomControl.FinalizeObject,InitializeObject:TW3CustomControl.InitializeObject,MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject:TW3CustomForm.StyleTagObject,Create$24:TW3CustomForm.Create$24,
+Resize:TW3MovableControl.Resize,InitializeForm:TW3CustomForm.InitializeForm},TW3ScrollInfo={$ClassName:"TW3ScrollInfo",$Parent:TW3OwnedObject,$Init:function(a){TW3OwnedObject.$Init(a)},AcceptParent:function(a,b){return null!==b&&$Is(b,TW3TagObj)},GetScrollLeft:function(a){var b=0,c;(c=$As(a.FOwner,TW3TagObj).FHandle)?b=parseInt(c.scrollLeft,10):EW3TagObj.RaiseCntErrMethod("TW3ScrollInfo.GetScrollLeft",a,"invalid owner handle error");return b},GetScrollTop:function(a){var b=0,c;(c=$As(a.FOwner,TW3TagObj).FHandle)?
+b=parseInt(c.scrollTop,10):EW3TagObj.RaiseCntErrMethod("TW3ScrollInfo.GetScrollTop",a,"invalid owner handle error");return b},ScrollTo:function(a,b,c){var d;(d=$As(a.FOwner,TW3TagObj).FHandle)?(d.scrollLeft=b,d.scrollTop=c):EW3TagObj.RaiseCntErrMethod("TW3ScrollInfo.ScrollTo",a,"invalid owner handle error")},Destroy:TObject.Destroy,AcceptParent$:function(a){return a.ClassType.AcceptParent.apply(a.ClassType,arguments)},Create$11:TW3OwnedObject.Create$11},TCustomAppContainer={$ClassName:"TCustomAppContainer",
+$Parent:TW3Component,$Init:function(a){TW3Component.$Init(a)},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3TagObj.AfterUpdate,FinalizeObject:TW3Component.FinalizeObject,InitializeObject:TW3Component.InitializeObject,MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3Component.Showing,StyleTagObject:TW3TagObj.StyleTagObject,Create$24:TW3Component.Create$24},TDocumentBody={$ClassName:"TDocumentBody",$Parent:TCustomAppContainer,$Init:function(a){TCustomAppContainer.$Init(a)},
+GetHeight$5:function(){return parseInt(BrowserAPI().Window.innerHeight,10)},GetWidth$5:function(){return parseInt(BrowserAPI().Window.innerWidth,10)},MakeElementTagId:function(){return""},MakeElementTagObj:function(){return BrowserAPI().Body},StyleTagObject:function(){},Destroy:TW3TagObj.Destroy,AfterUpdate:TW3TagObj.AfterUpdate,FinalizeObject:TW3Component.FinalizeObject,InitializeObject:TW3Component.InitializeObject,MakeElementTagId$:function(a){return a.ClassType.MakeElementTagId(a)},MakeElementTagObj$:function(a){return a.ClassType.MakeElementTagObj(a)},
+Showing:TW3Component.Showing,StyleTagObject$:function(a){return a.ClassType.StyleTagObject(a)},Create$24:TW3Component.Create$24},EW3TagObj={$ClassName:"EW3TagObj",$Parent:EW3Exception,$Init:function(a){EW3Exception.$Init(a)},RaiseCntErrMethod:function(a,b,c){throw EW3Exception.CreateFmt($New(EW3TagObj),$R[0],[a,null!==b?TObject.ClassName(b.ClassType):"nil",c]);},Destroy:Exception.Destroy};
+function ColorToWebStr(a,b){var c=a>>>16&255,d=a>>>8&255,e=a&255,g=b;return c=255==g?"#"+IntToHex2(c)+IntToHex2(d)+IntToHex2(e):"rgba("+c.toString()+","+d.toString()+","+e.toString()+","+(g/255).toString()+")"}
+var TW3Borders={$ClassName:"TW3Borders",$Parent:TW3OwnedObject,$Init:function(a){TW3OwnedObject.$Init(a);a.FBottom=a.FLeft=a.FRight=a.FTop=null},AcceptParent:function(a,b){return $Is(b,TW3TagObj)},Create$11:function(a,b){TW3OwnedObject.Create$11(a,b);a.FLeft=TW3Border.Create$51($New(TW3Border),a,0);a.FTop=TW3Border.Create$51($New(TW3Border),a,1);a.FRight=TW3Border.Create$51($New(TW3Border),a,2);a.FBottom=TW3Border.Create$51($New(TW3Border),a,3);return a},Destroy:function(a){TObject.Free(a.FLeft);
+TObject.Free(a.FTop);TObject.Free(a.FRight);TObject.Free(a.FBottom);TObject.Destroy(a)},GetHSpace:function(a){return TW3Border.GetWidth$6(a.FLeft)+TW3Border.GetPadding(a.FLeft)+TW3Border.GetWidth$6(a.FRight)+TW3Border.GetPadding(a.FRight)},GetVSpace:function(a){return TW3Border.GetWidth$6(a.FTop)+TW3Border.GetPadding(a.FTop)+TW3Border.GetWidth$6(a.FBottom)+TW3Border.GetPadding(a.FBottom)},Destroy$:function(a){return a.ClassType.Destroy(a)},AcceptParent$:function(a){return a.ClassType.AcceptParent.apply(a.ClassType,
+arguments)},Create$11$:function(a){return a.ClassType.Create$11.apply(a.ClassType,arguments)}},TW3Border={$ClassName:"TW3Border",$Parent:TObject,$Init:function(a){TObject.$Init(a);a.FEdge=0;a.FEdgeName="";a.FOwner$4=null},Create$51:function(a,b,c){TObject.Create(a);a.FOwner$4=b;a.FEdge=a.FEdge;switch(c){case 0:a.FEdgeName="left";break;case 1:a.FEdgeName="top";break;case 2:a.FEdgeName="right";break;case 3:a.FEdgeName="bottom"}return a},GetPadding:function(a){var b,c;b=0;if(c=$As(a.FOwner$4.FOwner,
+TW3TagObj).FHandle)a="padding-"+a.FEdgeName,b=w3_getStyleAsInt(c,a);return b},GetWidth$6:function(a){var b,c;b=0;if(c=$As(a.FOwner$4.FOwner,TW3TagObj).FHandle)a="border-"+a.FEdgeName+"-width",b=w3_getStyleAsInt(c,a);return b},SetPadding:function(a,b){var c,d;if(c=$As(a.FOwner$4.FOwner,TW3TagObj).FHandle)d="padding-"+a.FEdgeName,c.style[d]=r(b);else throw EW3Exception.CreateFmt($New(EW3TagObj),$R[0],["TW3Border.SetPadding",TObject.ClassName(a.ClassType),$R[16]]);},SetWidth$1:function(a,b){var c,d;
+if(c=$As(a.FOwner$4.FOwner,TW3TagObj).FHandle)d="border-"+a.FEdgeName+"-width",c.style[d]=r(b);else throw EW3Exception.CreateFmt($New(EW3TagObj),$R[0],["TW3Border.SetWidth",TObject.ClassName(a.ClassType),$R[16]]);},Destroy:TObject.Destroy},TForm1={$ClassName:"TForm1",$Parent:TW3Form,$Init:function(a){TW3Form.$Init(a)},InitializeForm:function(a){TW3CustomForm.InitializeForm(a)},InitializeObject:function(a){TW3CustomControl.InitializeObject(a);TW3CustomForm.setCaption(a,"W3Form");TW3Component.SetName(a,
+"Form1")},Resize:function(a){TW3MovableControl.Resize(a)},Destroy:TW3CustomForm.Destroy,AfterUpdate:TW3CustomControl.AfterUpdate,FinalizeObject:TW3CustomControl.FinalizeObject,InitializeObject$:function(a){return a.ClassType.InitializeObject(a)},MakeElementTagId:TW3TagObj.MakeElementTagId,MakeElementTagObj:TW3TagObj.MakeElementTagObj,Showing:TW3MovableControl.Showing,StyleTagObject:TW3CustomForm.StyleTagObject,Create$24:TW3CustomForm.Create$24,Resize$:function(a){return a.ClassType.Resize(a)},InitializeForm$:function(a){return a.ClassType.InitializeForm(a)}},
+Instance=null,Application$1=null,GForms=null,_FontDetect=null,BrowserAPIx,vUniqueNumber=0,vRequestAnimFrame=null;
+BrowserAPIx={Window:window,Styles:window.style,Self:self,Navigator:navigator,GetWindow:window,GetStyles:window.style,GetDocument:document,GetBody:document.body,Event:event,Document:document,DevicePixelRatio:function(){return window.devicePixelRatio||1},CSSToken:["webkit","Moz","O","ms"],Console:window.console,classname:["TW3WebkitBrowserAPI","TW3FirefoxBrowserAPI","TW3OperaBrowserAPI","TW3IEBrowserAPI"],Body:document.body};TApplicationFormsList.RegisterForm(FormsFactory(),"Form1",TForm1);
+TApplicationFormsList.RegisterAutoCreate(FormsFactory(),"Form1",!0,!0);function $Application(){try{Application$1=TW3CustomApplication.Create$3($New(TApplication)),TW3CustomApplication.RunApp(Application$1)}catch(b){var a=$W(b);alert(a.FMessage)}}$Application();$Application=function(){_FontDetect&&TObject.Free(_FontDetect)};$Application();
+	}window.onload = function () { bootstrap(); }
+	</script>
+
+</head>
+
+<body></body>
+
+</html>
