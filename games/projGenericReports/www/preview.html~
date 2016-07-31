@@ -12,7 +12,7 @@
 <input type="image" src="../../i/lp.png" onclick="changediv();"/>
 <input type="image" src="../../i/rf.png" onclick="r();"/>
 <a href=""><img src="../../i/fo.png"></a>
-<a href="https://github.com/smartpascal/smartms/blob/master/games/projGenericReports/projGenericReports.zip?raw=true"><img src="../../i/dw.png"></a>
+<a href=""><img src="../../i/dw.png"></a>
 
 <div id="i5" style="-webkit-transform: scale(1); -webkit-transform-origin: 0px 0px;">
   <div id="f_i5" class="f_scroller">
