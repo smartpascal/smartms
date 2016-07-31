@@ -1,0 +1,14 @@
+unit uReportC;
+
+interface
+
+uses
+  uBaseReport;
+
+type
+  TReportC = class(TBaseReport)
+  end;
+
+implementation
+
+end.
