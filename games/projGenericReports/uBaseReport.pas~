@@ -5,6 +5,21 @@ interface
 uses W3C.Console;
 
 type
+  //TViewType = (aViewA, aViewB, aViewC);
+  //EUnknownApe = class(Exception);
+/*
+  TBaseView = class;
+  TViewType = class of TBaseView;
+
+TBaseView = class(TObject)
+  public
+	  class function CreateView(const ViewType : TViewType) : TBaseView;
+  published
+    procedure showmsg(str: string); virtual;
+  end;
+
+TViewClass = class of TBaseView;
+*/
 
 TBaseReport = class(TObject)
   published
@@ -25,6 +40,37 @@ TBaseReport = class(TObject)
 implementation
 
 uses uReportA, uReportB, uReportC;
+
+/*class function TBaseReport.CreateView(const ViewType : TViewType) : TBaseReport;
+begin
+	case ViewType of
+	aViewA	: Result := TViewA.Create;
+	aViewB  : Result := TViewB.Create;
+	aViewC	: Result := TViewC.Create;
+	else
+	raise EUnknownApe.Create('an error has been occurred.');
+	end;
+end;*/
+
+/*
+Const THEVIEWCLASSES: array[TViewType] of TViewClass = (TViewA, TViewB, TViewC);
+
+class function TBaseReport.CreateView(const ViewType : TViewType) : TBaseReport;
+begin
+  Result := THEVIEWCLASSES[ViewType].Create;
+end;
+*/
+/*
+class function TBaseReport.CreateView(const ViewType : TViewType) : TBaseReport;
+begin
+  Result := ViewType.Create;
+end;
+
+procedure TBaseReport.showmsg(str: string);
+begin
+  console.log(str);
+end;
+*/
 
 { TModelFactory }
 
