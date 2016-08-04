@@ -1,0 +1,19 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="43" col="33" row="46" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="iOS.css" fullname="iOS.css" topline="857" col="1" row="880" />
+      <tab filename="System.Dataset" fullname="System.Dataset.pas" topline="1022" col="3" row="1033" />
+      <activetab>System.Dataset</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>58</BackgroundCompilations>
+      <EditTime>00:00:55.549</EditTime>
+      <CompileTime>00:00:23.045</CompileTime>
+      <TotalTime>00:05:12.703</TotalTime>
+      <DesigningTime>00:00:37.733</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>
