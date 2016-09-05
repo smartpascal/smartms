@@ -1,0 +1,14 @@
+uses W3C.Console, Main;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+  var Application := TApplication.Create;
+  Application.RunApp;
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    console.log(e.Message);
+end;
+{$ENDIF}
+

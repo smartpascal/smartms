@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>warleyalex - mobile web app template</title>
+<meta name="description" content="web app mobile template">
+<style>html { overflow-y: hidden;}
+#i5,#i5_l{background-repeat:no-repeat;background-position:top left;margin:0 auto 0 auto;text-align:center}#i5{background-image:url(../../i/i5p.png);width:586px;height:1001px}#i5_l{background-image:url("../../i/i5l.png");width:1001px;height:586px;}#f_i5{width:320px;height:568px;margin:217px 0 0 3px}#f_i5_l {width: 568px;height:320px;margin: 131px 0 0 -1px;}.f_scroller{display:inline-block;-webkit-overflow-scrolling:touch;overflow:hidden}.f_scroller>iframe{width:100%;height:100%}</style></head>
+<script type="text/javascript">function changediv(){if(document.getElementById("i5_l")){document.getElementById("i5_l").setAttribute("id","i5");document.getElementById("f_i5_l").setAttribute("id","f_i5");}else{document.getElementById("i5").setAttribute("id","i5_l");document.getElementById("f_i5").setAttribute("id","f_i5_l");}};function r(){i();document.getElementById('iframeid').src = document.getElementById('iframeid').src};function setFocusThickboxIframe(){var iframeID = document.getElementById("iframeid");iframeID.contentWindow.focus();}function i(){setTimeout(setFocusThickboxIframe, 100);return false;};</script>
+<body  onload="i()">
+<input type="image" src="../../i/lp.png" onclick="changediv();"/>
+<input type="image" src="../../i/rf.png" onclick="r();"/>
+<a href=""><img src="../../i/fo.png"></a>
+<a href="https://raw.github.com/smartpascal/smartms/master/games/projCreatures.7z"><img src="../../i/dw.png"></a>
+
+<div id="i5" style="-webkit-transform: scale(1); -webkit-transform-origin: 0px 0px;">
+  <div id="f_i5" class="f_scroller">
+	<iframe id="iframeid" src="index.html" frameborder="0" style="background-color: #fff;"></iframe>
+  </div>
+</div>
+</body>
+</html>
