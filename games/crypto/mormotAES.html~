@@ -163,7 +163,7 @@
                 <!-- /ciphertext -->
 
                 <!-- verification -->
-                <div class="spaces" style="display:none;">
+                <div class="space">
                     <div>Verification</div>
                     <textarea rows="3" cols="30" class="sidebartextarea" id="txtVerification" name="txtVerification" 
                         readonly="readonly">
