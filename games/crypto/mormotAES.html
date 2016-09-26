@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <!-- ****************************** Title ****************************** -->
+    <title>AES crypto-js</title>
+    <!-- ****************************** icon ****************************** -->
+    <link rel="shortcut icon" href="images/icon/imageres.ico" type="image/x-icon" />
+    <!-- ****************************** css ****************************** -->
+    <style type='text/css' media='screen'>@import url(css/screen.css);</style>
+    <style type='text/css' media='screen'>@import url(menu/menu.css);</style>
+    <!-- ************************* [LIBRARY INCLUDES] ************************* -->
+    <!-- scripts -->
+    <script type="text/javascript" src="lib/jquery.js"></script>          <!-- jquery -->
+    <script type="text/javascript" src="lib/my_libjs.js"></script>        <!-- functions -->
+    <script type="text/javascript" src="lib/my_util.js"></script>         <!-- utility -->
+    <script type="text/javascript" src="lib/global_form1.js"></script>    <!-- form -->
+    <script type="text/javascript" src="lib/openssl-base64.js"></script>  <!-- base64 compatibile con openSSL -->
+    <!-- #LIBRARY CRYPTION MOVABLE: SPEED TEST (JS-PHP) -->
+    <!--<script type="text/javascript" src="cryptojs/crypto-movable/aes/aes-full.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-movable/aes/cryption.js"></script>-->	 	
+    <!-- #LIBRARY CRYPTOJS v3 -->
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/aes.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pbkdf2.js"></script>
+    <!-- mode -->
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/mode-cfb-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/mode-ctr-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/mode-ecb-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/mode-ofb-min.js"></script>
+    <!-- padding -->
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pad-ansix923-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pad-iso10126-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pad-iso97971-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pad-nopadding-min.js"></script>
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/pad-zeropadding-min.js"></script>
+
+    <!-- script form -->
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes-v3/form.js"></script> 
+
+    <!-- example plaintext -->
+    <!--<script type="text/javascript" src="lib/plaintext_complete.js"></script>	-->
+
+    <!-- #LIBRARY CRYPTOJS: generate key -->
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/aes/aes-full.js"></script> 
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/hash/md5/md5.js"></script> 
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/hash/sha1/sha1.js"></script> 
+    <script type="text/javascript" src="cryptojs/crypto-cryptojs/hash/sha256/sha256.js"></script> 
+
+    <!-- ************************* /[LIBRARY INCLUDES] ************************* -->
+    <script type="text/javascript">   
+        $(window).load(function() {
+          cmdResetFormClick();
+	  // run passphrase
+	  genPassphrase();genIv();
+        });	
+    </script>
+</head>
+   
+  <body><!-- body -->
+    <div id='container'><!-- container -->
+   
+      <div id='header'><b>mORMot | CryptoJS AES Cryptography</b></div>
+  
+	     <!-- content -->
+        <div id='content'>
+
+            <!-- table -->
+            <table id="mytable">
+              <tbody>
+                <tr>
+                <!-- sidebar. -->
+                <td class="sidebar">
+                <!-- sidebar items. -->
+                <div class="sidebaritems">
+			<div id="m" style="background-color: burlywood;">
+                Key size:
+                <!-- select key size -->
+                <select id="selKeySize" name="selKeySize" onchange="selKeySizeChange(this.value)">
+                    <option selected="selected" value="128">128</option>
+                    <option value="192">192</option>
+                    <option value="256">256</option>
+                </select>
+                <!-- /select key size -->
+                bits
+                &nbsp;
+                |
+                &nbsp;
+                Mode:
+                <!-- select algorithm -->
+                <select id="selMode" name="selMode" onchange="selBlockChange(this.value)">
+                    <option selected="selected" value="CBC">CBC</option>
+                    <option value="OFB">OFB</option>
+                    <option value="CFB">CFB</option>
+                    <option value="CTR">CTR</option>
+                    <option value="ECB">ECB</option>
+                </select>
+                <!-- /select algorithm -->
+
+                &nbsp;
+                |
+                &nbsp;
+                Padding:
+                <!-- select padding -->
+                <select id="selPad" name="selPad" onchange="selPadChange(this.value)">
+                    <option selected="selected" value="Pkcs7">Pkcs7</option>
+                    <option value="Iso97971">Iso97971</option>
+                    <option value="AnsiX923">AnsiX923</option>
+                    <option value="Iso10126">Iso10126</option>
+                    <option value="ZeroPadding">ZeroPadding</option>
+                    <option value="NoPadding">NoPadding</option>
+                </select>
+                <!-- /select padding -->
+
+                &nbsp;
+                |
+                &nbsp;
+                <input value="Reset" name="cmdResetKey" onclick="cmdResetFormClick()" type="reset" />
+            </div>
+                <div class="space">
+                    <!-- subtable -->
+                  <table id="subtable">
+                    <tbody>
+                      <tr>
+                        <td>Key:</td>
+                        <td><input class="tbnt" id="passphrase" name="passphrase" value="" type="text" size="70" maxlength=
+                        "128" /><input value="random" name="random" onclick="genPassphrase()" type="button" /></td>
+                      </tr>
+
+                      <tr>
+                        <td>IV:</td>
+                        <td><input class="tbnt" id="iv" name="iv" value="" type="text" size="45" maxlength="64" /><input value=
+                        "random" name="random" onclick="genIv()" type="button" /></td>
+                      </tr>
+                    </tbody>
+                  </table><!-- /subtable -->
+				                    
+                </div>
+
+                <!-- plaintext -->
+                <div class="space2">			
+                    <div>Plaintext</div>
+                    <textarea onkeyup="Contar('txtPlaintext','lenPlaintext','{CHAR}',4);" rows="3" cols="30" 
+                        class="sidebartextarea" id="txtPlaintext" name="txtPlaintext" 
+                        onfocus="if(this.value == _text) this.value = '';" 
+                        onblur="if(this.value == '') this.value = _text">
+                    </textarea>
+                </div>
+                <!-- /plaintext -->
+
+                <div id="lenPlaintext">61</div>
+                <div class="bntRight">
+                    <input class="mybnt" value="Encrypt" id="cmdEncrypt" name="cmdEncrypt" onclick="cmdEncryptClick()" type="button" />
+                </div>
+
+                <!-- ciphertext -->
+                <div class="space">
+                    <div>Ciphertext</div>
+                    <textarea rows="3" cols="30" class="sidebartextarea" id="txtCiphertext" name="txtCiphertext" ></textarea>
+                    <div style="text-align:right">
+                        <input class="mybnt" value="Decrypt" id="cmdVerify" name="cmdVerify" onclick="cmdVerifyClick()" type="button" />
+                    </div>
+                </div>
+                <!-- /ciphertext -->
+
+                <!-- verification -->
+                <div class="space">
+                    <div>Verification</div>
+                    <textarea rows="3" cols="30" class="sidebartextarea" id="txtVerification" name="txtVerification" 
+                        readonly="readonly">
+                    </textarea>
+                </div>
+                <!-- /verification -->
+
+                <!-- messages -->
+                <div class="space">
+                    <div>Messages</div>
+                    <textarea rows="2" cols="30" class="sidebartextarea" id="txtMessages" name="txtMessages" 
+                        readonly="readonly">
+                    </textarea>
+                    <div>
+                        <input value="Details" name="cmdDetails" onclick="showDetails();" type="button" title="Details of encrypt/decrypt" />
+                    </div>
+                </div>
+                <!-- /messages -->
+
+                <!-- log -->
+                <div id="logf">
+                    <div id="lenc"></div>
+                    <div id="ldec"></div>
+                </div>
+                <!-- /log -->
+                
+                </div>
+                <!-- /sidebar items -->
+                </td>
+                <!-- /sidebar -->
+                </tr>
+              </tbody>
+            </table>
+            <!-- /table -->
+            <br/>
+        </div>
+        <!-- /content -->
+	
+    </div><!-- /container -->
+  </body><!-- /body -->
+</html>
