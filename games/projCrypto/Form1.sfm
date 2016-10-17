@@ -1,0 +1,59 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-10-18T00:00:25.328</Created>
+    <Modified>2016-10-18T00:13:38.453</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TW3Button">
+        <Caption>btnEncrpt</Caption>
+        <Width>128</Width>
+        <Top>32</Top>
+        <Left>40</Left>
+        <Height>32</Height>
+        <Name>btnEncrpt</Name>
+        <OnClick>btnEncrptClick</OnClick>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Text>warleyalex</Text>
+        <Range></Range>
+        <Width>544</Width>
+        <Top>32</Top>
+        <Left>176</Left>
+        <Height>32</Height>
+        <Name>edit1</Name>
+      </object>
+      <object type="TW3Button">
+        <Caption>btndecrypt</Caption>
+        <Width>128</Width>
+        <Top>72</Top>
+        <Left>40</Left>
+        <Height>32</Height>
+        <Name>btndecrypt</Name>
+        <OnClick>btndecryptClick</OnClick>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>544</Width>
+        <Top>72</Top>
+        <Left>176</Left>
+        <Height>32</Height>
+        <Color>16777088</Color>
+        <Name>edit2</Name>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Text>manual decrypt</Text>
+        <Range></Range>
+        <Width>544</Width>
+        <Top>112</Top>
+        <Left>176</Left>
+        <Height>32</Height>
+        <Color>12632256</Color>
+        <Name>edit3</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
