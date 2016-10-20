@@ -1,5 +1,7 @@
 unit uCryptoJS;
 
+{$R 'aes.js'}
+
 interface
 
 uses W3C.TypedArray;
