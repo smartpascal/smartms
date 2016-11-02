@@ -1,0 +1,163 @@
+unit Form2;
+
+interface
+
+uses 
+  W3C.Console,
+  FW7, Form1, mORMotClient,
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Button,
+  SmartCL.Controls.Elements, SmartCL.Controls.EditBox;
+
+type
+  TForm2 = class(TW3Form)
+procedure btn3Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
+  private
+    {$I 'Form2:intf'}
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TForm2 }
+
+procedure TForm2.btn2Click(Sender: TObject);
+begin
+  
+
+    
+
+    /*TServiceMyService.Create(client).SignIn( edit1.Text,
+        procedure(res: variant)
+        begin
+        //LabelResult.Caption := format('Result = %d',[res]);
+        //DOM7('.res').html(format('Result = %d',[res]));
+        WriteLn(format('Result = %d', [res]));
+        console.log('success: '+edit1.text);
+        end,
+        lambda
+          //DOM7('.res').html('Error calling the method!');
+          WriteLn('Error calling the method!');
+        end);
+*/
+
+    //Client.SignIn('');
+
+    /*
+        if (animating) then exit;
+        animating := true;
+        var that := this;
+        ripple(SMS(that), e);
+        SMS(that).addClass("processing");
+        W3_SetTimeout(procedure()
+        begin
+          register.removeClass("active");
+        W3_SetTimeout(procedure()
+        begin
+    	    login.show();
+          login.css("top");
+          login.removeClass("inactive");
+        end, submitPhase2-120);
+        W3_SetTimeout(procedure()
+        begin
+          register.hide();
+    	    register.addClass("inactive");
+          animating := false;
+    	    SMS(that).removeClass("success processing");
+          //Application.GotoForm('Form2');
+        end, submitPhase2);
+      end, submitPhase1);
+    */
+//    end);
+
+end;
+
+procedure TForm2.btn3Click(Sender: TObject);
+begin
+
+    /*TServiceMyService.Create(client).MostraOtherRec(
+        procedure(res: string)
+        begin
+        //LabelResult.Caption := format('Result = %d',[res]);
+        //DOM7('.res').html(format('Result = %d',[res]));
+        WriteLn(format('Result = %d', [res]));
+        console.log('success: '+edit1.text);
+        end,
+        lambda
+          //DOM7('.res').html('Error calling the method!');
+          WriteLn('Error calling the method!');
+        end);*/
+
+
+
+end;
+
+procedure TForm2.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TForm2.InitializeObject;
+begin
+  inherited;
+  {$I 'Form2:impl'}
+   div1.Handle.id := 'div1';
+   div1.InnerHTML :=
+      #'<svg class="sms__app__logout-icon svg-icon" viewBox="0 0 20 20">
+          <path d="M6,3 a8,8 0 1,0 8,0 M10,0 10,12"/>
+        </svg>';
+
+
+  Handle.ReadyExecute(procedure()
+  begin
+
+			SMS("#div1").css(CLASS
+        "background":= "#FC3768";
+        "border-radius":= "50%";
+			END);
+
+/*
+position: absolute;
+bottom: 3.3rem;
+right: 3.3rem;
+width: 4.6rem;
+height: 4.6rem;
+margin-right: -2.3rem;
+margin-bottom: -2.3rem;
+background: #FC3768;
+color: #fff;
+font-size: 2rem;
+border-radius: 50%;
+cursor: pointer;
+-webkit-transition: bottom 0.4s 0.1s, right 0.4s 0.1s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
+transition: bottom 0.4s 0.1s, right 0.4s 0.1s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
+transition: bottom 0.4s 0.1s, right 0.4s 0.1s, transform 0.4s 0.4s, opacity 0.1s 0.7s, background-color 0.1s 0.7s;
+transition: bottom 0.4s 0.1s, right 0.4s 0.1s, transform 0.4s 0.4s, opacity 0.1s 0.7s, background-color 0.1s 0.7s, -webkit-transform 0.4s 0.4s;
+-webkit-transform: scale(0);
+transform: scale(0);
+*/
+    SMS(document).on("click", "#div1", function(e: JFramework7EventObject): variant
+    begin
+      SMS(".sms__md").click();
+      Application.GotoForm('Form1',feToLeft);
+      console.log('logout');
+    end);
+  end);
+
+end;
+ 
+procedure TForm2.Resize;
+begin
+  inherited;
+    //div1.Width := Self.Width;
+    //div1.Height := Self.Height;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TForm2);
+end.

@@ -1,0 +1,28 @@
+uses
+  W3C.Console, Unit1;
+
+/*
+var JSONArr : array of variant = [getImage('background.jpg')];
+
+
+  Promise.all(JSONArr)
+  .then(lambda(arrayOfResults: variant)
+     
+  end)
+  .catch(lambda(error: variant)
+    console.log(':('+ error);
+  end);*/
+
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+  var Application := TApplication.Create;
+     Application.RunApp;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    console.log(e.Message);
+end;
+{$ENDIF}

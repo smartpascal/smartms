@@ -1,0 +1,133 @@
+unit Form1;
+
+interface
+
+uses 
+  uLogin,
+  W3C.HTML5, W3C.Console,
+  mORMotClient, SynCrossPlatformREST,
+  SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application,
+  SmartCL.Controls.Elements, SmartCL.Controls.Button;
+
+type
+  THandleArray = array of variant;
+
+
+type
+  TForm1 = class(TW3Form)
+  private
+    {$I 'Form1:intf'}
+    Login1: TLogin;
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+var Client : TSQLRestClientURI;
+
+implementation
+
+
+
+function this: variant; external 'this' property;
+
+procedure bindEvents(bindings: THandleArray);
+var i : integer;
+begin
+	for i := Low(bindings) to High(bindings) do
+  begin
+		SMS(bindings[i].element).on(bindings[i].event, bindings[i].handler);
+	end;
+end;
+
+{ ╔═══════════════════════════════════════════════════════════════════════╗
+  ║ ### refs ###                                                          ║
+  ║ You can set up references / bindEvents listeners to components        ║
+  ║ This allows you to retrieve and manipulate components on the page     ║                            ║
+  ╚═══════════════════════════════════════════════════════════════════════╝ }
+
+var bindings : THandleArray =
+[CLASS
+		element  := '.searchbar input';
+		event    := 'focus';
+		handler  := '';//@SearchBarOnFocus;
+END,
+CLASS
+		element  := '.searchbar-cancel';
+		event    := 'click';
+		handler  := '';//@SearchBarOnClick;
+END,
+CLASS
+		element  := '.searchbar input';
+		event    := 'blur';
+		handler  := '';//@SearchBarOnBlur;
+END];
+
+{ TForm1 }
+
+procedure TForm1.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+   //SMS('#OBJ3').html( '<img src="_background.jpg" />' );
+/* ---------------------------------------------------------------------------- */
+end;
+
+procedure TForm1.InitializeObject;
+begin
+  inherited;
+  {$I 'Form1:impl'}
+
+  Login1 := TLogin.Create(Self);
+
+  Login1.OnClickLogin := lambda(Sender: TObject)
+    WriteLn('OnClickLogin was clicked!');
+    Application.GotoForm('Form2');
+  end;
+
+  Login1.OnClickLogout := lambda(Sender: TObject)
+    WriteLn('OnClickLogout was clicked!');
+  end;
+
+  Login1.OnClickRegister := lambda(Sender: TObject)
+    WriteLn('OnClickRegister was clicked!');
+  end;
+
+  Login1.OnClickRegisterNow := lambda(Sender: TObject)
+    WriteLn('OnClickRegisterNow was clicked!');
+  end;
+
+  Login1.OnClickForgotPW := lambda(Sender: TObject)
+    WriteLn('OnClickForgotPW was clicked!');
+  end;
+
+  Login1.OnClickRememberPW := lambda(Sender: TObject)
+    WriteLn('OnClickRememberPW was clicked!');
+  end;
+
+
+Handle.ReadyExecute(procedure()
+begin
+  //bindEvents(bindings);
+
+
+End);  // on ReadyExecute
+end;
+ 
+procedure TForm1.Resize;
+begin
+  inherited;
+ /*   WriteLn( Login1.UserName );
+    WriteLn( Login1.Password );
+    WriteLn( login1.Email_Recovery );
+    WriteLn( Login1.Email_Register );
+    WriteLn( Login1.User_Register );
+    WriteLn( Login1.Pass_Register );*/
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TForm1);
+  
+end.

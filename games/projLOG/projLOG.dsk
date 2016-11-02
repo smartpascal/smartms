@@ -1,0 +1,21 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="112" col="39" row="128" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="uLogin" fullname="uLogin.pas" topline="379" col="29" row="397" />
+      <tab filename="Form2" fullname="Form2.pas" topline="128" col="7" row="146" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="SmartCL.Components" fullname="..\..\smartms\RTL\SmartCL\SmartCL.Components.pas" topline="1190" col="1" row="1201" />
+      <tab filename="projLOG" fullname="projLOG.spr" topline="1" col="14" row="2" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>6231</BackgroundCompilations>
+      <EditTime>01:54:32.052</EditTime>
+      <CompileTime>00:32:32.719</CompileTime>
+      <TotalTime>12:48:07.061</TotalTime>
+      <DesigningTime>00:23:43.155</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>
