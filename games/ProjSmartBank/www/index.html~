@@ -20,7 +20,7 @@
 
 <li id="sms-an-scene-0" >
 <div class="sms-an-stage">
-<div id="sms-page1"><div><img  height="450" width="450"  src="assets/atm.jpg"></div>
+<div id="sms-page1"><div><img  height="450" width="450"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/atm.jpg"></div>
 <div id="sms-page1-11"></div>
 <div id="sms-page1-10"></div>
 <div id="sms-page1-9"></div>
@@ -31,21 +31,21 @@
 <div id="sms-page1-4"></div>
 <div id="sms-page1-3"></div>
 <div id="sms-page1-2"></div>
-<div id="sms-page1-1"><div><img  height="326" width="490"  src="assets/bank-smart.png"></div></div>
+<div id="sms-page1-1"><div><img  height="326" width="490"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/bank-smart.png"></div></div>
 </div>
 <div id="sms-page2">
-<div id="sms-page2b"><div><img  height="92" width="60"  src="assets/smscard.jpg"></div></div>
-<div id="sms-page2a"><div><img  height="92" width="60"  src="assets/smscard.jpg"></div></div>
+<div id="sms-page2b"><div><img  height="92" width="60"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/smscard.jpg"></div></div>
+<div id="sms-page2a"><div><img  height="92" width="60"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/smscard.jpg"></div></div>
 </div>
 <div id="sms-page3">
-<div id="sms-page3a"><div><img  height="93" width="52"  src="assets/smsenvelop.png"></div></div>
+<div id="sms-page3a"><div><img  height="93" width="52"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/smsenvelop.png"></div></div>
 </div>
 <div id="sms-page4">
 <div id="sms-page4b"></div>
 <div id="sms-page4a"><span>Processing your request...</span></div>
 </div>
 <div id="sms-page5">
-<div id="sms-page5a"><div><img  height="94" width="189"  src="assets/cash.jpg"></div></div>
+<div id="sms-page5a"><div><img  height="94" width="189"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/cash.jpg"></div></div>
 </div>
 <div id="sms-page6" class="tela"><span>Please insert card.</span></div>
 <div id="sms-page7" class="tela">
@@ -268,7 +268,7 @@
 <div id="sms-page22a"><span>Your account balance is:</span></div>
 </div>
 <div id="sms-page23">
-<div id="sms-page23a"><div><img  height="165" width="138"  src="assets/smsreceipt.jpg"></div></div>
+<div id="sms-page23a"><div><img  height="165" width="138"  src="https://raw.githubusercontent.com/smartpascal/smartms/master/games/ProjSmartBank/www/assets/smsreceipt.jpg"></div></div>
 </div>
 <div id="sms-page24" class="tela">
 <div id="sms-page24b"><span> <input type="password"  id="pin" autofocus style="font:small-caption; font: x-large Verdana,sans-serif; width: 120px; height:30px;"></span></div>
