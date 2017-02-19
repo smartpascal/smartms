@@ -1,0 +1,78 @@
+<!doctype html>  
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel=stylesheet href="codemirror-4.6/doc/docs.css">
+	<link rel="stylesheet" href="codemirror-4.6/lib/codemirror.css">
+    <link href="ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="ui/1.10.4/jquery-ui.js"></script>
+	<link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="html5-editor.css?ver=1" />
+	<script type="text/javascript" src="html5-editor.js?ver=1"></script>
+	<title>HTML Web Editor - Help</title>
+</head>
+<body>
+
+<div id="popupUzenetBox">
+	<div id="popupUzenet">Online HTML Web Editor</div>
+	<div onclick="document.getElementById('popupUzenetBox').style.display='none';" class="okButton">OK</div>
+</div>
+<div id="logContainer"></div>
+<header>
+	<div class="headerLine">
+		<div class="centerHeader">
+			<div class="logo">
+				<a href="/"><img src="/images/logo.png" alt="HTML HTML Web Editor" />
+				<h1>HTML5 Editor</h1></a>
+			</div>
+			<nav>
+				<ul class="mainNavi">
+					<li><a href="/">Home</a></li>
+					<li><a href="/help">Help</a></li>
+				</ul>
+			</nav>
+			<div class="clearboth">
+			</div>
+		</div>
+	</div>
+</header>
+<div id="pagewrap">
+	<div class="toRead clearfix">
+		
+		<h1>How to use the HTML5 Editor</h1>
+		<p>It's really intuitive to use the online HTML Web Editor. Click the Demo menu item to populate the editor with a sample text with headings, paragraphs, a table, some styles you can experiment with. </p>
+		<p>Use the visual WYSIWYG editor just like any other word editor to adjust the content and see the HTML source code changing in the source editor. When you want to adjust the code just type the changes there and that will update the preview section on the right. The syntax highlighting helps to make the text more readable.</p>
+		<p>Below the source composer you can finde the options to undo the last change and to start a fresh page. Adjust the font size with the +/- commands. There's another option to compress the HTML code removing new lines, tabs, successive spaces. The two arrows give you access to the replace tool, and the page sheet icon brings up a popup where you can generate the lorem ipsum text. Decide whether you want to add the gibberish paragraphs to the end of the editor or you'd rather populate the section allocated for this without the working area and copy the bits manually from here.</p>
+		<ul>
+			<li><strong>Cleaning options</strong> &ndash; clicking the header activates/deactivates all options.</li>
+			<li><strong>Clear inline styles</strong> &ndash; removes the code from the tag attributes that looks like <em>style="...."</em></li>
+			<li><strong>Clear classes and IDs</strong> &ndash; every class and ID will be deleted</li>
+			<li><strong>Character encoding</strong> &ndash; decide whether you'd like to see <em>&pound;</em> or&nbsp;<em>&amp;pound;</em> in the source editor.</li>
+			<li><strong>Clear comments</strong> &ndash; all text written in comment will be removed: <em>&lt;!-- .... --&gt;</em></li>
+			<li><strong>Clear span tags</strong> &ndash; span tags are used to style inline elements and with this option you can remove the span tags but not the content inside of them</li>
+			<li><strong>Clear successive &amp;nbsp;s</strong> &ndash; it's a common mistake to use successive spaces to set gaps in <a href="https://products.office.com/en-us/word" target="_blank">Microsoft Word</a>. This erroneous formatting can be removed with this option.</li>
+			<li><strong>Clear tags with one &amp;nbsp;</strong> &ndash; another <a href="http://badhtml.com/bad-html-tag-practices-wrong-code/" target="_blank">bad HTML tag practice</a> is to add empty paragraphs to set empty lines instead of setting the line height or margins. You can filter these out with this one.</li>
+			<li><strong>Clear empty tags</strong> &ndash; empty tags are usually automatically removed by the visual editor but you can set it from here as well.</li>
+			<li><strong>Clear tag attributes</strong> &ndash; leaves behind the HTML tag structure but removes every style, class and other attributes. We have separate options to control images and links and this is the reason  why this doesn't affect the <em>src</em> of images and the <em>href</em> of the links.</li>
+			<li><strong>Clear all tags</strong> &ndash; leaves behind a plain text, deleting every HTML tag but not the content inside of them.</li>
+			<li><strong>Clear images</strong> &ndash; every image tag will be removed but not the images set by background-image styles.</li>
+			<li><strong>Clear links</strong> &ndash; remove the anchor tags from the document. </li>
+			<li><strong>Clear tables</strong> &ndash; takes every text out of the tables.</li>
+			<li><strong>Convert tables to structured &lt;div&gt;s</strong> &ndash; you'll have to apply a CSS code to make the tables look as desired. Read more about <a href="https://html-cleaner.com/features/replace-html-table-tags-with-divs/" target="_blank">table to div converion</a> and find the css code.</li>
+			<li><strong>Organize tree-view</strong> &ndash; sets text indentation to make the source more readable.</li>
+		</ul>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+
+	<footer>
+		Just like other websites, we use cookies to improve user experience. You can adjust your browser settings but then your settings will not be saved<br />
+		<a href="terms-and-conditions/">Privacy, Terms &amp; Conditions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="/contact/">Contact</a> &nbsp;&nbsp;|&nbsp;&nbsp; &copy; 2017 HTML5-Editor.net
+	</footer>
+</div>
+</body>
+</html>

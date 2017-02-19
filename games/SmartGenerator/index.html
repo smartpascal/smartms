@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://html5-editor.net/" />
+    <link rel="stylesheet" href="codemirror-4.6/doc/docs.css" />
+    <link rel="stylesheet" href="codemirror-4.6/lib/codemirror.css" />
+    <link href="ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="jscolor/jscolor.js"></script>
+    <script src="tinymce/tinymce.js"></script>
+    <script src="tinymce/plugins/table/plugin.dev.js"></script>
+    <script src="tinymce/plugins/paste/plugin.dev.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="ui/1.10.4/jquery-ui.js"></script>
+    <script src="codemirror-4.6/lib/codemirror.js"></script>
+    <script src="codemirror-4.6/addon/fold/xml-fold.js"></script>
+    <script src="codemirror-4.6/addon/edit/matchtags.js"></script>
+    <script src="codemirror-4.6/addon/selection/active-line.js"></script>
+    <script src="codemirror-4.6/mode/xml/xml.js"></script>
+    <script src="codemirror-4.6/mode/pascal/pascal.js"></script>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="html5-editor.css" />
+    <script type="text/javascript" src="html5-editor.js"></script>
+    <script type="text/javascript" src="linketado.js"></script>
+    <script type="text/javascript" src="js/generator.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <title>HTML Editor - Generator</title>
+  </head>
+  <body onload="initoptions();">
+    <div id="popupUzenetBox">
+      <div id="popupUzenet">HTML Editor - Generator</div>
+      <div onclick="document.getElementById(&#39;popupUzenetBox&#39;).style.display=&#39;none&#39;;" class="okButton">OK</div>
+    </div>
+    <div id="logContainer"></div>
+    <header>
+      <div class="headerLine">
+        <div class="centerHeader">
+          <div class="headerLeftSect">
+            <div class="headerFirstRow">
+              <div class="logo">
+                <img src="images/logo.png" alt="HTML HTML Web Editor" />
+                <h1>Smart Code Generator</h1>
+                <select id="dropdown" name="dropdown">
+                  <option value="0" selected="selected">Select Code Snippet</option>
+                  <option value="1">Title Bar 1</option>
+                  <option value="2">Title Bar 2</option>
+                  <option value="3">Tab Bar</option>
+                  <option value="4">Tab Fix</option>
+                  <option value="5">Tab View</option>
+                  <option value="6">Tab View Btn</option>
+                  <option value="7">Input</option>
+                  <option value="8">Buttons</option>
+                  <option value="9">Card List</option>
+                  <option value="10">Table Toggle</option>
+                  <option value="11">Table Media</option>
+                  <option value="12">Table Badge</option>
+                  <option value="13">Form</option>
+                  <option value="14">Generic</option>
+                  <option value="15">Help</option>
+                </select>
+                <div>
+                <span>Powered by</span> 
+                <a href="help.html">html5-editor.net</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="headerRightSect"></div>
+          <div class="clearboth"></div>
+        </div>
+      </div>
+    </header>
+    <div id="pagewrap">
+      <div class="programIsThinking"></div>
+      <div class="clearfix">
+		<div class="szekcio1">
+			<div class="commandBoxes clearfix">
+				<div class="multiButton">
+				
+					<div title="Adjust cleaning options" class="cleanOptionsToggle">
+					</div>			
+					<div class="convertButton performCleaning">
+						<span id="cleanButtonText">Clean</span><div id="onTheConvertButton"></div>
+					</div>
+				</div>
+				<div class="additionalSourceOptions">
+					<div>
+						<a title="Color Picker" class="colorPickerOpen"> </a>
+					</div>
+					<div>
+						<a title="Lorem-Ipsum generator" class="lipszum"> </a>
+					</div>
+					<div>
+						<a title="Find and Replace tool" class="findundreplace"> </a>
+					</div>
+					<div>
+						<a title="Compress HTML" class="compressHTML"> </a>
+					</div>
+					<div class="textBiggerSmaller">
+						<a title="Smaller Font" class="sourceSmallerFont">-</a>
+						<a title="Normal Font"><span>a</span><span>a</span><span>a</span></a>
+						<a title="Bigger Font" class="sourceBiggerFont">+</a>
+					</div>
+				</div>
+				<a title="Fresh page">
+					<div class="clearButton" onclick="deletePressed();">
+					</div>
+				</a>
+				<a title="Undo">
+					<div class="undoButton" onclick="undoPressed();">
+					</div>
+				</a>
+				<div class="convertButton clearfix" onclick="parseHTML();">
+					<span>GenerateSMS</span><div id="onTheGeneratorButton"></div>
+				</div>
+					
+				<div id="inputLength">Source: 0</div>
+			</div>
+			
+			
+			
+			<div id="sourceFieldecske"></div>
+			<script>var sourceEditorFricc=CodeMirror(document.getElementById("sourceFieldecske"),{value:"",lineNumbers:!0,styleActiveLine:!0,mode:"text/html",lineWrapping:!0,matchTags:{bothTags:!0}});sourceEditorFricc.on("change",function(){inputChanged()});</script>
+		</div>
+        <div class="szekcio2">
+          <form method="post">
+            <textarea id="elm1" name="elm1"></textarea>
+          </form>
+        </div>
+      </div>
+      <div class="klirfix"></div>
+      <div id="lipszuTextarea"></div>
+      <div class="overlayContainer">
+        <div class="overlayer"></div>
+        <div class="settingsList">
+          <div id="optionButton0" onclick="clickedOption(0);">Cleaning options</div>
+          <div id="optionButton1" onclick="clickedOption(1);">Clear inline styles</div>
+          <div id="optionButton3" onclick="clickedOption(3);">Clear classes and IDs</div>
+          <div id="optionButton16" onclick="clickedOption(16);">Character encoding</div>
+          <div id="optionButton13" onclick="clickedOption(13);">Clear comments</div>
+          <div id="optionButton10" onclick="clickedOption(10);">Clear span tags</div>
+          <div id="optionButton2" onclick="clickedOption(2);">Clear successive &amp;nbsp;s</div>
+          <div id="optionButton6" onclick="clickedOption(6);">Clear tags with one &amp;nbsp;</div>
+          <div id="optionButton5" onclick="clickedOption(5);">Clear empty tags</div>
+          <div id="optionButton15" onclick="clickedOption(15);">Clear tag attributes</div>
+          <div id="optionButton12" onclick="clickedOption(12);">Clear all tags</div>
+          <div id="optionButton11" onclick="clickedOption(11);">Clear images</div>
+          <div id="optionButton9" onclick="clickedOption(9);">Clear links</div>
+          <div id="optionButton7" onclick="clickedOption(7);">Clear tables</div>
+          <div id="optionButton8" onclick="clickedOption(8);">Convert tables to &lt;div&gt;s  </div>
+          <div id="optionButton14" onclick="clickedOption(14);">Organize tree-view</div>
+          <div id="optionButton4" onclick="clickedOption(4);">Convert &lt;b&gt; to &lt;strong&gt;, &lt;i&gt; to &lt;em&gt;</div>
+          <p>
+          <a class="buttonka settingsDefault">Default</a> 
+          <a class="buttonka settingsOk">Close</a> 
+          <a class="buttonka settingsClean performCleaning">Clean</a></p>
+        </div>
+        <div class="colorPicker">
+          <div class="windowHeader">Color Picker</div>
+          <div class="windowContent">
+            <input class="color {pickerOnfocus:false, onImmediateChange:&#39;updateColor();&#39;}" id="myColor"
+            onmousemove="document.getElementById(&#39;myColor&#39;).color.showPicker();" />
+            <div id="selectedbackgr"></div>
+            <div id="colorToUse"></div>
+            <div id="savedCodes" class="clearfix"></div>
+            <div id="openColorLink" class="buttonkak">
+              <a class="buttonka" href="https://rgbcolorcode.com/" target="_blank">Color Mixer</a>
+            </div>
+          </div>
+        </div>
+        <div class="lipsumText">
+          <div class="windowHeader">Gibberish text generator</div>
+          <div class="lipsumItself">
+            <form name="szettingform">Number of paragraphs: 
+            <select name="hanyparagrafuslegyen">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="5" selected="selected">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+            <br />Populate: 
+            <select name="mitpupulaljon">
+              <option value="1" selected="selected">the editor</option>
+              <option value="2">below</option>
+            </select></form>
+            <a class="buttonka" onclick="generateLipsum();">Generate</a>
+          </div>
+        </div>
+        <div class="replaceList">
+          <div class="windowHeader">Find and replace in source</div>
+          <div id="replace1" class="replaceText">
+            <div>Find: 
+            <input name="replacetext1" id="replacetext1" /></div>
+            <div>Replace with: 
+            <input name="replacewith1" id="replacewith1" /></div>
+            <a onclick="deleteRepField(1);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace2" class="replaceText">
+            <div>Find: 
+            <input name="replacetext2" id="replacetext2" /></div>
+            <div>Replace with: 
+            <input name="replacewith2" id="replacewith2" /></div>
+            <a onclick="deleteRepField(2);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace3" class="replaceText">
+            <div>Find: 
+            <input name="replacetext3" id="replacetext3" /></div>
+            <div>Replace with: 
+            <input name="replacewith3" id="replacewith3" /></div>
+            <a onclick="deleteRepField(3);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace4" class="replaceText">
+            <div>Find: 
+            <input name="replacetext4" id="replacetext4" /></div>
+            <div>Replace with: 
+            <input name="replacewith4" id="replacewith4" /></div>
+            <a onclick="deleteRepField(4);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace5" class="replaceText">
+            <div>Find: 
+            <input name="replacetext5" id="replacetext5" /></div>
+            <div>Replace with: 
+            <input name="replacewith5" id="replacewith5" /></div>
+            <a onclick="deleteRepField(5);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace6" class="replaceText">
+            <div>Find: 
+            <input name="replacetext6" id="replacetext6" /></div>
+            <div>Replace with: 
+            <input name="replacewith6" id="replacewith6" /></div>
+            <a onclick="deleteRepField(6);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace7" class="replaceText">
+            <div>Find: 
+            <input name="replacetext7" id="replacetext7" /></div>
+            <div>Replace with: 
+            <input name="replacewith7" id="replacewith7" /></div>
+            <a onclick="deleteRepField(7);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace8" class="replaceText">
+            <div>Find: 
+            <input name="replacetext8" id="replacetext8" /></div>
+            <div>Replace with: 
+            <input name="replacewith8" id="replacewith8" /></div>
+            <a onclick="deleteRepField(8);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace9" class="replaceText">
+            <div>Find: 
+            <input name="replacetext9" id="replacetext9" /></div>
+            <div>Replace with: 
+            <input name="replacewith9" id="replacewith9" /></div>
+            <a onclick="deleteRepField(9);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace10" class="replaceText">
+            <div>Find: 
+            <input name="replacetext10" id="replacetext10" /></div>
+            <div>Replace with: 
+            <input name="replacewith10" id="replacewith10" /></div>
+            <a onclick="deleteRepField(10);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace11" class="replaceText">
+            <div>Find: 
+            <input name="replacetext11" id="replacetext11" /></div>
+            <div>Replace with: 
+            <input name="replacewith11" id="replacewith11" /></div>
+            <a onclick="deleteRepField(11);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <div id="replace12" class="replaceText">
+            <div>Find: 
+            <input name="replacetext12" id="replacetext12" /></div>
+            <div>Replace with: 
+            <input name="replacewith12" id="replacewith12" /></div>
+            <a onclick="deleteRepField(12);" title="Delete this find and replace field">
+              <div class="deleteField"></div>
+            </a>
+          </div>
+          <a onclick="addRepField();" title="Add new field">
+            <div class="addNewField"></div>
+          </a>
+          <div class="clearboth"></div>
+          <a title="Find and Replace now" id="findreplacenow" class="buttonka">Replace Now</a>
+        </div>
+      </div>
+      <div id="rola" class="toRead clearfix">
+        <a class="buttonka">Smart Pascal generated code</a>
+      </div>
+	<script>var sourceEditorFricc1W=CodeMirror(document.getElementById("rola"),{value:"Smart Pascal generated code",lineNumbers:!0,styleActiveLine:!0,mode:"text/x-pascal",lineWrapping:!0,matchTags:{bothTags:!0}});sourceEditorFricc1W.setOption("theme","abcdef");sourceEditorFricc1W.on("change",function(){inputChanged()});
+function report(a){switch(a){case "1":startTitleBar();break;case "2":startTitleBarSegmented();break;case "3":startTabBar();break;case "4":startBarFix();break;case "5":startTableView();break;case "6":startTableViewBtn();break;case "7":startInput();break;case "8":startBtn();break;case "9":startCard();break;case "10":startTableToggle();break;case "11":startTableMedia();break;case "12":startTableBadge();break;case "13":startForm();break;case "14":startFirstTour();break;case "15":console.log("help")}}
+var select=$("#dropdown");select.change(function(a){a=this.value;""!=a&&report(a)});</script>	
+    </div>
+  </body>
+</html>
