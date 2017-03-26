@@ -1,0 +1,15 @@
+uses SmartCL.System, Main, Form2, Form3, Smart.Core;
+
+{$R 'lib\phonon.css'}
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+  var Application := TApplication.Create;
+  Application.RunApp;
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    ShowMessage(e.Message);
+end;
+{$ENDIF}
