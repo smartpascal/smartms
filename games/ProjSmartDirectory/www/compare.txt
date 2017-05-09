@@ -1,0 +1,734 @@
++------------------------------------+
+¦             RTL 2.2.2              ¦
+¦------------------------------------¦
+¦ TObject                            ¦
+¦ |___TW3TagObj                      ¦
+¦     |___TW3Component               ¦
+¦         |____TW3MovableControl     ¦
+¦              |____TW3CustomControl ¦
++------------------------------------+
+
++-------------------------------------------------------+
+¦                        RTL 2.3                        ¦
+¦-------------------------------------------------------¦
+¦ TObject                                               ¦
+¦ |___TW3OwnedObject                                    ¦
+¦     |___TW3OwnedErrorObject                           ¦
+¦         |____TW3CustomComponent                       ¦
+¦              |____TW3Component                        ¦
+¦                   |____TW3TagObj                      ¦
+¦                        |____TW3TagContainer           ¦
+¦                             |____TW3MovableControl    ¦
+¦                                  |___TW3CustomControl ¦
++-------------------------------------------------------+
+
++------------------------------------------+
+¦ FILE SIZE(Obfusc/MINI) PERFORMANCE   RTL ¦
+¦------------------------------------------¦
+¦  74,407 bytes           1.15       2.2.2 ¦
+¦ 183,001 bytes           1.00       2.3.0 ¦
++------------------------------------------+
+
+TObject
+|___TW3TagObj
+	|___TW3Component
+		|____TW3MovableControl
+			 |____TW3CustomControl
+-------------------------------------------
+TObject
+|___TW3OwnedObject
+	|___TW3OwnedErrorObject
+		|____TW3CustomComponent
+			 |____TW3Component
+				  |____TW3TagObj
+					   |____TW3TagContainer
+							|____TW3MovableControl
+								 |___TW3CustomControl
+								 
+			 
+		
+var RTL222 = {
+	// BEGIN TW3CustomControl -------------------------------------------
+	"ClassName" : "TW3CustomControl",
+	"Parent" : {
+		"ClassName" : "TW3MovableControl",
+		"Parent" : {
+			"ClassName" : "TW3Component",
+			"Parent" : {
+				"ClassName" : "TW3TagObj",
+				"Parent" : {
+					// BEGIN TObject ---------------------------------------------------
+					"ClassName" : "TObject",
+					"Parent" : null,
+					"ClassName" : function (a),
+					"ClassType" : function (a),
+					"ClassParent" : function (a),
+					"Init" : function (),
+					"Create" : function (a),
+					"Destroy" : function (a),
+					"Destroy" : function (a),
+					"Free" : function (a)
+				},
+				// END TObject
+				// BEGIN TW3TagObj --------------------------------------------------
+				"Init" : function (a),
+				"AddToComponentState" : function (a, b),
+				"AfterUpdate" : function (a),
+				"BeginUpdate" : function (a),
+				"Create62" : function (a),
+				"Destroy" : function (a),
+				"EndUpdate" : function (a),
+				"FinalizeObject" : function (a),
+				"GetInnerHTML" : function (a),
+				"GetUpdating" : function (a),
+				"InitializeObject" : function (a),
+				"InsertInto" : function (a, b),
+				"MakeElementTagId" : function (a),
+				"MakeElementTagObj" : function (a),
+				"RemoveFrom" : function (a),
+				"RemoveFromComponentState" : function (a, b),
+				"SetInnerHTML" : function (a, b),
+				"Showing" : function (a),
+				"StyleTagObject" : function (a),
+				"UnHookEvents" : function (a),
+				"Destroy" : function (a),
+				"AfterUpdate" : function (a),
+				"FinalizeObject" : function (a),
+				"InitializeObject" : function (a),
+				"MakeElementTagId" : function (a),
+				"MakeElementTagObj" : function (a),
+				"Showing" : function (a),
+				"StyleTagObject" : function (a)
+			},
+			// END TW3TagObj
+			// BEGIN TW3Component ----------------------------------------
+			"Init" : function (a),
+			"CBNoBehavior" : function (a),
+			"ChildAdded" : function (a, b),
+			"ChildRemoved" : function (a, b),
+			"Create63" : function (a, b),
+			"FinalizeObject" : function (a),
+			"FreeChildren" : function (a),
+			"GetChildCount" : function (a),
+			"GetChildObject" : function (a, b),
+			"InitializeObject" : function (a),
+			"RegisterChild" : function (a, b),
+			"SetName" : function (a, b),
+			"Showing" : function (a),
+			"UnRegisterChild" : function (a, b),
+			"Destroy" : function (a),
+			"AfterUpdate" : function (a),
+			"FinalizeObject" : function (a),
+			"InitializeObject" : function (a),
+			"MakeElementTagId" : function (a),
+			"MakeElementTagObj" : function (a),
+			"Showing" : function (a),
+			"StyleTagObject" : function (a),
+			"ChildAdded" : function (a),
+			"Create63" : function (a)
+		},
+		// END TW3Component
+		// BEGIN TW3MovableControl -----------------------------------------------------------
+		"Init" : function (a),
+		"AdjustToParentBox" : function (a),
+		"AfterUpdate" : function (a),
+		"ClientHeight" : function (a),
+		"ClientRect" : function (a),
+		"ClientWidth" : function (a),
+		"DisplayMode" : function (a),
+		"FinalizeObject" : function (a),
+		"GetBackGround" : function (a),
+		"GetBorder" : function (a),
+		"GetBoundsRect" : function (a),
+		"GetHeight" : function (a),
+		"GetLeft" : function (a),
+		"GetTop" : function (a),
+		"GetVisible" : function (a),
+		"GetWidth" : function (a),
+		"InitializeObject" : function (a),
+		"Moved" : function (a),
+		"MoveTo" : function (a, b, c),
+		"ObjectReady" : function (a),
+		"ReadySync" : function (a),
+		"Resize" : function (a),
+		"ScreenRect" : function (a),
+		"SetAlpha" : function (a, b),
+		"SetBounds" : function (a, b, c, d, e),
+		"SetColor" : function (a, b),
+		"SetHeight" : function (a, b),
+		"SetLeft" : function (a, b),
+		"SetSize" : function (a, b, c),
+		"SetTop" : function (a, b),
+		"SetTransparent" : function (a, b),
+		"SetUseAlpha" : function (a, b),
+		"SetVisible" : function (a, b),
+		"SetWidth" : function (a, b),
+		"Showing" : function (a),
+		"supportAdjustment" : function (a),
+		"Destroy" : function (a),
+		"AfterUpdate" : function (a),
+		"FinalizeObject" : function (a),
+		"InitializeObject" : function (a),
+		"MakeElementTagId" : function (a),
+		"MakeElementTagObj" : function (a),
+		"Showing" : function (a),
+		"StyleTagObject" : function (a),
+		"ChildAdded" : function (a, b),
+		"Create63" : function (a, b),
+		"GetHeight" : function (a),
+		"GetWidth" : function (a),
+		"Resize" : function (a),
+		"SetHeight" : function (a),
+		"SetWidth" : function (a),
+		"supportAdjustment" : function (a)
+	},
+	// END TW3MovableControl
+	// BEGIN TW3CustomControl -----------------------------------------------------------------
+	"Init" : function (a),
+	"a2" : function (a),
+	"AfterUpdate" : function (a),
+	"BindTouch" : function (a),
+	"BringToFront" : function (a),
+	"CBAnimationBegins" : function (a, b),
+	"CBAnimationEnds" : function (a, b),
+	"CBChanged" : function (a, b),
+	"CBClick" : function (a, b),
+	"CBContextPopup" : function (a, b),
+	"CBDblClick" : function (a, b),
+	"CBFocused" : function (a),
+	"CBKeyDown" : function (a, b),
+	"CBKeyPress" : function (a, b),
+	"CBKeyUp" : function (a, b),
+	"CBLostFocus" : function (a),
+	"CBMouseDown" : function (a, b),
+	"CBMouseEnter" : function (a, b),
+	"CBMouseExit" : function (a, b),
+	"CBMouseMove" : function (a, b),
+	"CBMouseUp" : function (a, b),
+	"CBMouseWheel" : function (a, b),
+	"CMGestureChange" : function (a),
+	"CMGestureEnd" : function (a),
+	"CMGestureStart" : function (a),
+	"CMTouchBegins" : function (a, b),
+	"CMTouchEnds" : function (a, b),
+	"CMTouchMove" : function (a, b),
+	"ContextPopup" : function (a, b, c),
+	"Create63" : function (a, b),
+	"FinalizeObject" : function (a),
+	"GetBorderRadius" : function (a),
+	"GetChildrenSortedByYPos" : function (a),
+	"GetClassNames" : function (a),
+	"GetEnabled" : function (a),
+	"GetFont" : function (a),
+	"GetHasFocus" : function (a),
+	"GetMaxZIndex" : function (a),
+	"GetScrollInfo" : function (a),
+	"GetStyleClass" : function (a),
+	"GetZIndexAsInt" : function (a, b),
+	"GetZoom" : function (a),
+	"InitializeCapture" : function (a),
+	"InitializeObject" : function (a),
+	"Invalidate" : function (a),
+	"LayoutChildren" : function (a),
+	"MouseDown" : function (a, b, c, d, e),
+	"MouseEnter" : function (a, b, c, d),
+	"MouseExit" : function (a, b, c, d),
+	"MouseMove" : function (a, b, c, d),
+	"MouseUp" : function (a, b, c, d, e),
+	"MouseWheel" : function (a, b, c, d, e),
+	"ReleaseCapture" : function (a),
+	"SendToBack" : function (a),
+	"SetAngle" : function (a, b),
+	"SetBorderRadius" : function (a, b),
+	"SetCapture" : function (a),
+	"SetEnabled" : function (a, b),
+	"SetStyleClass" : function (a, b),
+	"SetZoom" : function (a, b),
+	"StyleTagObject" : function (a),
+	"_setAnimationBegins" : function (a, b),
+	"_setAnimationEnds" : function (a, b),
+	"_setChanged" : function (a, b),
+	"_setContextPopup" : function (a, b),
+	"_setGestureChange" : function (a, b),
+	"_setGestureEnd" : function (a, b),
+	"_setGestureStart" : function (a, b),
+	"_setGotFocus" : function (a, b),
+	"_setKeyDown" : function (a, b),
+	"_setKeyPress" : function (a, b),
+	"_setKeyUp" : function (a, b),
+	"_setLostFocus" : function (a, b),
+	"_setMouseClick" : function (a, b),
+	"_setMouseDblClick" : function (a, b),
+	"_setMouseDown" : function (a, b),
+	"_setMouseEnter" : function (a, b),
+	"_setMouseExit" : function (a, b),
+	"_setMouseMove" : function (a, b),
+	"_setMouseUp" : function (a, b),
+	"_setMouseWheel" : function (a, b),
+	"_setResize" : function (a, b),
+	"_setTouchBegins" : function (a, b),
+	"_setTouchEnds" : function (a, b),
+	"_setTouchMoves" : function (a, b),
+	"Destroy" : function (a),
+	"AfterUpdate" : function (a),
+	"FinalizeObject" : function (a),
+	"InitializeObject" : function (a),
+	"MakeElementTagId" : function (a),
+	"MakeElementTagObj" : function (a),
+	"Showing" : function (a),
+	"StyleTagObject" : function (a),
+	"ChildAdded" : function (a, b),
+	"Create63" : function (a),
+	"GetHeight" : function (a),
+	"GetWidth" : function (a),
+	"Resize" : function (a),
+	"SetHeight" : function (a, b),
+	"SetWidth" : function (a, b),
+	"supportAdjustment" : function (a),
+	"CBClick" : function (a),
+	"CBKeyDown" : function (a),
+	"CBKeyUp" : function (a),
+	"CBMouseDown" : function (a),
+	"CBMouseMove" : function (a),
+	"CBMouseUp" : function (a),
+	"CMTouchBegins" : function (a),
+	"CMTouchEnds" : function (a),
+	"CMTouchMove" : function (a),
+	"GetEnabled" : function (a),
+	"Invalidate" : function (a),
+	"SetEnabled" : function (a)
+}
+// END TW3CustomControl
+---------------------------------------------------------------------------------
+
+var RTL23 = {
+	// BEGIN TW3CustomControl -------------------------------------------
+	"ClassName" : "TW3CustomControl",
+	"Parent" : {
+		"ClassName" : "TW3MovableControl",
+		"Parent" : {
+			"ClassName" : "TW3TagContainer",
+			"Parent" : {
+				"ClassName" : "TW3TagObj",
+				"Parent" : {
+					"ClassName" : "TW3Component",
+					"Parent" : {
+						"ClassName" : "TW3CustomComponent",
+						"Parent" : {
+							"ClassName" : "TW3OwnedErrorObject",
+							"Parent" : {
+								"ClassName" : "TW3OwnedObject",
+								"Parent" : {
+									// BEGIN TObject -------------------------------------------
+									"ClassName" : "TObject",
+									"Parent" : null,
+									"ClassName" : function (a),
+									"ClassType" : function (a),
+									"ClassParent" : function (a),
+									"Init" : function (),
+									"Create" : function (a),
+									"Destroy" : function (a),
+									"Destroy" : function (a),
+									"Free" : function (a)
+								},
+								// END TObject
+								// BEGIN TW3OwnedObject ----------------------------------------
+								"Init" : function (a),
+								"GetOwner" : function (a),
+								"SetOwner" : function (a, b),
+								"AcceptOwner" : function (a, b),
+								"Create11" : function (a, b),
+								"Destroy" : function (a),
+								"AcceptOwner" : function (a),
+								"Create11" : function (a),
+								"Intf" : {
+									"IW3OwnedObjectAccess" : [
+										function (a, b),
+										function (a, b),
+										function (a)
+									]
+								}
+							},
+							// END TW3OwnedObject
+							// BEGIN TW3OwnedErrorObject------------------------
+							"Init" : function (a),
+							"Create11" : function (a, b),
+							"Destroy" : function (a),
+							"Destroy" : function (a),
+							"AcceptOwner" : function (a, b),
+							"Create11" : function (a),
+							"Intf" : {
+								"IW3OwnedObjectAccess" : [
+									function (a, b),
+									function (a, b),
+									function (a)
+								]
+							}
+						},
+						// END TW3OwnedErrorObject
+						// BEGIN TW3CustomComponent -----------------------
+						"Init" : function (a),
+						"Create11" : function (a, b),
+						"CreateEx" : function (a, b),
+						"Destroy" : function (a),
+						"FinalizeObject" : function (a),
+						"InitializeObject" : function (a),
+						"Destroy" : function (a),
+						"AcceptOwner" : function (a, b),
+						"Create11" : function (a),
+						"FinalizeObject" : function (a),
+						"InitializeObject" : function (a),
+						"Intf" : {
+							"IW3OwnedObjectAccess" : [
+								function (a, b),
+								function (a, b),
+								function (a)
+							]
+						}
+					},
+					// END TW3CustomComponent
+					// BEGIN TW3Component -----------------------
+					"Init" : function (a),
+					"Destroy" : function (a),
+					"AcceptOwner" : function (a, b),
+					"Create11" : function (a, b),
+					"FinalizeObject" : function (a),
+					"InitializeObject" : function (a),
+					"Intf" : {
+						"IW3OwnedObjectAccess" : [
+							function (a, b),
+							function (a, b),
+							function (a)
+						]
+					}
+				},
+				// END TW3Component
+				// BEGIN TW3TagObj ---------------------------------
+				"Init" : function (a),
+				"a48" : function (a, b),
+				"a47" : function (a),
+				"a46" : function (a),
+				"a43" : function (a, b),
+				"a42" : function (a),
+				"AddToComponentState" : function (a, b),
+				"AfterUpdate" : function (a),
+				"BeginUpdate" : function (a),
+				"Create11" : function (a, b),
+				"CreationFlags" : function (a),
+				"Destroy" : function (a),
+				"EndUpdate" : function (a),
+				"FinalizeObject" : function (a),
+				"GetAttributes" : function (a),
+				"GetUpdating" : function (a),
+				"GetZOrderList" : function (a, b),
+				"HandleControlBlured" : function (a),
+				"HandleControlFocused" : function (a),
+				"HookEvents" : function (a),
+				"InitializeObject" : function (a),
+				"InsertInto" : function (a, b),
+				"MakeElementTagId" : function (a),
+				"MakeElementTagObj" : function (a),
+				"RemoveFrom" : function (a),
+				"RemoveFromComponentState" : function (a, b),
+				"SetContentSelectionMode" : function (a, b),
+				"SetZIndex" : function (a, b),
+				"Showing" : function (a),
+				"StyleTagObject" : function (a),
+				"UnHookEvents" : function (a),
+				"Destroy" : function (a),
+				"AcceptOwner" : function (a, b),
+				"Create11" : function (a),
+				"FinalizeObject" : function (a),
+				"InitializeObject" : function (a),
+				"AfterUpdate" : function (a),
+				"HookEvents" : function (a),
+				"MakeElementTagId" : function (a),
+				"MakeElementTagObj" : function (a),
+				"Showing" : function (a),
+				"StyleTagObject" : function (a),
+				"UnHookEvents" : function (a),
+				"Intf" : {
+					"IW3ComponentState" : [
+						function (a, b),
+						function (a, b)
+					],
+					"IW3ZOrderManagement" : [
+						function (a, b)
+					],
+					"IW3OwnedObjectAccess" : [
+						function (a, b),
+						function (a, b),
+						function (a)
+					]
+				}
+			},
+			// END TW3TagObj
+			// BEGIN TW3TagContainer ----------------------------
+			"Init" : function (a),
+			"a49" : function (a),
+			"BringToFront" : function (a),
+			"CBNoBehavior" : function (a),
+			"ChildAdded" : function (a, b),
+			"ChildByName" : function (a, b),
+			"ChildRemoved" : function (a, b),
+			"Create82" : function (a, b),
+			"FinalizeObject" : function (a),
+			"ForEach1" : function (a, b),
+			"FreeChildren" : function (a),
+			"GetChildCount" : function (a),
+			"GetChildHasFocus" : function (a, b),
+			"GetChildObject" : function (a, b),
+			"GetComponentName" : function (a),
+			"GetHasFocus" : function (a),
+			"GetMaxZIndex" : function (a),
+			"GetZIndexAsInt1" : function (a, b),
+			"RegisterChild" : function (a, b),
+			"SetComponentName" : function (a, b),
+			"Showing" : function (a),
+			"TopMost" : function (a),
+			"UnRegisterChild" : function (a, b),
+			"Destroy" : function (a),
+			"AcceptOwner" : function (a, b),
+			"Create11" : function (a, b),
+			"FinalizeObject" : function (a),
+			"InitializeObject" : function (a),
+			"AfterUpdate" : function (a),
+			"HookEvents" : function (a),
+			"MakeElementTagId" : function (a),
+			"MakeElementTagObj" : function (a),
+			"Showing" : function (a),
+			"StyleTagObject" : function (a),
+			"UnHookEvents" : function (a),
+			"Create82" : function (a),
+			"Intf" : {
+				"IW3ComponentState" : [
+					function (a, b),
+					function (a, b)
+				],
+				"IW3ZOrderManagement" : [
+					function (a, b)
+				],
+				"IW3OwnedObjectAccess" : [
+					function (a, b),
+					function (a, b),
+					function (a)
+				]
+			}
+		},
+		// END TW3TagContainer
+		// BEGIN TW3MovableControl ------------------------------
+		"Init" : function (a),
+		"AdjustToParentBox" : function (a),
+		"AfterUpdate" : function (a),
+		"ClientHeight" : function (a),
+		"ClientWidth" : function (a),
+		"DisplayMode" : function (a),
+		"FinalizeObject" : function (a),
+		"fxBusy" : function (a),
+		"fxFadeIn1" : function (a, b, c),
+		"fxFadeOut1" : function (a, b, c),
+		"fxMoveBy1" : function (a, b, c, d, e),
+		"fxMoveDown1" : function (a, b, c),
+		"fxMoveTo1" : function (a, b, c, d, e),
+		"fxMoveUp1" : function (a, b, c),
+		"fxScaleDown1" : function (a, b, c, d),
+		"fxScaleTo1" : function (a, b, c, d, e, f, g),
+		"fxScaleUp1" : function (a, b, c, d),
+		"fxSetBusy" : function (a, b),
+		"fxSizeTo1" : function (a, b, c, d, e),
+		"fxWarpIn1" : function (a, b, c),
+		"fxWarpOut1" : function (a, b, c),
+		"fxZoomIn1" : function (a, b, c),
+		"fxZoomOut1" : function (a, b, c),
+		"GetBorder" : function (a),
+		"GetBoundsRect" : function (a),
+		"GetHeight" : function (a),
+		"GetLeft" : function (a),
+		"GetTop" : function (a),
+		"GetVisible" : function (a),
+		"GetWidth" : function (a),
+		"InitializeObject" : function (a),
+		"Moved" : function (a),
+		"MoveTo" : function (a, b, c),
+		"ObjectReady" : function (a),
+		"QueryChildrenReady" : function (a),
+		"ReadySync1" : function (a),
+		"Resize" : function (a),
+		"ScreenRect" : function (a),
+		"SetAlpha" : function (a, b),
+		"SetBounds" : function (a, b, c, d, e),
+		"SetColor" : function (a, b),
+		"SetHeight" : function (a, b),
+		"SetLeft" : function (a, b),
+		"SetSize2" : function (a, b, c),
+		"SetTop" : function (a, b),
+		"SetTransparent" : function (a, b),
+		"SetUseAlpha" : function (a, b),
+		"SetVisible" : function (a, b),
+		"SetWidth" : function (a, b),
+		"Showing" : function (a),
+		"StyleTagObject" : function (a),
+		"SupportAdjustment" : function (a),
+		"_SetOnMoved" : function (a, b),
+		"_SetOnResized" : function (a, b),
+		"Destroy" : function (a),
+		"AcceptOwner" : function (a, b),
+		"Create11" : function (a, b),
+		"FinalizeObject" : function (a),
+		"InitializeObject" : function (a),
+		"AfterUpdate" : function (a),
+		"HookEvents" : function (a),
+		"MakeElementTagId" : function (a),
+		"MakeElementTagObj" : function (a),
+		"Showing" : function (a),
+		"StyleTagObject" : function (a),
+		"UnHookEvents" : function (a),
+		"Create82" : function (a, b),
+		"ObjectReady" : function (a),
+		"Resize" : function (a),
+		"SetHeight" : function (a),
+		"SetWidth" : function (a),
+		"SupportAdjustment" : function (a),
+		"Intf" : {
+			"IW3ComponentState" : [
+				function (a, b),
+				function (a, b)
+			],
+			"IW3ZOrderManagement" : [
+				function (a, b)
+			],
+			"IW3OwnedObjectAccess" : [
+				function (a, b),
+				function (a, b),
+				function (a)
+			]
+		}
+	},
+	// END TW3MovableControl
+	// BEGIN TW3CustomControl ----------------------------------
+	"Init" : function (a),
+	"a51" : function (a),
+	"a50" : function (a),
+	"BindTouch" : function (a),
+	"CBAnimationBegins" : function (a, b),
+	"CBAnimationEnds" : function (a, b),
+	"CBChanged" : function (a, b),
+	"CBClick" : function (a, b),
+	"CBContextPopup" : function (a, b),
+	"CBDblClick" : function (a, b),
+	"CBFocused" : function (a),
+	"CBKeyDown" : function (a, b),
+	"CBKeyPress" : function (a, b),
+	"CBKeyUp" : function (a, b),
+	"CBLostFocus" : function (a),
+	"CBMouseDown" : function (a, b),
+	"CBMouseEnter" : function (a, b),
+	"CBMouseExit" : function (a, b),
+	"CBMouseMove" : function (a, b),
+	"CBMouseUp" : function (a, b),
+	"CBMouseWheel" : function (a, b),
+	"CBSelectionStarts" : function (a, b),
+	"CMGestureChange" : function (a),
+	"CMGestureEnd" : function (a),
+	"CMGestureStart" : function (a),
+	"CMTouchBegins" : function (a, b),
+	"CMTouchEnds" : function (a, b),
+	"CMTouchMove" : function (a, b),
+	"ContextPopup" : function (a, b, c),
+	"FinalizeObject" : function (a),
+	"GetBorderRadius" : function (a),
+	"GetChildrenSortedByYPos" : function (a),
+	"GetEnabled1" : function (a),
+	"GetFont" : function (a),
+	"GetScrollInfo" : function (a),
+	"GetStyleClass" : function (a),
+	"GetTagStyle" : function (a),
+	"GetZoom" : function (a),
+	"HookEvents" : function (a),
+	"InitializeCapture" : function (a),
+	"Invalidate" : function (a),
+	"LayoutChildren" : function (a),
+	"MouseDown" : function (a, b, c, d, e),
+	"MouseEnter" : function (a, b, c, d),
+	"MouseExit" : function (a, b, c, d),
+	"MouseMove" : function (a, b, c, d),
+	"MouseUp" : function (a, b, c, d, e),
+	"MouseWheel" : function (a, b, c, d, e),
+	"ReleaseCapture" : function (a),
+	"SetAngle" : function (a, b),
+	"SetBorderRadius" : function (a, b),
+	"SetCapture" : function (a),
+	"SetEnabled1" : function (a, b),
+	"SetFocus" : function (a),
+	"SetStyleClass" : function (a, b),
+	"SetZoom" : function (a, b),
+	"StyleTagObject" : function (a),
+	"UnHookEvents" : function (a),
+	"_setAnimationBegins" : function (a, b),
+	"_setAnimationEnds" : function (a, b),
+	"_setChanged" : function (a, b),
+	"_setContextPopup" : function (a, b),
+	"_setGestureChange" : function (a, b),
+	"_setGestureEnd" : function (a, b),
+	"_setGestureStart" : function (a, b),
+	"_setGotFocus" : function (a, b),
+	"_setKeyDown" : function (a, b),
+	"_setKeyPress" : function (a, b),
+	"_setKeyUp" : function (a, b),
+	"_setLostFocus" : function (a, b),
+	"_setMouseClick" : function (a, b),
+	"_setMouseDblClick" : function (a, b),
+	"_setMouseDown" : function (a, b),
+	"_setMouseEnter" : function (a, b),
+	"_setMouseExit" : function (a, b),
+	"_setMouseMove" : function (a, b),
+	"_setMouseUp" : function (a, b),
+	"_setMouseWheel" : function (a, b),
+	"_setSelectionEnds" : function (a, b),
+	"_setSelectionStarts" : function (a, b),
+	"_setTouchBegins" : function (a, b),
+	"_setTouchEnds" : function (a, b),
+	"_setTouchMoves" : function (a, b),
+	"Destroy" : function (a),
+	"AcceptOwner" : function (a, b),
+	"Create11" : function (a, b),
+	"FinalizeObject" : function (a),
+	"InitializeObject" : function (a),
+	"AfterUpdate" : function (a),
+	"HookEvents" : function (a),
+	"MakeElementTagId" : function (a),
+	"MakeElementTagObj" : function (a),
+	"Showing" : function (a),
+	"StyleTagObject" : function (a),
+	"UnHookEvents" : function (a),
+	"Create82" : function (a, b),
+	"ObjectReady" : function (a),
+	"Resize" : function (a),
+	"SetHeight" : function (a, b),
+	"SetWidth" : function (a, b),
+	"SupportAdjustment" : function (a),
+	"CBClick" : function (a),
+	"CBKeyDown" : function (a),
+	"CBKeyUp" : function (a),
+	"CBMouseDown" : function (a),
+	"CBMouseMove" : function (a),
+	"CBMouseUp" : function (a),
+	"Invalidate" : function (a),
+	"SetEnabled1" : function (a),
+	"Intf" : {
+		"IW3ComponentState" : [
+			function (a, b),
+			function (a, b)
+		],
+		"IW3ZOrderManagement" : [
+			function (a, b)
+		],
+		"IW3OwnedObjectAccess" : [
+			function (a, b),
+			function (a, b),
+			function (a)
+		]
+	}
+}
+// END TW3CustomControl
+------------------------------------
