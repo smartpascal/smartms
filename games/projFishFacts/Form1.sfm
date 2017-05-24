@@ -1,0 +1,218 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-05-24T15:31:57.765</Created>
+    <Modified>2017-05-24T20:09:39.843</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <BorderRadius>0</BorderRadius>
+      <Name>Form1</Name>
+      <object type="TW3Panel">
+        <Width>800</Width>
+        <Top>40</Top>
+        <Left>8</Left>
+        <Height>360</Height>
+        <BorderRadius>0</BorderRadius>
+        <Color>12632256</Color>
+        <Name>W3Panel1</Name>
+        <object type="TW3Image">
+          <Width>382</Width>
+          <Top>9</Top>
+          <Left>8</Left>
+          <Height>220</Height>
+          <BorderRadius>2</BorderRadius>
+          <Transparent>True</Transparent>
+          <Name>fishPicture</Name>
+        </object>
+        <object type="TW3Panel">
+          <Width>385</Width>
+          <Top>8</Top>
+          <Left>400</Left>
+          <Height>34</Height>
+          <BorderRadius>0</BorderRadius>
+          <Color>10526880</Color>
+          <Name>W3Panel2</Name>
+          <object type="TW3Label">
+            <Caption>&lt;b&gt;About goes here&lt;/b&gt;</Caption>
+            <Width>371</Width>
+            <Top>2</Top>
+            <Left>8</Left>
+            <Height>26</Height>
+            <BorderRadius>0</BorderRadius>
+            <Name>aboutText</Name>
+          </object>
+        </object>
+        <object type="TW3Memo">
+          <Width>386</Width>
+          <Top>48</Top>
+          <Left>400</Left>
+          <Height>218</Height>
+          <Color>12369118</Color>
+          <Name>memo1</Name>
+        </object>
+        <object type="TW3Panel">
+          <Width>383</Width>
+          <Top>231</Top>
+          <Left>8</Left>
+          <Height>34</Height>
+          <BorderRadius>0</BorderRadius>
+          <Color>11053224</Color>
+          <Name>W3Panel3</Name>
+          <object type="TW3Label">
+            <Caption>&lt;i&gt;&lt;b&gt;Clown Triggerfish&lt;/b&gt;&lt;/i&gt;</Caption>
+            <Width>374</Width>
+            <Left>8</Left>
+            <Height>25</Height>
+            <BorderRadius>0</BorderRadius>
+            <Name>pictureText</Name>
+          </object>
+        </object>
+        <object type="TW3Panel">
+          <Width>739</Width>
+          <Top>271</Top>
+          <Left>8</Left>
+          <Height>75</Height>
+          <BorderRadius>0</BorderRadius>
+          <Color>12632256</Color>
+          <Name>W3Panel4</Name>
+          <object type="TW3Panel">
+            <Width>182</Width>
+            <Top>2</Top>
+            <StyleClass>_p</StyleClass>
+            <Left>4</Left>
+            <Height>32</Height>
+            <Color>12632256</Color>
+            <Name>W3Panel5</Name>
+            <object type="TW3Label">
+              <Caption>&lt;b&gt;Category&lt;/b&gt;</Caption>
+              <Width>172</Width>
+              <Left>4</Left>
+              <Height>23</Height>
+              <Name>categoryLb</Name>
+            </object>
+          </object>
+          <object type="TW3Panel">
+            <Width>182</Width>
+            <Top>2</Top>
+            <StyleClass>_p</StyleClass>
+            <Left>185</Left>
+            <Height>32</Height>
+            <Color>12632256</Color>
+            <Name>W3Panel6</Name>
+            <object type="TW3Label">
+              <Caption>&lt;b&gt;Species Name&lt;/b&gt;</Caption>
+              <Width>172</Width>
+              <Left>7</Left>
+              <Height>22</Height>
+              <BorderRadius>0</BorderRadius>
+              <Name>speciesNameLb</Name>
+            </object>
+          </object>
+          <object type="TW3Panel">
+            <Width>182</Width>
+            <Top>3</Top>
+            <StyleClass>_p</StyleClass>
+            <Left>368</Left>
+            <Height>32</Height>
+            <Color>12632256</Color>
+            <Name>W3Panel7</Name>
+            <object type="TW3Label">
+              <Caption>&lt;b&gt;Length(cm)&lt;/b&gt;</Caption>
+              <Width>163</Width>
+              <Left>8</Left>
+              <Height>25</Height>
+              <BorderRadius>0</BorderRadius>
+              <Name>lemCmLb</Name>
+            </object>
+          </object>
+          <object type="TW3Panel">
+            <Width>182</Width>
+            <Top>2</Top>
+            <StyleClass>_p</StyleClass>
+            <Left>552</Left>
+            <Height>32</Height>
+            <Color>12632256</Color>
+            <Name>W3Panel8</Name>
+            <object type="TW3Label">
+              <Caption>&lt;b&gt;Length(in)&lt;/b&gt;</Caption>
+              <Width>171</Width>
+              <Left>8</Left>
+              <Height>26</Height>
+              <BorderRadius>0</BorderRadius>
+              <Name>lenInLb</Name>
+            </object>
+          </object>
+          <object type="TW3EditBox">
+            <Value></Value>
+            <Range></Range>
+            <Width>180</Width>
+            <Top>34</Top>
+            <Left>4</Left>
+            <Height>32</Height>
+            <Name>categoryEd</Name>
+          </object>
+          <object type="TW3EditBox">
+            <Value></Value>
+            <Range></Range>
+            <Width>180</Width>
+            <Top>35</Top>
+            <Left>185</Left>
+            <Height>32</Height>
+            <Name>speciesNameEd</Name>
+          </object>
+          <object type="TW3EditBox">
+            <Value></Value>
+            <Range></Range>
+            <Width>180</Width>
+            <Top>35</Top>
+            <Left>368</Left>
+            <Height>32</Height>
+            <Name>lenCmEd</Name>
+          </object>
+          <object type="TW3EditBox">
+            <Value></Value>
+            <Range></Range>
+            <Width>180</Width>
+            <Top>35</Top>
+            <Left>552</Left>
+            <Height>32</Height>
+            <Name>lenInEd</Name>
+          </object>
+        </object>
+        <object type="TW3Button">
+          <Caption>^</Caption>
+          <Width>35</Width>
+          <Top>272</Top>
+          <Left>752</Left>
+          <Height>35</Height>
+          <Name>up</Name>
+          <OnClick>upClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>v</Caption>
+          <Width>35</Width>
+          <Top>312</Top>
+          <Left>752</Left>
+          <Height>35</Height>
+          <Name>down</Name>
+          <OnClick>downClick</OnClick>
+        </object>
+      </object>
+      <object type="TW3Panel">
+        <Width>800</Width>
+        <Top>8</Top>
+        <Left>8</Left>
+        <Height>36</Height>
+        <BorderRadius>0</BorderRadius>
+        <Color>160</Color>
+        <Name>W3Panel9</Name>
+        <object type="TW3Label">
+          <Caption>&lt;b&gt;&gt;&lt;(((º&gt; FishFacts for SMS&lt;/b&gt;</Caption>
+          <Width>717</Width>
+          <Left>8</Left>
+          <Height>30</Height>
+          <Name>appTitleLb</Name>
+        </object>
+      </object>
+    </object>
+  </Form>
+</SMART>
