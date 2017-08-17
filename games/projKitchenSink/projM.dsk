@@ -1,0 +1,26 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="1" col="21" row="8" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Unit1" fullname="Unit1.pas" topline="3" col="29" row="10" />
+      <tab filename="projM" fullname="projM.spr" topline="1" col="1" row="1" />
+      <tab filename="Form2" fullname="Form2.pas" topline="3" col="26" row="10" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form3" fullname="Form3.pas" topline="18" col="5" row="44" splitview="0" designview="1" splitter="0.444444447755814" />
+      <tab filename="Form4" fullname="Form4.pas" topline="18" col="1" row="31" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="SmartCL.Forms" fullname="..\smartms\RTL\SmartCL\SmartCL.Forms.pas" topline="19" col="17" row="19" />
+      <tab filename="SmartCL.Components" fullname="..\smartms\RTL\SmartCL\SmartCL.Components.pas" topline="323" col="1" row="351" />
+      <tab filename="SmartCL.MiniApplication" fullname="..\smartms\RTL\SmartCL\SmartCL.MiniApplication.pas" topline="24" col="5" row="73" />
+      <tab filename="uMDButton" fullname="..\smartms\Libraries\uMDButton.pas" topline="1" col="6" row="12" />
+      <activetab>SmartCL.MiniApplication</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>193</BackgroundCompilations>
+      <EditTime>00:02:06.125</EditTime>
+      <CompileTime>00:00:13.254</CompileTime>
+      <TotalTime>00:33:54.188</TotalTime>
+      <DesigningTime>00:10:41.391</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

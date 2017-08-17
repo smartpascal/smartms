@@ -1,0 +1,19 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-06-23T14:49:12.656</Created>
+    <Modified>2017-08-17T15:49:45.484</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form1</Name>
+      <object type="TMDButton">
+        <Caption>Form1</Caption>
+        <buttonBackgroundColor>green</buttonBackgroundColor>
+        <Width>128</Width>
+        <Top>136</Top>
+        <Left>232</Left>
+        <Height>32</Height>
+        <Name>MDButton1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
