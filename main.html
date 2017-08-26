@@ -9,10 +9,12 @@
 </head> 
 
 <body> 
+<video>    </video>
 <script>
 function vidSwap(vidURL) {
 var myVideo = document.getElementsByTagName('video')[0];
 myVideo.src = vidURL;
+myVideo.type="video/mp4"    
 myVideo.load();
 myVideo.play();
 }
