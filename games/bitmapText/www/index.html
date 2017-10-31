@@ -290,6 +290,7 @@ function bitmapText(parent, font, txt, x, y, scale, kerning, frame) {
 	
 		//document.getElementById("image1").src = copyToOnScreen(createOffscreenCanvas(fontWidth, (fontHeight) * scale));
 		parent.setAttribute("style", "position:absolute; left:" + x + "px; top:" + y + "px;");
+		parent.setAttribute("crossOrigin","Anonymous");
 		parent.src = copyToOnScreen(createOffscreenCanvas(fontWidth, (fontHeight) * scale));
 	},0);
 	
