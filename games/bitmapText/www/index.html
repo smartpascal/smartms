@@ -333,11 +333,11 @@ function criarImage(x, y, font, text){
 
 		var div_ = ( document.createElement('IMG') );
 		div_.setAttribute("id", 'image1');
-		div.setAttribute("crossOrigin","Anonymous");
+		div_.setAttribute("crossOrigin","Anonymous");
 		docFragment.appendChild(div_);
 	
 		document.body.appendChild( docFragment );	
-		
+		console.log('111');
 
 //var t = new bitmapText('sigmarone', 'Bitmap Fonts!', 100, 100, 1, 0, 0);
 //document.getElementById("image1").appendChild(t);
