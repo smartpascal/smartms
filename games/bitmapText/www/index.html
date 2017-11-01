@@ -15,7 +15,7 @@
 	</head>
 	<body>
 
-	<button id="dis" onclick="new bitmapText(document.getElementById('image1'),'sigmarone', 'Bitmap Fonts!', 100, 100, 1, 0, 0); return false;">Click me</button>
+	<button id="dis" onclick="new bitmapText('sigmarone', 'Bitmap Fonts!', 100, 100, 1, 0, 0); return false;">Click me</button>
 <!--<canvas id='onScreen'></canvas>-->
 
 <!--<script type="text/javascript" src="fontloader.js"></script>-->
@@ -25,6 +25,7 @@ function q(a, b, k) {
   this.i = b;
   this.f = k || 0;
   this.c = new Image;
+  this.c.setAttribute('crossOrigin', 'anonymous');	
   this.a = [];
   this.data = {};
 }
@@ -64,12 +65,13 @@ fontName = r(f, Text, scale);
 var t = fontName.lineHeight, u = fontName.lineWidth, h = (fontName).b;
   
 var img = new Image();
-img.crossOrigin = 'anonymous';
+img.setAttribute('crossOrigin', 'anonymous');	
 img.onload = function() {
 
   
 	var croppedURL = cropPlusExport(img, 0, 0, u, t);
 	var cropImg = new Image();
+	cropImg.setAttribute('crossOrigin', 'anonymous');	
 	cropImg.src = croppedURL;
 	document.body.appendChild(cropImg);
 }
@@ -140,7 +142,7 @@ function cropPlusExport(img, cropX, cropY, cropWidth, cropHeight) {
   */
 }
 
-new bitmapText("sigmarone", "Bitmap Fonts!", 100, 100, 1, 0, 0);
+
 
 </script>	
 
