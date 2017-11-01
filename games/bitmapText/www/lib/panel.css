@@ -1,0 +1,432 @@
+/*
+ * Ext JS Library 2.2
+ * Copyright(c) 2006-2008, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+
+.sms-panel {
+    border-style: solid;
+    border-color: #99bbe8;
+    border-width:0;
+}
+
+.sms-panel-header {
+    overflow:hidden;
+    zoom:1;
+    color:#15428b;
+	font:bold 11px tahoma,arial,verdana,sans-serif;
+    padding:5px 3px 4px 5px;
+    border:1px solid #99bbe8;
+    line-height: 15px;
+    background: transparent url(images/default/panel/white-top-bottom.gif) repeat-x 0 -1px;
+}
+
+.sms-panel-body {
+    border:1px solid #99bbe8;
+    border-top:0 none;
+    overflow:hidden;
+    background:white;
+    position: relative; /* added for item scroll positioning */
+}
+
+.sms-panel-bbar .sms-toolbar {
+    border:1px solid #99bbe8;
+    border-top:0 none;
+    overflow:hidden;
+    padding:2px;
+}
+
+
+.sms-panel-tbar .sms-toolbar {
+    border:1px solid #99bbe8;
+    border-top:0 none;
+    overflow:hidden;
+    padding:2px;
+}
+
+.sms-panel-tbar-noheader .sms-toolbar, .sms-panel-mc .sms-panel-tbar .sms-toolbar {
+    border-top:1px solid #99bbe8;
+    border-bottom: 0 none;
+}
+.sms-panel-body-noheader, .sms-panel-mc .sms-panel-body {
+    border-top:1px solid #99bbe8;
+}
+.sms-panel-header {
+    overflow:hidden;
+    zoom:1;
+}
+.sms-panel-tl .sms-panel-header {
+    color:#15428b;
+	 font:bold 11px tahoma,arial,verdana,sans-serif;
+    padding:5px 0 4px 0;
+    border:0 none;
+    background:transparent;
+}
+.sms-panel-tl .sms-panel-icon, .sms-window-tl .sms-panel-icon {
+    padding-left:20px !important;
+    background-repeat:no-repeat;
+    background-position:0 4px;
+    zoom:1;
+}
+.sms-panel-inline-icon {
+    width:16px;
+	 height:16px;
+    background-repeat:no-repeat;
+    background-position:0 0;
+	 vertical-align:middle;
+	 margin-right:4px;
+	 margin-top:-1px;
+	 margin-bottom:-1px;
+}
+.sms-panel-tc {
+	background: transparent url(images/default/panel/top-bottom.gif) repeat-x 0 0;
+	overflow:hidden;
+}
+/* fix ie7 strict mode bug */
+.ext-strict .ext-ie7 .sms-panel-tc {
+    overflow: visible;
+}
+.sms-panel-tl {
+	background: transparent url(images/default/panel/corners-sprite.gif) no-repeat 0 0;
+	padding-left:6px;
+    zoom:1;
+    border-bottom:1px solid #99bbe8;
+}
+.sms-panel-tr {
+	background: transparent url(images/default/panel/corners-sprite.gif) no-repeat right 0;
+	zoom:1;
+    padding-right:6px;
+}
+.sms-panel-bc {
+	background: transparent url(images/default/panel/top-bottom.gif) repeat-x 0 bottom;
+    zoom:1;
+}
+.sms-panel-bc .sms-panel-footer {
+    zoom:1;
+}
+
+.sms-panel-bl {
+	background: transparent url(images/default/panel/corners-sprite.gif) no-repeat 0 bottom;
+	padding-left:6px;
+    zoom:1;
+}
+.sms-panel-br {
+	background: transparent url(images/default/panel/corners-sprite.gif) no-repeat right bottom;
+	padding-right:6px;
+    zoom:1;
+}
+.sms-panel-mc {
+    border:0 none;
+    padding:0;
+    margin:0;
+    font: normal 11px tahoma,arial,helvetica,sans-serif;
+    padding-top:6px;
+    background:#dfe8f6;
+}
+.sms-panel-mc .sms-panel-body {
+    background:transparent;
+    border: 0 none;
+}
+.sms-panel-ml {
+	background: #fff url(images/default/panel/left-right.gif) repeat-y 0 0;
+	padding-left:6px;
+    zoom:1;
+}
+.sms-panel-mr {
+	background: transparent url(images/default/panel/left-right.gif) repeat-y right 0;
+	padding-right:6px;
+    zoom:1;
+}
+.sms-panel-bc .sms-panel-footer {
+    padding-bottom:6px;
+}
+.sms-panel-nofooter .sms-panel-bc, .sms-panel-nofooter .sms-window-bc {
+	height:6px;
+    font-size:0;
+    line-height:0;
+}
+
+.sms-panel-bwrap {
+    overflow:hidden;
+    zoom:1;
+    left:0;top:0;
+}
+.sms-panel-body {
+    overflow:hidden;
+    zoom:1;
+}
+
+.sms-panel-collapsed .sms-resizable-handle{
+    display:none;
+}
+/*
+.ext-gecko .sms-panel-animated div {
+    overflow:hidden !important;
+}
+
+/* Plain */
+/*
+.sms-plain-body {
+    overflow:hidden;
+}
+
+.sms-plain-bbar .sms-toolbar {
+    overflow:hidden;
+    padding:2px;
+}
+
+.sms-plain-tbar .sms-toolbar {
+    overflow:hidden;
+    padding:2px;
+}
+
+.sms-plain-bwrap {
+    overflow:hidden;
+    zoom:1;
+}
+
+.sms-plain {
+    overflow:hidden;
+}
+
+/* Tools */
+/*
+.sms-tool {
+    overflow:hidden;
+    width:15px;
+    height:15px;
+    float:right;
+    cursor:pointer;
+    background:transparent url(images/default/panel/tool-sprites.gif) no-repeat;
+    margin-left:2px;
+}
+
+/* expand / collapse tools */
+/*
+.sms-tool-toggle {
+    background-position:0 -60px;
+}
+.sms-tool-toggle-over {
+    background-position:-15px -60px;
+}
+.sms-panel-collapsed .sms-tool-toggle {
+    background-position:0 -75px;
+}
+.sms-panel-collapsed .sms-tool-toggle-over {
+    background-position:-15px -75px;
+}
+
+.sms-tool-close {
+    background-position:0 -0;
+}
+.sms-tool-close-over {
+    background-position:-15px 0;
+}
+
+.sms-tool-minimize {
+    background-position:0 -15px;
+}
+.sms-tool-minimize-over {
+    background-position:-15px -15px;
+}
+
+.sms-tool-maximize {
+    background-position:0 -30px;
+}
+.sms-tool-maximize-over {
+    background-position:-15px -30px;
+}
+
+.sms-tool-restore {
+    background-position:0 -45px;
+}
+.sms-tool-restore-over {
+    background-position:-15px -45px;
+}
+
+.sms-tool-gear {
+    background-position:0 -90px;
+}
+.sms-tool-gear-over {
+    background-position:-15px -90px;
+}
+
+.sms-tool-pin {
+    background-position:0 -135px;
+}
+.sms-tool-pin-over {
+    background-position:-15px -135px;
+}
+.sms-tool-unpin {
+    background-position:0 -150px;
+}
+.sms-tool-unpin-over {
+    background-position:-15px -150px;
+}
+.sms-tool-right {
+    background-position:0 -165px;
+}
+.sms-tool-right-over {
+    background-position:-15px -165px;
+}
+.sms-tool-left {
+    background-position:0 -180px;
+}
+.sms-tool-left-over {
+    background-position:-15px -180px;
+}
+.sms-tool-up {
+    background-position:0 -210px;
+}
+.sms-tool-up-over {
+    background-position:-15px -210px;
+}
+.sms-tool-down {
+    background-position:0 -195px;
+}
+.sms-tool-down-over {
+    background-position:-15px -195px;
+}
+.sms-tool-refresh {
+    background-position:0 -225px;
+}
+.sms-tool-refresh-over {
+    background-position:-15px -225px;
+}
+
+.sms-tool-minus {
+    background-position:0 -255px;
+}
+.sms-tool-minus-over {
+    background-position:-15px -255px;
+}
+.sms-tool-plus {
+    background-position:0 -240px;
+}
+.sms-tool-plus-over {
+    background-position:-15px -240px;
+}
+
+.sms-tool-search {
+    background-position:0 -270px;
+}
+.sms-tool-search-over {
+    background-position:-15px -270px;
+}
+.sms-tool-save {
+    background-position:0 -285px;
+}
+.sms-tool-save-over {
+    background-position:-15px -285px;
+}
+.sms-tool-help {
+    background-position:0 -300px;
+}
+.sms-tool-help-over {
+    background-position:-15px -300px;
+}
+.sms-tool-print {
+    background-position:0 -315px;
+}
+.sms-tool-print-over {
+    background-position:-15px -315px;
+}
+
+/* Ghosting */
+/*
+.sms-panel-ghost {
+    background:#cbddf3;
+    z-index:12000;
+    overflow:hidden;
+    position:absolute;
+    left:0;top:0;
+    opacity:.65;
+    -moz-opacity:.65;
+    filter:alpha(opacity=65);
+}
+
+.sms-panel-ghost ul {
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-size:0;
+    line-height:0;
+    border:1px solid #99bbe8;
+    border-top:0 none;
+    display:block;
+}
+
+.sms-panel-ghost * {
+    cursor:move !important;
+}
+
+.sms-panel-dd-spacer {
+    border:2px dashed #99bbe8;
+}
+/* Buttons */
+/*
+.sms-panel-btns-ct {
+    padding:5px;
+}
+
+.sms-panel-btns-ct .sms-btn{
+	float:right;
+	clear:none;
+}
+.sms-panel-btns-ct .sms-panel-btns td {
+	border:0;
+	padding:0;
+}
+.sms-panel-btns-ct .sms-panel-btns-right table{
+	float:right;
+	clear:none;
+}
+.sms-panel-btns-ct .sms-panel-btns-left table{
+	float:left;
+	clear:none;
+}
+.sms-panel-btns-ct .sms-panel-btns-center{
+	text-align:center; /*ie*/
+	/*
+}
+/*
+.sms-panel-btns-ct .sms-panel-btns-center table{
+	margin:0 auto; /*everyone else*/
+/*	
+}
+.sms-panel-btns-ct table td.sms-panel-btn-td{
+	padding:3px;
+}
+
+.sms-panel-btns-ct .sms-btn-focus .sms-btn-left{
+	background-position:0 -147px;
+}
+.sms-panel-btns-ct .sms-btn-focus .sms-btn-right{
+	background-position:0 -168px;
+}
+.sms-panel-btns-ct .sms-btn-focus .sms-btn-center{
+	background-position:0 -189px;
+}
+
+.sms-panel-btns-ct .sms-btn-over .sms-btn-left{
+	background-position:0 -63px;
+}
+.sms-panel-btns-ct .sms-btn-over .sms-btn-right{
+	background-position:0 -84px;
+}
+.sms-panel-btns-ct .sms-btn-over .sms-btn-center{
+	background-position:0 -105px;
+}
+
+.sms-panel-btns-ct .sms-btn-click .sms-btn-center{
+	background-position:0 -126px;
+}
+.sms-panel-btns-ct .sms-btn-click  .sms-btn-right{
+	background-position:0 -84px;
+}
+.sms-panel-btns-ct .sms-btn-click .sms-btn-left{
+	background-position:0 -63px;
+}
+*/
