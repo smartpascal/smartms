@@ -145,6 +145,7 @@ html, body
 .TButton:disabled {
 	opacity: 0.50;
 }
+<<<<<<< HEAD
 
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -215,3 +216,5 @@ body {
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
 }
+=======
+>>>>>>> 1db1c6424e95003da8abfd8fdc3d58ce3f6ed3f3
