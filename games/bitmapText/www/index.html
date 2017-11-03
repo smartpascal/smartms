@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,13 @@
 </head>
 <body>
 <button id="btn1" class="TButton" style="width: 79px; top: 10px; left: 9px; height: 32px; text-align: center; position: absolute;">clickme</button>
-<div style="position: absolute; width: 200px; top: 50px; left: 9px; height: 60px;">
+<button id="btn2" class="TButton" style="width: 110px; top: 50px; left: 9px; height: 32px; text-align: center; position: absolute;">dontclickme</button>
+
+<!--<div style="position: absolute; width: 100px; top: 50px; left: 9px; height: 60px;">
 <div class="text-input"><input type="text" id="input1" placeholder="Try typing something in here!" autofocus=""><label for="input1" id="btn2">Click</label></div>
-</div>
+</div>-->
 <img id="img1"  crossOrigin="anonymous" style="position:absolute; top: 0px; left:130px;"></img>
-<img id="img2"  crossOrigin="anonymous" style="position:absolute; top: 50px; left:130px;"></img>
+<img id="img2"  crossOrigin="anonymous" style="position:absolute; top: 65px; left:130px;"></img>
 
 <script type="text/javascript" src="lib/bundle.js"></script>
 <!-- Path to your app js-->
@@ -31,7 +34,8 @@ function bitmapText(P,c$1,k$1,l,g,e$2,a$40,d$1,s){this.scale=e$2||1;this.f=a$40|
 c$1=d.toDataURL("image/png");if(s!==true){a=new Image;a.setAttribute("crossOrigin","anonymous");a.setAttribute("style","position:absolute; left:"+l+"px; top:"+g+"px;");a.src=c$1;(P).appendChild(a);}else{(P).src=c$1;}};(c$1).src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";});}
 function loadXMLDoc(dname){var xhttp;if(window.XMLHttpRequest){xhttp=new XMLHttpRequest();}else{xhttp=new ActiveXObject("Microsoft.XMLHTTP");}
 xhttp.open("GET",dname,false);xhttp.send();return xhttp.responseXML;}
-var a=new Image();a.src="fonts/desyrel.png";var b=new Image();b.src="fonts/sigmarone.png";smartms('#input1').on('input',function(ev){var txt=ev.target.value;setTimeout(function(){new bitmapText(document.getElementById('img1'),"Desyrel",txt,130,0,1,0,0,true);},0);setTimeout(function(){new bitmapText(document.getElementById('img2'),"SigmarOne",txt,130,55,1,0,0,true);},0);});smartms('#btn1').on('click',function(){setTimeout(function(){new bitmapText(document.body,"luckiestguy",'Hello warleyalex!',50,150,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'Grumpsy wizards make',50,200,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'toxics brew for the',50,250,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'evil Queen and Jack.',50,300,1,0,0,false);},0);smartms('#btn1')[0].disabled=true;});};window.onload=function(){bootstrap();}
+var a=new Image();a.src="fonts/desyrel.png";var b=new Image();b.src="fonts/sigmarone.png";smartms("#btn2").on('click',function(e){var txt;var time=5*60,tmp=time;setInterval(function(){var c=tmp--,m=(c/60)>>0,s=(c-m*60)+'';txt='explodes in '+m+':'+(s.length>1?'':'0')+s
+new bitmapText(document.getElementById('img2'),"SigmarOne",txt,300,85,1,0,0,true);tmp!=0||(tmp=time);},1000);});smartms('#btn1').on('click',function(){setTimeout(function(){new bitmapText(document.body,"luckiestguy",'Hello warleyalex!',50,150,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'Grumpsy wizards make',50,200,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'toxics brew for the',50,250,1,0,0,false);},0);setTimeout(function(){new bitmapText(document.body,"LuckiestGuy",'evil Queen and Jack.',50,300,1,0,0,false);},0);smartms('#btn1')[0].disabled=true;});setTimeout(function(){new bitmapText(document.getElementById('img1'),"Desyrel",'warleyalex',300,85,1,0,0,true);},0);};window.onload=function(){bootstrap();}
 </script>
 </body>
 </html>
