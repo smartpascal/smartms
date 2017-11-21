@@ -1,0 +1,366 @@
+<SMART>
+  <Project version="2" subversion="2">
+    <Name>RTTI</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2017-11-21T10:41:02.062</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <VendorSpecific>
+      <Apple>
+        <FormatDetection>0</FormatDetection>
+        <StatusBarStyle>default</StatusBarStyle>
+        <WebAppCapable>0</WebAppCapable>
+      </Apple>
+      <ChromeApp>
+        <Kiosk>0</Kiosk>
+        <KioskOnly>1</KioskOnly>
+        <OfflineEnabled>1</OfflineEnabled>
+      </ChromeApp>
+      <Cordova>
+        <WidgetID>com.smartmobilestudio.app</WidgetID>
+        <AllowIntent>http://*/*&#13;&#10;https://*/*&#13;&#10;tel:*&#13;&#10;sms:*&#13;&#10;mailto:*&#13;&#10;geo:*</AllowIntent>
+      </Cordova>
+    </VendorSpecific>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>1</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
+        <EmitSourceLocation>1</EmitSourceLocation>
+        <EmitRTTI>1</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>1</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>RTTI;
+        <HandleExceptions>0</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+        <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWebAppManifest>1</GenerateWebAppManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
+        <ExternalCSS>0</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>0</Server>
+        <CustomFile></CustomFile>
+        <LoadCustomFile>0</LoadCustomFile>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>2</ExecuteType>
+        <ExecuteableName>chrome.exe</ExecuteableName>
+        <ExecuteableParams>%output%</ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="unit">
+        <Name>RTTI</Name>
+        <Created>2014-06-22T16:55:33.058Z</Created>
+        <Modified>2017-11-20T08:59:37.984</Modified>
+        <Source>
+          <![CDATA[unit RTTI;
+
+interface
+
+//{$RTTI EXPLICIT METHODS([vcPublished])}
+
+uses 
+  //uRTTI,
+  SmartCL.Application, SmartCL.System, SmartCL.Forms, Form1;
+
+type
+  TApplication = class(TW3CustomApplication)
+  private
+    FForm1: TForm1;
+  protected
+    procedure ApplicationStarting; override;
+  end;
+
+implementation
+
+{ TApplication}
+
+procedure TApplication.ApplicationStarting;
+begin
+  FForm1 := TForm1.Create(Display.View);
+  FForm1.Name := 'Form1';
+  RegisterFormInstance(FForm1, True);
+  // register other forms here
+  inherited;
+end;
+
+
+end.
+]]>
+        </Source>
+      </File>
+      <File type="main">
+        <Name>RTTIApplication</Name>
+        <Created>2014-06-22T16:55:33.058Z</Created>
+        <Modified>2017-11-20T06:52:32.140</Modified>
+        <Source>
+          <![CDATA[uses W3C.Console, RTTI;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+
+  TApplication.Create.RunApp;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    console.log(e.Message);
+end;
+{$ENDIF}
+]]>
+        </Source>
+      </File>
+      <File type="form">
+        <Name>Form1</Name>
+        <Created>2014-06-22T16:55:33.059Z</Created>
+        <Modified>2017-11-21T10:40:10.812</Modified>
+        <Source>
+          <![CDATA[unit Form1;
+
+interface
+
+uses 
+  ECMA.JSON,
+  uUnit1,
+  //uPersistent,
+  //uRTTI,
+  W3C.Console,
+  SmartCL.System, SmartCL.Graphics,
+  SmartCL.Components,
+  SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Button,
+  SmartCL.Controls.Label, SmartCL.Controls.Panel, SmartCL.Controls.Image;
+
+type
+  TForm1=class(TW3form)
+    procedure btn2Click(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+  private
+    {$I 'Form1:intf'}
+  protected
+    procedure InitializeObject; override;
+  end;
+
+implementation
+
+type
+TNamedValuePair = Record
+  ClassName: String;
+  ClassParent: Variant;
+  PropertyFieldName:   String;
+  PropertyFieldValue:  Variant;
+  GetterFieldValue: Variant;
+  Capabilities: Variant;
+End;
+TNamedValuePairArray = Array of TNamedValuePair;
+
+function me(obj: TObject): TNamedValuePairArray
+var mPair: TNamedValuePair;
+var aPairs:TNamedValuePairArray;
+var rtti := RTTIRawAttributes;
+var aClass := obj.ClassType;
+
+begin
+  while Assigned(aClass) do
+  begin
+  var
+    attribType := TypeOf(aClass);
+  for var
+    i := low(rtti) to high(rtti) do
+    begin
+    var
+      attrib := rtti[i];
+      if  (variant(attrib).T.ID = variant(attribType).ID) and (attrib.A is RTTIPropertyAttribute) then
+      begin
+        if attrib.A is RTTIPropertyAttribute then
+        begin
+        var prop := RTTIPropertyAttribute(attrib.A);
+          //console.log ('PropertyFieldName: '+prop.Name+ ' | PropertyFieldType: '+ prop.Typ.Name + ' | GetterFieldValue: '+prop.Getter(obj));
+            mPair.ClassName:=obj.ClassName;
+            mPair.ClassParent := obj.ClassParent.ClassName;
+            mPair.PropertyFieldName:=prop.name;
+            mPair.PropertyFieldValue:=prop.Typ.Name;
+            mPair.GetterFieldValue:=prop.Getter(obj);
+            mPair.Capabilities:=prop.Capabilities;
+            aPairs.add(mPair);
+        end
+        else if attrib.A is RTTIMethodAttribute then
+        begin
+        var meth := RTTIMethodAttribute(attrib.A);
+          mPair.PropertyFieldName := meth.name;
+          mPair.PropertyFieldValue := meth.Typ.Name;
+          aPairs.add(mPair);
+          var res := meth.call(obj, []);
+         end;
+      end;
+    end;
+    aClass := aClass.ClassParent;
+  end;
+  result := aPairs;
+end;
+
+procedure TForm1.btn1Click(Sender: TObject);
+begin
+//Example1;
+
+var base:= TBase.Create;
+var example:= TExample.Create(1234);
+
+var n := me( example );
+Extrato.InnerHTML :=
+  '<TABLE id="nameTable" CELLSPACING="0" CELLPADDING="3" border:1px dotted black; style="font-size:medium;text-align: center;width: 100%;">'+
+  '  <TR>'+
+  '    <TH COLSPAN="4" NOWRAP="NOWRAP" BGCOLOR="#FFFF99">SMART RTTI</TH>'+
+  '  </TR>'+
+  '<TD WIDTH=25%>ClassType : '+n[0].ClassName+'</TD><br>'+
+  '<TD WIDTH=25%>ClassParent : '+n[0].ClassParent+'</TD><br>'+
+  '  <TR>'+
+  '    <TH WIDTH=25% BGCOLOR="#FFCCFF">PropertyFieldName</TH>'+
+  '    <TH WIDTH=25% BGCOLOR="#FFCCFF">PropertyFieldValue</TH>'+
+  '    <TH WIDTH=25% BGCOLOR="#FFCCFF">GetterFieldValue</TH>'+
+  '    <TH WIDTH=25% BGCOLOR="#FFCCFF">Capabilities</TH>'+
+  '  </TR>'+
+  '</TABLE>';
+  for var x := n.low to n.High do
+  begin
+      var table := BrowserAPI.document.getElementById("nameTable");
+      var rowCount := table.rows.length;
+      var row := table.insertRow(rowCount);
+      row.insertCell(0).innerHTML := '<font color="red">'+ n[x].PropertyFieldName+'</font>';
+      row.insertCell(1).innerHTML := '<font color="green">'+n[x].PropertyFieldValue+'</font>';
+      row.insertCell(2).innerHTML := '<font color="blue">'+n[x].GetterFieldValue+'</font>';
+      row.insertCell(3).innerHTML := '<font color="brown">'+n[x].Capabilities+'</font>';
+
+  end;
+
+end;
+
+procedure TForm1.btn2Click(Sender: TObject);
+begin
+//var aSource := TPersistent.Create;
+//aSource.Assign(base);
+//base.Assign(aSource);
+//aSource.assign(example);
+
+end;
+
+procedure TForm1.InitializeObject;
+begin
+  inherited;
+  {$I 'Form1:impl'}
+end;
+ 
+end.
+]]>
+        </Source>
+        <Design>
+          <![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Form version="2" subversion="2">
+  <Created>2014-07-17T13:17:56.608</Created>
+  <Modified>2017-11-20T21:23:36.906</Modified>
+  <object type="TW3Form">
+    <Name>Form1</Name>
+    <object type="TW3Button">
+      <Caption>List</Caption>
+      <Width>132</Width>
+      <Top>8</Top>
+      <Left>16</Left>
+      <Height>36</Height>
+      <Name>btn1</Name>
+      <OnClick>btn1Click</OnClick>
+    </object>
+    <object type="TW3Panel">
+      <Width>699</Width>
+      <Top>46</Top>
+      <Left>16</Left>
+      <Height>337</Height>
+      <Name>Extrato</Name>
+    </object>
+    <object type="TW3Image">
+      <Url>res/c.jpg</Url>
+      <Width>380</Width>
+      <Left>724</Left>
+      <Height>479</Height>
+      <Name>W3Image1</Name>
+    </object>
+  </object>
+</Form>]]>
+        </Design>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>1</IsMainForm>
+          <Order>1</Order>
+        </AutoCreate>
+      </File>
+      <File type="unit">
+        <Name>uRTTI</Name>
+        <Created>2017-11-18T23:21:26.109Z</Created>
+        <Modified>2017-11-20T21:14:25.718</Modified>
+        <Filename>uRTTI.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>uPersistent</Name>
+        <Created>2017-11-20T06:49:45.984Z</Created>
+        <Modified>2017-11-20T10:38:37.656</Modified>
+        <Filename>uPersistent.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>uUnit1</Name>
+        <Created>2017-11-20T07:40:44.843Z</Created>
+        <Modified>2017-11-20T21:18:33.515</Modified>
+        <Filename>uUnit1.pas</Filename>
+      </File>
+      <File type="resource">
+        <Name>c.jpg</Name>
+        <Created>2017-11-20T21:20:59.250Z</Created>
+        <Modified>2017-11-20T21:20:59.343</Modified>
+        <Filename>C:\c.jpg</Filename>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+    <Generator>Visual Component Project</Generator>
+    <Statistics>
+      <BackgroundCompilations>3891</BackgroundCompilations>
+      <EditTime>01:23:13.200</EditTime>
+      <CompileTime>00:49:59.802</CompileTime>
+      <TotalTime>10:13:21.252</TotalTime>
+      <DesigningTime>00:20:42.156</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
+  </Project>
+</SMART>
