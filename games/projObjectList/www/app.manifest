@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# Offline cache version 0.0.1
+# id:72915
+
+CACHE:
+index.html
+res/app.css
+lib/object.keys.shim.js
+lib/polyfill.msie.legacy.js

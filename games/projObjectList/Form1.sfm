@@ -1,0 +1,157 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-11-30T16:48:12.796</Created>
+    <Modified>2017-12-02T16:54:21.625</Modified>
+    <object type="TW3Form">
+      <Name>Form1</Name>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>128</Width>
+        <Top>12</Top>
+        <Left>89</Left>
+        <Height>32</Height>
+        <Name>edit1</Name>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>128</Width>
+        <Top>46</Top>
+        <Left>90</Left>
+        <Height>32</Height>
+        <Name>edit2</Name>
+      </object>
+      <object type="TW3EditBox">
+        <Value></Value>
+        <Range></Range>
+        <Width>128</Width>
+        <Top>79</Top>
+        <Left>89</Left>
+        <Height>32</Height>
+        <Name>edit3</Name>
+      </object>
+      <object type="TW3Panel">
+        <Width>434</Width>
+        <Top>120</Top>
+        <Left>16</Left>
+        <Height>55</Height>
+        <Name>W3Panel1</Name>
+        <object type="TW3Button">
+          <Caption>|&lt;</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>8</Left>
+          <Height>40</Height>
+          <Name>btnFirst</Name>
+          <OnClick>btnFirstClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>&lt;</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>52</Left>
+          <Height>40</Height>
+          <Name>btnPrior</Name>
+          <OnClick>btnPriorClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>&gt;</Caption>
+          <Width>39</Width>
+          <Top>8</Top>
+          <Left>95</Left>
+          <Height>40</Height>
+          <Name>btnNext</Name>
+          <OnClick>btnNextClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>&gt;|</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>136</Left>
+          <Height>40</Height>
+          <Name>btnLast</Name>
+          <OnClick>btnLastClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>+</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>179</Left>
+          <Height>40</Height>
+          <Name>btnAdd</Name>
+          <OnClick>btnAddClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>-</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>222</Left>
+          <Height>40</Height>
+          <Name>btnDel</Name>
+          <OnClick>btnDelClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>/\</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>264</Left>
+          <Height>40</Height>
+          <Name>btnEdit</Name>
+          <OnClick>btnEditClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>V</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>305</Left>
+          <Height>40</Height>
+          <Name>btnConfirm</Name>
+          <OnClick>btnConfirmClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>X</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>347</Left>
+          <Height>40</Height>
+          <Name>btnCancel</Name>
+          <OnClick>btnCancelClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>?</Caption>
+          <Width>40</Width>
+          <Top>8</Top>
+          <Left>389</Left>
+          <Height>40</Height>
+          <Name>btnRefresh</Name>
+          <OnClick>btnRefreshClick</OnClick>
+        </object>
+      </object>
+      <object type="TW3Label">
+        <Caption>ID:</Caption>
+        <Width>69</Width>
+        <Top>12</Top>
+        <Left>14</Left>
+        <Height>30</Height>
+        <Name>W3Label1</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Nome:</Caption>
+        <Width>53</Width>
+        <Top>47</Top>
+        <Left>14</Left>
+        <Height>30</Height>
+        <Name>W3Label2</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Password:</Caption>
+        <Width>71</Width>
+        <Top>77</Top>
+        <Left>12</Left>
+        <Height>31</Height>
+        <Name>W3Label3</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>
