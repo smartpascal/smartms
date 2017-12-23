@@ -13,7 +13,7 @@
   <title>projEWB</title>
 </head>
 <body>
-<script type="text/javascript" src="lib/sms.core.min.js"></script>
+<script type="text/javascript" src="sms.core.min.js"></script>
 <script>
 function bootstrap() { 
 function _async(p){setTimeout(p,0)};function max(a,b){return a>b?a:b};function date(){var a=new Date;return(new Date(a.getFullYear(),a.getMonth(),a.getDate(),0,0,0,0)).getTime()};function time(){return new Date().getTime();};function now(){return new Date().getTime();};function msecondof(a,b){return b?(new Date(a)).getUTCMilliseconds():(new Date(a)).getMilliseconds()};function weekdayof(a,b){var c=b?(new Date(a)).getUTCDay():(new Date(a)).getDay();return 0==c?7:c};function copy(a,b,c){null==b||a instanceof Array||b--;return null!=c?a.slice(b,b+(0>c?0:c)):null!=b?a.slice(b):a.slice(0)};function setdocumenteventhandler(b,c,d,a){null==a&&(a=!1);if(b)b.addEventListener(c,d,a);else throw Error(translate("ERR_DOM_EVENTADD",["document",c]));return d};function cleardocumenteventhandler(b,c,d,a){null==a&&(a=!1);if(b)b.removeEventListener(c,d,a);else throw Error(translate("ERR_DOM_EVENTCLEAR",["document",c]));};function setwindoweventhandler(window,handlertype,handler)
