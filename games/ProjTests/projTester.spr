@@ -1,0 +1,14 @@
+uses TextTestRunner, SampleTestUnit;
+
+Const s = #'
+╔════════════════════════════════════════════════════════
+║ Smart Framework Tester  DateTime: '+{$I %date%}+' - '+{$I %time%}+#''+Chr(10) +#'
+╚════════════════════════════════════════════════════════';
+var console external 'console': Variant;
+console.log('%c'+s, "background:blue; color:white;");
+
+begin
+var teste := TTextTestRunner.Create;
+teste.Run;
+
+end;
