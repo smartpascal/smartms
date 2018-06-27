@@ -1167,8 +1167,6 @@ rtl.module("System",[],function () {
     };
     this.Create = function () {
     };
-    this.Destroy = function () {
-    };
     this.AfterConstruction = function () {
     };
     this.BeforeDestruction = function () {
@@ -1257,6 +1255,39 @@ rtl.module("Types",["System"],function () {
 rtl.module("JS",["System","Types"],function () {
   "use strict";
   var $mod = this;
+  rtl.createClass($mod,"EJS",pas.System.TObject,function () {
+    this.$init = function () {
+      pas.System.TObject.$init.call(this);
+      this.FMessage = "";
+    };
+    this.Create$1 = function (Msg) {
+      this.FMessage = Msg;
+    };
+  });
+  this.New = function (aElements) {
+    var Result = null;
+    var L = 0;
+    var I = 0;
+    var S = "";
+    L = rtl.length(aElements);
+    if ((L % 2) === 1) throw $mod.EJS.$create("Create$1",["Number of arguments must be even"]);
+    I = 0;
+    while (I < L) {
+      if (!rtl.isString(aElements[I])) {
+        S = String(I);
+        throw $mod.EJS.$create("Create$1",[("Argument " + S) + " must be a string."]);
+      };
+      I += 2;
+    };
+    I = 0;
+    Result = new Object();
+    while (I < L) {
+      S = "" + aElements[I];
+      Result[S] = aElements[I + 1];
+      I += 2;
+    };
+    return Result;
+  };
   this.isInteger = function (v) {
     return Math.floor(v)===v;
   };
@@ -1934,7 +1965,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
       FElementStyle = this.FElement.style;
       S = FElementStyle.getPropertyValue("left");
       if ($impl.StrEndsWith(S,"px")) S = rtl.strSetLength(S,S.length - 2);
-      Result = parseInt(S,10);
+      Result = pas.SysUtils.StrToInt(S);
       return Result;
     };
     this.SetTop = function (aTop) {
@@ -1949,7 +1980,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
       FElementStyle = this.FElement.style;
       S = FElementStyle.getPropertyValue("top");
       if ($impl.StrEndsWith(S,"px")) S = rtl.strSetLength(S,S.length - 2);
-      Result = parseInt(S,10);
+      Result = pas.SysUtils.StrToInt(S);
       return Result;
     };
     this.SetWidth = function (aWidth) {
@@ -1966,7 +1997,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
       FElementStyle = this.FElement.style;
       S = FElementStyle.getPropertyValue("width");
       if ($impl.StrEndsWith(S,"px")) S = rtl.strSetLength(S,S.length - 2);
-      Result = parseInt(S,10);
+      Result = pas.SysUtils.StrToInt(S);
       return Result;
     };
     this.SetHeight = function (aHeight) {
@@ -1981,7 +2012,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
       FElementStyle = this.FElement.style;
       S = FElementStyle.getPropertyValue("height");
       if ($impl.StrEndsWith(S,"px")) S = rtl.strSetLength(S,S.length - 2);
-      Result = parseInt(S,10);
+      Result = pas.SysUtils.StrToInt(S);
       return Result;
     };
     this._setMouseClick = function (aValue) {
@@ -1996,7 +2027,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
     this.Create$1 = function (element, parent) {
       var FElementStyle = null;
       this.FElement = document.createElement(element);
-      this.FElement.className = this.$classname;
+      this.FElement.className = element;
       this.FElement.id = $impl.w3_getUniqueObjId();
       FElementStyle = this.FElement.style;
       FElementStyle.setProperty("visibility","visible");
@@ -2011,10 +2042,6 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
       window.addEventListener("resize",rtl.createCallback(this,"CBResize"));
       this.FElement.addEventListener("readyexecute",rtl.createCallback(this,"CBReadyExecute"));
       this.Observe();
-    };
-    this.Destroy = function () {
-      this.FElement.parentNode.removeChild(this.FElement);
-      pas.System.TObject.Destroy.call(this);
     };
     this.SetProperty = function (S1, S2) {
       var FElementStyle = null;
@@ -2046,7 +2073,7 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
     this.Observe = function () {
       var MyObserver = null;
       MyObserver = $impl.TMutationObserver.$create("Create$1");
-      rtl.getObject(MyObserver.FHandle).observe(rtl.getObject(this.Handle),$impl.observerConfiguration());
+      rtl.getObject(MyObserver.FHandle).observe(rtl.getObject(this.Handle),$impl.observerConfig());
     };
     this.Clear = function () {
       while (this.FElement.firstChild != null) this.FElement.removeChild(this.FElement.firstChild);
@@ -2100,26 +2127,25 @@ rtl.module("jElement",["System","Classes","SysUtils","Types","JS","Web","uMutati
     this.Create$1 = function () {
       var Self = this;
       var mRef = null;
+      var mhandle = null;
       function subscribe(mutationRecordsList) {
         mRef(mutationRecordsList);
       };
       pas.System.TObject.Create.call(Self);
       mRef = rtl.createCallback(Self,"CBMutationChange");
-      Self.FHandle = new MutationObserver(subscribe);
+      mhandle = new MutationObserver(subscribe);
+      Self.FHandle = mhandle;
     };
     this.CBMutationChange = function (mutationRecordsList) {
-      var LEvent = null;
+      var LEvent = undefined;
       rtl.getObject(this.FHandle).disconnect();
-      LEvent = new Event("readyexecute",null);
+      LEvent = new Event('readyexecute');
       mutationRecordsList[mutationRecordsList.length - 1].target.dispatchEvent(LEvent);
     };
   });
-  $impl.observerConfiguration = function () {
+  $impl.observerConfig = function () {
     var Result = null;
-    Result = new Object();
-    Result.attributes = true;
-    Result.attributeOldValue = true;
-    Result.childList = true;
+    Result = pas.JS.New(["attributes",true,"attributeOldValue",true]);
     return Result;
   };
 });
@@ -2206,7 +2232,7 @@ rtl.module("jGlobals",["System","Classes","SysUtils","JS","Web","jElement","jApp
   this.Application = null;
   this.StrBefore = function (s, d) {
     var Result = "";
-    if(!d)return s;var p=s.indexOf(d);Result=(p<0)?s:s.substr(0,p);
+    if(!d)return s;var p=s.indexOf(d);return(p<0)?s:s.substr(0,p);
     return Result;
   };
   $mod.$init = function () {
@@ -2258,17 +2284,12 @@ rtl.module("jListBox",["System","Classes","SysUtils","JS","Web","jElement","jPan
       rtl.getObject(Self.Handle).onscroll = doListBox;
     };
     this.Add = function (item) {
-      item.SetProperty("width","calc(100% - 4px)");
+      rtl.getObject(item.Handle).style.setProperty("width","calc(100%-10px)");
+      this.FElement.appendChild(item.FElement);
       item.SetBounds(2,(2 + (this.ItemCount * item.GetHeight())) + (this.ItemCount * 2),item.GetWidth(),item.GetHeight());
       item.SetProperty("cursor","pointer");
-      if ((item.GetTop() > (this.GetHeight() + item.GetHeight())) && (this.GetHeight() > 0)) rtl.getObject(this.Handle).children.item(rtl.getObject(this.Handle).children.length - 1).style.setProperty("display","none");
-      this.FElement.appendChild(item.FElement);
-      rtl.getObject(this.Handle).children.item(rtl.getObject(this.Handle).children.length - 1).style.setProperty("display","inline-block");
+      if ((item.GetTop() > this.GetHeight()) && (this.GetHeight() > 0)) item.SetProperty("display","none");
       this.ItemCount += 1;
-    };
-    this.Clear$1 = function () {
-      while (this.FElement.firstChild != null) this.FElement.removeChild(this.FElement.firstChild);
-      this.ItemCount = 0;
     };
   });
 },["jGlobals"]);
@@ -2472,826 +2493,7 @@ rtl.module("JSplitter",["System","Classes","SysUtils","JS","Web","jElement","jPa
     };
   });
 },["jGlobals"]);
-rtl.module("JSelect",["System","Classes","SysUtils","Types","JS","Web","jElement","jListBox","jPanel","jImage"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Select",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.ListBox = null;
-      this.Panel = null;
-      this.Chevron = null;
-      this.Value = "";
-    };
-    this.$final = function () {
-      this.ListBox = undefined;
-      this.Panel = undefined;
-      this.Chevron = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doPanelClick(sender) {
-        Self.ListBox.SetProperty("display","inline-block");
-      };
-      function doOnReadyExecute(sender) {
-        Self.Panel.SetBounds(0,0,Self.GetWidth() - 2,20);
-        Self.Chevron.SetBounds(Self.GetWidth() - 22,2,16,16);
-        Self.Chevron.SetProperty("max-height","16px");
-        Self.Chevron.SetProperty("max-width","16px");
-        Self.ListBox.SetWidth(Self.GetWidth());
-        Self.ListBox.SetHeight(Self.GetHeight() - 22);
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.Panel = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-      Self.Panel._setMouseClick(doPanelClick);
-      Self.Panel.SetProperty("border","1px solid silver");
-      Self.Panel.SetinnerHTML("select...");
-      Self.Chevron = pas.jImage.JW3Image.$create("Create$2",[Self]);
-      Self.Chevron.SetAttribute("src","images\/chevron-down.png");
-      Self.Chevron._setMouseClick(Self.Panel.FOnClick);
-      Self.ListBox = pas.jListBox.JW3ListBox.$create("Create$2",[Self]);
-      Self.ListBox.SetProperty("display","none");
-      Self.ListBox.SetTop(22);
-      Self._setOnReadyExecute(doOnReadyExecute);
-    };
-    this.Add = function (item) {
-      var Self = this;
-      function doSelectOnClick(Sender) {
-        Self.Panel.SetinnerHTML(rtl.as(Sender,pas.jElement.TElement).tag);
-        Self.Value = rtl.as(Sender,pas.jElement.TElement).tag;
-        window.postMessage([rtl.getObject(Self.Handle).id,"click",Self.Value],"*");
-        Self.ListBox.SetProperty("display","none");
-      };
-      Self.ListBox.Add(item);
-      item._setMouseClick(doSelectOnClick);
-    };
-  });
-},["jGlobals"]);
-rtl.module("jVideo",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Video",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"video",parent);
-    };
-  });
-});
-rtl.module("JAnchor",["System","Classes","SysUtils","JS","Web","jElement","jImage"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Anchor",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.placeholder = null;
-    };
-    this.$final = function () {
-      this.placeholder = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"a",parent);
-      this.placeholder = pas.jImage.JW3Image.$create("Create$2",[this]);
-    };
-  });
-});
-rtl.module("JTextArea",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3TextArea",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"textarea",parent);
-    };
-  });
-},["jGlobals"]);
-rtl.module("jIframe",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3IFrame",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"iframe",parent);
-      this.SetProperty("frameBorder","0px");
-      this.SetProperty("border-radius",".25em");
-      this.SetProperty("box-shadow","0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)");
-    };
-  });
-});
-rtl.module("jFlipScroll",["System","Classes","SysUtils","JS","Web","Types","jElement","jImage"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3FlipScroll",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doFlipScrollOnLoad(event) {
-        var Result = false;
-        function doContentWindowMessage(evt) {
-          var iframeheight = 0;
-          iframeheight = pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(Self.Handle).style.getPropertyValue("height"),"px"));
-          Self.AutoScroll(iframeheight * pas.SysUtils.StrToInt("" + evt["data"]),250);
-        };
-        rtl.getObject(Self.Handle).contentWindow.addEventListener("message",doContentWindowMessage);
-        return Result;
-      };
-      pas.jElement.TElement.Create$1.call(Self,"iframe",parent);
-      rtl.getObject(Self.Handle).onload = doFlipScrollOnLoad;
-    };
-    this.GotoPage = function (page) {
-      var Self = this;
-    };
-    this.AutoScroll = function (destination, duration) {
-      var Self = this;
-      var timer = 0;
-      var scrollStep = 0.0;
-      function doContentWindowTimer() {
-        if (rtl.getObject(Self.Handle).contentWindow.scrollY < destination) {
-          rtl.getObject(Self.Handle).contentWindow.scrollBy(0,pas.System.Trunc(scrollStep))}
-         else rtl.getObject(Self.Handle).contentWindow.clearInterval(timer);
-      };
-      scrollStep = -(rtl.getObject(Self.Handle).contentWindow.scrollY - destination) / (duration / 15);
-      timer = rtl.getObject(Self.Handle).contentWindow.setInterval(doContentWindowTimer,15);
-    };
-  });
-},["jGlobals"]);
-rtl.module("JLoader",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Loader",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      var s = "";
-      pas.jElement.TElement.Create$1.call(this,"div",parent);
-      this.SetProperty("border","6px solid #f3f3f3");
-      this.SetProperty("border-radius","50%");
-      this.SetProperty("border-top","6px solid #3498db");
-      this.SetProperty("-webkit-animation","spin 2s linear infinite");
-      this.SetProperty("animation","spin 2s linear infinite");
-      s = "@-webkit-keyframes spin {0% { -webkit-transform: rotate(0deg); }100% { -webkit-transform: rotate(360deg); }}";
-      document.styleSheets.item(0).insertRule(s,0);
-    };
-  });
-});
-rtl.module("jSpinner",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Spinner",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"div",parent);
-      this.SetProperty("-webkit-animation","sk-rotate 2.0s infinite linear");
-      this.SetProperty("animation","sk-rotate 2.0s infinite linear");
-      this.SetinnerHTML('<div class="dot1"><\/div><div class="dot2"><\/div>');
-    };
-  });
-},["jGlobals"]);
-rtl.module("jGrid",["System","Classes","SysUtils","JS","Web","jElement","jListBox","jPanel"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Grid",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.ListBox = null;
-      this.Item = null;
-      this.ItemHeight = 0;
-      this.ColumnCount = 0;
-      this.ColumnWidths = [];
-      this.Columns = [];
-      this.CanResize = false;
-    };
-    this.$final = function () {
-      this.ListBox = undefined;
-      this.Item = undefined;
-      this.ColumnWidths = undefined;
-      this.Columns = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.HandleColumnResize = function (columnTitle) {
-      var Self = this;
-      var ReSizer = null;
-      var saveX = 0.0;
-      function DoOnMouseDown(e) {
-        var Result = false;
-        function DoOnMouseMove(e) {
-          var Result = false;
-          rtl.getObject(columnTitle.Handle).style.setProperty("zIndex","999");
-          columnTitle.SetWidth(columnTitle.GetWidth() - pas.System.Trunc(saveX - e.clientX));
-          saveX = e.clientX;
-          ReSizer.SetLeft(columnTitle.GetWidth() - 4);
-          return Result;
-        };
-        saveX = e.clientX;
-        rtl.getObject(Self.Handle).onmousemove = DoOnMouseMove;
-        return Result;
-      };
-      function DoOnMouseUp(e) {
-        var Result = false;
-        var i = 0;
-        var j = 0;
-        var k = 0;
-        var diff = 0;
-        var c = null;
-        var d = null;
-        function DoOnMouseMove(e) {
-          var Result = false;
-          return Result;
-        };
-        Self.ColumnWidths[Self.ColumnCount] = columnTitle.GetWidth();
-        c = rtl.getObject(Self.ListBox.Handle).children;
-        for (var $l1 = 0, $end2 = c.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          d = c.item(i).children;
-          for (var $l3 = 0, $end4 = d.length - 1; $l3 <= $end4; $l3++) {
-            j = $l3;
-            if (j === pas.SysUtils.StrToInt(ReSizer.tag)) {
-              d.item(j).style.setProperty("width",pas.SysUtils.IntToStr(Self.ColumnWidths[Self.ColumnCount]) + "px");
-              diff = Self.ColumnWidths[j] - columnTitle.GetWidth();
-              for (var $l5 = j + 1, $end6 = d.length - 1; $l5 <= $end6; $l5++) {
-                k = $l5;
-              };
-            };
-          };
-        };
-        Self.ColumnWidths[pas.SysUtils.StrToInt(ReSizer.tag)] = columnTitle.GetWidth();
-        rtl.getObject(columnTitle.Handle).style.setProperty("zIndex","0");
-        rtl.getObject(Self.Handle).onmousemove = DoOnMouseMove;
-        return Result;
-      };
-      document.styleSheets.item(0).insertRule(("#" + columnTitle.FElement.id) + " { user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + columnTitle.FElement.id) + " { -webkit-user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + columnTitle.FElement.id) + " { -moz-user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + columnTitle.FElement.id) + " { -ms-user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + Self.ListBox.FElement.id) + " { user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + Self.ListBox.FElement.id) + " { -webkit-user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + Self.ListBox.FElement.id) + " { -moz-user-select:none}",0);
-      document.styleSheets.item(0).insertRule(("#" + Self.ListBox.FElement.id) + " { -ms-user-select:none}",0);
-      ReSizer = pas.jPanel.JW3Panel.$create("Create$2",[columnTitle]);
-      ReSizer.SetProperty("background-color","gold");
-      ReSizer.SetBounds(0,1,4,22);
-      ReSizer.SetLeft(columnTitle.GetWidth() - 4);
-      ReSizer.SetProperty("cursor","w-resize");
-      ReSizer.tag = pas.SysUtils.IntToStr(Self.ColumnCount);
-      rtl.getObject(ReSizer.Handle).onmousedown = DoOnMouseDown;
-      Self.Columns.push(columnTitle);
-      rtl.getObject(columnTitle.Handle).onmouseup = DoOnMouseUp;
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function gridOnReadyExecute(sender) {
-        Self.ListBox.SetBounds(0,28,Self.GetWidth() - 2,Self.GetHeight() - 28);
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.ListBox = pas.jListBox.JW3ListBox.$create("Create$2",[Self]);
-      Self.Item = pas.jPanel.JW3Panel.$create("Create$2",[Self.ListBox]);
-      Self.ColumnCount = 0;
-      Self._setOnReadyExecute(gridOnReadyExecute);
-    };
-    this.AddColumn = function (title, colwidth) {
-      var columnTitle = null;
-      var CurLength = 0;
-      var i = 0;
-      this.ColumnWidths.push(colwidth);
-      columnTitle = pas.jPanel.JW3Panel.$create("Create$2",[this]);
-      columnTitle.SetinnerHTML(title);
-      columnTitle.SetBounds(0,0,colwidth,24);
-      columnTitle.SetProperty("border","1px solid grey");
-      columnTitle.SetProperty("background-color","lightgrey");
-      CurLength = 2;
-      for (var $l1 = 0, $end2 = this.ColumnCount - 1; $l1 <= $end2; $l1++) {
-        i = $l1;
-        CurLength = (CurLength + this.ColumnWidths[i]) + 6;
-      };
-      columnTitle.SetLeft(CurLength);
-      if (this.CanResize) this.HandleColumnResize(columnTitle);
-      this.ColumnCount += 1;
-    };
-    this.AddCell = function (row, column, cell) {
-      var CurLength = 0;
-      var i = 0;
-      var c = null;
-      if (column === 1) {
-        this.Item = pas.jPanel.JW3Panel.$create("Create$2",[this.ListBox]);
-        this.Item.SetProperty("border-bottom","none");
-        this.Item.SetProperty("width",pas.SysUtils.IntToStr(this.GetWidth() - 2) + "px");
-        this.Item.SetProperty("height",pas.SysUtils.IntToStr(cell.GetHeight() + 6) + "px");
-        this.ItemHeight = cell.GetHeight();
-      };
-      if (cell.GetHeight() > this.ItemHeight) this.ItemHeight = cell.GetHeight();
-      CurLength = 0;
-      for (var $l1 = 1, $end2 = column - 1; $l1 <= $end2; $l1++) {
-        i = $l1;
-        CurLength = (CurLength + this.ColumnWidths[i - 1]) + 6;
-      };
-      cell.SetLeft(CurLength);
-      cell.SetTop(0);
-      cell.SetProperty("width",pas.SysUtils.IntToStr(this.ColumnWidths[column - 1]) + "px");
-      cell.SetProperty("border","1px solid lightgrey");
-      this.Item.FElement.appendChild(cell.FElement);
-      if (column === this.ColumnCount) {
-        c = rtl.getObject(this.Item.Handle).children;
-        for (var $l3 = 0, $end4 = c.length - 1; $l3 <= $end4; $l3++) {
-          i = $l3;
-          c.item(i).style.setProperty("height",pas.SysUtils.IntToStr(this.ItemHeight + 6) + "px");
-        };
-        this.Item.SetProperty("height",pas.SysUtils.IntToStr(this.ItemHeight + 10) + "px");
-        this.ListBox.Add(this.Item);
-      };
-    };
-  });
-},["jGlobals"]);
-rtl.module("jCanvas",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Canvas",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.ctx = null;
-    };
-    this.$final = function () {
-      this.ctx = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"canvas",parent);
-      this.ctx = rtl.getObject(this.Handle).getContext("2d");
-    };
-  });
-},["jGlobals"]);
-rtl.module("jTreeView",["System","Classes","SysUtils","Types","JS","Web","jElement","jListBox","jPanel"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3TreeNode",pas.System.TObject,function () {
-    this.$init = function () {
-      pas.System.TObject.$init.call(this);
-      this.Node = "";
-      this.ParentNode = "";
-      this.NodeDescription = "";
-      this.Level = 0;
-      this.Children = [];
-      this.Expanded = false;
-      this.Showing = false;
-    };
-    this.$final = function () {
-      this.Children = undefined;
-      pas.System.TObject.$final.call(this);
-    };
-  });
-  rtl.createClass($mod,"JW3TreeView",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.ListBox = null;
-      this.Title = null;
-      this.Node = null;
-      this.Root = null;
-      this.Subject = "";
-    };
-    this.$final = function () {
-      this.ListBox = undefined;
-      this.Title = undefined;
-      this.Node = undefined;
-      this.Root = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.FindNode = function (ThisNode) {
-      var Result = null;
-      var queue = null;
-      var node = null;
-      var i = 0;
-      queue = new Array(this.Root);
-      while (queue.length > 0) {
-        node = rtl.getObject(queue[0]);
-        queue.shift();
-        if (node.Node === ThisNode) Result = node;
-        for (var $l1 = 0, $end2 = node.Children.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          queue.push(node.Children[i]);
-        };
-      };
-      return Result;
-    };
-    this.HideAllChildren = function (node) {
-      var i = 0;
-      node.Showing = false;
-      node.Expanded = false;
-      for (var $l1 = 0, $end2 = node.Children.length - 1; $l1 <= $end2; $l1++) {
-        i = $l1;
-        this.HideAllChildren(node.Children[i]);
-      };
-    };
-    this.Order = function (node) {
-      var Self = this;
-      var Item = null;
-      var prefix = "";
-      var s = "";
-      var i = 0;
-      var j = 0;
-      function doItemOnClick(Sender) {
-        Self.Title.SetinnerHTML(rtl.as(Sender,pas.jElement.TElement).tag);
-        Self.Subject = rtl.as(Sender,pas.jElement.TElement).tag;
-        node.Expanded = !node.Expanded;
-        for (var $l1 = 0, $end2 = node.Children.length - 1; $l1 <= $end2; $l1++) {
-          j = $l1;
-          node.Children[j].Showing = node.Expanded;
-        };
-        if (node.Expanded === false) {
-          Self.HideAllChildren(node);
-          node.Showing = true;
-        };
-        Self.ShowTree();
-      };
-      function doOnDblClick(event) {
-        var Result = false;
-        window.postMessage([rtl.getObject(Self.Handle).id,"dblclick",Self.Subject],"*");
-        return Result;
-      };
-      if (node.Showing) {
-        Item = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-        Item.SetProperty("background-color","whitesmoke");
-        Item.SetProperty("font-size","0.85em");
-        Item.SetHeight(21);
-        prefix = "";
-        if (node.Children.length > 0) {
-          prefix = "&#9656;&nbsp;"}
-         else prefix = "&nbsp;&nbsp;&#9643;&nbsp;";
-        if (node.Children.length > 0) if (node.Children[0].Showing) prefix = "&#9662;&nbsp;";
-        s = "";
-        for (var $l1 = 1, $end2 = node.Level; $l1 <= $end2; $l1++) {
-          i = $l1;
-          s = s + "&nbsp;&nbsp;";
-        };
-        s = s + prefix;
-        Item.SetinnerHTML(s + node.NodeDescription);
-        Item.tag = node.NodeDescription;
-        Self.ListBox.Add(Item);
-        Item._setMouseClick(doItemOnClick);
-        rtl.getObject(Item.Handle).ondblclick = doOnDblClick;
-      };
-      for (var $l3 = 0, $end4 = node.Children.length - 1; $l3 <= $end4; $l3++) {
-        i = $l3;
-        Self.Order(node.Children[i]);
-      };
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doTreeViewOnReadyExecute(sender) {
-        Self.Title.SetBounds(0,0,Self.GetWidth() - 2,20);
-        Self.Title.SetinnerHTML(Self.Subject);
-        Self.Title.SetProperty("font-size","0.95em");
-        Self.ListBox.SetWidth(Self.GetWidth());
-        Self.ListBox.SetHeight(Self.GetHeight() - 20);
-        Self.ShowTree();
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.Subject = "TreeView...";
-      Self.Title = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-      Self.Title.SetProperty("border","1px solid white");
-      Self.Title.SetProperty("background-color","#699BCE");
-      Self.Title.SetProperty("color","white");
-      Self.ListBox = pas.jListBox.JW3ListBox.$create("Create$2",[Self]);
-      Self.ListBox.SetTop(20);
-      Self._setOnReadyExecute(doTreeViewOnReadyExecute);
-    };
-    this.Add = function (NewNode, ParentNode, NodeDescription) {
-      var Parent = null;
-      var temp = null;
-      this.Node = $mod.JW3TreeNode.$create("Create");
-      this.Node.Node = NewNode;
-      this.Node.ParentNode = ParentNode;
-      this.Node.NodeDescription = NodeDescription;
-      this.Node.Expanded = false;
-      this.Node.Showing = false;
-      if (ParentNode === "") {
-        this.Root = this.Node;
-        this.Node.Level = 1;
-        this.Node.Expanded = true;
-        this.Node.Showing = true;
-      };
-      Parent = $mod.JW3TreeNode.$create("Create");
-      Parent = this.FindNode(ParentNode);
-      if (Parent != null) {
-        temp = $mod.JW3TreeNode.$create("Create");
-        temp = this.FindNode(NewNode);
-        if (!(temp != null) || (temp.ParentNode !== Parent.Node)) {
-          Parent.Children.push(this.Node);
-          this.Node.Level = Parent.Level + 1;
-          if (this.Node.Level === 2) this.Node.Showing = true;
-        };
-      };
-    };
-    this.ShowTree = function () {
-      this.ListBox.Clear$1();
-      this.Order(this.Root);
-    };
-  });
-},["jGlobals"]);
-rtl.module("jCheckBox",["System","Classes","SysUtils","Types","JS","Web","jElement","jPanel"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3CheckBox",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.Checked = false;
-      this.Label = "";
-      this.CheckBoxDimension = 0;
-      this.Box = null;
-    };
-    this.$final = function () {
-      this.Box = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doBoxOnClick(sender) {
-        Self.Checked = !Self.Checked;
-        if (Self.Checked) {
-          Self.Box.SetProperty("background-image",$mod.CheckImage)}
-         else Self.Box.SetProperty("background-image","none");
-        window.postMessage([rtl.getObject(Self.Handle).id,"click",Self.Checked],"*");
-      };
-      function doCheckBoxOnClick(sender) {
-        var Label1 = null;
-        if (Self.Checked) Self.Box.SetProperty("background-image",$mod.CheckImage);
-        Label1 = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-        Label1.SetinnerHTML(Self.Label);
-        Label1._setMouseClick(Self.Box.FOnClick);
-        Label1.SetProperty("cursor","pointer");
-        Label1.SetProperty("font-size","0.9em");
-        rtl.getObject(Label1.Handle).style.setProperty("width","auto");
-        rtl.getObject(Label1.Handle).style.setProperty("height","auto");
-        Self.Box.SetBounds(0,0,Self.CheckBoxDimension,Self.CheckBoxDimension);
-        Label1.SetBounds(pas.System.Trunc(Self.CheckBoxDimension * 1.5),(Self.Box.GetTop() + Self.CheckBoxDimension) - rtl.getObject(Label1.Handle).clientHeight,rtl.getObject(Label1.Handle).clientWidth + 2,(Self.CheckBoxDimension - Self.CheckBoxDimension) + rtl.getObject(Label1.Handle).clientHeight);
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.CheckBoxDimension = 20;
-      Self.Box = pas.jElement.TElement.$create("Create$1",["div",Self]);
-      Self.Box.SetProperty("border","1px solid silver");
-      Self.Box.SetProperty("border-radius","5px");
-      Self.Box.SetProperty("background-size","cover");
-      Self.Box.SetProperty("cursor","pointer");
-      Self.Box.SetWidth(Self.CheckBoxDimension);
-      Self.Box.SetHeight(Self.CheckBoxDimension);
-      Self.Box._setMouseClick(doBoxOnClick);
-      Self._setMouseClick(Self.Box.FOnClick);
-      Self._setOnReadyExecute(doCheckBoxOnClick);
-    };
-  });
-  this.CheckImage = "";
-  $mod.$init = function () {
-    $mod.CheckImage = (((((((((((("url(data:image\/jpeg;base64," + "\/9j\/4AAQSkZJRgABAgAAZABkAAD\/7AARRHVja3kAAQAEAAAAHgAA\/+4ADkFkb2JlAGTAAAAAAf\/bAIQ") + "AEAsLCwwLEAwMEBcPDQ8XGxQQEBQbHxcXFxcXHx4XGhoaGhceHiMlJyUjHi8vMzMvL0BAQEBAQEBAQEB") + "AQEBAQAERDw8RExEVEhIVFBEUERQaFBYWFBomGhocGhomMCMeHh4eIzArLicnJy4rNTUwMDU1QEA\/QEB") + "AQEBAQEBAQEBA\/8AAEQgAMgAyAwEiAAIRAQMRAf\/EAH4AAQADAQEBAAAAAAAAAAAAAAABAgMFBAYBAAM") + "BAQAAAAAAAAAAAAAAAAABAwIFEAACAgEDAAcHBQAAAAAAAAABAgADBBEhMVFhIjJCMwVBsdESUmITcYG") + "hkgYRAAIBAwIGAwAAAAAAAAAAAAACARESAzFRIUFhccEiMhME\/9oADAMBAAIRAxEAPwCCzMSzEszbsx3") + "JJ5JiQOJM75wBERABE1x8bIyX\/Hj1mxwNSB7B1k7TN0et2R1Kup0ZTsQRFWK0rFdh0mlaTTfkV0HREmI") + "xEDibLiZTUHJWpjQvesA225mI4nf9B9WrRFwMjRV1Iqc8do6\/K37naTzO6Jci30njHTmUwojta7WVjhP") + "XkcGb4eHfm3iigasd2Y8KvSZ1\/UP865yFbBAFVh7aHYV9Y+3qnvJwvQcLbtO3s8dr\/AfxIv8AqWVj6vd") + "30XbuWT8rQ0\/b6Imrb9gTheg4Wg7TtwPHa\/w90+WyL3yb3vs0+ew6nTiWy8u\/Mva+9tWPAHCj6V6pjN4") + "MNlWabsj\/ACnwYz5r6KsW40+MeRERLkCBxJkDgSYAdrA\/0b49H4slGuKDStwRr+j6++cvLy78y833tqx") + "2AHCj6VmMSa4catLKtJYo2bIywrNMwoiIlCYiIgBe7z7e7328vy+fB9vRKREUaR2CdZEREYCIiAFP7cx") + "ERmT\/2Q==)";
-  };
-},["jGlobals"]);
-rtl.module("jFieldSet",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3FieldSet",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.Legend = "";
-      this.Title = null;
-    };
-    this.$final = function () {
-      this.Title = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doFieldSetOnReadyExecute(sender) {
-        var i = 0;
-        var d = null;
-        if (Self.Legend !== "") {
-          Self.Title = pas.jElement.TElement.$create("Create$1",["legend",Self]);
-          rtl.getObject(Self.Title.Handle).innerHTML = Self.Legend;
-          rtl.getObject(Self.Title.Handle).removeAttribute("style");
-        };
-        d = rtl.getObject(Self.Handle).children;
-        for (var $l1 = 0, $end2 = d.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          if (d.item(i).style.getPropertyValue("height") === "0px") {
-            d.item(i).style.setProperty("left","10px");
-            d.item(i).style.setProperty("top",pas.SysUtils.IntToStr(30 + (i * 34)) + "px");
-            d.item(i).style.setProperty("width",pas.SysUtils.IntToStr(Self.GetWidth() - 4) + "px");
-            d.item(i).style.setProperty("height","30px");
-          };
-        };
-      };
-      pas.jElement.TElement.Create$1.call(Self,"fieldset",parent);
-      Self.SetProperty("border","1px solid silver");
-      Self._setOnReadyExecute(doFieldSetOnReadyExecute);
-    };
-  });
-},["jGlobals"]);
-rtl.module("jRadioButton",["System","Classes","SysUtils","Types","JS","Web","jElement","jPanel"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3RadioButton",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.Checked = false;
-      this.Label = "";
-      this.RadioButtonDimension = 0;
-      this.Button = null;
-    };
-    this.$final = function () {
-      this.Button = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doButtonOnClick(sender) {
-        var i = 0;
-        var j = 0;
-        var d = null;
-        var e = null;
-        d = rtl.getObject(Self.Handle).parentNode.children;
-        for (var $l1 = 0, $end2 = d.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          e = d.item(i).children;
-          for (var $l3 = 0, $end4 = e.length - 1; $l3 <= $end4; $l3++) {
-            j = $l3;
-            e.item(j).style.setProperty("background-image","none");
-          };
-        };
-        Self.Button.SetProperty("background-image",$mod.CheckImage);
-        window.postMessage([rtl.getObject(Self.Button.Handle).id,"click",Self.Checked],"*");
-      };
-      function doRadioButtonOnClick(sender) {
-        var Label1 = null;
-        if (Self.Checked) Self.Button.SetProperty("background-image",$mod.CheckImage);
-        Label1 = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-        Label1.SetinnerHTML(Self.Label);
-        Label1._setMouseClick(Self.Button.FOnClick);
-        Label1.SetProperty("cursor","pointer");
-        Label1.SetProperty("font-size","0.85em");
-        rtl.getObject(Label1.Handle).style.setProperty("width","auto");
-        rtl.getObject(Label1.Handle).style.setProperty("height","auto");
-        Self.Button.SetBounds(0,0,Self.RadioButtonDimension,Self.RadioButtonDimension);
-        Label1.SetBounds(pas.System.Trunc(Self.RadioButtonDimension * 1.5),((Self.Button.GetTop() + Self.RadioButtonDimension) - rtl.getObject(Label1.Handle).clientHeight) + 2,rtl.getObject(Label1.Handle).clientWidth + 2,(Self.RadioButtonDimension - Self.RadioButtonDimension) + rtl.getObject(Label1.Handle).clientHeight);
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.RadioButtonDimension = 16;
-      Self.Button = pas.jElement.TElement.$create("Create$1",["div",Self]);
-      Self.Button.SetProperty("border","1px solid #0066cc");
-      Self.Button.SetProperty("border-radius","50%");
-      Self.Button.SetProperty("background-size","cover");
-      Self.Button.SetProperty("cursor","pointer");
-      Self.Button.SetWidth(Self.RadioButtonDimension);
-      Self.Button.SetHeight(Self.RadioButtonDimension);
-      Self.Button._setMouseClick(doButtonOnClick);
-      Self._setMouseClick(Self.Button.FOnClick);
-      Self._setOnReadyExecute(doRadioButtonOnClick);
-    };
-  });
-  this.CheckImage = "";
-  $mod.$init = function () {
-    $mod.CheckImage = ((((((((((((((((((("url(data:image\/jpeg;base64," + "\/9j\/4AAQSkZJRgABAgAAZABkAAD\/7AARRHVja3kAAQAEAAAAHgAA\/+4ADkFkb2JlAGTAAAAAAf\/bAIQ") + "AEAsLCwwLEAwMEBcPDQ8XGxQQEBQbHxcXFxcXHx4XGhoaGhceHiMlJyUjHi8vMzMvL0BAQEBAQEBAQE") + "BAQEBAQAERDw8RExEVEhIVFBEUERQaFBYWFBomGhocGhomMCMeHh4eIzArLicnJy4rNTUwMDU1QEA\/Q") + "EBAQEBAQEBAQEBA\/8AAEQgAOQA5AwEiAAIRAQMRAf\/EAI8AAAICAwEAAAAAAAAAAAAAAAUGAAQBAgcD") + "AQEBAQEBAAAAAAAAAAAAAAAFAwQBAhAAAQMDAAUHCgcAAAAAAAAAAQACAxEEBSExQRITUWGBkSJCBnG") + "hscHRMlJyIzPhYpKyUxQWEQACAQMCAwcFAQAAAAAAAAABAhEAEgMTBCFBUWGBocEiQhQxcZEycpL\/2g") + "AMAwEAAhEDEQA\/AOgKnf5O1sGVldV592Nulx9imUyDLC2Mp0yO7MTeV3sCTZppZ5HSyuL5HGrnFattt") + "tT1NwQeNZdzudP0rxc+FE7nxHfykiHdgZsoN53W72KmcpkSam5k\/UR6FVWKhIrhxqICL+KObNkYyXb8") + "0RhzuTiNeNxB8LwHfijWP8Q29yRFcAQSnQDXsOPl2dKVVF4ybbE4\/UKeq8K949zlQ\/sWHRuNdAWUA8P") + "5VzyLG4dV1PovOug7h9SPo74z6ul3zyt60j8lNLV7o53dKUvENy6bIGLuQANHlPacULVjIEm+uCdfFf") + "8AuKrpXEoXGijkoorKxbI7HmxoxhcK27b\/AGbmvArRjBo36ayTyJjjs7WJgZHCxrRs3QvPGtY3H24j9") + "3htPWKnzq0is+Z3dpJgGAKVwYURFgCSJJoRkcBbXDHSWzRDONIA0NceQjYlUgtJaRQg0I5wugpLzLWt") + "ydwG6t4HpIBK1bLMzEoxugSJrLvcKqA6i2TBiqkcj4pGyxmj2EOaecJj\/wBNb\/xuS0taBbbRcG5gR3G") + "sVxtK8iZ7xRPPW7oMlIaUbLSRvTr86HJvzWNN9bAx\/fiqWfmB1t6UoEFpIcKEaCDoIIUNrlD4wPcgtP") + "lV91iKZCfa5uHnTDgMtCyIWVy4MLT9J50NIPdJR\/XpC5+t2zztG62R7W8gcQFPNsg7Fla2eJETVMO9K") + "KFZbo4AzFOOQydvYxEvcHTU7EQ1k8\/IEmySPlkdLIaveS5x5ytSSTUmpOslRWwbdcQMG4n6mo59w2Ui") + "RaB9BUAJIDRUnQANpRr\/ADE\/xt6lPD2NdLML2UUijP069542+QelM65rrrjFPtP+uld0G0Dlj3D\/AD1") + "qIXk8HBekyxnhXB1u7rvmHrRRRGYdS8aU3dnnSebTsOrFvb5Uk3OKv7YniQuLR32Deb1hVCCDQihXQV") + "TuPvMSqnNHqGM\/ZiPKimGGfScg+6g+dJ8NrczmkMT3k8gNOtGsf4bcSJL40GyFp1\/M4epMLdSypZ\/k2") + "mwKP5Mt4xVcHxrheWP9CF8JrVrWsaGMAa1ooANAAC2UURfGe2lOEdlf\/9k=)";
-  };
-},["jGlobals"]);
-rtl.module("jWindow",["System","Classes","SysUtils","JS","Web","jElement","jPanel","jButton"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Window",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.WindowArea = null;
-      this.CloseButton = null;
-    };
-    this.$final = function () {
-      this.WindowArea = undefined;
-      this.CloseButton = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.ArrangeElements = function () {
-      var d = null;
-      var i = 0;
-      var j = 0;
-      var x = 0;
-      var y = 0;
-      var z = 0;
-      var TempArray = [];
-      d = rtl.getObject(this.Handle).children;
-      for (var $l1 = 0, $end2 = d.length - 1; $l1 <= $end2; $l1++) {
-        i = $l1;
-        TempArray.push(d.item(i));
-      };
-      z = 0;
-      for (var $l3 = 0, $end4 = TempArray.length - 1; $l3 <= $end4; $l3++) {
-        j = $l3;
-        if (rtl.getObject(TempArray[j]).id !== rtl.getObject(this.WindowArea.Handle).id) {
-          x = parseInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("top"),"px"));
-          if (x <= 30) rtl.getObject(TempArray[j]).style.setProperty("top",pas.SysUtils.IntToStr(x + 30) + "px");
-          y = (parseInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("top"),"px")) + parseInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("height"),"px"))) + parseInt(pas.jGlobals.StrBefore(rtl.getObject(this.WindowArea.Handle).style.getPropertyValue("margin-bottom"),"px"));
-          if (y > z) z = y;
-          rtl.getObject(this.WindowArea.Handle).appendChild(rtl.getObject(TempArray[j]));
-        };
-      };
-      if (z > 0) rtl.getObject(this.WindowArea.Handle).style.setProperty("height",pas.SysUtils.IntToStr(z) + "px");
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doCloseButtonOnClick(sender) {
-        Self.CloseWIndow();
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.SetProperty("display","none");
-      Self.SetProperty("background-color","rgb(255,255,255)");
-      Self.SetProperty("background-color","rgba(0,0,0,0.4)");
-      rtl.getObject(Self.Handle).style.setProperty("width","100%");
-      rtl.getObject(Self.Handle).style.setProperty("height","100%");
-      Self.WindowArea = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-      Self.WindowArea.SetProperty("background-color","whitesmoke");
-      Self.WindowArea.SetProperty("margin","10% 5% 5% 10%");
-      Self.WindowArea.SetProperty("border","1px solid #888");
-      Self.WindowArea.SetProperty("width","80%");
-      Self.WindowArea.SetProperty("height","30%");
-      Self.CloseButton = pas.jButton.JW3Button.$create("Create$2",[Self.WindowArea]);
-      Self.CloseButton.SetinnerHTML("x");
-      Self.CloseButton.SetAttribute("style","margin: 2px 2px; float: right; cursor: pointer;");
-      Self.CloseButton._setMouseClick(doCloseButtonOnClick);
-    };
-    this.OpenWindow = function () {
-      this.ArrangeElements();
-      this.SetProperty("display","inline-block");
-    };
-    this.CloseWIndow = function () {
-      this.$destroy("Destroy");
-    };
-  });
-},["jGlobals"]);
-rtl.module("jDialog",["System","Classes","SysUtils","JS","Web","jElement","jPanel","jButton"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Dialog",pas.jElement.TElement,function () {
-    this.$init = function () {
-      pas.jElement.TElement.$init.call(this);
-      this.DialogBox = null;
-      this.CloseButton = null;
-    };
-    this.$final = function () {
-      this.DialogBox = undefined;
-      this.CloseButton = undefined;
-      pas.jElement.TElement.$final.call(this);
-    };
-    this.ArrangeElements = function () {
-      var d = null;
-      var i = 0;
-      var j = 0;
-      var x = 0;
-      var y = 0;
-      var z = 0;
-      var TempArray = [];
-      d = rtl.getObject(this.Handle).children;
-      for (var $l1 = 0, $end2 = d.length - 1; $l1 <= $end2; $l1++) {
-        i = $l1;
-        TempArray.push(d.item(i));
-      };
-      z = 0;
-      for (var $l3 = 0, $end4 = TempArray.length - 1; $l3 <= $end4; $l3++) {
-        j = $l3;
-        if (rtl.getObject(TempArray[j]).id !== rtl.getObject(this.DialogBox.Handle).id) {
-          x = pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("top"),"px"));
-          if (x <= 30) rtl.getObject(TempArray[j]).style.setProperty("top",pas.SysUtils.IntToStr(x + 30) + "px");
-          y = pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("top"),"px")) + pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(TempArray[j]).style.getPropertyValue("height"),"px"));
-          if (y > z) z = y;
-          rtl.getObject(this.DialogBox.Handle).appendChild(rtl.getObject(TempArray[j]));
-        };
-      };
-      if (z > 0) rtl.getObject(this.DialogBox.Handle).style.setProperty("height",pas.SysUtils.IntToStr(z) + "px");
-    };
-    this.Create$2 = function (parent) {
-      var Self = this;
-      function doCloseButtonOnClick(sender) {
-        Self.SetProperty("display","none");
-      };
-      pas.jElement.TElement.Create$1.call(Self,"div",parent);
-      Self.SetProperty("display","none");
-      Self.SetProperty("background-color","rgb(0,0,0)");
-      Self.SetProperty("background-color","rgba(0,0,0,0.4)");
-      rtl.getObject(Self.Handle).style.setProperty("width","100%");
-      rtl.getObject(Self.Handle).style.setProperty("height","100%");
-      Self.DialogBox = pas.jPanel.JW3Panel.$create("Create$2",[Self]);
-      Self.DialogBox.SetProperty("background-color","whitesmoke");
-      Self.DialogBox.SetProperty("margin","10% 5% 0% 10%");
-      Self.DialogBox.SetProperty("border","1px solid #888");
-      Self.DialogBox.SetProperty("width","80%");
-      Self.DialogBox.SetProperty("height","30%");
-      Self.CloseButton = pas.jButton.JW3Button.$create("Create$2",[Self.DialogBox]);
-      Self.CloseButton.SetinnerHTML("x");
-      Self.CloseButton.SetAttribute("style","margin: 2px 2px; float: right; cursor: pointer;");
-      Self.CloseButton._setMouseClick(doCloseButtonOnClick);
-    };
-    this.OpenDialog = function (DialogMessage) {
-      this.ArrangeElements();
-      this.SetProperty("display","inline-block");
-    };
-  });
-},["jGlobals"]);
-rtl.module("jInput",["System","Classes","SysUtils","JS","Web","jElement"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass($mod,"JW3Input",pas.jElement.TElement,function () {
-    this.Create$2 = function (parent) {
-      pas.jElement.TElement.Create$1.call(this,"input",parent);
-      this.SetAttribute("type","text");
-    };
-  });
-});
-rtl.module("Form1",["System","Classes","SysUtils","Types","JS","Web","jElement","jForm","jListBox","jPanel","jButton","jImage","jToolBar","jProgressBar","JSplitter","JSelect","jVideo","JAnchor","JTextArea","jIframe","jFlipScroll","JLoader","jSpinner","jGrid","jCanvas","jTreeView","jCheckBox","jFieldSet","jRadioButton","jWindow","jDialog","jInput"],function () {
+rtl.module("Form1",["System","Classes","SysUtils","Types","JS","Web","jElement","jForm","jListBox","jPanel","jButton","jImage","jToolBar","jProgressBar","JSplitter"],function () {
   "use strict";
   var $mod = this;
   rtl.createClass($mod,"TComponentRec",pas.System.TObject,function () {
@@ -3335,10 +2537,9 @@ rtl.module("Form1",["System","Classes","SysUtils","Types","JS","Web","jElement",
         disp.setProperty("height","px");
         Self.DisplayDiv.SetHeight(pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(Self.DisplayDiv.Handle).children.item(0).style.getPropertyValue("height"),"px")) + 30);
         Self.DisplayDiv.SetWidth(pas.SysUtils.StrToInt(pas.jGlobals.StrBefore(rtl.getObject(Self.DisplayDiv.Handle).children.item(0).style.getPropertyValue("width"),"px")) + 30);
-        Self.DisplayDiv.SetTop(280);
       };
       Self.ListBox1 = pas.jListBox.JW3ListBox.$create("Create$2",[Self]);
-      Self.ListBox1.SetBounds(17,85,200,170);
+      Self.ListBox1.SetBounds(17,85,200,200);
       Self.ListBox1.SetProperty("background-color","white");
       Self.ListBox1.SetProperty("border","2px double whitesmoke");
       for (var $l1 = 0, $end2 = Self.Components.length - 1; $l1 <= $end2; $l1++) {
@@ -3412,516 +2613,6 @@ rtl.module("Form1",["System","Classes","SysUtils","Types","JS","Web","jElement",
         Button2.SetinnerHTML("Right");
         Button2.SetBounds(20,20,60,30);
       };
-      function doJToolBar1() {
-        var ToolBar1 = null;
-        ToolBar1 = pas.jToolBar.JW3ToolBar.$create("Create$2",[Self.DisplayDiv]);
-        ToolBar1.SetBounds(0,0,500,40);
-        ToolBar1.SetProperty("background-color","#699BCE");
-        ToolBar1.AddMenu("Fish-Facts","Form3","white");
-        ToolBar1.AddMenu("VR image","Form4","white");
-        ToolBar1.AddMenu("StreetView","Form5","white");
-      };
-      function doJSelect1() {
-        var Select1 = null;
-        var Item1 = null;
-        var i = 0;
-        Select1 = pas.JSelect.JW3Select.$create("Create$2",[Self.DisplayDiv]);
-        Select1.SetBounds(0,0,200,200);
-        Select1.SetProperty("background-color","white");
-        for (i = 1; i <= 15; i++) {
-          Item1 = pas.jPanel.JW3Panel.$create("Create$2",[Select1]);
-          Item1.SetProperty("background-color","whitesmoke");
-          Item1.SetHeight(20);
-          Item1.SetinnerHTML("Item " + pas.SysUtils.IntToStr(i));
-          Item1.tag = "Item " + pas.SysUtils.IntToStr(i);
-          Select1.Add(Item1);
-        };
-      };
-      function doJListBox1() {
-        var Panel0 = null;
-        var Colours = [];
-        var i = 0;
-        Self.ListBox1 = pas.jListBox.JW3ListBox.$create("Create$2",[Self.DisplayDiv]);
-        Self.ListBox1.SetBounds(0,0,200,1000);
-        Self.ListBox1.SetProperty("background-color","white");
-        Self.ListBox1.SetProperty("border","2px double whitesmoke");
-        Colours.length = 0;
-        Colours.push("White");
-        Colours.push("AliceBlue");
-        Colours.push("AntiqueWhite");
-        Colours.push("Aqua");
-        Colours.push("Aquamarine");
-        Colours.push("Azure");
-        Colours.push("Beige");
-        Colours.push("Bisque");
-        Colours.push("Black");
-        Colours.push("BlanchedAlmond");
-        Colours.push("Blue");
-        Colours.push("BlueViolet");
-        Colours.push("Brown");
-        Colours.push("BurlyWood");
-        Colours.push("CadetBlue");
-        Colours.push("Chartreuse");
-        Colours.push("Chocolate");
-        Colours.push("Coral");
-        Colours.push("CornflowerBlue");
-        Colours.push("Cornsilk");
-        Colours.push("Crimson");
-        Colours.push("Cyan");
-        Colours.push("DarkBlue");
-        Colours.push("DarkCyan");
-        Colours.push("DarkGoldenRod");
-        Colours.push("DarkGray");
-        Colours.push("DarkGrey");
-        Colours.push("DarkGreen");
-        Colours.push("DarkKhaki");
-        Colours.push("DarkMagenta");
-        Colours.push("DarkOliveGreen");
-        Colours.push("Darkorange");
-        Colours.push("DarkOrchid");
-        Colours.push("DarkRed");
-        Colours.push("DarkSalmon");
-        Colours.push("DarkSeaGreen");
-        Colours.push("DarkSlateBlue");
-        Colours.push("DarkSlateGray");
-        Colours.push("DarkSlateGrey");
-        Colours.push("DarkTurquoise");
-        Colours.push("DarkViolet");
-        Colours.push("DeepPink");
-        Colours.push("DeepSkyBlue");
-        Colours.push("DimGray");
-        Colours.push("DimGrey");
-        Colours.push("DodgerBlue");
-        Colours.push("FireBrick");
-        Colours.push("FloralWhite");
-        Colours.push("ForestGreen");
-        Colours.push("Fuchsia");
-        Colours.push("Gainsboro");
-        Colours.push("GhostWhite");
-        Colours.push("Gold");
-        Colours.push("GoldenRod");
-        Colours.push("Gray");
-        Colours.push("Grey");
-        Colours.push("Green");
-        Colours.push("GreenYellow");
-        Colours.push("HoneyDew");
-        Colours.push("HotPink");
-        Colours.push("IndianRed");
-        Colours.push("Indigo");
-        Colours.push("Ivory");
-        Colours.push("Khaki");
-        Colours.push("Lavender");
-        Colours.push("LavenderBlush");
-        Colours.push("LawnGreen");
-        Colours.push("LemonChiffon");
-        Colours.push("LightBlue");
-        Colours.push("LightCoral");
-        Colours.push("LightCyan");
-        Colours.push("LightGoldenRodYellow");
-        Colours.push("LightGray");
-        Colours.push("LightGrey");
-        Colours.push("LightGreen");
-        Colours.push("LightPink");
-        Colours.push("LightSalmon");
-        Colours.push("LightSeaGreen");
-        Colours.push("LightSkyBlue");
-        Colours.push("LightSlateGray");
-        Colours.push("LightSlateGrey");
-        Colours.push("LightSteelBlue");
-        Colours.push("LightYellow");
-        Colours.push("Lime");
-        Colours.push("LimeGreen");
-        Colours.push("Linen");
-        Colours.push("Magenta");
-        Colours.push("Maroon");
-        Colours.push("MediumAquaMarine");
-        Colours.push("MediumBlue");
-        Colours.push("MediumOrchid");
-        Colours.push("MediumPurple");
-        Colours.push("MediumSeaGreen");
-        Colours.push("MediumSlateBlue");
-        Colours.push("MediumSpringGreen");
-        Colours.push("MediumTurquoise");
-        Colours.push("MediumVioletRed");
-        Colours.push("MidnightBlue");
-        Colours.push("MintCream");
-        Colours.push("MistyRose");
-        Colours.push("Moccasin");
-        Colours.push("NavajoWhite");
-        Colours.push("Navy");
-        Colours.push("OldLace");
-        Colours.push("Olive");
-        Colours.push("OliveDrab");
-        Colours.push("Orange");
-        Colours.push("OrangeRed");
-        Colours.push("Orchid");
-        Colours.push("PaleGoldenRod");
-        Colours.push("PaleGreen");
-        Colours.push("PaleTurquoise");
-        Colours.push("PaleVioletRed");
-        Colours.push("PapayaWhip");
-        Colours.push("PeachPuff");
-        Colours.push("Peru");
-        Colours.push("Pink");
-        Colours.push("Plum");
-        Colours.push("PowderBlue");
-        Colours.push("Purple");
-        Colours.push("Red");
-        Colours.push("RosyBrown");
-        Colours.push("RoyalBlue");
-        Colours.push("SaddleBrown");
-        Colours.push("Salmon");
-        Colours.push("SandyBrown");
-        Colours.push("SeaGreen");
-        Colours.push("SeaShell");
-        Colours.push("Sienna");
-        Colours.push("Silver");
-        Colours.push("SkyBlue");
-        Colours.push("SlateBlue");
-        Colours.push("SlateGray");
-        Colours.push("SlateGrey");
-        Colours.push("Snow");
-        Colours.push("SpringGreen");
-        Colours.push("SteelBlue");
-        Colours.push("Tan");
-        Colours.push("Teal");
-        Colours.push("Thistle");
-        Colours.push("Tomato");
-        Colours.push("Turquoise");
-        Colours.push("Violet");
-        Colours.push("Wheat");
-        Colours.push("WhiteSmoke");
-        Colours.push("Yellow");
-        Colours.push("YellowGreen");
-        for (var $l1 = 0, $end2 = Colours.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          Panel0 = pas.jPanel.JW3Panel.$create("Create$2",[Self.ListBox1]);
-          Panel0.SetProperty("background-color",Colours[i]);
-          Panel0.SetinnerHTML(Colours[i]);
-          Panel0.SetProperty("font-size","0.85em");
-          Panel0.SetBounds(2,2,170,26);
-          Self.ListBox1.Add(Panel0);
-        };
-      };
-      function doJVideo1() {
-        var Video1 = null;
-        Video1 = pas.jVideo.JW3Video.$create("Create$2",[Self.DisplayDiv]);
-        Video1.SetBounds(0,0,400,300);
-        Video1.SetAttribute("src","videos\/looprake.mp4");
-        Video1.SetAttribute("type","video\/mp4");
-        Video1.SetAttribute("controls","true");
-        Video1.SetProperty("width","400px");
-        Video1.SetProperty("height","300px");
-        Video1.SetProperty("object-fit","fill");
-      };
-      function doJAnchor1() {
-        var Anchor1 = null;
-        Anchor1 = pas.JAnchor.JW3Anchor.$create("Create$2",[Self.DisplayDiv]);
-        Anchor1.SetBounds(0,0,194,45);
-        Anchor1.SetAttribute("href","https:\/\/www.youtube.com\/watch?v=9ehsFrakgAo");
-        Anchor1.SetAttribute("target","_blank");
-        Anchor1.placeholder.SetAttribute("src","images\/logo.png");
-        Anchor1.placeholder.SetAttribute("alt","LynkFS logo");
-        Anchor1.placeholder.SetBounds(0,0,Anchor1.GetWidth(),Anchor1.GetHeight());
-      };
-      function doJTextArea1() {
-        var Memo1 = null;
-        Memo1 = pas.JTextArea.JW3TextArea.$create("Create$2",[Self.DisplayDiv]);
-        Memo1.SetBounds(0,0,300,100);
-        Memo1.SetProperty("background-color","whitesmoke");
-        Memo1.SetProperty("border","1px double grey");
-        Memo1.SetinnerHTML(((("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " + "Vestibulum a ipsum leo. Vestibulum a ante ipsum primis in faucibus ") + "orci luctus et ultrices posuere cubilia Curae; Phasellus tincidunt ") + "pretium enim, mollis finibus lacus aliquam sed. Sed molestie mi eu ") + "rhoncus aliquet. Ut ac aliquam quam. Pellentesque at vulputate urna.");
-      };
-      function doJIFrame1() {
-        var IFrame1 = null;
-        IFrame1 = pas.jIframe.JW3IFrame.$create("Create$2",[Self.DisplayDiv]);
-        IFrame1.SetBounds(0,0,650,500);
-        IFrame1.SetAttribute("src","http:\/\/pas2js.38893.n8.nabble.com");
-      };
-      function doJFlipPage1() {
-        var FlipScroll = null;
-        var encodestr = "";
-        var ClickPanel = null;
-        var PageNr = 0;
-        function ClickPanelOnClick(Sender) {
-          PageNr += 1;
-          FlipScroll.GotoPage(PageNr);
-        };
-        FlipScroll = pas.jFlipScroll.JW3FlipScroll.$create("Create$2",[Self.DisplayDiv]);
-        FlipScroll.SetBounds(0,0,450,450);
-        encodestr = encodeURIComponent("http:\/\/www.symphonyone.com\/");
-        FlipScroll.SetAttribute("src","https:\/\/rawcdn.githack.com\/pas2js\/master\/master\/projATM\/www\/index.html");
-        ClickPanel = pas.jPanel.JW3Panel.$create("Create$2",[Self.DisplayDiv]);
-        ClickPanel.SetBounds(0,0,FlipScroll.GetWidth(),FlipScroll.GetHeight());
-        ClickPanel.SetProperty("opacity","0");
-        PageNr = 0;
-        ClickPanel._setMouseClick(ClickPanelOnClick);
-      };
-      function doJLoader1() {
-        var Loader1 = null;
-        Loader1 = pas.JLoader.JW3Loader.$create("Create$2",[Self.DisplayDiv]);
-        Loader1.SetBounds(0,0,60,60);
-      };
-      function doJSpinner1() {
-        var Spinner1 = null;
-        Spinner1 = pas.jSpinner.JW3Spinner.$create("Create$2",[Self.DisplayDiv]);
-        Spinner1.SetBounds(20,0,40,40);
-      };
-      function doJGrid1() {
-        var Grid1 = null;
-        var row = 0;
-        var column = 0;
-        var S = "";
-        var CellPnl = null;
-        var CellImg = null;
-        function CellPnlOnClick(Sender) {
-          window.alert(rtl.as(Sender,pas.jElement.TElement).tag);
-        };
-        function CellImgOnClick(Sender) {
-          window.alert(rtl.as(Sender,pas.jElement.TElement).tag);
-        };
-        Grid1 = pas.jGrid.JW3Grid.$create("Create$2",[Self.DisplayDiv]);
-        Grid1.SetBounds(0,0,330,250);
-        Grid1.CanResize = true;
-        Grid1.AddColumn("Col 1",74);
-        Grid1.AddColumn("Col 2",134);
-        Grid1.AddColumn("Col 3",84);
-        for (row = 1; row <= 300; row++) {
-          for (column = 1; column <= 3; column++) {
-            S = (("Cell " + pas.SysUtils.IntToStr(row)) + "-") + pas.SysUtils.IntToStr(column);
-            var $tmp1 = column;
-            if (($tmp1 === 1) || ($tmp1 === 3)) {
-              CellPnl = pas.jPanel.JW3Panel.$create("Create$2",[Grid1]);
-              CellPnl.SetinnerHTML(S);
-              CellPnl.SetHeight(24);
-              CellPnl.SetProperty("font-size","0.85em");
-              CellPnl.tag = S;
-              CellPnl._setMouseClick(CellPnlOnClick);
-              Grid1.AddCell(row,column,CellPnl);
-            } else if ($tmp1 === 2) {
-              CellImg = pas.jImage.JW3Image.$create("Create$2",[Grid1]);
-              CellImg.SetAttribute("src","images\/logo.png");
-              CellImg.SetHeight(45);
-              CellImg.tag = S;
-              CellImg._setMouseClick(CellImgOnClick);
-              Grid1.AddCell(row,column,CellImg);
-            };
-          };
-        };
-      };
-      function doJCanvas1() {
-        var Canvas1 = null;
-        Canvas1 = pas.jCanvas.JW3Canvas.$create("Create$2",[Self.DisplayDiv]);
-        Canvas1.SetBounds(0,0,400,200);
-        Canvas1.ctx.beginPath();
-        Canvas1.ctx.moveTo(75,25);
-        Canvas1.ctx.quadraticCurveTo(25,25,25,62.5);
-        Canvas1.ctx.quadraticCurveTo(25,100,50,100);
-        Canvas1.ctx.quadraticCurveTo(50,120,30,125);
-        Canvas1.ctx.quadraticCurveTo(60,120,65,100);
-        Canvas1.ctx.quadraticCurveTo(125,100,125,62.5);
-        Canvas1.ctx.quadraticCurveTo(125,25,75,25);
-        Canvas1.ctx.stroke();
-      };
-      function doJTreeView1() {
-        var TreeView1 = null;
-        TreeView1 = pas.jTreeView.JW3TreeView.$create("Create$2",[Self.DisplayDiv]);
-        TreeView1.SetBounds(0,0,250,200);
-        TreeView1.SetProperty("background-color","white");
-        TreeView1.Subject = "Job roles";
-        TreeView1.Add("ceo","","chief executive officer");
-        TreeView1.Add("cto","ceo","chief technology officer");
-        TreeView1.Add("dev1","cto","developer 1");
-        TreeView1.Add("dev2","cto","developer 2");
-        TreeView1.Add("dev3","cto","developer 3");
-        TreeView1.Add("assistent","dev2","assistant developer 2");
-        TreeView1.Add("cfo","ceo","chief financial officer");
-        TreeView1.Add("accountant","cfo","bean counter");
-        TreeView1.Add("cmo","ceo","chief marketing officer");
-      };
-      function doJCheckBox1() {
-        var CheckBox1 = null;
-        CheckBox1 = pas.jCheckBox.JW3CheckBox.$create("Create$2",[Self.DisplayDiv]);
-        CheckBox1.SetBounds(0,0,200,200);
-        CheckBox1.Label = "First and only checkbox";
-        CheckBox1.Checked = true;
-        CheckBox1.CheckBoxDimension = 20;
-      };
-      function doJCheckBox2() {
-        var FieldSet = null;
-        var CheckBox1 = null;
-        var CheckBox2 = null;
-        var CheckBox3 = null;
-        FieldSet = pas.jFieldSet.JW3FieldSet.$create("Create$2",[Self.DisplayDiv]);
-        FieldSet.SetBounds(0,0,200,180);
-        FieldSet.Legend = "Legend";
-        CheckBox1 = pas.jCheckBox.JW3CheckBox.$create("Create$2",[FieldSet]);
-        CheckBox1.Label = "First checkbox";
-        CheckBox1.Checked = true;
-        CheckBox2 = pas.jCheckBox.JW3CheckBox.$create("Create$2",[FieldSet]);
-        CheckBox2.Label = "Second checkbox";
-        CheckBox2.Checked = false;
-        CheckBox3 = pas.jCheckBox.JW3CheckBox.$create("Create$2",[FieldSet]);
-        CheckBox3.Label = "Third checkbox";
-        CheckBox3.Checked = true;
-      };
-      function doJRadioButton1() {
-        var FieldSet = null;
-        var RadioButton1 = null;
-        var RadioButton2 = null;
-        var RadioButton3 = null;
-        FieldSet = pas.jFieldSet.JW3FieldSet.$create("Create$2",[Self.DisplayDiv]);
-        FieldSet.SetBounds(0,0,200,180);
-        FieldSet.Legend = "Legend";
-        RadioButton1 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-        RadioButton1.Label = "First RadioButton";
-        RadioButton2 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-        RadioButton2.Label = "Second RadioButton";
-        RadioButton2.Checked = true;
-        RadioButton3 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-        RadioButton3.Label = "Third RadioButton";
-      };
-      function doJWindow1() {
-        var Window1 = null;
-        var MyButton = null;
-        var Button1 = null;
-        function doMyButtonOnClick(Sender) {
-          var FieldSet = null;
-          var RadioButton1 = null;
-          var RadioButton2 = null;
-          var RadioButton3 = null;
-          function doButton1OnClick(Sender) {
-            rtl.getObject(RadioButton1.Handle).click();
-          };
-          FieldSet = pas.jFieldSet.JW3FieldSet.$create("Create$2",[Window1]);
-          FieldSet.SetBounds(10,0,200,140);
-          FieldSet.Legend = "Legend";
-          RadioButton1 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-          RadioButton1.Label = "First RadioButton";
-          RadioButton2 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-          RadioButton2.Label = "Second RadioButton";
-          RadioButton2.Checked = true;
-          RadioButton3 = pas.jRadioButton.JW3RadioButton.$create("Create$2",[FieldSet]);
-          RadioButton3.Label = "Third RadioButton";
-          Button1 = pas.jButton.JW3Button.$create("Create$2",[Window1]);
-          Button1.SetBounds(15,200,150,40);
-          Button1.SetinnerHTML("check first radiobutton");
-          Button1._setMouseClick(doButton1OnClick);
-          Window1.OpenWindow();
-        };
-        Window1 = pas.jWindow.JW3Window.$create("Create$2",[Self]);
-        MyButton = pas.jButton.JW3Button.$create("Create$2",[Self.DisplayDiv]);
-        MyButton.SetBounds(0,0,150,40);
-        MyButton.SetinnerHTML("Open window");
-        MyButton.SetProperty("background-color","blueviolet");
-        MyButton._setMouseClick(doMyButtonOnClick);
-      };
-      function doJDialog1() {
-        var Dialog1 = null;
-        var MyButton = null;
-        function doMyButtonOnClick(Sender) {
-          var Canvas1 = null;
-          Canvas1 = pas.jCanvas.JW3Canvas.$create("Create$2",[Dialog1]);
-          Canvas1.SetBounds(0,0,400,200);
-          Canvas1.ctx.beginPath();
-          Canvas1.ctx.moveTo(75,25);
-          Canvas1.ctx.quadraticCurveTo(25,25,25,62.5);
-          Canvas1.ctx.quadraticCurveTo(25,100,50,100);
-          Canvas1.ctx.quadraticCurveTo(50,120,30,125);
-          Canvas1.ctx.quadraticCurveTo(60,120,65,100);
-          Canvas1.ctx.quadraticCurveTo(125,100,125,62.5);
-          Canvas1.ctx.quadraticCurveTo(125,25,75,25);
-          Canvas1.ctx.stroke();
-          Dialog1.OpenDialog("testing...");
-        };
-        Dialog1 = pas.jDialog.JW3Dialog.$create("Create$2",[Self]);
-        MyButton = pas.jButton.JW3Button.$create("Create$2",[Self.DisplayDiv]);
-        MyButton.SetBounds(0,0,150,40);
-        MyButton.SetinnerHTML("Open dialog");
-        MyButton.SetProperty("background-color","blueviolet");
-        MyButton._setMouseClick(doMyButtonOnClick);
-      };
-      function doJInput1() {
-        var Input1 = null;
-        var MySelect = null;
-        var Types = [];
-        var i = 0;
-        var Item1 = null;
-        function doItem1OnClick() {
-          Input1.SetAttribute("type",MySelect.Value);
-          var $tmp1 = MySelect.Value;
-          if ($tmp1 === "button") {
-            Input1.SetAttribute("value","input type = " + MySelect.Value)}
-           else if ($tmp1 === "color") {
-            Input1.SetAttribute("value","#ff0000")}
-           else if ($tmp1 === "email") {
-            Input1.SetAttribute("placeholder","user@host.com")}
-           else if ($tmp1 === "file") {
-            Input1.SetAttribute("accept",".jpg, .jpeg, .png")}
-           else if ($tmp1 === "hidden") {
-            Input1.SetAttribute("value","should not see this")}
-           else if ($tmp1 === "image") {
-            Input1.SetAttribute("src","images\/logo.png")}
-           else if ($tmp1 === "number") {
-            Input1.SetAttribute("value","123456")}
-           else if ($tmp1 === "password") {
-            Input1.SetAttribute("required","true")}
-           else if ($tmp1 === "radio") {
-            Input1.SetAttribute("checked","true")}
-           else if ($tmp1 === "reset") {
-            Input1.SetAttribute("value","reset form")}
-           else if ($tmp1 === "search") {
-            Input1.SetAttribute("placeholder","search...")}
-           else if ($tmp1 === "submit") {
-            Input1.SetAttribute("value","submit form")}
-           else if ($tmp1 === "tel") {
-            Input1.SetAttribute("placeholder","+61(0)x 9999 9999")}
-           else if ($tmp1 === "text") {
-            Input1.SetAttribute("value","input type = " + MySelect.Value)}
-           else if ($tmp1 === "url") Input1.SetAttribute("placeholder","http:\/\/www.lynkfs.com");
-          rtl.getObject(MySelect.Handle).style.setProperty("display","none");
-        };
-        Input1 = pas.jInput.JW3Input.$create("Create$2",[Self.DisplayDiv]);
-        Input1.SetBounds(0,0,200,40);
-        Input1.SetProperty("border","2px solid whitesmoke");
-        MySelect = pas.JSelect.JW3Select.$create("Create$2",[Self]);
-        rtl.getObject(Self.Handle).setAttribute("data-select",rtl.getObject(MySelect.Handle).id);
-        MySelect.SetBounds(17,290,200,200);
-        MySelect.SetProperty("background-color","white");
-        Types.length = 0;
-        Types.push("button");
-        Types.push("checkbox");
-        Types.push("color");
-        Types.push("date");
-        Types.push("datetime-local");
-        Types.push("email");
-        Types.push("file");
-        Types.push("hidden");
-        Types.push("image");
-        Types.push("month");
-        Types.push("number");
-        Types.push("password");
-        Types.push("radio");
-        Types.push("range");
-        Types.push("reset");
-        Types.push("search");
-        Types.push("submit");
-        Types.push("tel");
-        Types.push("text");
-        Types.push("time");
-        Types.push("url");
-        Types.push("week");
-        for (var $l1 = 0, $end2 = Types.length - 1; $l1 <= $end2; $l1++) {
-          i = $l1;
-          Item1 = pas.jPanel.JW3Panel.$create("Create$2",[MySelect]);
-          Item1.SetProperty("background-color","whitesmoke");
-          Item1.SetHeight(20);
-          Item1.SetinnerHTML(Types[i]);
-          Item1.tag = Types[i];
-          rtl.getObject(Item1.Handle).addEventListener("click",doItem1OnClick);
-          MySelect.Add(Item1);
-        };
-      };
       pas.jForm.TW3Form.InitializeObject.apply(Self,arguments);
       Image0 = pas.jImage.JW3Image.$create("Create$2",[Self]);
       Image0.SetBounds(0,0,194,45);
@@ -3955,82 +2646,6 @@ rtl.module("Form1",["System","Classes","SysUtils","Types","JS","Web","jElement",
       Self.ComponentRec = $mod.TComponentRec.$create("Create");
       Self.ComponentRec.name = "JSplitter";
       Self.ComponentRec.ShowIt = doSplitter1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JToolBar";
-      Self.ComponentRec.ShowIt = doJToolBar1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JSelect";
-      Self.ComponentRec.ShowIt = doJSelect1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JListBox";
-      Self.ComponentRec.ShowIt = doJListBox1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JVideo";
-      Self.ComponentRec.ShowIt = doJVideo1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JAnchor";
-      Self.ComponentRec.ShowIt = doJAnchor1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JTextArea";
-      Self.ComponentRec.ShowIt = doJTextArea1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JWebPage (IFrame)";
-      Self.ComponentRec.ShowIt = doJIFrame1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JFlipScroll - under constr";
-      Self.ComponentRec.ShowIt = doJFlipPage1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JLoader";
-      Self.ComponentRec.ShowIt = doJLoader1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JSpinner";
-      Self.ComponentRec.ShowIt = doJSpinner1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JGrid";
-      Self.ComponentRec.ShowIt = doJGrid1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JCanvas";
-      Self.ComponentRec.ShowIt = doJCanvas1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JTreeView";
-      Self.ComponentRec.ShowIt = doJTreeView1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JCheckBox (single)";
-      Self.ComponentRec.ShowIt = doJCheckBox1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JCheckBox (multiple)";
-      Self.ComponentRec.ShowIt = doJCheckBox2;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JRadioButtons";
-      Self.ComponentRec.ShowIt = doJRadioButton1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JWindow - under constr.";
-      Self.ComponentRec.ShowIt = doJWindow1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JDialog - under constr.";
-      Self.ComponentRec.ShowIt = doJDialog1;
-      Self.Components.push(Self.ComponentRec);
-      Self.ComponentRec = $mod.TComponentRec.$create("Create");
-      Self.ComponentRec.name = "JInput";
-      Self.ComponentRec.ShowIt = doJInput1;
       Self.Components.push(Self.ComponentRec);
       Self.populateListBox();
     };
